@@ -20,7 +20,7 @@ groups); the inspector is hidden.  The page is saved as it is shown:
                immunofluorescence) and 3D distance against genomic separation, the selection over all cells.
 
 Writes ``captures/supp_browser_<dataset>.png`` and, framed as a browser window (title bar with the window buttons and
-the padlock of a secure address and the address of the dataset in the hosted browser; rounded border, shadow),
+the address of the dataset in the hosted browser, in link blue with an open-in-a-new-tab mark; rounded border, shadow),
 ``captures/supp_browser_<dataset>_framed.png``, and ``captures/supp_browser_<dataset>_framed.tex``, which the supplement
 inputs: the image with a link to that address over its address field only.
 
@@ -196,23 +196,36 @@ def frame(path: Path, address: str) -> Path:
         d.ellipse((x - 0.95 * px, cy - 0.95 * px, x + 0.95 * px, cy + 0.95 * px), fill=c)
     ax0, ax1, ah = pad + 15 * px, pad + w - 15 * px, 2.1 * px
     d.rounded_rectangle((ax0, cy - ah, ax1, cy + ah), radius=round(ah), fill="white")
-    # the padlock a browser shows before a secure (https) address, then the address
-    lx, lw, lh, grey = ax0 + 1.8 * px, 1.7 * px, 1.35 * px, "#5b6270"
-    body_top = cy - 0.15 * px
-    d.rounded_rectangle((lx, body_top, lx + lw, body_top + lh), radius=round(0.25 * px), fill=grey)
-    sw = max(2, round(0.28 * px))                            # the shackle: an arch above the body
-    d.arc((lx + 0.3 * px, body_top - 1.25 * px, lx + lw - 0.3 * px, body_top + 0.35 * px), 180, 360, fill=grey, width=sw)
-    d.line((lx + 0.3 * px + sw / 2, body_top - 0.45 * px, lx + 0.3 * px + sw / 2, body_top + 0.1 * px), fill=grey, width=sw)
-    d.line((lx + lw - 0.3 * px - sw / 2, body_top - 0.45 * px, lx + lw - 0.3 * px - sw / 2, body_top + 0.1 * px),
-           fill=grey, width=sw)
-    font = ImageFont.truetype(font_manager.findfont(font_manager.FontProperties(family=["Arial", "DejaVu Sans"])),
-                              round(2.3 * px))
-    d.text((lx + lw + 1.3 * px, cy), address.removeprefix("https://"), fill=grey, font=font, anchor="lm")
+    # the address in link blue, and at the field's right end an "open in a new tab" mark (a box with an arrow
+    # leaving it): the field is a link (see the annotation below)
+    blue = "#1a5fb4"
+    icon_mm, gap = 2.5, 1.6
+    ix1 = ax1 - 1.8 * px
+    ix0 = ix1 - icon_mm * px
+    tx, room = ax0 + 2.2 * px, (ix0 - gap * px) - (ax0 + 2.2 * px)
+    family = font_manager.findfont(font_manager.FontProperties(family=["Arial", "DejaVu Sans"]))
+    size = round(2.3 * px)
+    text = address.removeprefix("https://")
+    font = ImageFont.truetype(family, size)
+    while font.getlength(text) > room and size > round(1.6 * px):    # never under the mark
+        size -= 1
+        font = ImageFont.truetype(family, size)
+    d.text((tx, cy), text, fill=blue, font=font, anchor="lm")
+    k = 4                                                    # drawn at 4x and reduced: smooth strokes
+    S = round(icon_mm * px * k)
+    icon = Image.new("RGBA", (S, S), (0, 0, 0, 0))
+    di = ImageDraw.Draw(icon)
+    lw, m = max(2, round(0.24 * px * k)), max(2, round(0.24 * px * k)) / 2 + 1
+    di.line([(0.50 * S, m), (m, m), (m, S - m), (S - m, S - m), (S - m, 0.50 * S)], fill=blue, width=lw, joint="curve")
+    di.line([(0.40 * S, 0.60 * S), (S - m, m)], fill=blue, width=lw)
+    di.line([(0.64 * S, m), (S - m, m), (S - m, 0.36 * S)], fill=blue, width=lw, joint="curve")
+    icon = icon.resize((round(icon_mm * px), round(icon_mm * px)), Image.LANCZOS)
+    out.paste(icon, (round(ix0), round(cy - icon_mm * px / 2)), icon)
     d.rounded_rectangle(win, radius=r, outline="#9fb0cc", width=line)
     dest = path.with_name(path.stem + "_framed.png")
     out.save(dest, optimize=True)
     # the LaTeX of the figure: the image, and a link over the address field only (picture units: the image width)
-    rel = dest.relative_to(HERE).as_posix()
+    rel = f"captures/{dest.name}"                            # where the paper keeps it (figures/captures/)
     box = dict(x=ax0 / W, y=(H - (cy + ah)) / W, w=(ax1 - ax0) / W, h=2 * ah / W)
     dest.with_suffix(".tex").write_text(
         "% written by capture_supp_browser.py: the framed capture, linked to the dataset in the hosted browser from its\n"
