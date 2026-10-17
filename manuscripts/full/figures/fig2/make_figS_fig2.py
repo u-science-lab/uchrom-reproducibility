@@ -50,6 +50,10 @@ AX_DY = 7.5
 ROW1, ROW1_H = 1.0, 35.0
 ROW2, ROW2_H = 52.0, 40.0
 ROW3, ROW3_H = 105.0, 34.0
+# by_format: axes width (mm) and where the series are named -- at their ends (this figure) or in a key at the top
+# left (the Brief Communication's Supplementary Fig. 1, which sets both)
+FORMAT_AX_W = 24.0
+FORMAT_KEY_INSIDE = False
 
 
 def style():
@@ -94,7 +98,7 @@ def head(fig, x0, y0, letter, title, sub=None):
 def by_format(fig, x0, y0, letter, key, title, sub, acc):
     """One query across formats: open / load the file, then the query (c_access.json)."""
     head(fig, x0, y0, letter, title, sub)
-    ax = F.ax_at(fig, x0 + 13, y0 + AX_DY, 24, ROW1_H)
+    ax = F.ax_at(fig, x0 + 13, y0 + AX_DY, FORMAT_AX_W, ROW1_H)
     items = []
     for series, lab, col, _ in F.BASELINES:
         if series in acc["base"]:
@@ -116,6 +120,22 @@ def by_format(fig, x0, y0, letter, key, title, sub, acc):
     ax.set_ylim(1e-2, top)
     F.decades(ax, 1e-2, top, axis="y")
     ticks(ax, "y", [1e-2, 1e-1, 1e0, 1e1] + ([1e2] if key == "chrom" else []), "time")
+    if FORMAT_KEY_INSIDE:   # every series in a key at the top left, above the data: both panels up to 1,000 s
+        ax.set_ylim(1e-2, 1e3)
+        F.decades(ax, 1e-2, 1e3, axis="y")
+        ticks(ax, "y", [1e-2, 1e-1, 1e0, 1e1, 1e2], "time")
+        hs, labs = [], []
+        for series, lab, col, _ in F.BASELINES:
+            if series in acc["base"]:
+                hs.append(Line2D([], [], color=col, marker="o", ms=2.2, lw=1.1)); labs.append(lab)
+        hs.append(Line2D([], [], color=F.INDIGO, marker="o", ms=2.2, lw=1.3))
+        labs.append("chromdata.zarr" + (", all tracks" if key == "chrom" else ""))
+        if key == "chrom":
+            hs.append(Line2D([], [], color=F.INDIGO, ls=(0, (2.5, 1.2)), marker="o", ms=2.2, lw=1.0))
+            labs.append("chromdata.zarr, coords only")
+        ax.legend(hs, labs, loc="upper left", frameon=False, fontsize=6, handlelength=2.0, handletextpad=0.4,
+                  labelspacing=0.25, borderaxespad=0.2)
+        return
     if key == "chrom":      # the chromdata.zarr lines cross the baselines' ends: list those top left
         base = [it for it in items if not it[2].startswith("chromdata")]
         for i, (_, _, lab, col) in enumerate(base):
