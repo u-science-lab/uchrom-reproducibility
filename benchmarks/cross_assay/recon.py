@@ -1,9 +1,8 @@
 """Cross-assay comparison in distance space: single-cell Hi-C reconstructed (diploid where the contacts are phased,
 haploid otherwise), stored as ChromData and summarised by the same call as the imaging data,
-``uchrom.fea.separation_profile``.  The reconstruction method (``--method``): ``ember`` (EMber, frozen; the run of
-2026-10-11) or ``nucdyn`` (the NucDynamics 2017 protocol of the same engine, phased contacts as one chain per
-chromosome copy and the contacts with an unphased end as ambiguous restraints; the run of 2026-10-12, used by the
-paper).  Both through ``benchmarks/screcon/run_diploid.py``.
+``uchrom.fea.separation_profile``.  The reconstructions: the NucDynamics 2017 protocol of the native engine, phased
+contacts as one chain per chromosome copy and the contacts with an unphased end as ambiguous restraints (the run of
+2026-10-12), through ``lib/run_diploid.py``.
 
 Datasets (``--dataset``): ``tan2021`` (Dip-C of the adult cortex, Tan et al. 2021: phased CAST x B6 contacts,
 the calibration) and ``hires_brain`` (HiRES adult brain, Liu et al. 2023: 63 % of the contact ends phased; cells
@@ -23,7 +22,7 @@ All at 1 Mb (particles covering (k - 1, k] Mb, so separations are whole Mb as in
 Stages (``--stages``):
 
 * ``run``      (GPU; ``uchrom_recon``, the frozen engine) per cell of this task's share (``--task`` / ``--n-tasks``,
-               a Slurm array): ``<out>/<variant>/<cell>.npz`` via ``benchmarks/screcon/run_diploid.py``;
+               a Slurm array): ``<out>/<variant>/<cell>.npz`` via ``lib/run_diploid.py``;
 * ``collect``  npz / 3dg -> ``<out>/<variant>.chromdata.zarr`` (one trace per cell and chromosome copy);
 * ``loci``     where ExN and Oligo differ: the detrended difference of the median distance of every cis pair of
                the imaging loci (Liu 2025, Takei 2021), imaging against each reconstruction, split-half ceilings,
@@ -54,19 +53,18 @@ import numpy as np
 import pandas as pd
 
 HERE = Path(__file__).resolve().parent
-SCRECON = HERE.parent / "screcon"
+LIB = HERE / "lib"                                     # the structure-set and reconstruction helpers
 sys.path.insert(0, str(HERE.parent))
 sys.path.insert(0, str(HERE))
-sys.path.insert(0, str(SCRECON))
+sys.path.insert(0, str(LIB))
 
 RES = 1_000_000
 N_MODELS, SEED = 2, 1
 DEPTHS = (150_000, 45_000, 20_000)                     # cis contacts: ~GAGE-seq, ~dscHi-C, ~Droplet Hi-C
 VARIANTS = ["dip", "hap"] + [f"hap_c{d // 1000}k" for d in DEPTHS]
-METHOD = "ember"                                       # set by --method
-METHODS = {"ember": "EMber, frozen (engine build dipfrozen, tag ember-diploid-frozen)",
-           "nucdyn": "NucDynamics 2017 protocol, diploid by ambiguous restraints (engine build dipfrozen)"}
-TAN_CELLS = HERE.parent / "screcon" / "data" / "tan2021_adult_cortex_cells.tsv"
+METHOD = "nucdyn"                                      # set by --method
+METHODS = {"nucdyn": "NucDynamics 2017 protocol, diploid by ambiguous restraints (engine build dipfrozen)"}
+TAN_CELLS = LIB / "data" / "tan2021_adult_cortex_cells.tsv"
 HIRES_CELLS = HERE / "data" / "hires_brain_cells.tsv"
 
 
@@ -99,7 +97,7 @@ def dataset_cells(dataset: str, data_dir: Path) -> pd.DataFrame:
 def _subsample(src: str, dst: Path, target_cis: int, cell: str) -> dict:
     """A random subset of the contacts with about ``target_cis`` cis contacts: header and lines unchanged.  The
     columns come from the ``#columns:`` line, with or without a space after the colon (HiRES has none, which
-    screcon's ``read_phased`` would misread)."""
+    ``lib/diploid.py``'s ``read_phased`` would misread)."""
     import gzip
     import re
 
@@ -129,7 +127,7 @@ def _subsample(src: str, dst: Path, target_cis: int, cell: str) -> dict:
 
 
 def stage_run(out: Path, cells: pd.DataFrame, task: int, n_tasks: int, variants, device: str,
-              method: str = "ember") -> dict:
+              method: str = "nucdyn") -> dict:
     """Each reconstruction in its own process (``run_diploid.py``, as the pre-registered runs): within one process
     the GPU engine stops finding an adapter after about 26 runs (wgpu: "no GPU adapter", job 47414760)."""
     import subprocess
@@ -156,7 +154,7 @@ def stage_run(out: Path, cells: pd.DataFrame, task: int, n_tasks: int, variants,
                 argv += ["--ploidy", "haploid"]
             dest.parent.mkdir(parents=True, exist_ok=True)
             with open(str(dest)[:-4] + ".log", "w") as fh:
-                rc = subprocess.run([sys.executable, str(SCRECON / "run_diploid.py"), *argv], stdout=fh,
+                rc = subprocess.run([sys.executable, str(LIB / "run_diploid.py"), *argv], stdout=fh,
                                     stderr=subprocess.STDOUT).returncode
             if rc == 0 and dest.exists():
                 log["runs"] += 1
@@ -758,7 +756,7 @@ def main():
     ap.add_argument("--task", type=int, default=0)
     ap.add_argument("--n-tasks", type=int, default=1)
     ap.add_argument("--device", default="gpu", choices=["cpu", "gpu"])
-    ap.add_argument("--method", default="ember", choices=sorted(METHODS),
+    ap.add_argument("--method", default="nucdyn", choices=sorted(METHODS),
                     help="the reconstruction method of stage run, recorded by stage analyze")
     ap.add_argument("--limit", type=int, help="first N cells only (smoke test)")
     ap.add_argument("--xa-work", type=Path)

@@ -24,7 +24,7 @@ Stages (``--stages``; tables go to ``--work``, ``analyze`` reads them):
                the pilot's closed ranges;
 * ``analyze``  -> ``--results``/cross_assay.json and .md;
 * ``figure``   -> the inputs of the Extended Data figure (``--figdata``, default the paper's
-               ``manuscripts/nmeth-bc/figures/results``).
+               ``results``).
 
     python benchmarks/cross_assay/cross_assay.py --work DIR --stages seq tan imaging check analyze \
         --tan-dir $UCHROM_DATA/tan2021_cortex/cells --sets DIR --liu $UCHROM_DATA/liu2025_mop/liu2025_mop.chromdata.zarr \
@@ -152,7 +152,7 @@ def stage_tan(work: Path, tan_dir: Path, cells_tsv: Path) -> dict:
 
 
 def set_to_chromdata(s: dict, cell_type_col: str = "cell_type"):
-    """A structure set of benchmarks/screcon/matched_data.py (X: cells x copies x loci x 3, NaN = missing) as a
+    """A structure set of lib/matched_data.py (X: cells x copies x loci x 3, NaN = missing) as a
     ChromData: one trace per (cell, copy, chromosome)."""
     from chromdata import ChromData
 
@@ -190,7 +190,7 @@ def stage_imaging(work: Path, sets_dir, liu) -> dict:
     from chromdata import ChromData
     from uchrom.fea import separation_profile
 
-    sys.path.insert(0, str(HERE.parent / "screcon"))
+    sys.path.insert(0, str(HERE / "lib"))
     from matched_data import load_set
 
     log = {}
@@ -246,7 +246,7 @@ def stage_check(work: Path, pilot_work: Path, sets_dir) -> dict:
         out[name] = r
         print(f"[check] {name}: {json.dumps(r)}", flush=True)
     if sets_dir:
-        sys.path.insert(0, str(HERE.parent / "screcon"))
+        sys.path.insert(0, str(HERE / "lib"))
         from matched_data import load_set
 
         closed = SeparationParams(short=(P.SHORT_BP[0], np.nextafter(P.SHORT_BP[1], np.inf)),
@@ -424,11 +424,11 @@ def _per_cell(work: Path, name: str) -> pd.DataFrame:
 def _figdata() -> Path:
     from _paper import paper_root
 
-    return paper_root() / "manuscripts" / "nmeth-bc" / "figures" / "results"
+    return paper_root() / "benchmarks" / "cross_assay" / "results"
 
 
 def stage_figure(work: Path, results: Path, figdata: Path, seed: int, n_boot: int) -> dict:
-    """Inputs of the nmeth-bc Fig. 2 (manuscripts/nmeth-bc/figures/make_fig2.py):
+    """Inputs of Fig. 2 (figures/fig2/make_fig2.py):
     ``cross_assay_figure.json`` (per dataset: class medians, n, ExN - Oligo and Astro - Oligo with Cliff's delta and
     its bootstrap CI), ``cross_assay_cells.parquet`` (per-cell values of GAGE-seq, Liu 2025, Takei 2021) and
     ``cross_assay_profiles.parquet`` (class medians of the per-cell profiles, GAGE-seq and Liu 2025)."""
@@ -508,11 +508,11 @@ def main():
     ap.add_argument("--stages", nargs="+", default=["seq", "tan", "imaging", "check", "analyze"])
     ap.add_argument("--datasets", nargs="+", default=list(P.DATASETS))
     ap.add_argument("--tan-dir", type=Path)
-    ap.add_argument("--tan-cells", type=Path, default=HERE.parent / "screcon" / "data" / "tan2021_adult_cortex_cells.tsv")
+    ap.add_argument("--tan-cells", type=Path, default=HERE / "lib" / "data" / "tan2021_adult_cortex_cells.tsv")
     ap.add_argument("--sets", type=Path)
     ap.add_argument("--liu", type=Path)
     ap.add_argument("--pilot-work", type=Path)
-    ap.add_argument("--figdata", type=Path, help="figure inputs (default: manuscripts/nmeth-bc/"
+    ap.add_argument("--figdata", type=Path, help="figure inputs (default: benchmarks/cross_assay/"
                                                    "figures/results)")
     ap.add_argument("--workers", type=int, default=4)
     ap.add_argument("--seed", type=int, default=0)

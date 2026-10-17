@@ -1,7 +1,7 @@
 """Single cells across assays: does a locus signature learned in one kind of data tell excitatory neurons (ExN) from
 mature oligodendrocytes (Oligo) in single cells of another?
 
-Every cell -- imaged (Liu 2025 DNA-MERFISH) or reconstructed (EMber, ``recon.py``) -- is put on the Liu 2025 locus
+Every cell -- imaged (Liu 2025 DNA-MERFISH) or reconstructed (``recon.py``) -- is put on the Liu 2025 locus
 panel (a reconstruction's 1-Mb particle covering each locus's midpoint; pairs of loci in one particle dropped).  A
 **signature** is the ExN - Oligo difference of the median distance of every cis pair of panel loci, detrended by
 separation (``recon.py`` stage loci, column ``resid``).  A cell's **score** is the Pearson correlation, over the pairs
@@ -30,7 +30,7 @@ import pandas as pd
 HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE.parent))
 sys.path.insert(0, str(HERE))
-sys.path.insert(0, str(HERE.parent / "screcon"))
+sys.path.insert(0, str(HERE / "lib"))
 
 AUTOS = [f"chr{k}" for k in range(1, 20)]
 SEP_BANDS = np.geomspace(1e6, 2e8, 25)

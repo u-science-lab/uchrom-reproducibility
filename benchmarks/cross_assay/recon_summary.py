@@ -1,4 +1,4 @@
-"""One table of the reconstructions of every dataset (``recon.py``; EMber or NucDynamics): per dataset and variant, the ExN - Oligo
+"""One table of the reconstructions of every dataset (``recon.py``, NucDynamics): per dataset and variant, the ExN - Oligo
 difference of the log2 long / short distance ratio (bootstrap CI, Cliff's delta), the class ranking, and how the
 ExN - Oligo difference of every cis pair of the Liu 2025 imaging loci agrees with imaging (Spearman: detrended by
 separation; per chromosome and separation; the pair-specific part), next to the split-half ceilings.  A split half
