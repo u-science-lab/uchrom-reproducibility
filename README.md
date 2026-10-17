@@ -33,7 +33,8 @@ env/                      the pinned U-Chrom version
    archived on Oak (`$OAK/uchrom/results/<name>/`).
 4. A figure script reads only those results and writes its figure next to itself:
    `python manuscripts/nmeth-bc/figures/make_supp_access.py`.
-5. `python sync_to_paper.py` copies the figures and tables the paper tracks into the paper checkout
+5. `make full` (the full manuscript's figure files) and `make tables` (generated tables) where needed, then
+   `make sync` (`python sync_to_paper.py`) copies the figures and tables the paper tracks into the paper checkout
    (`../u-chrom-paper`, or `$UCHROM_PAPER`); build the manuscript there.
 
 Tests of the benchmark helpers: run each folder on its own (`pytest benchmarks/tests`, `pytest benchmarks/fig2/tests`,
