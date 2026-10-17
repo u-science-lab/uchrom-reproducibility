@@ -8,7 +8,7 @@ and :func:`compare` tells how a new run differs from a committed one::
 
     from _record import save, compare
     save(out / "insulation.json", results, script=__file__, datasets=["rao2014_imr90_chr21"], params=vars(args))
-    compare("benchmarks/hic_structures/results/insulation.json", out / "insulation.json", rtol=0.02)
+    compare("benchmarks/toolkit_parity/hic_structures/results/insulation.json", out / "insulation.json", rtol=0.02)
 
 The revision is the git commit of the code that ran (``+dirty`` with uncommitted changes); a repo copy synced to
 a cluster has no ``.git``, so the sync writes it into ``REVISION`` at the copy's root

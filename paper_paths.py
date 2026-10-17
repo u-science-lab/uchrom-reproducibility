@@ -1,20 +1,20 @@
-"""Where this repository finds the U-Chrom code, the data and the paper.
+"""Where this repository finds its own parts, the U-Chrom code, the data and the paper.
 
-This is the reproducibility repository of the U-Chrom papers (``u-science-lab/uchrom-reproducibility``): the
-benchmarks that make the papers' numbers (``benchmarks/``), their results (``manuscripts/<ms>/figures/<fig>/results``)
-and the figure scripts (``manuscripts/<ms>/figures``), in the layout of the paper repository, whose LaTeX reads the
-rendered figures (``sync_to_paper.py`` copies them there).
-
-* ``UCHROM_REPO``: the U-Chrom checkout (default: a sibling folder ``U-Chrom`` next to this repository): its
-  packages when the installed ones should not be used, ``skills/``, ``docs/``, test fixtures, ``apps/atlas``;
-* ``UCHROM_DATA``: the data directory of ``uchrom.datasets`` (default ``~/.cache/uchrom``);
-* ``UCHROM_PAPER``: the u-chrom-paper checkout that ``sync_to_paper.py`` writes into (default: a sibling folder
-  ``u-chrom-paper``).
+* ``FIGURES / <item>``: one folder per figure (``fig1``, ``extended_data_fig1``, ``supp_fig1``, ...), with its script,
+  inputs and rendered figure; ``TABLES / <item>`` likewise for generated tables;
+* ``results(<topic>)``: ``benchmarks/<topic>/results``, the numbers a benchmark writes and the figures read
+  (topics: store, browser, agents, atlas, cross_assay, spatial_variable, toolkit_parity/...);
+* ``SHARED``: drawing code and illustrations several figures use;
+* ``UCHROM_REPO``: the U-Chrom checkout (default: a sibling folder ``U-Chrom``): its packages when the installed ones
+  should not be used, ``skills/``, ``docs/``, test fixtures, ``apps/atlas``;
+* ``DATA``: the data directory of ``uchrom.datasets`` (``$UCHROM_DATA``, default ``~/.cache/uchrom``);
+* ``PAPER_CHECKOUT``: the paper repository that ``sync_to_paper.py`` writes into (``$UCHROM_PAPER``, default a sibling
+  folder ``u-chrom-paper``).
 
 Scripts import it after putting the repository root on ``sys.path``::
 
-    sys.path.insert(0, str(Path(__file__).resolve().parents[4]))   # manuscripts/full/figures/<fig>/x.py -> root
-    from paper_paths import UCHROM_REPO, DATA
+    sys.path.insert(0, str(Path(__file__).resolve().parents[2]))   # figures/<item>/x.py -> the root
+    from paper_paths import SHARED, results
 """
 
 from __future__ import annotations
@@ -27,5 +27,15 @@ PAPER = REPRO                                       # former name: the figure fo
 UCHROM_REPO = Path(os.environ.get("UCHROM_REPO", PAPER.parent / "U-Chrom")).expanduser().resolve()
 DATA = (Path(os.environ["UCHROM_DATA"]) if os.environ.get("UCHROM_DATA") else Path.home() / ".cache" / "uchrom").expanduser().resolve()
 EXAMPLE_DATA = DATA                                  # former name
-FIGURES = REPRO / "manuscripts" / "full" / "figures"   # the full manuscript's figure folders
+FIGURES = REPRO / "figures"
+TABLES = REPRO / "tables"
+SHARED = REPRO / "shared"
+BENCHMARKS = REPRO / "benchmarks"
+
+
+def results(topic: str) -> Path:
+    """``benchmarks/<topic>/results``: what a benchmark writes and the figures read."""
+    return BENCHMARKS / topic / "results"
+
+
 PAPER_CHECKOUT = Path(os.environ.get("UCHROM_PAPER", REPRO.parent / "u-chrom-paper")).expanduser().resolve()

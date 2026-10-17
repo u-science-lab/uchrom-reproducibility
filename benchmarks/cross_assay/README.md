@@ -22,7 +22,7 @@ GEO, and Liu 2025 was not downloaded.
 |---|---|
 | sequencing (atlas per-cell 1-Mb maps; Tan 2021 pairs binned the same way) | `log2((short + 0.5) / (long + 0.5))`, short = cis contacts at map offset 1 (separations 0-2 Mb, mean 1 Mb), long = offsets 19-53 (18-54 Mb), autosomes pooled; cells with >= 500 cis contacts at offsets >= 1 |
 | imaging, and Dip-C 3-D models on the same loci | `log2(d_long / d_short)`, the medians of the 3-D distances of locus pairs 19-53 Mb and 1-2 Mb apart (same chromosome copy; copies and autosomes pooled); cells with >= 10 short and >= 30 long pairs |
-| imaging, proximity variant | `log2(p_short / p_long)`, p = share of pairs closer than r; r = the cell's 1-Mb unit (median distance of pairs 0.75-1.25 Mb apart, `benchmarks/screcon/matched.py`) or the set's median unit |
+| imaging, proximity variant | `log2(p_short / p_long)`, p = share of pairs closer than r; r = the cell's 1-Mb unit (median distance of pairs 0.75-1.25 Mb apart, as for the matched structure sets) or the set's median unit |
 
 Higher always means that the short range is relatively richer in contacts or more compact.
 
@@ -61,17 +61,11 @@ Labels not listed are left out: other regions (olfactory bulb, striatum, claustr
 | takei2021_brain | Excitatory | Pvalb, Vip, Ndnf, Sst | Astrocyte | Oligodendrocyte (lineage: may hold OPCs) | - | Microglia |
 | liu2025_mop (`cross_assay.py`) | `cluster_class` Gluta (other subclasses) | `cluster_class` GABA (other subclasses) | subclass Astro | subclass Oligo | subclass OPC | subclass Micro |
 
-## Running the pilot
+## The imaging structure sets
 
-The pilot runs on Sherlock (`sherlock/pilot.sbatch`):
-
-1. The imaging structure sets are built from the registered files with `benchmarks/screcon/matched_data.py`:
-   - `takei-brain --split labels|kmeans --min-detect 0.2`;
-   - `dipc --rep 1`.
-2. The stages `imaging`, `guo`, `tan`, `seq` and `analyze` run in that order.
-3. The per-cell tables are archived on Oak (`$OAK/uchrom/results/cross_assay/<date>_pilot_<job>/`).
-
-The headline numbers are `results/pilot.json` (with provenance) and `results/pilot.md`.  `results/MANIFEST.md` lists the runs.
+Steps 1-2 read the pilot's imaging structure sets, built on Sherlock from the registered files with
+`lib/matched_data.py` (`takei-brain --split labels|kmeans --min-detect 0.2`; `dipc --rep 1`).  The pilot's own run
+(Step 0) is not part of this repository; `pilot.py` keeps the functions and constants the later steps import.
 
 ## Steps 1-2: `cross_assay.py`
 
@@ -91,23 +85,20 @@ It adds Astro - Oligo per dataset (Takei 2021 put Oligo above Astro, the reverse
 analyze`; the code from a repository copy synced through the DTN, the pilot's sets and tables as inputs), archived
 to `$OAK/uchrom/results/cross_assay/<date>_full_<job>/`; results `results/cross_assay.json` / `.md`.
 
-## Distance space: EMber reconstructions (`recon.py`)
+## Distance space: reconstructions (`recon.py`)
 
-Single-cell Hi-C reconstructed with the frozen EMber (1 Mb, CPU), stored as ChromData and summarised by the same
-`separation_profile` call as the imaging data; then, per cis pair of the Liu 2025 imaging loci, the ExN - Oligo
-difference of the median distance (`uchrom.fea.distance_map`) in imaging and in each reconstruction.
+Single-cell Hi-C reconstructed with the NucDynamics 2017 protocol of the native engine (1 Mb; phased contacts as one
+chain per chromosome copy, contacts with an unphased end as ambiguous restraints; `lib/run_diploid.py`), stored as
+ChromData and summarised by the same `separation_profile` call as the imaging data; then, per cis pair of the Liu
+2025 imaging loci, the ExN - Oligo difference of the median distance (`uchrom.fea.distance_map`) in imaging and in
+each reconstruction.
 
 - Diploid where the contacts are phased (Tan 2021 Dip-C, HiRES), and as a calibration haploid on the same contacts,
   down-sampled to 150k / 45k / 20k cis contacts, and from Tan's 1-Mb maps; haploid from the atlas 1-Mb maps for the
   inbred datasets (GAGE-seq, dscHi-C, Droplet Hi-C, scHiCAR).  The authors' structures (Dip-C, hickit) on the same
   grid as a reference.
-- Results (`results/recon_summary.md`): every reconstruction ranks the classes as imaging does (Droplet swaps ExN
-  and InN); ExN - Oligo +0.19 to +0.30 (imaging +0.27); the locus-level difference maps agree with imaging,
-  Spearman 0.54-0.69 after detrending by separation (0.50-0.63 pair-specific; shuffled labels -0.08), which is
-  0.69-0.87 of the agreement their split-half reliabilities allow (Spearman-Brown).  Haploid reconstructions keep the
-  ranking and most of the locus pattern but their effect size drifts with depth (0.20 -> 0.35 from all contacts to
-  20k): compare directions, rankings and patterns across datasets, not sizes.  Takei 2021 is too noisy at the locus
-  level (split-half 0.04).
+- Results: `results/nucdyn/` (`recon_summary.md` the table; `recon/` per dataset; `transfer.json` single cells),
+  listed in `results/MANIFEST.md`.
 
 ## Datasets
 
