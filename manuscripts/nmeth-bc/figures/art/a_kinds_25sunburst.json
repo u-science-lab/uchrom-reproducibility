@@ -1,0 +1,28 @@
+{
+ "provider": "openrouter",
+ "model": "openai/gpt-image-2.5-sunburst",
+ "prompt": "Three separate small scientific illustrations side by side, evenly spaced on a plain pure white background (#ffffff), for a Nature Methods figure. Flat vector style, clean and minimal, consistent thin dark-grey outlines (#2b2f36), soft muted fills, no shading gradients, no text, no letters, no numbers, no labels, no arrows, no frames.\nLeft: a small loose group of seven dissociated single cell nuclei (round, slightly varied sizes), soft teal fill (#2a9d8f at low saturation) with a subtle speckled chromatin texture inside each nucleus.\nMiddle: a thin coronal tissue section of an adult mouse brain seen from above, stained in soft rose-pink and lilac tones like a light H&E stain, with the layered cerebral cortex, the corpus callosum, the hippocampus and the lateral ventricles faintly visible as tonal regions; anatomically plausible outline.\nRight: a single large cell nucleus seen from above, very light grey interior with a thin nuclear envelope, containing two chromosome territories drawn as winding chains of small round fluorescent beads joined by thin lines, one chain in orange (#e07a3f) and one in light amber, like a chromatin-tracing microscopy image.",
+ "size": "1536x1024",
+ "quality": "high",
+ "n": 1,
+ "background": "opaque",
+ "usage": {
+  "prompt_tokens": 256,
+  "completion_tokens": 1372,
+  "total_tokens": 1628,
+  "cost": 0.04244,
+  "is_byok": false,
+  "prompt_tokens_details": {
+   "cached_tokens": 0
+  },
+  "cost_details": {
+   "upstream_inference_cost": 0.04244,
+   "upstream_inference_prompt_cost": 0.00128,
+   "upstream_inference_completions_cost": 0.04116
+  },
+  "completion_tokens_details": {
+   "reasoning_tokens": 0,
+   "image_tokens": 1372
+  }
+ }
+}

@@ -1,0 +1,478 @@
+{
+ "results": {
+  "agreement": [
+   {
+    "dataset": "tan2021",
+    "label": "Dip-C (diploid)",
+    "loci_liu": {
+     "diff": 0.7311530903869613,
+     "resid": 0.6789091789078745,
+     "chromband": 0.6667475375513134,
+     "pair": 0.6263441406609636
+    },
+    "ceiling_recon": {
+     "diff": 0.733264142573338,
+     "resid": 0.6480520004036081,
+     "chromband": 0.6361145104448537,
+     "pair": 0.5583901171722615
+    },
+    "ceiling_liu": {
+     "diff": 0.7940132741767036,
+     "resid": 0.7396731701761787,
+     "chromband": 0.7124774111920797,
+     "pair": 0.5845668689944997
+    },
+    "disattenuated_resid": 0.8301873512401052,
+    "disattenuated_pair": 0.8613713869772017,
+    "n_by_class": {
+     "Astro": 30,
+     "ExN": 214,
+     "InN": 56,
+     "Micro": 37,
+     "OPC": 24,
+     "Oligo": 74
+    },
+    "contacts": {
+     "loci_liu": {
+      "diff": 0.44292404714682143,
+      "resid": 0.3785580577066408,
+      "chromband": 0.3750413299306495,
+      "pair": 0.33886464694686635
+     },
+     "n_pairs": 99074,
+     "split_half": {
+      "diff": 0.3163490822648564,
+      "resid": 0.28260684125781693,
+      "chromband": 0.2756272752872073,
+      "pair": 0.2209160377774306
+     },
+     "same_pairs": {
+      "n_pairs": 99074,
+      "contacts": 0.3785580577066408,
+      "recon": 0.6788363266487081
+     }
+    }
+   },
+   {
+    "dataset": "hires_brain",
+    "label": "HiRES (diploid)",
+    "loci_liu": {
+     "diff": 0.6362331954935064,
+     "resid": 0.568749883074948,
+     "chromband": 0.5625581009600148,
+     "pair": 0.52772763849176
+    },
+    "ceiling_recon": {
+     "diff": 0.5232371513987977,
+     "resid": 0.4667319090224591,
+     "chromband": 0.4583429997035451,
+     "pair": 0.37096179048435085
+    },
+    "ceiling_liu": {
+     "diff": 0.7940132741767036,
+     "resid": 0.7396731701761787,
+     "chromband": 0.7124774111920797,
+     "pair": 0.5845668689944997
+    },
+    "disattenuated_resid": 0.7731198927664347,
+    "disattenuated_pair": 0.835153137496215,
+    "n_by_class": {
+     "Astro": 20,
+     "ExN": 260,
+     "InN": 99,
+     "Oligo": 20
+    },
+    "contacts": {
+     "loci_liu": {
+      "diff": 0.3914784489704477,
+      "resid": 0.34553605910463503,
+      "chromband": 0.3406638978569219,
+      "pair": 0.29684139243790525
+     },
+     "n_pairs": 94895,
+     "split_half": {
+      "diff": 0.2231759836706679,
+      "resid": 0.20498765969944469,
+      "chromband": 0.1969309083587979,
+      "pair": 0.1570289705197001
+     },
+     "same_pairs": {
+      "n_pairs": 94895,
+      "contacts": 0.34553605910463503,
+      "recon": 0.5651674242445979
+     }
+    }
+   },
+   {
+    "dataset": "gageseq_mouse_cortex",
+    "label": "GAGE-seq (haploid)",
+    "loci_liu": {
+     "diff": 0.5958708773911674,
+     "resid": 0.5991865452087136,
+     "chromband": 0.5901990285646332,
+     "pair": 0.5761939234437101
+    },
+    "ceiling_recon": {
+     "diff": 0.7511218696152017,
+     "resid": 0.6710598774050243,
+     "chromband": 0.650642847412248,
+     "pair": 0.5591202249612764
+    },
+    "ceiling_liu": {
+     "diff": 0.7940132741767036,
+     "resid": 0.7396731701761787,
+     "chromband": 0.7124774111920797,
+     "pair": 0.5845668689944997
+    },
+    "disattenuated_resid": 0.7250389301654641,
+    "disattenuated_pair": 0.7920709156726938,
+    "n_by_class": {
+     "Astro": 252,
+     "ExN": 300,
+     "InN": 300,
+     "Micro": 85,
+     "OPC": 119,
+     "Oligo": 179
+    },
+    "contacts": {
+     "loci_liu": {
+      "diff": 0.49670518364382976,
+      "resid": 0.43896856914820814,
+      "chromband": 0.432193368395709,
+      "pair": 0.3950818155004616
+     },
+     "n_pairs": 100743,
+     "split_half": {
+      "diff": 0.41108850195537583,
+      "resid": 0.3735897144658504,
+      "chromband": 0.3614780516609754,
+      "pair": 0.29180498804821353
+     },
+     "same_pairs": {
+      "n_pairs": 100743,
+      "contacts": 0.43896856914820814,
+      "recon": 0.5989643823958261
+     }
+    }
+   },
+   {
+    "dataset": "dschic_aging_cortex",
+    "label": "dscHi-C (haploid)",
+    "loci_liu": {
+     "diff": 0.6604370908777938,
+     "resid": 0.5506466036462255,
+     "chromband": 0.5487154580326393,
+     "pair": 0.5196353433537849
+    },
+    "ceiling_recon": {
+     "diff": 0.7394812685171739,
+     "resid": 0.6586039931276753,
+     "chromband": 0.606798528173142,
+     "pair": 0.4971994255927863
+    },
+    "ceiling_liu": {
+     "diff": 0.7940132741767036,
+     "resid": 0.7396731701761787,
+     "chromband": 0.7124774111920797,
+     "pair": 0.5845668689944997
+    },
+    "disattenuated_resid": 0.670063625108954,
+    "disattenuated_pair": 0.7423032981637631,
+    "n_by_class": {
+     "Astro": 300,
+     "ExN": 300,
+     "InN": 300,
+     "Micro": 300,
+     "OPC": 300,
+     "Oligo": 300
+    },
+    "contacts": {
+     "loci_liu": {
+      "diff": 0.38227710722480185,
+      "resid": 0.3099857517410033,
+      "chromband": 0.29546300063667397,
+      "pair": 0.26771166201733965
+     },
+     "n_pairs": 100816,
+     "split_half": {
+      "diff": 0.232527499386058,
+      "resid": 0.18918484710572955,
+      "chromband": 0.18051474048860705,
+      "pair": 0.1324650684837359
+     },
+     "same_pairs": {
+      "n_pairs": 100816,
+      "contacts": 0.3099857517410033,
+      "recon": 0.5507196526899117
+     }
+    }
+   },
+   {
+    "dataset": "droplet_hic_mouse_cortex",
+    "label": "Droplet Hi-C (haploid)",
+    "loci_liu": {
+     "diff": 0.6139558725669524,
+     "resid": 0.5362778032220012,
+     "chromband": 0.5238944442369486,
+     "pair": 0.50364132210016
+    },
+    "ceiling_recon": {
+     "diff": 0.6050797670942605,
+     "resid": 0.5324555632529485,
+     "chromband": 0.5513210588516613,
+     "pair": 0.47360416633900887
+    },
+    "ceiling_liu": {
+     "diff": 0.7940132741767036,
+     "resid": 0.7396731701761787,
+     "chromband": 0.7124774111920797,
+     "pair": 0.5845668689944997
+    },
+    "disattenuated_resid": 0.6976313464676519,
+    "disattenuated_pair": 0.7313280140631214,
+    "n_by_class": {
+     "Astro": 113,
+     "ExN": 300,
+     "InN": 300,
+     "Micro": 216,
+     "OPC": 300,
+     "Oligo": 241
+    },
+    "contacts": {
+     "loci_liu": {
+      "diff": 0.29408055272957573,
+      "resid": 0.2640341933720807,
+      "chromband": 0.2476782265787927,
+      "pair": 0.23692303615443291
+     },
+     "n_pairs": 97143,
+     "split_half": {
+      "diff": 0.17388093597013723,
+      "resid": 0.15845968109325256,
+      "chromband": 0.15102081299265946,
+      "pair": 0.10629286986575036
+     },
+     "same_pairs": {
+      "n_pairs": 97143,
+      "contacts": 0.2640341933720807,
+      "recon": 0.5386276737993928
+     }
+    }
+   },
+   {
+    "dataset": "schicar_mouse_cortex",
+    "label": "scHiCAR (haploid)",
+    "loci_liu": {
+     "diff": 0.6328600381164955,
+     "resid": 0.5775662191037868,
+     "chromband": 0.5735518512499792,
+     "pair": 0.5172778115094016
+    },
+    "ceiling_recon": {
+     "diff": 0.5346232238053051,
+     "resid": 0.47285903645026045,
+     "chromband": 0.45642983835543355,
+     "pair": 0.39071651757780085
+    },
+    "ceiling_liu": {
+     "diff": 0.7940132741767036,
+     "resid": 0.7396731701761787,
+     "chromband": 0.7124774111920797,
+     "pair": 0.5845668689944997
+    },
+    "disattenuated_resid": 0.7816285850601109,
+    "disattenuated_pair": 0.8033789749105018,
+    "n_by_class": {
+     "Astro": 125,
+     "ExN": 300,
+     "InN": 291,
+     "Micro": 55,
+     "OPC": 51,
+     "Oligo": 94
+    },
+    "contacts": {
+     "loci_liu": {
+      "diff": 0.26451732431469105,
+      "resid": 0.2548762801926596,
+      "chromband": 0.24905442265043934,
+      "pair": 0.21588928058503545
+     },
+     "n_pairs": 80412,
+     "split_half": {
+      "diff": 0.16091924204084823,
+      "resid": 0.12083876900469646,
+      "chromband": 0.11650071684107881,
+      "pair": 0.0952863488534745
+     },
+     "same_pairs": {
+      "n_pairs": 80412,
+      "contacts": 0.2548762801926596,
+      "recon": 0.5816391530507552
+     }
+    }
+   }
+  ],
+  "shuffled_labels_tan_dip": {
+   "diff": -0.08515351412519485,
+   "resid": -0.0827139199175482,
+   "chromband": -0.08845889127053252,
+   "pair": -0.0411590536193175
+  },
+  "class_pairs": {
+   "Dip-C (diploid)": {
+    "InN-ExN": 0.29470239811763976,
+    "ExN-OPC": 0.2610764383578807,
+    "ExN-Astro": 0.47171063784625344,
+    "ExN-Oligo": 0.6789091789078745,
+    "ExN-Micro": 0.5427856910458781,
+    "InN-OPC": 0.2669064190895829,
+    "InN-Astro": 0.4435044432172667,
+    "InN-Oligo": 0.6126112001341911,
+    "InN-Micro": 0.5368647850101579,
+    "OPC-Astro": 0.1797225499086062,
+    "OPC-Oligo": 0.3476506073245736,
+    "OPC-Micro": 0.41797189835112164,
+    "Astro-Oligo": 0.4223634930833836,
+    "Astro-Micro": 0.4415526179392145,
+    "Oligo-Micro": 0.44435929147231035
+   },
+   "imaging split-half": {
+    "InN-ExN": 0.23040333085242773,
+    "ExN-OPC": 0.16868893723568668,
+    "ExN-Astro": 0.4268115694034808,
+    "ExN-Oligo": 0.7397097228804391,
+    "ExN-Micro": 0.4763210607914094,
+    "InN-OPC": 0.16436025417549793,
+    "InN-Astro": 0.36555984879350045,
+    "InN-Oligo": 0.523006717509116,
+    "InN-Micro": 0.4156214344568106,
+    "OPC-Astro": 0.09922410474025452,
+    "OPC-Oligo": 0.20086808340850498,
+    "OPC-Micro": 0.24658728788451154,
+    "Astro-Oligo": 0.40068985223644193,
+    "Astro-Micro": 0.342102354275074,
+    "Oligo-Micro": 0.3192357207417307
+   },
+   "HiRES (diploid)": {
+    "InN-ExN": 0.2245362545112817,
+    "ExN-Astro": 0.4690470714335313,
+    "ExN-Oligo": 0.568749883074948,
+    "InN-Astro": 0.4305955289032645,
+    "InN-Oligo": 0.5206724599092093,
+    "Astro-Oligo": 0.34908838385334123
+   },
+   "GAGE-seq (haploid)": {
+    "InN-ExN": 0.2155524741065816,
+    "ExN-OPC": 0.2862489319311952,
+    "ExN-Astro": 0.5120301232541262,
+    "ExN-Oligo": 0.5991865452087136,
+    "ExN-Micro": 0.512051239820216,
+    "InN-OPC": 0.32857205650275995,
+    "InN-Astro": 0.47858882598179464,
+    "InN-Oligo": 0.5653601249030364,
+    "InN-Micro": 0.5259092342586837,
+    "OPC-Astro": 0.2157245324596882,
+    "OPC-Oligo": 0.3613013341629072,
+    "OPC-Micro": 0.42554506917099905,
+    "Astro-Oligo": 0.47641897977723774,
+    "Astro-Micro": 0.4687792974390427,
+    "Oligo-Micro": 0.48545995029305533
+   },
+   "dscHi-C (haploid)": {
+    "InN-ExN": 0.25133736340354634,
+    "ExN-OPC": 0.2165029050041351,
+    "ExN-Astro": 0.3800082442000137,
+    "ExN-Oligo": 0.5506466036462255,
+    "ExN-Micro": 0.5336309843741063,
+    "InN-OPC": 0.24305664225174062,
+    "InN-Astro": 0.40156201933700997,
+    "InN-Oligo": 0.45895362577583565,
+    "InN-Micro": 0.47570828296692186,
+    "OPC-Astro": 0.16444022373433828,
+    "OPC-Oligo": 0.2788149832375128,
+    "OPC-Micro": 0.38841669150835,
+    "Astro-Oligo": 0.3704586576911424,
+    "Astro-Micro": 0.45208302170614256,
+    "Oligo-Micro": 0.427842861385496
+   },
+   "Droplet Hi-C (haploid)": {
+    "InN-ExN": 0.20921670196461695,
+    "ExN-OPC": 0.28116401516041845,
+    "ExN-Astro": 0.3842933509100314,
+    "ExN-Oligo": 0.5362778032220012,
+    "ExN-Micro": 0.5133407711191302,
+    "InN-OPC": 0.34530002016788747,
+    "InN-Astro": 0.3865347314519218,
+    "InN-Oligo": 0.5356454542156142,
+    "InN-Micro": 0.5057792653996063,
+    "OPC-Astro": 0.13636502796959699,
+    "OPC-Oligo": 0.2656066173749787,
+    "OPC-Micro": 0.40928522549171875,
+    "Astro-Oligo": 0.24764048574057546,
+    "Astro-Micro": 0.40524895463292476,
+    "Oligo-Micro": 0.3529104088539141
+   },
+   "scHiCAR (haploid)": {
+    "InN-ExN": 0.2596843004636751,
+    "ExN-OPC": 0.2295459217930133,
+    "ExN-Astro": 0.4595971023074338,
+    "ExN-Oligo": 0.5775662191037868,
+    "ExN-Micro": 0.5130977344364772,
+    "InN-OPC": 0.2694890306179894,
+    "InN-Astro": 0.48503207279989746,
+    "InN-Oligo": 0.5545495797998985,
+    "InN-Micro": 0.49722145956542346,
+    "OPC-Astro": 0.1630758514617035,
+    "OPC-Oligo": 0.28459595276462646,
+    "OPC-Micro": 0.35610730316059414,
+    "Astro-Oligo": 0.4083533685355418,
+    "Astro-Micro": 0.42146662679885183,
+    "Oligo-Micro": 0.36234235414044313
+   }
+  },
+  "locus_effect_vs_imaging": {
+   "Dip-C (Tan), diploid": 0.6904419117467339,
+   "HiRES, diploid": 0.5811784459647904,
+   "GAGE-seq, haploid": 0.5849605148042718,
+   "dscHi-C, haploid": 0.5733442863193696,
+   "Droplet Hi-C, haploid": 0.5407001740795099,
+   "scHiCAR, haploid": 0.6378983911675356,
+   "consensus of reconstructions": 0.7779674707737685
+  },
+  "liu_split_half": {
+   "diff": 0.7940132741767036,
+   "resid": 0.7396731701761787,
+   "chromband": 0.7124774111920797,
+   "pair": 0.5845668689944997
+  }
+ },
+ "provenance": {
+  "revision": "ember-deep-frozen-207-g78e7994875df+dirty",
+  "date": "2026-10-13T10:24:29+00:00",
+  "host": "Weizes-MacBook-Pro.local",
+  "cpu": "Apple M5 Pro",
+  "cpus": 18,
+  "slurm_job": null,
+  "load_avg_1min": 1.88720703125,
+  "versions": {
+   "python": "3.12.13",
+   "numpy": "2.5.3",
+   "scipy": "1.18.1",
+   "pandas": "3.0.6",
+   "cooler": "0.10.4",
+   "zarr": "3.4.0",
+   "torch": "2.14.0",
+   "uchrom": "0.3.0.dev0",
+   "chromdata": "0.1.0",
+   "uchrom_maps": "0.1.0",
+   "uchrom_recon": "0.1.0"
+  },
+  "script": "benchmarks/cross_assay/figdata.py",
+  "datasets": [
+   "see benchmarks/cross_assay/results/MANIFEST.md"
+  ],
+  "params": {
+   "method": "nucdyn"
+  }
+ }
+}

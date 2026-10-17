@@ -1,0 +1,303 @@
+{
+ "panel": "e",
+ "machine": {
+  "os": "macOS 26.4.1 (25.4.0)",
+  "platform": "macOS-26.4.1-arm64-arm-64bit",
+  "python": "3.12.13",
+  "machine": "arm64",
+  "cpu": "Apple M5 Pro",
+  "n_cpu": 18,
+  "ram_gb": 64.0,
+  "disk": "File System Personality=APFS; Protocol=Apple Fabric; Solid State=Yes",
+  "work_dir_free_gb": 648.7,
+  "versions": {
+   "numpy": "2.5.3",
+   "pandas": "3.0.6",
+   "h5py": "3.16.0",
+   "pyarrow": "25.0.1",
+   "zarr": "3.4.0",
+   "anndata": "0.13.4",
+   "cooler": "0.10.4",
+   "psutil": "7.2.2",
+   "scipy": "1.18.1",
+   "spatialdata": null,
+   "xarray": null,
+   "dask": null,
+   "uchrom_h5cd_format": "2.0",
+   "uchrom_zarr_format": "2.3",
+   "uchrom_git": "6840b86"
+  }
+ },
+ "dataset": {
+  "name": "scHiCAR mouse brain (GSE305439), per-cell 1 Mb .scool",
+  "h5cd": "schicar_mop/schicar_mop.chromdata.zarr written as .h5cd (legacy writer, uncompressed)",
+  "scool": "schicar_mop/contacts_cells_1Mb.scool"
+ },
+ "size": {
+  "h5cd_linked_bytes": 46724195,
+  "scool_bytes": 265116459,
+  "scool_key": "per_cell",
+  "scool_path": "/Users/weizexu/orca/workspaces/U-Chrom/fig6/example-data/schicar_mop/contacts_cells_1Mb.scool",
+  "h5cd_without_link_records_bytes": 46693339,
+  "materialise_s": 2.860346832952928,
+  "n_cells": 5313,
+  "n_pixels": 50790690,
+  "n_contacts": 120280303,
+  "pixel_bytes_in_memory": 1015813800,
+  "copied_h5cd_1x_settings_bytes": 1062684333,
+  "copied_h5cd_1x_settings_write_s": 0.19260133302304894,
+  "copied_cooler_settings_gzip6_shuffle_bytes": 154639209,
+  "copied_cooler_settings_gzip6_shuffle_write_s": 8.840750582981855
+ },
+ "size_method": "copied = h5cd + all per-cell pixels materialised in one contacts/ group (concatenated bin1_id/bin2_id int64, count int32, cell_offset CSR index); written uncompressed (as h5cd 1.x's cd.write did) and with gzip-6+shuffle (cooler's defaults)",
+ "aggregation": {
+  "implementation": "uchrom_browser.data.Dataset._pseudobulk (via Dataset.contacts, group=)",
+  "store": "schicar_mop.chromdata.zarr, maps linked only (no embedded copies), opened backed as the web browser opens it",
+  "region": "chr1 (whole chromosome)",
+  "repeats": 3,
+  "cold": "first query in a fresh process (map listing done beforehand, reported as setup_s); OS page cache warm",
+  "cached": "same query again (Dataset LRU cache)",
+  "points": [
+   {
+    "n_cells": 50,
+    "cold_s": {
+     "median": 0.014033791958354414,
+     "min": 0.013804458023514599,
+     "max": 0.016355833038687706,
+     "n": 3
+    },
+    "cached_s": {
+     "median": 3.412499791011214e-05,
+     "min": 2.7957954443991184e-05,
+     "max": 4.087499110028148e-05,
+     "n": 3
+    },
+    "setup_s": {
+     "median": 0.3484257090021856,
+     "min": 0.3473140000132844,
+     "max": 0.41065787500701845,
+     "n": 3
+    },
+    "n_contacts": 68375.0,
+    "trials": [
+     {
+      "n_cells": 50,
+      "setup_s": 0.41065787500701845,
+      "cold_s": 0.016355833038687706,
+      "cached_s": 4.087499110028148e-05,
+      "n_contacts": 68375.0,
+      "peak_rss_mb": 300.65625
+     },
+     {
+      "n_cells": 50,
+      "setup_s": 0.3473140000132844,
+      "cold_s": 0.014033791958354414,
+      "cached_s": 3.412499791011214e-05,
+      "n_contacts": 68375.0,
+      "peak_rss_mb": 300.9375
+     },
+     {
+      "n_cells": 50,
+      "setup_s": 0.3484257090021856,
+      "cold_s": 0.013804458023514599,
+      "cached_s": 2.7957954443991184e-05,
+      "n_contacts": 68375.0,
+      "peak_rss_mb": 300.28125
+     }
+    ]
+   },
+   {
+    "n_cells": 100,
+    "cold_s": {
+     "median": 0.025789624953176826,
+     "min": 0.025534333020914346,
+     "max": 0.026442250004038215,
+     "n": 3
+    },
+    "cached_s": {
+     "median": 3.7416000850498676e-05,
+     "min": 3.3374992199242115e-05,
+     "max": 3.770797047764063e-05,
+     "n": 3
+    },
+    "setup_s": {
+     "median": 0.35131154098780826,
+     "min": 0.3505306250299327,
+     "max": 0.352056082978379,
+     "n": 3
+    },
+    "n_contacts": 129941.0,
+    "trials": [
+     {
+      "n_cells": 100,
+      "setup_s": 0.352056082978379,
+      "cold_s": 0.025789624953176826,
+      "cached_s": 3.7416000850498676e-05,
+      "n_contacts": 129941.0,
+      "peak_rss_mb": 307.890625
+     },
+     {
+      "n_cells": 100,
+      "setup_s": 0.3505306250299327,
+      "cold_s": 0.025534333020914346,
+      "cached_s": 3.3374992199242115e-05,
+      "n_contacts": 129941.0,
+      "peak_rss_mb": 307.59375
+     },
+     {
+      "n_cells": 100,
+      "setup_s": 0.35131154098780826,
+      "cold_s": 0.026442250004038215,
+      "cached_s": 3.770797047764063e-05,
+      "n_contacts": 129941.0,
+      "peak_rss_mb": 307.875
+     }
+    ]
+   },
+   {
+    "n_cells": 500,
+    "cold_s": {
+     "median": 0.1152765000006184,
+     "min": 0.11408379202475771,
+     "max": 0.1198910410166718,
+     "n": 3
+    },
+    "cached_s": {
+     "median": 4.125002305954695e-05,
+     "min": 4.0207989513874054e-05,
+     "max": 4.150002496317029e-05,
+     "n": 3
+    },
+    "setup_s": {
+     "median": 0.3713749580201693,
+     "min": 0.35128562501631677,
+     "max": 0.3804883749689907,
+     "n": 3
+    },
+    "n_contacts": 661153.0,
+    "trials": [
+     {
+      "n_cells": 500,
+      "setup_s": 0.3804883749689907,
+      "cold_s": 0.1198910410166718,
+      "cached_s": 4.150002496317029e-05,
+      "n_contacts": 661153.0,
+      "peak_rss_mb": 313.734375
+     },
+     {
+      "n_cells": 500,
+      "setup_s": 0.35128562501631677,
+      "cold_s": 0.11408379202475771,
+      "cached_s": 4.0207989513874054e-05,
+      "n_contacts": 661153.0,
+      "peak_rss_mb": 313.109375
+     },
+     {
+      "n_cells": 500,
+      "setup_s": 0.3713749580201693,
+      "cold_s": 0.1152765000006184,
+      "cached_s": 4.125002305954695e-05,
+      "n_contacts": 661153.0,
+      "peak_rss_mb": 313.4375
+     }
+    ]
+   },
+   {
+    "n_cells": 1000,
+    "cold_s": {
+     "median": 0.2326798330177553,
+     "min": 0.22993554105050862,
+     "max": 0.2367692919797264,
+     "n": 3
+    },
+    "cached_s": {
+     "median": 4.070799332112074e-05,
+     "min": 3.941694740206003e-05,
+     "max": 4.958297358825803e-05,
+     "n": 3
+    },
+    "setup_s": {
+     "median": 0.36125466699013487,
+     "min": 0.34998420800548047,
+     "max": 0.36194679100299254,
+     "n": 3
+    },
+    "n_contacts": 1331759.0,
+    "trials": [
+     {
+      "n_cells": 1000,
+      "setup_s": 0.34998420800548047,
+      "cold_s": 0.22993554105050862,
+      "cached_s": 3.941694740206003e-05,
+      "n_contacts": 1331759.0,
+      "peak_rss_mb": 335.015625
+     },
+     {
+      "n_cells": 1000,
+      "setup_s": 0.36194679100299254,
+      "cold_s": 0.2326798330177553,
+      "cached_s": 4.070799332112074e-05,
+      "n_contacts": 1331759.0,
+      "peak_rss_mb": 335.609375
+     },
+     {
+      "n_cells": 1000,
+      "setup_s": 0.36125466699013487,
+      "cold_s": 0.2367692919797264,
+      "cached_s": 4.958297358825803e-05,
+      "n_contacts": 1331759.0,
+      "peak_rss_mb": 337.421875
+     }
+    ]
+   },
+   {
+    "n_cells": 5313,
+    "cold_s": {
+     "median": 1.2615219589788467,
+     "min": 1.2605269170016982,
+     "max": 1.2640659169992432,
+     "n": 3
+    },
+    "cached_s": {
+     "median": 5.441595567390323e-05,
+     "min": 4.4249987695366144e-05,
+     "max": 6.570800906047225e-05,
+     "n": 3
+    },
+    "setup_s": {
+     "median": 0.3390324999927543,
+     "min": 0.3381782919750549,
+     "max": 0.34804479096783325,
+     "n": 3
+    },
+    "n_contacts": 7148741.0,
+    "trials": [
+     {
+      "n_cells": 5313,
+      "setup_s": 0.3390324999927543,
+      "cold_s": 1.2640659169992432,
+      "cached_s": 5.441595567390323e-05,
+      "n_contacts": 7148741.0,
+      "peak_rss_mb": 644.234375
+     },
+     {
+      "n_cells": 5313,
+      "setup_s": 0.34804479096783325,
+      "cold_s": 1.2615219589788467,
+      "cached_s": 6.570800906047225e-05,
+      "n_contacts": 7148741.0,
+      "peak_rss_mb": 644.1875
+     },
+     {
+      "n_cells": 5313,
+      "setup_s": 0.3381782919750549,
+      "cold_s": 1.2605269170016982,
+      "cached_s": 4.4249987695366144e-05,
+      "n_contacts": 7148741.0,
+      "peak_rss_mb": 644.03125
+     }
+    ]
+   }
+  ]
+ }
+}

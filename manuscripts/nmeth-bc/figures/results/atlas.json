@@ -1,0 +1,1085 @@
+{
+ "generated": "2026-10-05 22:46",
+ "uchrom_git": "aafe5e6",
+ "script": "benchmarks/atlas/validate.py",
+ "datasets": [
+  {
+   "id": "hicrna_mouse_brain",
+   "study": "guo2026",
+   "name": "Mouse brain",
+   "organism": "Mus musculus",
+   "assembly": "mm10",
+   "category": "Spatial",
+   "modalities": [
+    "Hi-C per spot",
+    "Hi-C bulk",
+    "RNA",
+    "A/B per spot",
+    "images",
+    "embeddings"
+   ],
+   "n_cells": 12474,
+   "n_spots": 0,
+   "size_mb": 2254.0,
+   "contact_maps": 4,
+   "unit": "spot",
+   "contacts_per_unit": {
+    "median": 462696.5,
+    "q25": 264490.25,
+    "q75": 726658.75,
+    "n": 12474,
+    "source": "linked per-cell .scool, cooler sum"
+   },
+   "embedding_agreement": {
+    "label": "cell_type",
+    "k": 15,
+    "n": 6275,
+    "n_labels": 23,
+    "chance": 0.1081,
+    "agreement": {
+     "rna_pca": 0.2634,
+     "rna_umap": 0.2375,
+     "published_scvi_umap": 0.35,
+     "published_xfh_umap": 0.1829,
+     "published_xconcat_umap": 0.3487
+    }
+   }
+  },
+  {
+   "id": "hicrna_mouse_embryo",
+   "study": "guo2026",
+   "name": "Mouse embryo, E11.5 and E13.5",
+   "organism": "Mus musculus",
+   "assembly": "mm10",
+   "category": "Spatial",
+   "modalities": [
+    "Hi-C per spot",
+    "Hi-C bulk",
+    "RNA",
+    "images",
+    "embeddings"
+   ],
+   "n_cells": 64861,
+   "n_spots": 0,
+   "size_mb": 4577.6,
+   "contact_maps": 6,
+   "unit": "spot",
+   "contacts_per_unit": {
+    "median": 109105.0,
+    "q25": 25519.0,
+    "q75": 164122.0,
+    "n": 64861,
+    "source": "linked per-cell .scool, cooler sum"
+   }
+  },
+  {
+   "id": "hicrna_human_melanoma",
+   "study": "guo2026",
+   "name": "Human melanoma",
+   "organism": "Homo sapiens",
+   "assembly": "hg38",
+   "category": "Spatial",
+   "modalities": [
+    "Hi-C per spot",
+    "Hi-C bulk",
+    "RNA",
+    "images",
+    "embeddings"
+   ],
+   "n_cells": 12649,
+   "n_spots": 0,
+   "size_mb": 2727.7,
+   "contact_maps": 4,
+   "unit": "spot",
+   "contacts_per_unit": {
+    "median": 540046.0,
+    "q25": 371560.0,
+    "q75": 725314.0,
+    "n": 12649,
+    "source": "linked per-cell .scool, cooler sum"
+   },
+   "embedding_agreement": {
+    "label": "cell_type",
+    "k": 15,
+    "n": 6268,
+    "n_labels": 28,
+    "chance": 0.049,
+    "agreement": {
+     "rna_pca": 0.078,
+     "rna_umap": 0.0759,
+     "published_scvi_umap": 0.083,
+     "published_xfh_umap": 0.0658,
+     "published_xconcat_umap": 0.0807
+    }
+   }
+  },
+  {
+   "id": "chen2026_e13_embryo_50um",
+   "study": "chen2026",
+   "name": "Mouse embryo, E13 \u00b7 50 \u00b5m",
+   "organism": "Mus musculus",
+   "assembly": "mm10",
+   "category": "Spatial",
+   "modalities": [
+    "Hi-C per spot",
+    "Hi-C bulk",
+    "RNA",
+    "A/B per spot",
+    "images",
+    "embeddings"
+   ],
+   "n_cells": 10112,
+   "n_spots": 0,
+   "size_mb": 711.4,
+   "contact_maps": 6,
+   "unit": "spot",
+   "contacts_per_unit": {
+    "median": 39458.0,
+    "q25": 32294.0,
+    "q75": 47093.0,
+    "n": 6009,
+    "source": "linked per-cell .scool, cooler sum"
+   }
+  },
+  {
+   "id": "chen2026_brain_embryo_10um",
+   "study": "chen2026",
+   "name": "Embryonic brain, E14.5\u2013E18.5 \u00b7 10 \u00b5m",
+   "organism": "Mus musculus",
+   "assembly": "mm10",
+   "category": "Spatial",
+   "modalities": [
+    "Hi-C per spot",
+    "Hi-C bulk",
+    "RNA",
+    "A/B per spot",
+    "images",
+    "embeddings"
+   ],
+   "n_cells": 40468,
+   "n_spots": 0,
+   "size_mb": 1887.2,
+   "contact_maps": 6,
+   "unit": "spot",
+   "contacts_per_unit": {
+    "median": 16447.5,
+    "q25": 12213.75,
+    "q75": 21523.0,
+    "n": 17204,
+    "source": "linked per-cell .scool, cooler sum"
+   }
+  },
+  {
+   "id": "chen2026_brain_embryo_20um",
+   "study": "chen2026",
+   "name": "Embryonic brain, E14.5\u2013E18.5 \u00b7 20 \u00b5m",
+   "organism": "Mus musculus",
+   "assembly": "mm10",
+   "category": "Spatial",
+   "modalities": [
+    "Hi-C per spot",
+    "Hi-C bulk",
+    "RNA",
+    "A/B per spot",
+    "images",
+    "embeddings"
+   ],
+   "n_cells": 28769,
+   "n_spots": 0,
+   "size_mb": 1446.1,
+   "contact_maps": 6,
+   "unit": "spot",
+   "contacts_per_unit": {
+    "median": 36514.0,
+    "q25": 28155.0,
+    "q75": 47531.0,
+    "n": 13689,
+    "source": "linked per-cell .scool, cooler sum"
+   }
+  },
+  {
+   "id": "chen2026_cortex_adult_10um",
+   "study": "chen2026",
+   "name": "Adult cortex \u00b7 10 \u00b5m",
+   "organism": "Mus musculus",
+   "assembly": "mm10",
+   "category": "Spatial",
+   "modalities": [
+    "Hi-C per spot",
+    "Hi-C bulk",
+    "RNA",
+    "A/B per spot",
+    "images",
+    "embeddings"
+   ],
+   "n_cells": 16986,
+   "n_spots": 0,
+   "size_mb": 664.1,
+   "contact_maps": 2,
+   "unit": "spot",
+   "contacts_per_unit": {
+    "median": 8364.0,
+    "q25": 4532.0,
+    "q75": 15594.5,
+    "n": 7795,
+    "source": "linked per-cell .scool, cooler sum"
+   }
+  },
+  {
+   "id": "chen2026_hippocampus_adult_10um",
+   "study": "chen2026",
+   "name": "Adult hippocampus \u00b7 10 \u00b5m",
+   "organism": "Mus musculus",
+   "assembly": "mm10",
+   "category": "Spatial",
+   "modalities": [
+    "Hi-C per spot",
+    "Hi-C bulk",
+    "RNA",
+    "A/B per spot",
+    "images",
+    "embeddings"
+   ],
+   "n_cells": 17817,
+   "n_spots": 0,
+   "size_mb": 305.9,
+   "contact_maps": 2,
+   "unit": "spot",
+   "contacts_per_unit": {
+    "median": 1710.0,
+    "q25": 630.0,
+    "q75": 5661.0,
+    "n": 8185,
+    "source": "linked per-cell .scool, cooler sum"
+   }
+  },
+  {
+   "id": "chen2026_cerebellum_adult_20um",
+   "study": "chen2026",
+   "name": "Adult cerebellum \u00b7 20 \u00b5m",
+   "organism": "Mus musculus",
+   "assembly": "mm10",
+   "category": "Spatial",
+   "modalities": [
+    "RNA",
+    "A/B per spot",
+    "images",
+    "embeddings"
+   ],
+   "n_cells": 24022,
+   "n_spots": 0,
+   "size_mb": 164.8,
+   "contact_maps": 0,
+   "unit": "spot"
+  },
+  {
+   "id": "atac_hic_mouse_brain",
+   "study": "wang2026",
+   "name": "Mouse brain",
+   "organism": "Mus musculus",
+   "assembly": "mm10",
+   "category": "Spatial",
+   "modalities": [
+    "Hi-C per spot",
+    "Hi-C bulk",
+    "ATAC per spot",
+    "images",
+    "embeddings"
+   ],
+   "n_cells": 4290,
+   "n_spots": 0,
+   "size_mb": 389.7,
+   "contact_maps": 4,
+   "unit": "spot",
+   "contacts_per_unit": {
+    "median": 22309.0,
+    "q25": 11973.0,
+    "q75": 38936.5,
+    "n": 4259,
+    "source": "linked per-cell .scool, cooler sum"
+   }
+  },
+  {
+   "id": "stevens2017_mesc",
+   "study": "stevens2017",
+   "name": "Haploid mouse ES cells",
+   "organism": "Mus musculus",
+   "assembly": "mm10",
+   "category": "Single-cell",
+   "modalities": [
+    "Hi-C per cell",
+    "Hi-C bulk",
+    "3-D coordinates"
+   ],
+   "n_cells": 8,
+   "n_spots": 205706,
+   "size_mb": 25.8,
+   "contact_maps": 2,
+   "unit": "cell",
+   "contacts_per_unit": {
+    "median": 70798.0,
+    "q25": 49893.5,
+    "q75": 81893.25,
+    "source": "cells.n_contacts"
+   },
+   "loci_per_cell": {
+    "median": 25716.5,
+    "mean": 25713.25,
+    "source": "spots per cell"
+   }
+  },
+  {
+   "id": "hires_brain",
+   "study": "liu2023",
+   "name": "Adult mouse brain",
+   "organism": "Mus musculus",
+   "assembly": "mm10",
+   "category": "Single-cell",
+   "modalities": [
+    "Hi-C per cell",
+    "Hi-C bulk",
+    "RNA",
+    "3-D coordinates",
+    "embeddings"
+   ],
+   "n_cells": 399,
+   "n_spots": 9868092,
+   "size_mb": 260.9,
+   "contact_maps": 2,
+   "unit": "cell",
+   "contacts_per_unit": {
+    "median": 304124.0,
+    "q25": 258213.5,
+    "q75": 380682.0,
+    "source": "cells.n_contacts"
+   },
+   "loci_per_cell": {
+    "median": 24899.0,
+    "mean": 24732.06015037594,
+    "source": "spots per cell"
+   },
+   "published_counts": {
+    "n": 399,
+    "exact": 1.0,
+    "within_0.1pct": 1.0,
+    "median_ratio": 1.0,
+    "max_abs_rel": 0.0,
+    "reprocessed": "n_contacts",
+    "published": "n_contacts_published"
+   },
+   "embedding_agreement": {
+    "label": "cell_type",
+    "k": 15,
+    "n": 399,
+    "n_labels": 7,
+    "chance": 0.31,
+    "agreement": {
+     "rna_pca": 0.8997,
+     "rna_umap": 0.9577,
+     "hic_pca": 0.5208,
+     "hic_umap": 0.4909
+    }
+   }
+  },
+  {
+   "id": "hires_embryo",
+   "study": "liu2023",
+   "name": "Mouse embryo, E7.0-E9.5",
+   "organism": "Mus musculus",
+   "assembly": "mm10",
+   "category": "Single-cell",
+   "modalities": [
+    "Hi-C per cell",
+    "Hi-C bulk",
+    "RNA",
+    "3-D coordinates",
+    "embeddings"
+   ],
+   "n_cells": 7469,
+   "n_spots": 182344800,
+   "size_mb": 3174.2,
+   "contact_maps": 2,
+   "unit": "cell",
+   "contacts_per_unit": {
+    "median": 267629.0,
+    "q25": 205330.0,
+    "q75": 339723.0,
+    "source": "cells.n_contacts"
+   },
+   "loci_per_cell": {
+    "mean": 24413.549337260676,
+    "source": "n_spots / n_cells"
+   },
+   "published_counts": {
+    "n": 7469,
+    "exact": 0.5149283705984737,
+    "within_0.1pct": 1.0,
+    "median_ratio": 1.0,
+    "max_abs_rel": 0.0009480999337674869,
+    "reprocessed": "n_contacts",
+    "published": "n_contacts_published"
+   },
+   "embedding_agreement": {
+    "label": "cell_type",
+    "k": 15,
+    "n": 7469,
+    "n_labels": 21,
+    "chance": 0.065,
+    "agreement": {
+     "rna_pca": 0.886,
+     "rna_umap": 0.8672,
+     "hic_pca": 0.2574,
+     "hic_umap": 0.227
+    }
+   }
+  },
+  {
+   "id": "dschic_aging_cortex",
+   "study": "wu2025",
+   "name": "Mouse cortex, 3, 12 and 23 months",
+   "organism": "Mus musculus",
+   "assembly": "mm10",
+   "category": "Single-cell",
+   "modalities": [
+    "Hi-C per cell",
+    "Hi-C bulk",
+    "embeddings"
+   ],
+   "n_cells": 32777,
+   "n_spots": 0,
+   "size_mb": 2277.9,
+   "contact_maps": 2,
+   "unit": "cell",
+   "contacts_per_unit": {
+    "median": 65720.0,
+    "q25": 49266.0,
+    "q75": 95661.0,
+    "source": "cells.n_contacts"
+   },
+   "published_counts": {
+    "n": 32777,
+    "exact": 1.0,
+    "within_0.1pct": 1.0,
+    "median_ratio": 1.0,
+    "max_abs_rel": 0.0,
+    "reprocessed": "n_contacts",
+    "published": "n_contacts_published"
+   },
+   "embedding_agreement": {
+    "label": "cell_type",
+    "k": 15,
+    "n": 32777,
+    "n_labels": 7,
+    "chance": 0.3195,
+    "agreement": {
+     "hic_pca": 0.794,
+     "hic_umap": 0.7503
+    }
+   }
+  },
+  {
+   "id": "gageseq_mouse_cortex",
+   "study": "zhou2024",
+   "name": "Mouse cortex",
+   "organism": "Mus musculus",
+   "assembly": "mm10",
+   "category": "Single-cell",
+   "modalities": [
+    "Hi-C per cell",
+    "Hi-C bulk",
+    "RNA",
+    "embeddings"
+   ],
+   "n_cells": 3296,
+   "n_spots": 0,
+   "size_mb": 484.9,
+   "contact_maps": 2,
+   "unit": "cell",
+   "contacts_per_unit": {
+    "median": 221737.0,
+    "q25": 178080.5,
+    "q75": 273123.5,
+    "source": "cells.n_contacts"
+   },
+   "embedding_agreement": {
+    "label": "cell_type",
+    "k": 15,
+    "n": 3296,
+    "n_labels": 29,
+    "chance": 0.0461,
+    "agreement": {
+     "rna_pca": 0.6961,
+     "rna_umap": 0.6996,
+     "hic_pca": 0.2907,
+     "hic_umap": 0.2932
+    }
+   }
+  },
+  {
+   "id": "gageseq_human_bm_cd34",
+   "study": "zhou2024",
+   "name": "Human bone marrow CD34+",
+   "organism": "Homo sapiens",
+   "assembly": "hg38",
+   "category": "Single-cell",
+   "modalities": [
+    "Hi-C per cell",
+    "Hi-C bulk",
+    "RNA",
+    "embeddings"
+   ],
+   "n_cells": 1445,
+   "n_spots": 0,
+   "size_mb": 319.0,
+   "contact_maps": 2,
+   "unit": "cell",
+   "contacts_per_unit": {
+    "median": 214342.0,
+    "q25": 175163.0,
+    "q75": 270034.0,
+    "source": "cells.n_contacts"
+   },
+   "embedding_agreement": {
+    "label": "cell_type",
+    "k": 15,
+    "n": 1445,
+    "n_labels": 10,
+    "chance": 0.1173,
+    "agreement": {
+     "rna_pca": 0.3623,
+     "rna_umap": 0.3894,
+     "hic_pca": 0.279,
+     "hic_umap": 0.2835
+    }
+   }
+  },
+  {
+   "id": "droplet_hic_mouse_cortex",
+   "study": "chang2024",
+   "name": "Mouse cortex, Droplet Hi-C",
+   "organism": "Mus musculus",
+   "assembly": "mm10",
+   "category": "Single-cell",
+   "modalities": [
+    "Hi-C per cell",
+    "Hi-C bulk",
+    "embeddings"
+   ],
+   "n_cells": 6235,
+   "n_spots": 0,
+   "size_mb": 321.5,
+   "contact_maps": 2,
+   "unit": "cell",
+   "contacts_per_unit": {
+    "median": 32672.0,
+    "q25": 21967.5,
+    "q75": 43996.5,
+    "source": "cells.n_contacts"
+   },
+   "published_counts": {
+    "n": 6235,
+    "exact": 0.31804330392943064,
+    "within_0.1pct": 1.0,
+    "median_ratio": 1.000033315565032,
+    "max_abs_rel": 0.000277304599294854,
+    "reprocessed": "n_contacts",
+    "published": "n_cis_1kb_published+n_trans_published"
+   },
+   "embedding_agreement": {
+    "label": "cell_type",
+    "k": 15,
+    "n": 6235,
+    "n_labels": 20,
+    "chance": 0.0758,
+    "agreement": {
+     "hic_pca": 0.2189,
+     "hic_umap": 0.2087
+    }
+   }
+  },
+  {
+   "id": "paired_hic_mouse_cortex",
+   "study": "chang2024",
+   "name": "Mouse cortex, Paired Hi-C (with RNA)",
+   "organism": "Mus musculus",
+   "assembly": "mm10",
+   "category": "Single-cell",
+   "modalities": [
+    "Hi-C per cell",
+    "Hi-C bulk",
+    "RNA",
+    "embeddings"
+   ],
+   "n_cells": 24284,
+   "n_spots": 0,
+   "size_mb": 339.3,
+   "contact_maps": 2,
+   "unit": "cell",
+   "contacts_per_unit": {
+    "median": 2187.5,
+    "q25": 898.75,
+    "q75": 5825.5,
+    "source": "cells.n_contacts"
+   },
+   "published_counts": {
+    "n": 24284,
+    "exact": 0.9210179542085324,
+    "within_0.1pct": 0.9967468291879427,
+    "median_ratio": 1.0,
+    "max_abs_rel": 0.004672897196261682,
+    "reprocessed": "n_contacts",
+    "published": "n_cis_1kb_published+n_trans_published"
+   },
+   "embedding_agreement": {
+    "label": "cell_type",
+    "k": 15,
+    "n": 24284,
+    "n_labels": 17,
+    "chance": 0.0957,
+    "agreement": {
+     "rna_pca": 0.7789,
+     "rna_umap": 0.7381,
+     "hic_pca": 0.1638,
+     "hic_umap": 0.1391
+    }
+   }
+  },
+  {
+   "id": "schicar_mouse_cortex",
+   "study": "wei2026",
+   "name": "Mouse frontal cortex",
+   "organism": "Mus musculus",
+   "assembly": "mm10",
+   "category": "Single-cell",
+   "modalities": [
+    "Hi-C per cell",
+    "Hi-C bulk",
+    "RNA",
+    "ATAC per cell",
+    "embeddings"
+   ],
+   "n_cells": 5313,
+   "n_spots": 0,
+   "size_mb": 262.8,
+   "contact_maps": 24,
+   "unit": "cell",
+   "contacts_per_unit": {
+    "median": 20643.0,
+    "q25": 13292.0,
+    "q75": 29105.0,
+    "source": "cells.n_contacts_hic"
+   },
+   "embedding_agreement": {
+    "label": "cell_type",
+    "k": 15,
+    "n": 5313,
+    "n_labels": 22,
+    "chance": 0.0719,
+    "agreement": {
+     "paper_umap": 0.9417,
+     "rna_pca": 0.4633,
+     "rna_tsne": 0.453,
+     "rna_umap": 0.4416,
+     "atac_lsi": 0.3231,
+     "atac_tsne": 0.3386,
+     "atac_umap": 0.3217,
+     "hic_pca": 0.2485,
+     "hic_tsne": 0.258,
+     "hic_umap": 0.2498
+    }
+   }
+  },
+  {
+   "id": "unic_human",
+   "study": "gao2025",
+   "name": "Human cell lines and circulating tumour cells",
+   "organism": "Homo sapiens",
+   "assembly": "hg19",
+   "category": "Single-cell",
+   "modalities": [
+    "Hi-C per cell",
+    "Hi-C bulk",
+    "embeddings"
+   ],
+   "n_cells": 23,
+   "n_spots": 0,
+   "size_mb": 681.2,
+   "contact_maps": 8,
+   "unit": "cell",
+   "contacts_per_unit": {
+    "median": 9200847.0,
+    "q25": 5586966.0,
+    "q75": 13887954.0,
+    "source": "cells.n_contacts"
+   },
+   "embedding_agreement": {
+    "label": "sample",
+    "k": 3,
+    "n": 23,
+    "n_labels": 3,
+    "chance": 0.3497,
+    "agreement": {
+     "hic_pca": 0.6957
+    }
+   },
+   "cells_vs_bulk": {
+    "resolution": 500000,
+    "diagonals": [
+     1,
+     20
+    ],
+    "balanced": true,
+    "scc": {
+     "GM12878": {
+      "GM12878": 0.4347,
+      "COLO320DM": 0.2341,
+      "PanT24": 0.3187
+     },
+     "COLO320DM": {
+      "GM12878": 0.3505,
+      "COLO320DM": 0.6335,
+      "PanT24": 0.3924
+     },
+     "PanT24": {
+      "GM12878": 0.3396,
+      "COLO320DM": 0.3286,
+      "PanT24": 0.6012
+     }
+    }
+   }
+  },
+  {
+   "id": "unic_mouse",
+   "study": "gao2025",
+   "name": "Mouse circulating tumour cells and MC38",
+   "organism": "Mus musculus",
+   "assembly": "mm10",
+   "category": "Single-cell",
+   "modalities": [
+    "Hi-C per cell",
+    "Hi-C bulk",
+    "embeddings"
+   ],
+   "n_cells": 20,
+   "n_spots": 0,
+   "size_mb": 270.9,
+   "contact_maps": 6,
+   "unit": "cell",
+   "contacts_per_unit": {
+    "median": 5695226.0,
+    "q25": 4039027.0,
+    "q75": 6903066.75,
+    "source": "cells.n_contacts"
+   },
+   "embedding_agreement": {
+    "label": "sample",
+    "k": 3,
+    "n": 20,
+    "n_labels": 3,
+    "chance": 0.34,
+    "agreement": {
+     "hic_pca": 0.65
+    }
+   },
+   "cells_vs_bulk": {
+    "resolution": 500000,
+    "diagonals": [
+     1,
+     20
+    ],
+    "balanced": true,
+    "scc": {
+     "KPC0402": {
+      "MC38": 0.4636
+     },
+     "KPC0403": {
+      "MC38": 0.4134
+     },
+     "MC38": {
+      "MC38": 0.6051
+     }
+    }
+   }
+  },
+  {
+   "id": "takei2025_cerebellum",
+   "study": "takei2025",
+   "name": "Adult mouse cerebellum, three fields of view",
+   "organism": "Mus musculus",
+   "assembly": "mm10",
+   "category": "Imaging",
+   "modalities": [
+    "signals per spot",
+    "3-D coordinates",
+    "embeddings"
+   ],
+   "n_cells": 1799,
+   "n_spots": 10912638,
+   "size_mb": 2050.7,
+   "contact_maps": 0,
+   "unit": "cell",
+   "loci_per_cell": {
+    "median": 5493.0,
+    "mean": 6065.946637020567,
+    "source": "spots per cell"
+   },
+   "embedding_agreement": {
+    "label": "cell_type",
+    "k": 15,
+    "n": 1799,
+    "n_labels": 6,
+    "chance": 0.4274,
+    "agreement": {
+     "umap": 0.9874
+    }
+   }
+  }
+ ],
+ "spatial_checks": {
+  "spatial_hicrna_validation.json": {
+   "same_spots": {
+    "mouse_brain_r1": {
+     "spots": 6275,
+     "with_hic": 6275,
+     "linked_map": true,
+     "spearman_rna_umi_vs_hic_contacts": 0.876,
+     "moran_log_rna_umi": 0.717,
+     "moran_log_hic_contacts": 0.61,
+     "hic_contacts_median": 545927.0
+    },
+    "mouse_brain_r2": {
+     "spots": 6199,
+     "with_hic": 6199,
+     "linked_map": true,
+     "spearman_rna_umi_vs_hic_contacts": 0.908,
+     "moran_log_rna_umi": 0.629,
+     "moran_log_hic_contacts": 0.536,
+     "hic_contacts_median": 372964.0
+    },
+    "mouse_embryo_E11.5": {
+     "spots": 32799,
+     "with_hic": 32799,
+     "linked_map": true,
+     "spearman_rna_umi_vs_hic_contacts": 0.842,
+     "moran_log_rna_umi": 0.73,
+     "moran_log_hic_contacts": 0.633,
+     "hic_contacts_median": 114504.0
+    },
+    "mouse_embryo_E13.5_r1": {
+     "spots": 17278,
+     "with_hic": 17278,
+     "linked_map": true,
+     "spearman_rna_umi_vs_hic_contacts": 0.659,
+     "moran_log_rna_umi": 0.656,
+     "moran_log_hic_contacts": 0.542,
+     "hic_contacts_median": 162127.5
+    },
+    "mouse_embryo_E13.5_r2": {
+     "spots": 14784,
+     "with_hic": 14784,
+     "linked_map": true,
+     "spearman_rna_umi_vs_hic_contacts": 0.708,
+     "moran_log_rna_umi": 0.731,
+     "moran_log_hic_contacts": 0.608,
+     "hic_contacts_median": 6507.0
+    },
+    "human_melanoma_r1": {
+     "spots": 6268,
+     "with_hic": 6268,
+     "linked_map": true,
+     "spearman_rna_umi_vs_hic_contacts": 0.903,
+     "moran_log_rna_umi": 0.808,
+     "moran_log_hic_contacts": 0.73,
+     "hic_contacts_median": 588749.0
+    },
+    "human_melanoma_r2": {
+     "spots": 6381,
+     "with_hic": 6381,
+     "linked_map": true,
+     "spearman_rna_umi_vs_hic_contacts": 0.894,
+     "moran_log_rna_umi": 0.867,
+     "moran_log_hic_contacts": 0.805,
+     "hic_contacts_median": 488827.0
+    }
+   },
+   "mask": {
+    "mouse_brain_r1": {
+     "grid_spots": 10000,
+     "in_tissue": 6275,
+     "rna_umi_outside_mask": 0.0104
+    },
+    "mouse_brain_r2": {
+     "grid_spots": 10000,
+     "in_tissue": 6199,
+     "rna_umi_outside_mask": 0.0051
+    },
+    "mouse_embryo_E11.5": {
+     "grid_spots": 40000,
+     "in_tissue": 32799,
+     "rna_umi_outside_mask": 0.0701
+    },
+    "mouse_embryo_E13.5_r1": {
+     "grid_spots": 40000,
+     "in_tissue": 17278,
+     "rna_umi_outside_mask": 0.3237
+    },
+    "mouse_embryo_E13.5_r2": {
+     "grid_spots": 40000,
+     "in_tissue": 14784,
+     "rna_umi_outside_mask": 0.3722
+    },
+    "human_melanoma_r1": {
+     "grid_spots": 10000,
+     "in_tissue": 6268,
+     "rna_umi_outside_mask": 0.0083
+    },
+    "human_melanoma_r2": {
+     "grid_spots": 6400,
+     "in_tissue": 6381,
+     "rna_umi_outside_mask": 0.0054
+    }
+   },
+   "replicates": {
+    "mouse_brain_r1 vs mouse_brain_r2": {
+     "median_abs_r": 0.999,
+     "min_abs_r": 0.993,
+     "chromosomes": 20
+    },
+    "mouse_embryo_E13.5_r1 vs mouse_embryo_E13.5_r2": {
+     "median_abs_r": 0.992,
+     "min_abs_r": 0.842,
+     "chromosomes": 20
+    },
+    "human_melanoma_r1 vs human_melanoma_r2": {
+     "median_abs_r": 0.999,
+     "min_abs_r": 0.985,
+     "chromosomes": 23
+    }
+   },
+   "single_spot_ab": {
+    "spots": 6275,
+    "bins": 2285,
+    "median_r": 0.0431,
+    "iqr": [
+     0.0249,
+     0.0611
+    ],
+    "frac_positive": 0.947,
+    "shuffled_median_r": -0.0006,
+    "shuffled_frac_positive": 0.49
+   },
+   "hic_vs_cell_types": {
+    "cell_type": {
+     "hic_knn_agreement": 0.224,
+     "shuffled": 0.11,
+     "spatial_knn_agreement": 0.331,
+     "labels": 23
+    },
+    "cluster_cellcharter": {
+     "hic_knn_agreement": 0.419,
+     "shuffled": 0.118,
+     "spatial_knn_agreement": 0.831,
+     "labels": 12
+    },
+    "cluster_cellcharter_fh": {
+     "hic_knn_agreement": 0.577,
+     "shuffled": 0.217,
+     "spatial_knn_agreement": 0.625,
+     "labels": 5
+    }
+   }
+  },
+  "spatial_hic_chen2026_reprocessed.json": {
+   "e13_embryo_50um/E13_HiC_R1 (CRR1161506)": {
+    "spots_with_map": 1999,
+    "spots_in_section": 1999,
+    "moran_log_total_contacts": 0.31,
+    "moran_shuffled": 0.003,
+    "bulk_E1_vs_ssAB_median_abs_r": 0.955,
+    "bulk_E1_vs_ssAB_min_abs_r": 0.922,
+    "chromosomes": 19
+   },
+   "e13_embryo_50um/E13_HiC_R2 (CRR1161507)": {
+    "spots_with_map": 2011,
+    "spots_in_section": 2011,
+    "moran_log_total_contacts": 0.329,
+    "moran_shuffled": 0.01,
+    "bulk_E1_vs_ssAB_median_abs_r": 0.956,
+    "bulk_E1_vs_ssAB_min_abs_r": 0.901,
+    "chromosomes": 19
+   },
+   "brain_embryo_20um/E14_5_HiC (CRR1829212)": {
+    "spots_with_map": 3533,
+    "spots_in_section": 3533,
+    "moran_log_total_contacts": 0.341,
+    "moran_shuffled": -0.001,
+    "bulk_E1_vs_ssAB_median_abs_r": 0.929,
+    "bulk_E1_vs_ssAB_min_abs_r": 0.82,
+    "chromosomes": 19
+   },
+   "brain_embryo_20um/E16_5_HiC (CRR1829214)": {
+    "spots_with_map": 4479,
+    "spots_in_section": 4479,
+    "moran_log_total_contacts": 0.245,
+    "moran_shuffled": -0.005,
+    "bulk_E1_vs_ssAB_median_abs_r": 0.924,
+    "bulk_E1_vs_ssAB_min_abs_r": 0.454,
+    "chromosomes": 19
+   },
+   "brain_embryo_20um/E18_5_HiC (CRR1829216)": {
+    "spots_with_map": 5677,
+    "spots_in_section": 5677,
+    "moran_log_total_contacts": 0.437,
+    "moran_shuffled": -0.004,
+    "bulk_E1_vs_ssAB_median_abs_r": 0.944,
+    "bulk_E1_vs_ssAB_min_abs_r": 0.812,
+    "chromosomes": 19
+   },
+   "brain_embryo_10um/E14_5_HiC (CRR1829213)": {
+    "spots_with_map": 5426,
+    "spots_in_section": 5426,
+    "moran_log_total_contacts": 0.289,
+    "moran_shuffled": 0.0,
+    "bulk_E1_vs_ssAB_median_abs_r": 0.945,
+    "bulk_E1_vs_ssAB_min_abs_r": 0.92,
+    "chromosomes": 19
+   },
+   "brain_embryo_10um/E16_5_HiC (CRR1829215)": {
+    "spots_with_map": 5470,
+    "spots_in_section": 5470,
+    "moran_log_total_contacts": 0.072,
+    "moran_shuffled": 0.0,
+    "bulk_E1_vs_ssAB_median_abs_r": 0.941,
+    "bulk_E1_vs_ssAB_min_abs_r": 0.474,
+    "chromosomes": 19
+   },
+   "brain_embryo_10um/E18_5_HiC (CRR1829217)": {
+    "spots_with_map": 6308,
+    "spots_in_section": 6308,
+    "moran_log_total_contacts": 0.257,
+    "moran_shuffled": -0.002,
+    "bulk_E1_vs_ssAB_median_abs_r": 0.944,
+    "bulk_E1_vs_ssAB_min_abs_r": 0.858,
+    "chromosomes": 19
+   },
+   "cortex_adult_10um/Adult16_HiC (CRR1829219)": {
+    "spots_with_map": 7795,
+    "spots_in_section": 8184,
+    "moran_log_total_contacts": 0.119,
+    "moran_shuffled": -0.001,
+    "bulk_E1_vs_ssAB_median_abs_r": 0.949,
+    "bulk_E1_vs_ssAB_min_abs_r": 0.886,
+    "chromosomes": 19
+   },
+   "hippocampus_adult_10um/Adult22_HiC (CRR1829220)": {
+    "spots_with_map": 8185,
+    "spots_in_section": 8601,
+    "moran_log_total_contacts": 0.412,
+    "moran_shuffled": 0.001,
+    "bulk_E1_vs_ssAB_median_abs_r": 0.962,
+    "bulk_E1_vs_ssAB_min_abs_r": 0.898,
+    "chromosomes": 19
+   }
+  }
+ }
+}
