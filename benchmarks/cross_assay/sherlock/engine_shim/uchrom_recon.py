@@ -1,6 +1,6 @@
-"""``uchrom_recon`` -> the frozen EMber engine build ``dipfrozen`` (tag ember-diploid-frozen), which predates the
-rename and installs as ``uchrom_nucdyn``.  The screcon runners differ from that build's only by the import name
-(``run_diploid.py``, ``run_robust.py``, ``run_nucdyn.py``); recon.sbatch puts this folder ahead of the build."""
+"""``uchrom_recon`` -> the frozen engine build ``dipfrozen`` (uchrom-recon with its diploid extension), which predates
+the rename and installs as ``uchrom_nucdyn``.  The runners in ``lib/`` differ from that build's only by the import name;
+recon.sbatch puts this folder ahead of the build."""
 import sys
 
 import uchrom_nucdyn

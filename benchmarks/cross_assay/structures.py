@@ -1,5 +1,5 @@
 """Example structures of chromosome 2 for Extended Data Fig. 3d: one typical ExN and one typical Oligo cell of the
-imaging (Liu 2025 DNA-MERFISH), of the diploid EMber reconstruction of Dip-C (Tan 2021) and of the haploid one of
+imaging (Liu 2025 DNA-MERFISH), of the diploid reconstruction of Dip-C (Tan 2021) and of the haploid one of
 scHiCAR.  A typical cell is the one whose single-cell score (``transfer.py``: imaging cells by the reconstructions'
 consensus signature, reconstructed cells by the imaging signature) is closest to its class median; for imaged cells,
 of the 300 closest, the one with the most complete chromosome 2 copy (that copy drawn; detection is about half the

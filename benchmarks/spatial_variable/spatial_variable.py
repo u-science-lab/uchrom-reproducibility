@@ -1,6 +1,5 @@
 """spatial_variable: which 3-D genome features of spatial Hi-C spots vary in space, and which vary beyond what the
-spots' transcriptomes explain (the analysis behind the Brief Communication's Fig. 2, u-chrom-paper
-``manuscripts/nmeth-bc``).
+spots' transcriptomes explain (the analysis behind Extended Data Figs 2 and 3).
 
 Global level (this script, stages ``features`` … ``summary``): per spot, the short / long-range contact ratio
 (Guo et al. 2026's definition), distance bands, P(s) slopes, cis fraction and the trans share of each
@@ -1463,10 +1462,9 @@ def _figdata_tables(out: Path, figdir: Path, f: pd.DataFrame, q: pd.DataFrame, p
 
 
 def default_figdata(out: Path) -> Path:
-    from _paper import paper_root
+    from _paper import results_dir
 
-    root = paper_root()
-    return root / "manuscripts" / "nmeth-bc" / "figures" / "results" if root else out / "figdata"
+    return results_dir("spatial_variable")
 
 
 def main(argv=None):

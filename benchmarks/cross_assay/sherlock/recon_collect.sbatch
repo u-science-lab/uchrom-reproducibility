@@ -1,6 +1,6 @@
 #!/bin/bash
 # benchmarks/cross_assay/recon.py stages collect + analyze + loci [+ contacts] (CPU, venv-consensus with the repo's uchrom / chromdata):
-# the models (METHOD=ember or nucdyn) and the published Dip-C structures as ChromData stores, separation_profile on each, the
+# the models (METHOD=nucdyn) and the published Dip-C structures as ChromData stores, separation_profile on each, the
 # comparison with the imaging datasets of cross_assay.py; archive on Oak.
 #
 #   sbatch --dependency=afterok:<recon array job> --export=ALL,REPO=$SCRATCH/uchrom-nd/repo-xa,REPRO=$SCRATCH/uchrom-nd/repro,UCHROM_REVISION=... \
@@ -20,8 +20,8 @@ PY=$GROUP_HOME/$USER/uchrom-nd/venv-consensus/bin/python
 export UCHROM_DATA=$W/data XDG_CACHE_HOME=$SCRATCH/.cache MPLBACKEND=Agg OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK
 export PYTHONPATH=$REPO/packages/uchrom:$REPO/packages/chromdata${PYTHONPATH:+:$PYTHONPATH}
 DATASET=${DATASET:-tan2021}
-METHOD=${METHOD:-ember}                     # ember (the run of 2026-10-11) or nucdyn (NucDynamics 2017, 2026-10-12)
-ROOT=$W/runs/xassay; [ "$METHOD" = ember ] || ROOT=$W/runs/xassay/$METHOD
+METHOD=${METHOD:-nucdyn}                    # NucDynamics 2017 protocol (the run of 2026-10-12)
+ROOT=$W/runs/xassay/$METHOD
 case $DATASET in
   tan2021) DATA_DIR=${DATA_DIR:-$W/data/tan2021_cortex/cells}; OUT=${OUT:-$ROOT/recon_tan} ;;
   hires_brain) DATA_DIR=${DATA_DIR:-$W/data/hires2023/raw/GSE223917/cells}; OUT=${OUT:-$ROOT/recon_hires_brain} ;;
