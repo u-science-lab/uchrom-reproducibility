@@ -22,7 +22,7 @@ HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE))
 from paper_paths import PAPER_CHECKOUT  # noqa: E402
 
-PATTERNS = ["manuscripts/*/figures/", "manuscripts/nmeth-bc/supp/table_atlas.tex", "manuscripts/full/supp/tableS1_*.tex"]
+PATTERNS = [":(glob)manuscripts/*/figures/**", "manuscripts/nmeth-bc/supp/table_atlas.tex", "manuscripts/full/supp/tableS1_*.tex"]
 
 
 def tracked(paper: Path) -> list[str]:
