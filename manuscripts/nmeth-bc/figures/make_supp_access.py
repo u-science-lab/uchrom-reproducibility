@@ -13,8 +13,8 @@ Supplementary Fig. 2, which keeps what the linked maps are used for:
   e  the same for random groups on chr1
   f  on-disk size, linked vs copied (decimal MB)
 
-Grid (mm, 180 x 100): three 60-mm columns and two rows, every axes 24 x 35 mm (``by_format``'s), 13 mm right of its
-letter; no titles in the panels (their subjects are in the legend).
+Grid (mm, 180 x 100): three 60-mm columns and two rows, every axes 42 x 35 mm, 13 mm right of its letter; a and b
+name their series in a key at the top left; no titles in the panels (their subjects are in the legend).
 
     python manuscripts/nmeth-bc/figures/make_supp_access.py      # -> supp_access.pdf / supp_access.png
 """
@@ -37,7 +37,7 @@ import make_figS_fig2 as S  # noqa: E402
 F = S.F
 W, H = 180.0, 100.0
 # a 3 x 2 grid: columns 60 mm wide, every axes AX_W x AX_H (by_format's), the letter 13 mm left of its axes
-AX_W, AX_H = 24.0, S.ROW1_H
+AX_W, AX_H = 42.0, S.ROW1_H
 COLS = (0.0, 60.0, 120.0)
 ROWS = (1.0, 51.0)                       # letter y; the axes from ROW + S.AX_DY
 
@@ -128,6 +128,7 @@ def main() -> None:
     S.W, S.H = W, H
     F.W, F.H = W, H
     S.AX_DY = 3.0                                       # no title above the axes
+    S.FORMAT_AX_W, S.FORMAT_KEY_INSIDE = AX_W, True     # a, b as wide as the others, their series in a key
     S.head = lambda fig, x0, y0, letter, title=None, sub=None: F.label(fig, x0, y0, letter)
     S.style()
     acc = F.access()
