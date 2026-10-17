@@ -1,0 +1,96 @@
+{
+ "generated": "2026-10-11T07:53:05+00:00",
+ "script": "manuscripts/nmeth-bc/figures/check_patch_composition.py",
+ "input": {
+  "file": "spatial_variable_melanoma_spots.parquet",
+  "md5": "b76b6c60052acacb4730977c8639b908"
+ },
+ "versions": {
+  "pandas": "3.0.6",
+  "scipy": "1.18.1"
+ },
+ "sections": {
+  "human_melanoma_r1": {
+   "n_spots": 6036,
+   "n_patch": 1208,
+   "steps": {
+    "measured": {
+     "n_patch": 1208,
+     "n_rest": 4828,
+     "median_patch": 2.0122,
+     "median_rest": 1.9331,
+     "median_difference": 0.0791,
+     "mannwhitney_p": 7.600212866663109e-252
+    },
+    "after_depth_rna": {
+     "n_patch": 1208,
+     "n_rest": 4828,
+     "median_patch": 0.05,
+     "median_rest": -0.0124,
+     "median_difference": 0.0625,
+     "mannwhitney_p": 5.391381957963247e-164
+    },
+    "after_depth_rna_cnv": {
+     "n_patch": 1208,
+     "n_rest": 4828,
+     "median_patch": 0.0037,
+     "median_rest": -0.0009,
+     "median_difference": 0.0046,
+     "mannwhitney_p": 0.001009252042606373
+    }
+   },
+   "melanoma_share": {
+    "patch": 0.412,
+    "rest": 0.272
+   },
+   "within_cell_types": {
+    "melanoma": {
+     "n_patch": 498,
+     "n_rest": 1311,
+     "median_patch": 2.0159,
+     "median_rest": 1.9484,
+     "median_difference": 0.0675,
+     "mannwhitney_p": 9.087715533937727e-87
+    },
+    "other": {
+     "n_patch": 710,
+     "n_rest": 3517,
+     "median_patch": 2.0069,
+     "median_rest": 1.9269,
+     "median_difference": 0.08,
+     "mannwhitney_p": 1.322509301323739e-157
+    }
+   }
+  },
+  "human_melanoma_r2": {
+   "n_spots": 5596,
+   "n_patch": 1120,
+   "steps": {
+    "measured": {
+     "n_patch": 1120,
+     "n_rest": 4476,
+     "median_patch": 1.9094,
+     "median_rest": 1.8659,
+     "median_difference": 0.0435,
+     "mannwhitney_p": 3.733672727939561e-71
+    },
+    "after_depth_rna": {
+     "n_patch": 1120,
+     "n_rest": 4476,
+     "median_patch": 0.0193,
+     "median_rest": -0.0134,
+     "median_difference": 0.0326,
+     "mannwhitney_p": 1.1037831498160082e-44
+    },
+    "after_depth_rna_cnv": {
+     "n_patch": 1120,
+     "n_rest": 4476,
+     "median_patch": -0.0048,
+     "median_rest": -0.0053,
+     "median_difference": 0.0005,
+     "mannwhitney_p": 0.3959718159565071
+    }
+   }
+  }
+ }
+}

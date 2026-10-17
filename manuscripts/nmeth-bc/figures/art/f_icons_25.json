@@ -1,0 +1,28 @@
+{
+ "provider": "openrouter",
+ "model": "openai/gpt-image-2.5-sunburst",
+ "prompt": "Four separate small icons in one row, evenly spaced with wide empty gaps between them on a plain pure white background (#ffffff), for a Nature Methods figure. Flat vector style, clean and minimal, consistent thin dark-grey outlines (#2b2f36), soft muted fills in slate blue (#34568b at low saturation) and light grey, no gradients, no text, no letters, no numbers, no logos, no frames. 1: a computational notebook page with three stacked code cells and a small line plot in one of them. 2: an open laptop seen from the front at a slight angle, screen showing three tiled panels (a scatter plot, a triangle heat map, a 3-D blob). 3: a web browser window floating in front of a simple cloud. 4: a small friendly robot head next to a terminal window with a prompt chevron.",
+ "size": "1536x1024",
+ "quality": "high",
+ "n": 1,
+ "background": "opaque",
+ "usage": {
+  "prompt_tokens": 185,
+  "completion_tokens": 1372,
+  "total_tokens": 1557,
+  "cost": 0.042085,
+  "is_byok": false,
+  "prompt_tokens_details": {
+   "cached_tokens": 0
+  },
+  "cost_details": {
+   "upstream_inference_cost": 0.042085,
+   "upstream_inference_prompt_cost": 0.000925,
+   "upstream_inference_completions_cost": 0.04116
+  },
+  "completion_tokens_details": {
+   "reasoning_tokens": 0,
+   "image_tokens": 1372
+  }
+ }
+}

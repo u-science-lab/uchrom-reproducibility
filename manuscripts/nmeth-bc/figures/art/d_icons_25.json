@@ -1,0 +1,28 @@
+{
+ "provider": "openrouter",
+ "model": "openai/gpt-image-2.5-sunburst",
+ "prompt": "Seven separate small icons arranged in two rows (four on top, three below), evenly spaced with wide empty gaps between them on a plain pure white background (#ffffff), for a Nature Methods figure. Exactly the same style as a clean flat vector icon set: consistent thin dark-grey outlines (#2b2f36), soft muted fills in slate blue (#34568b at low saturation), teal (#2a9d8f), orange (#e07a3f) and light grey, no gradients, no text, no letters, no numbers, no logos, no frames around icons. 1 'subset': a data table with three highlighted rows being lifted out of it. 2 'aggregate': four small Hi-C contact maps drawn as isosceles triangles standing on their base (the matrix rotated 45 degrees, darker along the base) merging with small arrows into one larger triangular heat map. 3 'convert': a short chain of round beads forming a 3-D curve, a double-headed arrow, and a contact map drawn as an isosceles triangle standing on its base. 4 'call domains': a triangular heat map with three smaller triangles outlined along its base and one dot marking a loop near the top. 5 'features per locus': a horizontal genome axis with a bar-chart track above it and a few small markers. 6 'link': a chain link connecting a small database cylinder to a separate file document with a folded corner. 7 'store': a stack of three flat chunks (cubes) beside a small columnar table, sitting on a simple cloud.",
+ "size": "1536x1024",
+ "quality": "high",
+ "n": 1,
+ "background": "opaque",
+ "usage": {
+  "prompt_tokens": 331,
+  "completion_tokens": 1372,
+  "total_tokens": 1703,
+  "cost": 0.042815,
+  "is_byok": false,
+  "prompt_tokens_details": {
+   "cached_tokens": 0
+  },
+  "cost_details": {
+   "upstream_inference_cost": 0.042815,
+   "upstream_inference_prompt_cost": 0.001655,
+   "upstream_inference_completions_cost": 0.04116
+  },
+  "completion_tokens_details": {
+   "reasoning_tokens": 0,
+   "image_tokens": 1372
+  }
+ }
+}

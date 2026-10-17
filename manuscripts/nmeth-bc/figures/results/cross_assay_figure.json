@@ -1,0 +1,849 @@
+{
+ "results": {
+  "rows": [
+   {
+    "dataset": "hires_brain",
+    "label": "HiRES",
+    "group": "sequencing",
+    "assay": "scHi-C + RNA (HiRES)",
+    "medians": {
+     "ExN": 1.3203884574223088,
+     "InN": 1.4066316472510858,
+     "Astro": 0.13828971802918438,
+     "Oligo": -0.2250495551568908
+    },
+    "n_by_class": {
+     "Astro": 20,
+     "ExN": 260,
+     "InN": 99,
+     "Oligo": 20
+    },
+    "metric": "contacts",
+    "exn_minus_oligo_diff": {
+     "a": "ExN",
+     "b": "Oligo",
+     "n_a": 260,
+     "n_b": 20,
+     "median_a": 1.3203884574223088,
+     "median_b": -0.2250495551568908,
+     "diff": 1.5454380125791995,
+     "ci95": [
+      1.4651095259371882,
+      1.6479492403307878
+     ],
+     "cliffs_delta": 0.9957692307692307,
+     "mannwhitney_p": 1.189460815708734e-13
+    },
+    "exn_minus_oligo": {
+     "cliffs_delta": 0.9957692307692307,
+     "ci95": [
+      0.9850000000000001,
+      1.0
+     ],
+     "n_a": 260,
+     "n_b": 20
+    },
+    "astro_minus_oligo": {
+     "cliffs_delta": 0.875,
+     "ci95": [
+      0.704875,
+      0.99
+     ],
+     "n_a": 20,
+     "n_b": 20
+    }
+   },
+   {
+    "dataset": "gageseq_mouse_cortex",
+    "label": "GAGE-seq",
+    "group": "sequencing",
+    "assay": "scHi-C + RNA (GAGE-seq)",
+    "medians": {
+     "ExN": 1.6915571417743478,
+     "InN": 1.6254353303337177,
+     "Astro": 0.4548242538365852,
+     "Oligo": -0.08863922631926184,
+     "OPC": 0.9936749322564876,
+     "Micro": -0.5758785639434649
+    },
+    "n_by_class": {
+     "Astro": 252,
+     "ExN": 1938,
+     "InN": 508,
+     "Micro": 85,
+     "OPC": 119,
+     "Oligo": 179
+    },
+    "metric": "contacts",
+    "exn_minus_oligo_diff": {
+     "a": "ExN",
+     "b": "Oligo",
+     "n_a": 1938,
+     "n_b": 179,
+     "median_a": 1.6915571417743478,
+     "median_b": -0.08863922631926184,
+     "diff": 1.7801963680936097,
+     "ci95": [
+      1.7175245398500796,
+      1.8201302929215188
+     ],
+     "cliffs_delta": 0.9643761062202005,
+     "mannwhitney_p": 2.1887698739298782e-101
+    },
+    "exn_minus_oligo": {
+     "cliffs_delta": 0.9643761062202005,
+     "ci95": [
+      0.940094032320367,
+      0.98575995526114
+     ],
+     "n_a": 1938,
+     "n_b": 179
+    },
+    "astro_minus_oligo": {
+     "cliffs_delta": 0.7384942803937218,
+     "ci95": [
+      0.6520340072714375,
+      0.8251429901569565
+     ],
+     "n_a": 252,
+     "n_b": 179
+    }
+   },
+   {
+    "dataset": "droplet_hic_mouse_cortex",
+    "label": "Droplet Hi-C",
+    "group": "sequencing",
+    "assay": "Droplet Hi-C",
+    "medians": {
+     "ExN": 0.8470138931171131,
+     "InN": 1.0048275284646717,
+     "Astro": 0.3517231198408125,
+     "Oligo": 0.27084448279118556,
+     "OPC": 0.9676866697579019,
+     "Micro": -0.05264996787026431
+    },
+    "n_by_class": {
+     "Astro": 180,
+     "ExN": 3273,
+     "InN": 647,
+     "Micro": 318,
+     "OPC": 356,
+     "Oligo": 382
+    },
+    "metric": "contacts",
+    "exn_minus_oligo_diff": {
+     "a": "ExN",
+     "b": "Oligo",
+     "n_a": 3273,
+     "n_b": 382,
+     "median_a": 0.8470138931171131,
+     "median_b": 0.27084448279118556,
+     "diff": 0.5761694103259275,
+     "ci95": [
+      0.5164762615355689,
+      0.6294104266135347
+     ],
+     "cliffs_delta": 0.5935026066036091,
+     "mannwhitney_p": 1.4070024017036737e-80
+    },
+    "exn_minus_oligo": {
+     "cliffs_delta": 0.5935026066036091,
+     "ci95": [
+      0.5415839255978233,
+      0.647107781739538
+     ],
+     "n_a": 3273,
+     "n_b": 382
+    },
+    "astro_minus_oligo": {
+     "cliffs_delta": 0.03391506689936019,
+     "ci95": [
+      -0.06522178592204775,
+      0.12883216986620133
+     ],
+     "n_a": 180,
+     "n_b": 382
+    }
+   },
+   {
+    "dataset": "paired_hic_mouse_cortex",
+    "label": "Paired Hi-C",
+    "group": "sequencing",
+    "assay": "Paired Hi-C (+ RNA)",
+    "medians": {
+     "ExN": 0.944379266550507,
+     "InN": 1.1324955535442773,
+     "Astro": 0.24177308680145818,
+     "Oligo": 0.22420081592483856,
+     "OPC": 0.748625002547863,
+     "Micro": -0.25647203495811965
+    },
+    "metric": "contacts, pooled by class",
+    "pooled_only": true,
+    "exn_minus_oligo_diff": {
+     "diff": 0.7201784506256684,
+     "ci95": [
+      0.6898863592980926,
+      0.7528037713010873
+     ]
+    }
+   },
+   {
+    "dataset": "dschic_aging_cortex",
+    "label": "dscHi-C",
+    "group": "sequencing",
+    "assay": "dscHi-C (3, 12, 23 months)",
+    "medians": {
+     "ExN": 1.3885277775304286,
+     "InN": 1.549159794754014,
+     "Astro": 0.492374813657516,
+     "Oligo": 0.16852848405186396,
+     "OPC": 0.9995617794607459,
+     "Micro": 0.0072988611990599216
+    },
+    "n_by_class": {
+     "Astro": 4578,
+     "ExN": 16915,
+     "InN": 3026,
+     "Micro": 1589,
+     "OPC": 889,
+     "Oligo": 4759
+    },
+    "metric": "contacts",
+    "exn_minus_oligo_diff": {
+     "a": "ExN",
+     "b": "Oligo",
+     "n_a": 16915,
+     "n_b": 4759,
+     "median_a": 1.3885277775304286,
+     "median_b": 0.16852848405186396,
+     "diff": 1.2199992934785646,
+     "ci95": [
+      1.2001954406217747,
+      1.2370829197744924
+     ],
+     "cliffs_delta": 0.8927058316687575,
+     "mannwhitney_p": 0.0
+    },
+    "exn_minus_oligo": {
+     "cliffs_delta": 0.8927058316687575,
+     "ci95": [
+      0.8859093031378168,
+      0.8986437558421131
+     ],
+     "n_a": 16915,
+     "n_b": 4759
+    },
+    "astro_minus_oligo": {
+     "cliffs_delta": 0.3442071223079106,
+     "ci95": [
+      0.3235600574148395,
+      0.3657579862248082
+     ],
+     "n_a": 4578,
+     "n_b": 4759
+    }
+   },
+   {
+    "dataset": "schicar_mouse_cortex",
+    "label": "scHiCAR",
+    "group": "sequencing",
+    "assay": "scHiCAR (RNA + ATAC + Hi-C)",
+    "medians": {
+     "ExN": 0.7353987245678354,
+     "InN": 0.7957829389487129,
+     "Astro": -0.09624120573614264,
+     "Oligo": -0.36758762490081953,
+     "OPC": 0.33475646555368205,
+     "Micro": -0.7464928601919377
+    },
+    "n_by_class": {
+     "Astro": 407,
+     "ExN": 3503,
+     "InN": 573,
+     "Micro": 147,
+     "OPC": 131,
+     "Oligo": 268
+    },
+    "metric": "contacts",
+    "exn_minus_oligo_diff": {
+     "a": "ExN",
+     "b": "Oligo",
+     "n_a": 3503,
+     "n_b": 268,
+     "median_a": 0.7353987245678354,
+     "median_b": -0.36758762490081953,
+     "diff": 1.102986349468655,
+     "ci95": [
+      1.0563963434745651,
+      1.1479318976204143
+     ],
+     "cliffs_delta": 0.9187338358166348,
+     "mannwhitney_p": 4.442063913857161e-139
+    },
+    "exn_minus_oligo": {
+     "cliffs_delta": 0.9187338358166348,
+     "ci95": [
+      0.884924861845497,
+      0.9493691441451039
+     ],
+     "n_a": 3503,
+     "n_b": 268
+    },
+    "astro_minus_oligo": {
+     "cliffs_delta": 0.5119274634200008,
+     "ci95": [
+      0.43195570061241706,
+      0.5920030529172321
+     ],
+     "n_a": 407,
+     "n_b": 268
+    }
+   },
+   {
+    "dataset": "tan2021_cortex",
+    "label": "Dip-C",
+    "group": "sequencing",
+    "assay": "Dip-C (Tan 2021)",
+    "medians": {
+     "ExN": 1.5980853248791043,
+     "InN": 1.8044907089285087,
+     "Astro": 0.566194500374603,
+     "Oligo": 0.14892536046444035,
+     "OPC": 1.1419608620374977,
+     "Micro": -0.33725642967871894
+    },
+    "n_by_class": {
+     "Astro": 30,
+     "ExN": 214,
+     "InN": 56,
+     "Micro": 37,
+     "OPC": 24,
+     "Oligo": 74
+    },
+    "metric": "contacts",
+    "exn_minus_oligo_diff": {
+     "a": "ExN",
+     "b": "Oligo",
+     "n_a": 214,
+     "n_b": 74,
+     "median_a": 1.5980853248791043,
+     "median_b": 0.14892536046444035,
+     "diff": 1.449159964414664,
+     "ci95": [
+      1.3574582960670916,
+      1.5231886921653164
+     ],
+     "cliffs_delta": 0.9970952260671886,
+     "mannwhitney_p": 2.032123205673882e-37
+    },
+    "exn_minus_oligo": {
+     "cliffs_delta": 0.9970952260671886,
+     "ci95": [
+      0.9900195756504169,
+      1.0
+     ],
+     "n_a": 214,
+     "n_b": 74
+    },
+    "astro_minus_oligo": {
+     "cliffs_delta": 0.7621621621621621,
+     "ci95": [
+      0.6179729729729729,
+      0.8820045045045046
+     ],
+     "n_a": 30,
+     "n_b": 74
+    }
+   },
+   {
+    "dataset": "hicrna_mouse_brain",
+    "label": "Spatial Hi-C-RNA",
+    "group": "sequencing",
+    "assay": "spatial Hi-C-RNA (Guo 2026), spots by dominant type",
+    "medians": {
+     "ExN": 0.8747991805409501,
+     "InN": 0.6989201515591216,
+     "Astro": 0.5318208297324053,
+     "Oligo": 0.45028986121593984
+    },
+    "n_by_class": {
+     "Astro": 277,
+     "ExN": 3341,
+     "InN": 2333,
+     "Oligo": 148
+    },
+    "metric": "contacts",
+    "exn_minus_oligo_diff": {
+     "a": "ExN",
+     "b": "Oligo",
+     "n_a": 3341,
+     "n_b": 148,
+     "median_a": 0.8747991805409501,
+     "median_b": 0.45028986121593984,
+     "diff": 0.42450931932501024,
+     "ci95": [
+      0.3984350195409156,
+      0.44808716356900685
+     ],
+     "cliffs_delta": 0.8581424884926832,
+     "mannwhitney_p": 4.8383024728625645e-70
+    },
+    "exn_minus_oligo": {
+     "cliffs_delta": 0.8581424884926832,
+     "ci95": [
+      0.8234296253751507,
+      0.8891966719787732
+     ],
+     "n_a": 3341,
+     "n_b": 148
+    },
+    "astro_minus_oligo": {
+     "cliffs_delta": 0.3461801151331838,
+     "ci95": [
+      0.24224192604156508,
+      0.44697897355839594
+     ],
+     "n_a": 277,
+     "n_b": 148
+    }
+   },
+   {
+    "dataset": "liu2025_mop",
+    "label": "DNA-MERFISH",
+    "group": "imaging",
+    "assay": "DNA-MERFISH (Liu 2025, MOp)",
+    "medians": {
+     "ExN": 1.1640182223708435,
+     "InN": 1.2618206568208543,
+     "Astro": 0.9600945298587253,
+     "Oligo": 0.8983766820006259,
+     "OPC": 1.0689213953956154,
+     "Micro": 0.8112988303128349
+    },
+    "n_by_class": {
+     "Astro": 1148,
+     "ExN": 5034,
+     "InN": 750,
+     "Micro": 390,
+     "OPC": 310,
+     "Oligo": 1930
+    },
+    "metric": "distances",
+    "exn_minus_oligo_diff": {
+     "a": "ExN",
+     "b": "Oligo",
+     "n_a": 5034,
+     "n_b": 1930,
+     "median_a": 1.1640182223708435,
+     "median_b": 0.8983766820006259,
+     "diff": 0.2656415403702176,
+     "ci95": [
+      0.2592842999492363,
+      0.2741563220205885
+     ],
+     "cliffs_delta": 0.7892241565643778,
+     "mannwhitney_p": 0.0
+    },
+    "exn_minus_oligo": {
+     "cliffs_delta": 0.7892241565643778,
+     "ci95": [
+      0.7711965216836393,
+      0.8066107772844142
+     ],
+     "n_a": 5034,
+     "n_b": 1930
+    },
+    "astro_minus_oligo": {
+     "cliffs_delta": 0.24504612662706937,
+     "ci95": [
+      0.20172950027982892,
+      0.28760073838710265
+     ],
+     "n_a": 1148,
+     "n_b": 1930
+    }
+   },
+   {
+    "dataset": "takei2021_brain_labels",
+    "label": "DNA seqFISH+",
+    "group": "imaging",
+    "assay": "DNA seqFISH+ (Takei 2021), authors' DBSCAN homologs",
+    "medians": {
+     "ExN": 1.305365857333185,
+     "InN": 1.3391218247276244,
+     "Astro": 0.9513402418806778,
+     "Oligo": 1.1131004094207126,
+     "Micro": 0.6962576514545264
+    },
+    "n_by_class": {
+     "Astro": 122,
+     "ExN": 1662,
+     "InN": 264,
+     "Micro": 73,
+     "Oligo": 60
+    },
+    "metric": "distances",
+    "exn_minus_oligo_diff": {
+     "a": "ExN",
+     "b": "Oligo",
+     "n_a": 1662,
+     "n_b": 60,
+     "median_a": 1.305365857333185,
+     "median_b": 1.1131004094207126,
+     "diff": 0.19226544791247235,
+     "ci95": [
+      0.08481948293850482,
+      0.31692792198381037
+     ],
+     "cliffs_delta": 0.5715202567188127,
+     "mannwhitney_p": 5.048387709942378e-14
+    },
+    "exn_minus_oligo": {
+     "cliffs_delta": 0.5715202567188127,
+     "ci95": [
+      0.42673736462093864,
+      0.7006844163658242
+     ],
+     "n_a": 1662,
+     "n_b": 60
+    },
+    "astro_minus_oligo": {
+     "cliffs_delta": -0.3918032786885246,
+     "ci95": [
+      -0.5871926229508196,
+      -0.21963114754098367
+     ],
+     "n_a": 122,
+     "n_b": 60
+    }
+   },
+   {
+    "dataset": "takei2021_brain_kmeans",
+    "label": "DNA seqFISH+, k-means copies",
+    "group": "imaging",
+    "assay": "DNA seqFISH+ (Takei 2021), k-means homolog split",
+    "medians": {
+     "ExN": 1.168021350821982,
+     "InN": 1.1856546415447202,
+     "Astro": 0.7590228532331443,
+     "Oligo": 0.9279001081952236,
+     "Micro": 0.41467724947148055
+    },
+    "n_by_class": {
+     "Astro": 148,
+     "ExN": 1870,
+     "InN": 303,
+     "Micro": 86,
+     "Oligo": 74
+    },
+    "metric": "distances",
+    "exn_minus_oligo_diff": {
+     "a": "ExN",
+     "b": "Oligo",
+     "n_a": 1870,
+     "n_b": 74,
+     "median_a": 1.168021350821982,
+     "median_b": 0.9279001081952236,
+     "diff": 0.2401212426267585,
+     "ci95": [
+      0.19025920514637565,
+      0.3040838857869663
+     ],
+     "cliffs_delta": 0.7063159416100593,
+     "mannwhitney_p": 5.790183346303652e-25
+    },
+    "exn_minus_oligo": {
+     "cliffs_delta": 0.7063159416100593,
+     "ci95": [
+      0.6020664113311173,
+      0.8013730307847955
+     ],
+     "n_a": 1870,
+     "n_b": 74
+    },
+    "astro_minus_oligo": {
+     "cliffs_delta": -0.381300219138057,
+     "ci95": [
+      -0.539686815193572,
+      -0.2185765157048941
+     ],
+     "n_a": 148,
+     "n_b": 74
+    }
+   },
+   {
+    "dataset": "tan2021_dipc_rep1",
+    "label": "Dip-C 3D models",
+    "group": "models",
+    "assay": "Dip-C 3-D models (Tan 2021, replicate 1)",
+    "medians": {
+     "ExN": 1.292709290114943,
+     "InN": 1.4052058012861273,
+     "Astro": 1.0937023502353642,
+     "Oligo": 1.0486268778212473,
+     "OPC": 1.2846637690341978,
+     "Micro": 0.914163126535561
+    },
+    "n_by_class": {
+     "Astro": 30,
+     "ExN": 214,
+     "InN": 56,
+     "Micro": 37,
+     "OPC": 24,
+     "Oligo": 74
+    },
+    "metric": "distances",
+    "exn_minus_oligo_diff": {
+     "a": "ExN",
+     "b": "Oligo",
+     "n_a": 214,
+     "n_b": 74,
+     "median_a": 1.292709290114943,
+     "median_b": 1.0486268778212473,
+     "diff": 0.24408241229369576,
+     "ci95": [
+      0.22803431006538338,
+      0.26375352183954076
+     ],
+     "cliffs_delta": 0.9974741096236424,
+     "mannwhitney_p": 1.909029600956594e-37
+    },
+    "exn_minus_oligo": {
+     "cliffs_delta": 0.9974741096236424,
+     "ci95": [
+      0.9930506441020459,
+      1.0
+     ],
+     "n_a": 214,
+     "n_b": 74
+    },
+    "astro_minus_oligo": {
+     "cliffs_delta": 0.5180180180180181,
+     "ci95": [
+      0.31977477477477484,
+      0.6946171171171172
+     ],
+     "n_a": 30,
+     "n_b": 74
+    }
+   }
+  ],
+  "kendall_w": {
+   "sequencing_core4": {
+    "W": 0.925,
+    "n_datasets": 8,
+    "n_classes": 4,
+    "chi2": 22.200000000000003,
+    "p": 5.926974801942695e-05,
+    "datasets": [
+     "hires_brain",
+     "gageseq_mouse_cortex",
+     "droplet_hic_mouse_cortex",
+     "paired_hic_mouse_cortex",
+     "dschic_aging_cortex",
+     "schicar_mouse_cortex",
+     "hicrna_mouse_brain",
+     "tan2021_cortex"
+    ],
+    "classes": [
+     "ExN",
+     "InN",
+     "Astro",
+     "Oligo"
+    ],
+    "mean_rank": {
+     "ExN": 3.25,
+     "InN": 3.75,
+     "Astro": 2.0,
+     "Oligo": 1.0
+    }
+   },
+   "sequencing_6": {
+    "W": 0.9650793650793651,
+    "n_datasets": 6,
+    "n_classes": 6,
+    "chi2": 28.952380952380953,
+    "p": 2.369171262398944e-05,
+    "datasets": [
+     "gageseq_mouse_cortex",
+     "droplet_hic_mouse_cortex",
+     "paired_hic_mouse_cortex",
+     "dschic_aging_cortex",
+     "schicar_mouse_cortex",
+     "tan2021_cortex"
+    ],
+    "classes": [
+     "ExN",
+     "InN",
+     "Astro",
+     "Oligo",
+     "OPC",
+     "Micro"
+    ],
+    "mean_rank": {
+     "ExN": 5.0,
+     "InN": 5.833333333333333,
+     "Astro": 3.0,
+     "Oligo": 2.0,
+     "OPC": 4.166666666666667,
+     "Micro": 1.0
+    }
+   },
+   "sequencing_plus_liu_core4": {
+    "W": 0.9308641975308642,
+    "n_datasets": 9,
+    "n_classes": 4,
+    "chi2": 25.133333333333333,
+    "p": 1.4480404930720784e-05,
+    "datasets": [
+     "hires_brain",
+     "gageseq_mouse_cortex",
+     "droplet_hic_mouse_cortex",
+     "paired_hic_mouse_cortex",
+     "dschic_aging_cortex",
+     "schicar_mouse_cortex",
+     "hicrna_mouse_brain",
+     "tan2021_cortex",
+     "liu2025_mop"
+    ],
+    "classes": [
+     "ExN",
+     "InN",
+     "Astro",
+     "Oligo"
+    ],
+    "mean_rank": {
+     "ExN": 3.2222222222222223,
+     "InN": 3.7777777777777777,
+     "Astro": 2.0,
+     "Oligo": 1.0
+    }
+   },
+   "sequencing_plus_liu_6": {
+    "W": 0.9696793002915451,
+    "n_datasets": 7,
+    "n_classes": 6,
+    "chi2": 33.93877551020408,
+    "p": 2.448768703760463e-06,
+    "datasets": [
+     "gageseq_mouse_cortex",
+     "droplet_hic_mouse_cortex",
+     "paired_hic_mouse_cortex",
+     "dschic_aging_cortex",
+     "schicar_mouse_cortex",
+     "tan2021_cortex",
+     "liu2025_mop"
+    ],
+    "classes": [
+     "ExN",
+     "InN",
+     "Astro",
+     "Oligo",
+     "OPC",
+     "Micro"
+    ],
+    "mean_rank": {
+     "ExN": 5.0,
+     "InN": 5.857142857142857,
+     "Astro": 3.0,
+     "Oligo": 2.0,
+     "OPC": 4.142857142857143,
+     "Micro": 1.0
+    }
+   },
+   "sequencing_plus_imaging_core4": {
+    "W": 0.9,
+    "n_datasets": 10,
+    "n_classes": 4,
+    "chi2": 27.0,
+    "p": 5.887355583577668e-06,
+    "datasets": [
+     "hires_brain",
+     "gageseq_mouse_cortex",
+     "droplet_hic_mouse_cortex",
+     "paired_hic_mouse_cortex",
+     "dschic_aging_cortex",
+     "schicar_mouse_cortex",
+     "hicrna_mouse_brain",
+     "tan2021_cortex",
+     "liu2025_mop",
+     "takei2021_brain_labels"
+    ],
+    "classes": [
+     "ExN",
+     "InN",
+     "Astro",
+     "Oligo"
+    ],
+    "mean_rank": {
+     "ExN": 3.2,
+     "InN": 3.8,
+     "Astro": 1.9,
+     "Oligo": 1.1
+    }
+   }
+  },
+  "liu_lineage_pooled": {
+   "n_oligo": 1930,
+   "n_opc": 310,
+   "opc_share": 0.13839285714285715,
+   "median_astro": 0.9600945298587253,
+   "median_oligo_lineage": 0.9120558138011436,
+   "astro_minus_lineage": {
+    "cliffs_delta": 0.162551331508213,
+    "ci95": [
+     0.12191135981831758,
+     0.20288366413638625
+    ],
+    "n_a": 1148,
+    "n_b": 2240
+   }
+  },
+  "definitions": {
+   "value": "log2((n_short + 0.5) / (n_long + 0.5)) per cell (map offset 1 over offsets 19-53); cells with >= 500 cis contacts between different bins; imaging: log2(median d of pairs 19-54 Mb apart / median d of pairs 1-2 Mb apart) per cell, pairs within a chromosome copy; cells with >= 10 short and >= 30 long pairs",
+   "cliff": "Cliff's delta (2U / (n_a n_b) - 1), bootstrap 95% CI over cells (1000)",
+   "profiles": "GAGE-seq: per cell, the contacts at each 1-Mb map offset over its contacts between different bins, class median; Liu 2025: per cell, the median distance (um) of locus pairs [k - 0.5, k + 0.5) Mb apart, class median"
+  }
+ },
+ "provenance": {
+  "revision": "ad8aa0f+uncommitted:separation.py-9782acd1:cross_assay.py-b399354d:pilot.py-bd31a485",
+  "date": "2026-10-11T19:21:57+00:00",
+  "host": "sh04-05n13.int",
+  "cpu": "AMD EPYC 9754 128-Core Processor",
+  "cpus": 4,
+  "slurm_job": "47406658",
+  "load_avg_1min": 211.96,
+  "versions": {
+   "python": "3.12.1",
+   "numpy": "2.2.6",
+   "scipy": "1.14.1",
+   "pandas": "2.2.3",
+   "cooler": "0.10.4",
+   "zarr": "3.4.0",
+   "torch": "2.5.1+cu124",
+   "uchrom": "0.3.0.dev0",
+   "chromdata": "0.1.0"
+  },
+  "script": "benchmarks/cross_assay/cross_assay.py",
+  "datasets": [
+   "hires_brain",
+   "gageseq_mouse_cortex",
+   "droplet_hic_mouse_cortex",
+   "paired_hic_mouse_cortex",
+   "dschic_aging_cortex",
+   "schicar_mouse_cortex",
+   "tan2021_cortex",
+   "hicrna_mouse_brain",
+   "liu2025_mop",
+   "takei2021_brain_labels",
+   "takei2021_brain_kmeans",
+   "tan2021_dipc_rep1"
+  ],
+  "params": {
+   "seed": 0,
+   "n_boot": 1000,
+   "profile_max_mb": 60
+  }
+ }
+}

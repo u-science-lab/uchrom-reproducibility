@@ -1,0 +1,741 @@
+{
+ "generated": "2026-10-05 22:54 PDT",
+ "hosted": "https://uchrom-browser.u-science.org",
+ "data": "https://uchrom-atlas-r2.u-science.org",
+ "client": {
+  "host": "Weizes-MacBook-Pro.local",
+  "python": "3.12.13"
+ },
+ "wake_s": 0.4,
+ "reps": 2,
+ "datasets": [
+  {
+   "id": "hicrna_mouse_brain",
+   "size_mb": 2254.0,
+   "passes": [
+    {
+     "open": 1.138,
+     "n_cells": 12474,
+     "n_spots": 0,
+     "first_view": 0.461,
+     "first_view_kind": "spatial",
+     "first_view_status": 200,
+     "bulk_map": 0.953,
+     "bulk_map_status": 200,
+     "one_cell": 1.422,
+     "one_cell_status": 200,
+     "all_cells": 0.427,
+     "all_cells_status": 200
+    },
+    {
+     "open": 1.014,
+     "n_cells": 12474,
+     "n_spots": 0,
+     "first_view": 0.395,
+     "first_view_kind": "spatial",
+     "first_view_status": 200,
+     "bulk_map": 0.783,
+     "bulk_map_status": 200,
+     "one_cell": 0.568,
+     "one_cell_status": 200,
+     "all_cells": 0.422,
+     "all_cells_status": 200
+    }
+   ]
+  },
+  {
+   "id": "hicrna_mouse_embryo",
+   "size_mb": 4577.6,
+   "passes": [
+    {
+     "open": 2.689,
+     "n_cells": 64861,
+     "n_spots": 0,
+     "first_view": 0.727,
+     "first_view_kind": "spatial",
+     "first_view_status": 200,
+     "bulk_map": 1.198,
+     "bulk_map_status": 200,
+     "one_cell": 1.125,
+     "one_cell_status": 200,
+     "all_cells": 1.615,
+     "all_cells_status": 200
+    },
+    {
+     "open": 2.42,
+     "n_cells": 64861,
+     "n_spots": 0,
+     "first_view": 0.688,
+     "first_view_kind": "spatial",
+     "first_view_status": 200,
+     "bulk_map": 0.696,
+     "bulk_map_status": 200,
+     "one_cell": 0.604,
+     "one_cell_status": 200,
+     "all_cells": 1.607,
+     "all_cells_status": 200
+    }
+   ]
+  },
+  {
+   "id": "hicrna_human_melanoma",
+   "size_mb": 2727.7,
+   "passes": [
+    {
+     "open": 1.667,
+     "n_cells": 12649,
+     "n_spots": 0,
+     "first_view": 0.452,
+     "first_view_kind": "spatial",
+     "first_view_status": 200,
+     "bulk_map": 1.077,
+     "bulk_map_status": 200,
+     "one_cell": 1.567,
+     "one_cell_status": 200,
+     "all_cells": 0.489,
+     "all_cells_status": 200
+    },
+    {
+     "open": 1.112,
+     "n_cells": 12649,
+     "n_spots": 0,
+     "first_view": 0.388,
+     "first_view_kind": "spatial",
+     "first_view_status": 200,
+     "bulk_map": 0.782,
+     "bulk_map_status": 200,
+     "one_cell": 0.589,
+     "one_cell_status": 200,
+     "all_cells": 0.426,
+     "all_cells_status": 200
+    }
+   ]
+  },
+  {
+   "id": "chen2026_e13_embryo_50um",
+   "size_mb": 711.4,
+   "passes": [
+    {
+     "open": 1.493,
+     "n_cells": 10112,
+     "n_spots": 0,
+     "first_view": 0.337,
+     "first_view_kind": "spatial",
+     "first_view_status": 200,
+     "bulk_map": 1.519,
+     "bulk_map_status": 200,
+     "one_cell": 1.015,
+     "one_cell_status": 200,
+     "all_cells": 0.373,
+     "all_cells_status": 200
+    },
+    {
+     "open": 1.396,
+     "n_cells": 10112,
+     "n_spots": 0,
+     "first_view": 0.319,
+     "first_view_kind": "spatial",
+     "first_view_status": 200,
+     "bulk_map": 0.778,
+     "bulk_map_status": 200,
+     "one_cell": 0.636,
+     "one_cell_status": 200,
+     "all_cells": 0.4,
+     "all_cells_status": 200
+    }
+   ]
+  },
+  {
+   "id": "chen2026_brain_embryo_10um",
+   "size_mb": 1887.2,
+   "passes": [
+    {
+     "open": 2.885,
+     "n_cells": 40468,
+     "n_spots": 0,
+     "first_view": 0.489,
+     "first_view_kind": "spatial",
+     "first_view_status": 200,
+     "bulk_map": 1.38,
+     "bulk_map_status": 200,
+     "one_cell": 1.522,
+     "one_cell_status": 200,
+     "all_cells": 1.45,
+     "all_cells_status": 200
+    },
+    {
+     "open": 2.207,
+     "n_cells": 40468,
+     "n_spots": 0,
+     "first_view": 0.553,
+     "first_view_kind": "spatial",
+     "first_view_status": 200,
+     "bulk_map": 0.718,
+     "bulk_map_status": 200,
+     "one_cell": 0.646,
+     "one_cell_status": 200,
+     "all_cells": 1.558,
+     "all_cells_status": 200
+    }
+   ]
+  },
+  {
+   "id": "chen2026_brain_embryo_20um",
+   "size_mb": 1446.1,
+   "passes": [
+    {
+     "open": 1.488,
+     "n_cells": 28769,
+     "n_spots": 0,
+     "first_view": 0.435,
+     "first_view_kind": "spatial",
+     "first_view_status": 200,
+     "bulk_map": 0.77,
+     "bulk_map_status": 200,
+     "one_cell": 0.778,
+     "one_cell_status": 200,
+     "one_cell_tries": 12,
+     "all_cells": 0.81,
+     "all_cells_status": 200
+    },
+    {
+     "open": 1.314,
+     "n_cells": 28769,
+     "n_spots": 0,
+     "first_view": 0.452,
+     "first_view_kind": "spatial",
+     "first_view_status": 200,
+     "bulk_map": 0.463,
+     "bulk_map_status": 200,
+     "one_cell": 0.472,
+     "one_cell_status": 200,
+     "one_cell_tries": 12,
+     "all_cells": 0.573,
+     "all_cells_status": 200
+    }
+   ]
+  },
+  {
+   "id": "chen2026_cortex_adult_10um",
+   "size_mb": 664.1,
+   "passes": [
+    {
+     "open": 1.42,
+     "n_cells": 16986,
+     "n_spots": 0,
+     "first_view": 0.437,
+     "first_view_kind": "spatial",
+     "first_view_status": 200,
+     "bulk_map": 0.711,
+     "bulk_map_status": 200,
+     "one_cell": 0.939,
+     "one_cell_status": 200,
+     "one_cell_tries": 29,
+     "all_cells": 0.579,
+     "all_cells_status": 200
+    },
+    {
+     "open": 1.173,
+     "n_cells": 16986,
+     "n_spots": 0,
+     "first_view": 0.549,
+     "first_view_kind": "spatial",
+     "first_view_status": 200,
+     "bulk_map": 0.664,
+     "bulk_map_status": 200,
+     "one_cell": 0.507,
+     "one_cell_status": 200,
+     "one_cell_tries": 29,
+     "all_cells": 0.4,
+     "all_cells_status": 200
+    }
+   ]
+  },
+  {
+   "id": "chen2026_hippocampus_adult_10um",
+   "size_mb": 305.9,
+   "passes": [
+    {
+     "open": 1.455,
+     "n_cells": 17817,
+     "n_spots": 0,
+     "first_view": 0.556,
+     "first_view_kind": "spatial",
+     "first_view_status": 200,
+     "bulk_map": 1.352,
+     "bulk_map_status": 200,
+     "one_cell": 1.222,
+     "one_cell_status": 200,
+     "all_cells": 0.455,
+     "all_cells_status": 200
+    },
+    {
+     "open": 1.062,
+     "n_cells": 17817,
+     "n_spots": 0,
+     "first_view": 0.401,
+     "first_view_kind": "spatial",
+     "first_view_status": 200,
+     "bulk_map": 0.699,
+     "bulk_map_status": 200,
+     "one_cell": 0.55,
+     "one_cell_status": 200,
+     "all_cells": 0.543,
+     "all_cells_status": 200
+    }
+   ]
+  },
+  {
+   "id": "chen2026_cerebellum_adult_20um",
+   "size_mb": 164.8,
+   "passes": [
+    {
+     "open": 1.107,
+     "n_cells": 24022,
+     "n_spots": 0,
+     "first_view": 0.428,
+     "first_view_kind": "spatial",
+     "first_view_status": 200
+    },
+    {
+     "open": 0.691,
+     "n_cells": 24022,
+     "n_spots": 0,
+     "first_view": 0.368,
+     "first_view_kind": "spatial",
+     "first_view_status": 200
+    }
+   ]
+  },
+  {
+   "id": "atac_hic_mouse_brain",
+   "size_mb": 389.7,
+   "passes": [
+    {
+     "open": 1.104,
+     "n_cells": 4290,
+     "n_spots": 0,
+     "first_view": 0.461,
+     "first_view_kind": "spatial",
+     "first_view_status": 200,
+     "bulk_map": 0.934,
+     "bulk_map_status": 200,
+     "one_cell": 0.855,
+     "one_cell_status": 200,
+     "all_cells": 0.344,
+     "all_cells_status": 200
+    },
+    {
+     "open": 1.109,
+     "n_cells": 4290,
+     "n_spots": 0,
+     "first_view": 0.494,
+     "first_view_kind": "spatial",
+     "first_view_status": 200,
+     "bulk_map": 0.716,
+     "bulk_map_status": 200,
+     "one_cell": 0.786,
+     "one_cell_status": 200,
+     "all_cells": 0.287,
+     "all_cells_status": 200
+    }
+   ]
+  },
+  {
+   "id": "stevens2017_mesc",
+   "size_mb": 25.8,
+   "passes": [
+    {
+     "open": 0.527,
+     "n_cells": 8,
+     "n_spots": 205706,
+     "first_view": 0.929,
+     "first_view_kind": "geometry",
+     "first_view_status": 200,
+     "bulk_map": 0.615,
+     "bulk_map_status": 200,
+     "one_cell": 0.417,
+     "one_cell_status": 200,
+     "all_cells": 0.279,
+     "all_cells_status": 200
+    },
+    {
+     "open": 0.701,
+     "n_cells": 8,
+     "n_spots": 205706,
+     "first_view": 1.1,
+     "first_view_kind": "geometry",
+     "first_view_status": 200,
+     "bulk_map": 0.595,
+     "bulk_map_status": 200,
+     "one_cell": 0.84,
+     "one_cell_status": 200,
+     "all_cells": 0.285,
+     "all_cells_status": 200
+    }
+   ]
+  },
+  {
+   "id": "hires_brain",
+   "size_mb": 260.9,
+   "passes": [
+    {
+     "open": 0.95,
+     "n_cells": 399,
+     "n_spots": 9868092,
+     "first_view": 2.62,
+     "first_view_kind": "geometry",
+     "first_view_status": 200,
+     "bulk_map": 1.151,
+     "bulk_map_status": 200,
+     "one_cell": 0.599,
+     "one_cell_status": 200,
+     "all_cells": 0.445,
+     "all_cells_status": 200
+    },
+    {
+     "open": 0.697,
+     "n_cells": 399,
+     "n_spots": 9868092,
+     "first_view": 2.452,
+     "first_view_kind": "geometry",
+     "first_view_status": 200,
+     "bulk_map": 0.614,
+     "bulk_map_status": 200,
+     "one_cell": 0.588,
+     "one_cell_status": 200,
+     "all_cells": 0.292,
+     "all_cells_status": 200
+    }
+   ]
+  },
+  {
+   "id": "hires_embryo",
+   "size_mb": 3174.2,
+   "passes": [
+    {
+     "open": 2.008,
+     "n_cells": 7469,
+     "n_spots": 182344800,
+     "first_view": 3.271,
+     "first_view_kind": "geometry",
+     "first_view_status": 200,
+     "bulk_map": 1.23,
+     "bulk_map_status": 200,
+     "one_cell": 1.231,
+     "one_cell_status": 200,
+     "all_cells": 0.589,
+     "all_cells_status": 200
+    },
+    {
+     "open": 1.82,
+     "n_cells": 7469,
+     "n_spots": 182344800,
+     "first_view": 3.334,
+     "first_view_kind": "geometry",
+     "first_view_status": 200,
+     "bulk_map": 0.768,
+     "bulk_map_status": 200,
+     "one_cell": 0.656,
+     "one_cell_status": 200,
+     "all_cells": 0.332,
+     "all_cells_status": 200
+    }
+   ]
+  },
+  {
+   "id": "dschic_aging_cortex",
+   "size_mb": 2277.9,
+   "passes": [
+    {
+     "open": 0.666,
+     "n_cells": 32777,
+     "n_spots": 0,
+     "first_view": 0.695,
+     "first_view_kind": "embedding",
+     "first_view_status": 200,
+     "bulk_map": 0.792,
+     "bulk_map_status": 200,
+     "one_cell": 1.238,
+     "one_cell_status": 200,
+     "all_cells": 0.797,
+     "all_cells_status": 200
+    },
+    {
+     "open": 0.583,
+     "n_cells": 32777,
+     "n_spots": 0,
+     "first_view": 0.65,
+     "first_view_kind": "embedding",
+     "first_view_status": 200,
+     "bulk_map": 0.717,
+     "bulk_map_status": 200,
+     "one_cell": 0.604,
+     "one_cell_status": 200,
+     "all_cells": 0.39,
+     "all_cells_status": 200
+    }
+   ]
+  },
+  {
+   "id": "gageseq_mouse_cortex",
+   "size_mb": 484.9,
+   "passes": [
+    {
+     "open": 1.115,
+     "n_cells": 3296,
+     "n_spots": 0,
+     "first_view": 0.267,
+     "first_view_kind": "embedding",
+     "first_view_status": 200,
+     "bulk_map": 1.275,
+     "bulk_map_status": 200,
+     "one_cell": 1.108,
+     "one_cell_status": 200,
+     "all_cells": 0.391,
+     "all_cells_status": 200
+    },
+    {
+     "open": 0.667,
+     "n_cells": 3296,
+     "n_spots": 0,
+     "first_view": 0.325,
+     "first_view_kind": "embedding",
+     "first_view_status": 200,
+     "bulk_map": 0.667,
+     "bulk_map_status": 200,
+     "one_cell": 0.535,
+     "one_cell_status": 200,
+     "all_cells": 0.247,
+     "all_cells_status": 200
+    }
+   ]
+  },
+  {
+   "id": "gageseq_human_bm_cd34",
+   "size_mb": 319.0,
+   "passes": [
+    {
+     "open": 1.207,
+     "n_cells": 1445,
+     "n_spots": 0,
+     "first_view": 0.167,
+     "first_view_kind": "embedding",
+     "first_view_status": 200,
+     "bulk_map": 1.252,
+     "bulk_map_status": 200,
+     "one_cell": 2.939,
+     "one_cell_status": 200,
+     "all_cells": 0.272,
+     "all_cells_status": 200
+    },
+    {
+     "open": 0.542,
+     "n_cells": 1445,
+     "n_spots": 0,
+     "first_view": 0.159,
+     "first_view_kind": "embedding",
+     "first_view_status": 200,
+     "bulk_map": 0.935,
+     "bulk_map_status": 200,
+     "one_cell": 0.678,
+     "one_cell_status": 200,
+     "all_cells": 0.338,
+     "all_cells_status": 200
+    }
+   ]
+  },
+  {
+   "id": "droplet_hic_mouse_cortex",
+   "size_mb": 321.5,
+   "passes": [
+    {
+     "open": 1.176,
+     "n_cells": 6235,
+     "n_spots": 0,
+     "first_view": 0.439,
+     "first_view_kind": "embedding",
+     "first_view_status": 200,
+     "bulk_map": 1.303,
+     "bulk_map_status": 200,
+     "one_cell": 1.561,
+     "one_cell_status": 200,
+     "all_cells": 0.405,
+     "all_cells_status": 200
+    },
+    {
+     "open": 1.105,
+     "n_cells": 6235,
+     "n_spots": 0,
+     "first_view": 0.275,
+     "first_view_kind": "embedding",
+     "first_view_status": 200,
+     "bulk_map": 0.682,
+     "bulk_map_status": 200,
+     "one_cell": 0.703,
+     "one_cell_status": 200,
+     "all_cells": 0.252,
+     "all_cells_status": 200
+    }
+   ]
+  },
+  {
+   "id": "paired_hic_mouse_cortex",
+   "size_mb": 339.3,
+   "passes": [
+    {
+     "open": 1.444,
+     "n_cells": 24284,
+     "n_spots": 0,
+     "first_view": 0.678,
+     "first_view_kind": "embedding",
+     "first_view_status": 200,
+     "bulk_map": 1.16,
+     "bulk_map_status": 200,
+     "one_cell": 1.473,
+     "one_cell_status": 200,
+     "all_cells": 1.003,
+     "all_cells_status": 200
+    },
+    {
+     "open": 0.569,
+     "n_cells": 24284,
+     "n_spots": 0,
+     "first_view": 0.768,
+     "first_view_kind": "embedding",
+     "first_view_status": 200,
+     "bulk_map": 0.662,
+     "bulk_map_status": 200,
+     "one_cell": 0.773,
+     "one_cell_status": 200,
+     "all_cells": 0.579,
+     "all_cells_status": 200
+    }
+   ]
+  },
+  {
+   "id": "schicar_mouse_cortex",
+   "size_mb": 262.8,
+   "passes": [
+    {
+     "open": 1.82,
+     "n_cells": 5313,
+     "n_spots": 0,
+     "first_view": 0.296,
+     "first_view_kind": "embedding",
+     "first_view_status": 200,
+     "bulk_map": 0.835,
+     "bulk_map_status": 200,
+     "one_cell": 0.742,
+     "one_cell_status": 200,
+     "all_cells": 0.358,
+     "all_cells_status": 200
+    },
+    {
+     "open": 1.914,
+     "n_cells": 5313,
+     "n_spots": 0,
+     "first_view": 0.41,
+     "first_view_kind": "embedding",
+     "first_view_status": 200,
+     "bulk_map": 0.797,
+     "bulk_map_status": 200,
+     "one_cell": 0.602,
+     "one_cell_status": 200,
+     "all_cells": 0.582,
+     "all_cells_status": 200
+    }
+   ]
+  },
+  {
+   "id": "unic_human",
+   "size_mb": 681.2,
+   "passes": [
+    {
+     "open": 2.076,
+     "n_cells": 23,
+     "n_spots": 0,
+     "first_view": 0.151,
+     "first_view_kind": "embedding",
+     "first_view_status": 200,
+     "bulk_map": 1.07,
+     "bulk_map_status": 200,
+     "one_cell": 1.414,
+     "one_cell_status": 200,
+     "all_cells": 0.755,
+     "all_cells_status": 200
+    },
+    {
+     "open": 1.671,
+     "n_cells": 23,
+     "n_spots": 0,
+     "first_view": 0.153,
+     "first_view_kind": "embedding",
+     "first_view_status": 200,
+     "bulk_map": 0.79,
+     "bulk_map_status": 200,
+     "one_cell": 0.976,
+     "one_cell_status": 200,
+     "all_cells": 0.726,
+     "all_cells_status": 200
+    }
+   ]
+  },
+  {
+   "id": "unic_mouse",
+   "size_mb": 270.9,
+   "passes": [
+    {
+     "open": 1.309,
+     "n_cells": 20,
+     "n_spots": 0,
+     "first_view": 0.147,
+     "first_view_kind": "embedding",
+     "first_view_status": 200,
+     "bulk_map": 0.981,
+     "bulk_map_status": 200,
+     "one_cell": 1.098,
+     "one_cell_status": 200,
+     "all_cells": 0.721,
+     "all_cells_status": 200
+    },
+    {
+     "open": 1.549,
+     "n_cells": 20,
+     "n_spots": 0,
+     "first_view": 0.152,
+     "first_view_kind": "embedding",
+     "first_view_status": 200,
+     "bulk_map": 0.713,
+     "bulk_map_status": 200,
+     "one_cell": 0.739,
+     "one_cell_status": 200,
+     "all_cells": 0.703,
+     "all_cells_status": 200
+    }
+   ]
+  },
+  {
+   "id": "takei2025_cerebellum",
+   "size_mb": 2050.7,
+   "passes": [
+    {
+     "open": 1.201,
+     "n_cells": 1799,
+     "n_spots": 10912638,
+     "first_view": 4.22,
+     "first_view_kind": "geometry",
+     "first_view_status": 200
+    },
+    {
+     "open": 1.135,
+     "n_cells": 1799,
+     "n_spots": 10912638,
+     "first_view": 4.35,
+     "first_view_kind": "geometry",
+     "first_view_status": 200
+    }
+   ]
+  }
+ ]
+}

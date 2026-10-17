@@ -1,0 +1,4 @@
+# U-Chrom commit the benchmarks and figures run with (see env/README.md): main at the split, 2026-10-17
+chromdata @ git+https://github.com/u-science-lab/U-Chrom@28409ca4470788fb1e8288a890c9591ef1f516a2#subdirectory=packages/chromdata
+uchrom-browser @ git+https://github.com/u-science-lab/U-Chrom@28409ca4470788fb1e8288a890c9591ef1f516a2#subdirectory=packages/uchrom-browser
+u-chrom[web] @ git+https://github.com/u-science-lab/U-Chrom@28409ca4470788fb1e8288a890c9591ef1f516a2#subdirectory=packages/uchrom

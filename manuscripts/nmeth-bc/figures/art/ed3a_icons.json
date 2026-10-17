@@ -1,0 +1,28 @@
+{
+ "provider": "openrouter",
+ "model": "openai/gpt-image-2.5-sunburst",
+ "prompt": "Five separate small icons in ONE horizontal row, evenly spaced with wide empty gaps between them, on a plain pure white background (#ffffff), for a Nature Methods figure. Exactly the same style as a clean flat vector icon set: consistent thin dark-grey outlines (#2b2f36), soft muted flat fills in slate blue (#34568b at low saturation), teal (#2a9d8f), orange (#e07a3f), rose pink (#d98cb0) and light grey, no gradients, no text, no letters, no numbers, no logos, no frames around icons. Each icon is one compact connected group. 1 'reconstruct 3D from contacts': a small Hi-C contact map drawn as an isosceles triangle standing on its base, a short right arrow touching it, and a folded 3D chromatin chain drawn as a smooth gently coiled tube of beads in rose pink touching the arrow. 2 'imaged chromatin trace': a round cell nucleus outline with a light grey fill containing a chain of about twelve small bright slate-blue fluorescent dots connected by a thin dark line, like a traced chromosome. 3 'proximity by genomic separation': a loosely coiled chromatin chain of light grey beads with one short teal arc linking two beads close along the chain and one long slate-blue arc linking two beads far apart along the chain. 4 'difference between two cell types': a small neuron in rose pink with a few branching dendrites and a small oligodendrocyte in slate blue with a round body and several thin processes, standing side by side directly on top of a small square heat map made of a mosaic of muted red and blue squares. 5 'recognise single cells': a small round cell in rose pink touching a small square red-and-blue mosaic pattern, with a magnifying glass overlapping both and a small teal check mark.",
+ "size": "1536x1024",
+ "quality": "high",
+ "n": 1,
+ "background": "opaque",
+ "usage": {
+  "prompt_tokens": 392,
+  "completion_tokens": 1372,
+  "total_tokens": 1764,
+  "cost": 0.04312,
+  "is_byok": false,
+  "prompt_tokens_details": {
+   "cached_tokens": 0
+  },
+  "cost_details": {
+   "upstream_inference_cost": 0.04312,
+   "upstream_inference_prompt_cost": 0.00196,
+   "upstream_inference_completions_cost": 0.04116
+  },
+  "completion_tokens_details": {
+   "reasoning_tokens": 0,
+   "image_tokens": 1372
+  }
+ }
+}

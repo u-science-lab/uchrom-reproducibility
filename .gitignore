@@ -1,0 +1,50 @@
+# Python / OS / editors
+__pycache__/
+*.pyc
+.DS_Store
+.venv/
+tmp/
+/REVISION
+
+# Browser benchmark inputs (replicated Takei 2025 FOV 0; benchmarks/fig6/make_scaled.py)
+benchmarks/fig6/_data/
+
+# Agent benchmark: answer key, figure data and grades are tracked; raw transcripts (~40 MB per run) stay local
+benchmarks/fig6/agent_bench/runs/**
+!benchmarks/fig6/agent_bench/runs/**/
+!benchmarks/fig6/agent_bench/runs/**/grades.json
+
+# Figure caches and raw captures (from the paper repository's .gitignore, 2026-10-17)
+manuscripts/full/figures/fig1/*
+!manuscripts/full/figures/fig1/README.md
+!manuscripts/full/figures/fig1/make_fig1.py
+!manuscripts/full/figures/fig1/make_fig1_final.py
+!manuscripts/full/figures/fig1/fig1_final.pdf
+!manuscripts/full/figures/fig1/fig1_final.png
+!manuscripts/full/figures/fig1/legend.md
+!manuscripts/full/figures/fig1/gen_image.py
+!manuscripts/full/figures/fig1/export_logos.py
+!manuscripts/full/figures/fig1/art3/
+manuscripts/full/figures/fig1/art3/*
+!manuscripts/full/figures/fig1/art3/a_flat_1.png
+!manuscripts/full/figures/fig1/logos/
+!manuscripts/full/figures/fig1/logos_ext/
+!manuscripts/full/figures/fig1/refs/
+manuscripts/full/figures/fig1/refs/*
+!manuscripts/full/figures/fig1/refs/DESIGN_NOTES.md
+!manuscripts/full/figures/fig1/_cache/
+manuscripts/full/figures/fig1/_cache/*
+!manuscripts/full/figures/fig1/_cache/cell_1_0_34.csv
+!manuscripts/full/figures/fig1/_cache/schicar_chr2.npy
+!manuscripts/full/figures/fig1/_cache/hic_chr7_53_68.npy
+!manuscripts/full/figures/fig1/_cache/schicar_rna_markers.csv
+!manuscripts/full/figures/fig1/_cache/mcp_icon.svg
+!manuscripts/full/figures/fig1/_cache/logos/
+manuscripts/full/figures/fig2/_cache/
+manuscripts/full/figures/fig3/renders/*.chromdata.zarr/
+manuscripts/full/figures/fig3/renders/hires/*.npz
+manuscripts/full/figures/fig3/renders/**/*.png
+!manuscripts/full/figures/fig3/renders/**/*_crop.png
+!manuscripts/full/figures/fig3/renders/hires/overview_100kb_10kb_1kb.png
+manuscripts/nmeth-bc/figures/captures/*_page.png
+manuscripts/nmeth-bc/figures/_cache/

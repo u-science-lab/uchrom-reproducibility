@@ -1,0 +1,28 @@
+{
+ "provider": "openrouter",
+ "model": "openai/gpt-image-2.5-sunburst",
+ "prompt": "One single small icon centred on a plain pure white background (#ffffff), for a Nature Methods figure, in exactly the style of a clean flat vector icon set: consistent thin dark-grey outlines (#2b2f36), soft muted flat fills in slate blue (#34568b at low saturation), rose pink (#d98cb0), teal (#2a9d8f) and light grey, no gradients inside shapes except the stepwise colours of the grid, no text, no letters, no numbers, no logos, no frame around the icon. The icon means 'is this pattern spatially variable?': on the left, a square grid of 9 by 9 small square spots (a tissue section on a spatial array) coloured by a smooth spatial pattern, a soft rose-pink hotspot in one corner fading stepwise through pale pink into light grey across the grid; on the right, a small bell-shaped curve (a null distribution) drawn as a light-grey filled hump on a short baseline, with a short vertical slate-blue marker line standing far out in its right tail. Wide empty margins.",
+ "size": "1536x1024",
+ "quality": "high",
+ "n": 2,
+ "background": "opaque",
+ "usage": {
+  "prompt_tokens": 458,
+  "completion_tokens": 2744,
+  "total_tokens": 3202,
+  "cost": 0.08461,
+  "is_byok": false,
+  "prompt_tokens_details": {
+   "cached_tokens": 0
+  },
+  "cost_details": {
+   "upstream_inference_cost": 0.08461,
+   "upstream_inference_prompt_cost": 0.00229,
+   "upstream_inference_completions_cost": 0.08232
+  },
+  "completion_tokens_details": {
+   "reasoning_tokens": 0,
+   "image_tokens": 2744
+  }
+ }
+}
