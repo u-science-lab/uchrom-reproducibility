@@ -1,6 +1,6 @@
 # Environment
 
-The benchmarks and figure scripts run with the U-Chrom packages (`chromdata`, `uchrom-browser`, `u-chrom`;
+The benchmarks run with the U-Chrom packages (`chromdata`, `uchrom-browser`, `u-chrom`;
 the native `uchrom-recon` / `uchrom-maps` where a benchmark says so).
 
 * **While developing**: a U-Chrom checkout next to this repository (`../U-Chrom`, or `$UCHROM_REPO`) and its

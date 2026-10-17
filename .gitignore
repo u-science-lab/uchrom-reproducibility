@@ -6,22 +6,10 @@ __pycache__/
 tmp/
 /REVISION
 
-# Browser benchmark inputs (replicated Takei 2025 FOV 0; benchmarks/browser/make_scaled.py)
-benchmarks/browser/_data/
+# Browser benchmark inputs (replicated Takei 2025 FOV 0; supp_fig6/browser/make_scaled.py)
+supp_fig6/browser/_data/
 
 # Agent benchmark: answer key, figure data and grades are tracked; raw transcripts (~40 MB per run) stay local
-benchmarks/agents/runs/**
-!benchmarks/agents/runs/**/
-!benchmarks/agents/runs/**/grades.json
-
-# Figure caches and raw captures
-shared/ecosystem/_cache/*
-!shared/ecosystem/_cache/cell_1_0_34.csv
-!shared/ecosystem/_cache/schicar_chr2.npy
-!shared/ecosystem/_cache/hic_chr7_53_68.npy
-!shared/ecosystem/_cache/schicar_rna_markers.csv
-!shared/ecosystem/_cache/mcp_icon.svg
-!shared/ecosystem/_cache/logos/
-shared/store_panels/_cache/
-figures/*/_cache/
-figures/*/captures/*_page.png
+supp_fig7/runs/**
+!supp_fig7/runs/**/
+!supp_fig7/runs/**/grades.json
