@@ -1,7 +1,7 @@
 #!/bin/bash
 # HiRES adult brain (Liu et al. 2023) on Sherlock: fetch the registered `hires2023_meta` (70 MB) and
 # `hires2023_brain` (the 426 brain cells' pairs + 20 kb diploid structures, 4.5 GB, GEO GSE223917) into
-# $UCHROM_DATA/hires2023/raw/GSE223917 for the EMber reconstructions of benchmarks/cross_assay.  GEO gives no md5:
+# $UCHROM_DATA/hires2023/raw/GSE223917 for the reconstructions of benchmarks/cross_assay.  GEO gives no md5:
 # the md5 of every file is written next to them (cells_md5.txt) once downloaded.
 #
 #   sbatch --export=ALL,REPO=$SCRATCH/uchrom-nd/repo-xa,REPRO=$SCRATCH/uchrom-nd/repro benchmarks/cross_assay/sherlock/hires_brain.sbatch

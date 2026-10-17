@@ -23,7 +23,7 @@ Stages (``--stages``; each writes per-cell tables into ``--work``, ``analyze`` r
 * ``guo``      Guo 2026 spatial Hi-C-RNA brain: the stored contact-distance histograms (``ContactStats``) -> the ratio
                over the histogram bins closest to 1-2 / 19-53 Mb, and Guo et al.'s short / long ratio
                (``ContactFeatureParams.guo2026``);
-* ``imaging``  structure sets of ``benchmarks/screcon/matched_data.py`` (``--sets``: Takei 2021 brain with the
+* ``imaging``  structure sets of ``lib/matched_data.py`` (``--sets``: Takei 2021 brain with the
                authors' DBSCAN homologs, with the k-means split, Tan 2021 Dip-C models) -> per-cell distances;
 * ``analyze``  class medians, ExN - Oligo (bootstrap CI, Cliff's delta, adjusted for depth, at thinned depth,
                without cycling cells), class rankings, sign agreement, Kendall's W -> ``--results``.
@@ -56,7 +56,7 @@ LONG_OFF = (19, 53)               # separations 18-54 Mb
 MITO_OFF = (2, 12)                # Nagano et al. 2017's mitotic band 2-12 Mb, coarsely
 SHORT_BP = (1.0e6, 2.0e6)         # imaging / exact separations
 LONG_BP = (19.0e6, 53.0e6)
-UNIT_BP = (0.75e6, 1.25e6)        # the 1-Mb unit of benchmarks/screcon/matched.py
+UNIT_BP = (0.75e6, 1.25e6)        # the 1-Mb unit of the matched structure sets
 AUTOSOMES = [f"chr{k}" for k in range(1, 20)]
 CLASSES = ["ExN", "InN", "Astro", "Oligo", "OPC", "Micro"]
 CORE = ["ExN", "InN", "Astro", "Oligo"]
@@ -359,7 +359,7 @@ def imaging_metrics(X: np.ndarray, chrom: np.ndarray, start: np.ndarray, end: np
 
 
 def stage_imaging(work: Path, sets_dir: Path) -> dict:
-    sys.path.insert(0, str(HERE.parent / "screcon"))
+    sys.path.insert(0, str(HERE / "lib"))
     from matched_data import load_set
 
     log = {}
@@ -713,7 +713,7 @@ def main():
     ap.add_argument("--stages", nargs="+", default=["seq", "tan", "guo", "imaging", "analyze"])
     ap.add_argument("--datasets", nargs="+", default=list(DATASETS))
     ap.add_argument("--tan-dir", type=Path)
-    ap.add_argument("--tan-cells", type=Path, default=HERE.parent / "screcon" / "data" / "tan2021_adult_cortex_cells.tsv")
+    ap.add_argument("--tan-cells", type=Path, default=HERE / "lib" / "data" / "tan2021_adult_cortex_cells.tsv")
     ap.add_argument("--tan-limit", type=int)
     ap.add_argument("--sets", type=Path)
     ap.add_argument("--workers", type=int, default=4)

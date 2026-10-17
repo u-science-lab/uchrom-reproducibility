@@ -1,6 +1,6 @@
 #!/bin/bash
 # Single cells across assays (benchmarks/cross_assay/transfer.py): locus signatures of ExN vs Oligo from imaging and
-# from each EMber reconstruction, scored on single cells of the other kind; AUROC.  Reads the recon.py outputs
+# from each reconstruction, scored on single cells of the other kind; AUROC.  Reads the recon.py outputs
 # ($SCRATCH/uchrom-nd/runs/xassay/recon_*) and the Liu 2025 store.
 #
 #   sbatch --export=ALL,REPO=$SCRATCH/uchrom-nd/repo-xa,REPRO=$SCRATCH/uchrom-nd/repro,UCHROM_REVISION=...[,LIMIT=30] benchmarks/cross_assay/sherlock/transfer.sbatch

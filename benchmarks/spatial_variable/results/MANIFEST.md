@@ -1,7 +1,7 @@
 # spatial_variable — committed results
 
 The numbers behind the docs page *Spatial variation across a tissue* (`docs/source/schic/spatial.md`) and the
-figure data of nmeth-bc Fig. 2, as the scripts wrote them with `benchmarks/_record.py` (each file carries its
+figure data of Extended Data Figs 2 and 3, as the scripts wrote them with `benchmarks/_record.py` (each file carries its
 `provenance`: revision, host, job, package versions, datasets, parameters).  Data: the spatial Hi-C-RNA spots of
 Guo et al. 2026 (GEO GSE311199; atlas stores `hicrna_mouse_brain`, `hicrna_human_melanoma`), per-spot contact
 statistics and window counts from the samples' `.nodups.pairs.gz` (`apps/atlas/recipes/spatial_hicrna/sherlock/`).
@@ -22,4 +22,4 @@ revisions 2f1f105 and 93850ca, which differ only by the added `pairs_windows.py`
 the `code` field in the first line of each job's log (archived with the run, below); the `.revision` files written
 next to the contact statistics may name a later sync and are not authoritative.
 
-Figure data (nmeth-bc Fig. 2) go to the paper repository (written by the same summary runs), `manuscripts/nmeth-bc/figures/results/spatial_variable_<tissue>{.json,.npz,_spots.parquet,_calibration.parquet,_local.parquet}`, from the same summary jobs.
+Figure data (Extended Data Figs 2, 3): `spatial_variable_<tissue>{.json,.npz,_spots.parquet,_calibration.parquet,_local.parquet}` here, from the same summary jobs.

@@ -1,4 +1,4 @@
-"""Inputs of the nmeth-bc Fig. 2, the cross-assay analysis (manuscripts/nmeth-bc/figures/
+"""Inputs of Fig. 2, the cross-assay analysis (figures/fig2/
 make_fig2.py; Extended Data until 2026-10-13), gathered from this benchmark's results:
 
 * ``results/cross_assay.json``, ``results/recon/recon_<dataset>.json``, ``results/recon/loci_<dataset>.json``,
@@ -6,7 +6,7 @@ make_fig2.py; Extended Data until 2026-10-13), gathered from this benchmark's re
 * the per-locus and per-pair tables (``biology.py`` outputs: ``locus_effects.parquet``, ``cross_assay_loci_maps.parquet``)
   and the per-cell scores of ``transfer.py`` (``scores_*.parquet``), copied from the Sherlock runs.
 
-Writes ``<paper>/manuscripts/nmeth-bc/figures/results/cross_assay_ed_{classes.json,loci.json,cells.json,
+Writes ``benchmarks/cross_assay/results/cross_assay_ed_{classes.json,loci.json,cells.json,
 maps.parquet,tracks.parquet,scores.parquet}``.
 
     python benchmarks/cross_assay/figdata.py --biology DIR --scores DIR [--out DIR]
@@ -42,10 +42,6 @@ TRANSFER = ["Dip-C (Tan), diploid", "HiRES, diploid", "GAGE-seq, haploid", "dscH
             "scHiCAR, haploid"]
 DEPTH = [("hap", "all"), ("hap_c150k", "150k"), ("hap_c45k", "45k"), ("hap_c20k", "20k")]
 MAP_SOURCES = ["imaging (Liu 2025)", "Dip-C (Tan), diploid", "scHiCAR, haploid"]
-#: labels of the EMber run's biology outputs -> the method-neutral ones
-OLD_LABELS = {"Dip-C (Tan), EMber diploid": "Dip-C (Tan), diploid", "HiRES, EMber diploid": "HiRES, diploid",
-              "GAGE-seq, EMber": "GAGE-seq, haploid", "dscHi-C, EMber": "dscHi-C, haploid",
-              "Droplet Hi-C, EMber": "Droplet Hi-C, haploid", "scHiCAR, EMber": "scHiCAR, haploid"}
 
 
 def load(p: Path) -> dict:
@@ -63,15 +59,13 @@ def main():
     ap.add_argument("--biology", type=Path, required=True, help="biology.py --out folder (+ figdata/ inside or next)")
     ap.add_argument("--scores", type=Path, required=True, help="transfer.py --out folder (scores_*.parquet)")
     ap.add_argument("--out", type=Path)
-    ap.add_argument("--method", default="nucdyn", choices=["ember", "nucdyn"],
-                    help="whose reconstructions: results/ (EMber, 2026-10-11) or results/nucdyn/ (NucDynamics, the paper)")
     a = ap.parse_args()
-    RR = RES if a.method == "ember" else RES / "nucdyn"     # the reconstructions' results; RES: contacts, imaging
+    RR = RES / "nucdyn"                    # the reconstructions' results (NucDynamics); RES: contacts, imaging
     import pilot as P
     from _paper import paper_root
     from _record import save
 
-    out = a.out or paper_root() / "manuscripts" / "nmeth-bc" / "figures" / "results"
+    out = a.out or paper_root() / "benchmarks" / "cross_assay" / "results"
     xa = load(RES / "cross_assay.json")
     fig_prev = load(Path(out) / "cross_assay_figure.json")
     cliff_prev = {r["dataset"]: r.get("exn_minus_oligo") for r in fig_prev["rows"]}
@@ -132,7 +126,6 @@ def main():
             pairs["imaging split-half"] = {**pairs.get("imaging split-half", {}),
                                            **{k: x["imaging_split_half"]["resid"]["spearman"] for k, x in d.items()}}
     eff = pd.read_parquet(a.biology / "locus_effects.parquet")
-    eff = eff.rename(columns=OLD_LABELS)
     rec_cols = [c for c in TRANSFER if c in eff.columns]
     z = (eff[rec_cols] - eff[rec_cols].mean()) / eff[rec_cols].std()
     eff["consensus of reconstructions"] = z.mean(axis=1)
@@ -147,7 +140,6 @@ def main():
     eff[keep].reset_index().rename(columns={"index": "locus"}).to_parquet(Path(out) / "cross_assay_ed_tracks.parquet")
     mp = next(p for p in (a.biology / "figdata", a.biology.parent / "figdata") if (p / "cross_assay_loci_maps.parquet").exists())
     maps = pd.read_parquet(mp / "cross_assay_loci_maps.parquet")
-    maps["source"] = maps["source"].replace(OLD_LABELS)
     maps[maps["source"].isin(MAP_SOURCES)].to_parquet(Path(out) / "cross_assay_ed_maps.parquet")
 
     # ---- cells: AUROC in both directions, depth series, per-cell scores
