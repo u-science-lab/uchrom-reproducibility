@@ -1,0 +1,625 @@
+questions:
+- id: A1
+  category: inspect
+  split: dev
+  kind: anchor
+  data: takei
+  prompt: How many cells, traces and spots does this dataset have?
+  truth: counts
+  grade:
+    numbers:
+    - n_cells
+    - n_traces
+    - n_spots
+    tol: 0
+  family: imgfmt
+- id: A6
+  category: inspect
+  split: test
+  kind: anchor
+  data: schicar
+  prompt: Which cell type has the most cells, and what is its median number of Hi-C contacts per cell?
+  truth: schicar_top_type
+  grade:
+    text: cell_type
+    numbers:
+    - median_contacts
+    tol: 0.01
+  family: imgfmt
+- id: H1
+  category: atlas
+  split: new
+  kind: anchor
+  data: atlas_hires
+  prompt: A ChromData store of single-cell 3D genome structures (HiRES, mouse brain) is served over HTTP at the
+    address given above; it is several GB, so read only what you need. How many cells and how many traces (chromosome
+    copies) does it hold, and what is the median number of spots per cell?
+  truth: atlas_hires_counts
+  grade:
+    numbers:
+    - n_cells
+    - n_traces
+    - median_spots_per_cell
+    tol: 0
+  family: imgfmt
+- id: S3
+  category: spatial
+  split: new
+  kind: anchor
+  data: melanoma
+  prompt: 'This is spatial Hi-C-RNA of a human melanoma; each spot has its own 1-Mb contact map. Read a copy-number
+    profile from the contacts: for each spot of section human_melanoma_r1 with at least 10,000 contacts, count each
+    chromosome''s contact legs (a cis contact gives its chromosome two legs, a trans contact one leg to each of
+    its two chromosomes; chrY excluded), divide by the spot''s total legs, and take log2 of each chromosome''s share
+    over that chromosome''s median share across these spots. Which chromosome varies most across spots (largest
+    standard deviation of this value), and what is that standard deviation?'
+  truth: melanoma_dosage
+  grade:
+    numbers:
+    - sd_top
+    text: top_chrom
+    tol: 0.05
+  family: imgfmt
+- id: T6
+  category: imaging
+  split: v3
+  kind: method
+  data: sox2_holdout
+  prompt: 'This folder holds chromatin tracing of the Sox2 locus in mouse ES cells (Huang et al. 2021, Nat. Genet.),
+    the 129 allele only, as the example tables of SnapFISH-IMPUTE (github.com/hyuyu104/SnapFISH-IMPUTE, PyPI sfimpute
+    0.0.2): sox2_coor.tsv (region, haploid, pos, x, y, z in nm; empty x, y, z = locus not detected), sox2_ann.tsv
+    (region, pos, start, end) and holdout.tsv (region, haploid, pos): 4,025 detected loci held out as a test. Hide
+    the coordinates of the held-out loci (treat them as not detected), impute every missing locus of every haploid
+    with SnapFISH-IMPUTE at its defaults (pairwise distances normalised per genomic separation by a Box-Cox transform,
+    missing distances filled iteratively from similar haploids, then the 3-D coordinates of each haploid recovered
+    from its distances), and compare the imputed coordinates of the held-out loci with their true coordinates. Report
+    the median and the root mean square of the 3-D Euclidean errors (nm) over the 4,025 held-out loci.'
+  truth: t6_snapfish_holdout
+  grade:
+    numbers:
+    - median_error_nm
+    - rmse_nm
+    tol: 0.02
+  method_ref: SnapFISH-IMPUTE (github.com/hyuyu104/SnapFISH-IMPUTE @7f7f1a7 = PyPI sfimpute 0.0.2)
+  check: parity
+  family: imgfmt
+- id: F1
+  category: format
+  split: v3
+  kind: format
+  data: atlas_gageseq
+  prompt: 'A ChromData store of GAGE-seq of the mouse cortex is served over HTTP at the address given above; it
+    embeds a single-cell contact map of every cell (the per-cell maps, key per_cell, 1-Mb bins). For the cell mBC-0716-1_C10,E8,
+    using its chr7 map (bins numbered from 0 at the start of chr7, each contact stored once in the upper triangle,
+    bin1 <= bin2): what is the total number of chr7 contacts, the count of the pixel (30, 31), and the number of
+    contacts with at least one end in bin 30 (a contact within bin 30 counted once)?'
+  truth: f1_embedded_contacts
+  grade:
+    numbers:
+    - total_cis
+    - pixel
+    - row_sum
+    tol: 0
+  check: parity
+  family: imgfmt
+- id: F2
+  category: format
+  split: v3
+  kind: format
+  data: takei_fov4
+  prompt: This ChromData store holds DNA seqFISH+ chromatin tracing of one field of view of mouse ES cells (Takei
+    et al. 2021) together with the nuclear outline of each cell (cell shapes, key nucleus, from the authors' DAPI
+    segmentation). How many cells have an outline, what is the area of the outline of cell 4_23 (the x-y polygon
+    area, holes subtracted, in square micrometres), and which cell has the largest outline, with what area?
+  truth: f2_cell_outlines
+  grade:
+    numbers:
+    - n_outlines
+    - area
+    - largest_area
+    text: largest_cell
+    tol: 0.01
+  check: parity
+  family: imgfmt
+- id: F3
+  category: format
+  split: v3
+  kind: format
+  data: takei_fov4
+  prompt: 'This ChromData store holds DNA seqFISH+ chromatin tracing of one field of view of mouse ES cells (Takei
+    et al. 2021) and stored analysis results with their provenance. The result separation is a per-cell table of
+    3-D distances between loci at short and at long genomic separations. Which function made it, and with which
+    short and long separation windows (bp) and which statistic? What is its stored d_short of cell 4_23? Then recompute,
+    with the same windows and statistic, for cell 4_23 on chr7 only: take each trace (chromosome copy) of the cell
+    on chr7, average the spots of one trace at the same locus, keep loci with finite coordinates, and for every
+    pair of loci of the same trace whose midpoints ((start + end) / 2) are separated by at least the window''s lower
+    bound and less than its upper bound, the Euclidean distance of their coordinates (store units). Report, for
+    the short and the long window, the number of such pairs and the statistic of their distances.'
+  truth: f3_provenance
+  grade:
+    numbers:
+    - stored_d_short
+    - recomputed_n_pairs_short
+    - recomputed_d_short
+    - recomputed_n_pairs_long
+    - recomputed_d_long
+    text: function
+    tol: 0.01
+  check: parity
+  family: imgfmt
+- id: F4
+  category: format
+  split: v3
+  kind: format
+  data: atlas_hires_embryo
+  prompt: 'A ChromData store of HiRES single-cell 3D genome structures of mouse embryos is served over HTTP at the
+    address given above; it is several GB, so read only what you need. For chr19, compute the radius of gyration
+    of every trace (chromosome copy): the root-mean-square distance of its particles with finite coordinates from
+    their centroid, in the store''s coordinate units. How many chr19 traces are there, in how many cells, what is
+    the median radius of gyration over all of them, and what is the median over the traces of the cells of cell
+    type early neurons and of cell type blood (the cell_type column of the cells table)?'
+  truth: f4_large_store_http
+  grade:
+    numbers:
+    - n_traces
+    - median_rg_all
+    - median_rg_early_neurons
+    - median_rg_blood
+    tol: 0.01
+  check: parity
+  family: imgfmt
+- id: T1
+  category: imaging
+  split: v3
+  kind: method
+  data: takei+takei_fofct
+  prompt: 'This is DNA seqFISH+ chromatin tracing of a mouse cerebellum field of view (Takei et al. 2025), given
+    in two formats holding the same spots: a ChromData store, and a 4DN FOF-CT core table (coordinates in micrometres)
+    with its cell table. On chr15, first average each trace''s spots into 1-Mb bins (a spot goes to the bin floor(((start
+    + end) / 2) / 1,000,000); the bin''s coordinates are the mean x, y, z of the trace''s spots in it; bin start
+    = bin index x 1 Mb). Then call domains with the arc p-value TAD caller of ArcFISH (Yu et al. 2025, bioRxiv 2025.11.26.690837;
+    the TADCaller(method="pval") of github.com/hyuyu104/ArcFISH) with a window of 4 Mb and every other setting at
+    its default (FDR cutoff 0.1, hierarchical domains, its own outlier filter and normalisation). How many domains
+    does the finest level have, and at which positions (bin starts, bp) are its boundaries?'
+  truth: arcfish_t1
+  grade:
+    numbers:
+    - n_domains
+    tol: 0
+    rubric:
+    - boundaries_match
+  method_ref: ArcFISH TADCaller(method="pval") (Yu et al. 2025), github.com/hyuyu104/ArcFISH a21d889
+  check: parity
+  family: arcfish
+- id: T2
+  category: imaging
+  split: v3
+  kind: method
+  data: takei2021_fofct
+  prompt: These are the two replicates of the DNA seqFISH+ chromatin tracing of mouse ES cells by Takei et al. 2021
+    (1,200 loci at 25 kb in 20 regions; 4DN FOF-CT core tables, coordinates in micrometres). Read both replicates
+    together (traces of replicate 2 kept apart from those of replicate 1) and call domains on chr6 with the arc
+    p-value TAD caller of ArcFISH (Yu et al. 2025; TADCaller(method="pval") of github.com/hyuyu104/ArcFISH) at its
+    defaults (window 100 kb, FDR cutoff 0.1), after its own outlier filter and normalisation. How many boundaries
+    does it call on chr6 (the finest level), and at which loci (Chrom_Start, bp)?
+  truth: arcfish_t2
+  grade:
+    numbers:
+    - n_boundaries
+    tol: 0
+    rubric:
+    - boundaries_match
+  method_ref: ArcFISH TADCaller(method="pval") (Yu et al. 2025), github.com/hyuyu104/ArcFISH a21d889
+  check: parity
+  family: arcfish
+- id: T3
+  category: imaging
+  split: v3
+  kind: method
+  data: takei2021_fofct
+  prompt: These are the two replicates of the DNA seqFISH+ chromatin tracing of mouse ES cells by Takei et al. 2021
+    (1,200 loci at 25 kb in 20 regions; 4DN FOF-CT core tables, coordinates in micrometres). Read both replicates
+    together (traces of replicate 2 kept apart from those of replicate 1) and call chromatin loops on chr6 with
+    the loop caller of ArcFISH (Yu et al. 2025; LoopCaller with the axis-wise F test of github.com/hyuyu104/ArcFISH)
+    at its defaults (FDR cutoff 0.1, p-value cutoff 1e-5, loop sizes 100 kb to 1 Mb, gap 50 kb, background within
+    50 kb), after its own outlier filter and normalisation. How many loops does it call on chr6, and what are the
+    two anchors (Chrom_Start, bp) of the loop with the smallest p-value?
+  truth: arcfish_t3
+  grade:
+    numbers:
+    - n_loops
+    - anchor1
+    - anchor2
+    tol: 0
+  method_ref: ArcFISH LoopCaller + AxisWiseF (Yu et al. 2025), github.com/hyuyu104/ArcFISH a21d889
+  check: parity
+  family: arcfish
+- id: T4
+  category: imaging
+  split: v3
+  kind: method
+  data: su2020_chr2p
+  prompt: 'This is chromatin tracing of the chromosome 2 p-arm in IMR90 cells (Su et al. 2020), the first 100 traces
+    of the authors'' replicate table, as a FOF-CT core table (coordinates in nm). Call A/B compartments with the
+    compartment caller of ArcFISH (Yu et al. 2025; ABCaller with method "axes" of github.com/hyuyu104/ArcFISH, minimum
+    compartment size 0, no reference genome), after its own outlier filter and normalisation. The caller splits
+    the loci into two clusters: how many loci are in the smaller cluster, and into how many runs of consecutive
+    loci with the same cluster does the chromosome arm fall?'
+  truth: arcfish_t4
+  grade:
+    numbers:
+    - n_smaller
+    - n_runs
+    tol: 0
+  method_ref: ArcFISH ABCaller(method="axes") (Yu et al. 2025), github.com/hyuyu104/ArcFISH a21d889
+  check: parity
+  family: arcfish
+- id: T5
+  category: imaging
+  split: v3
+  kind: method
+  data: bintu2018
+  prompt: 'This is chromatin tracing of chr21:18.6-20.6 Mb in IMR90 cells at 30 kb (Bintu et al. 2018), as a FOF-CT
+    core table (coordinates in nm). Call domain boundaries with the normalised insulation score of Su et al. 2020
+    on the median pairwise distance map, as implemented by ArcFISH''s TADCaller(method="insulation") (github.com/hyuyu104/ArcFISH):
+    window 150 kb on each side of a locus, boundaries at the local maxima of the score with a prominence of at least
+    0.01. How many boundaries are there, and at which loci (Chrom_Start, bp)?'
+  truth: arcfish_t5
+  grade:
+    numbers:
+    - n_boundaries
+    tol: 0
+    rubric:
+    - boundaries_match
+  method_ref: normalised insulation score (Su et al. 2020) as ArcFISH TADCaller(method="insulation"), a21d889
+  check: parity
+  family: arcfish
+- id: R1
+  category: schic
+  split: v3
+  kind: method
+  data: stevens
+  prompt: 'These are the single-cell Hi-C contacts of one haploid mouse ES cell and the authors'' published genome
+    structure of the same cell (Stevens et al. 2017, Nature 544:59; PDB, 100-kb particles, ten models). Reconstruct
+    the cell''s genome structure from the contacts yourself, with the NucDynamics protocol of Stevens et al. (hierarchical
+    simulated annealing ending at 1-Mb particles, e.g. particle sizes 8, 4, 2 and 1 Mb; the length of the annealing
+    schedule is up to you) or an equivalent restraint-based method. Then compare it with the published structure
+    on chromosome 1: average the published first model''s particles into the same 1-Mb bins (bin k holds the particles
+    whose sequence position, the last column of the PDB, is in [k Mb, (k+1) Mb)), and report the Spearman correlation
+    between the pairwise distances of your structure and of the published one over chr1''s bin pairs (each unordered
+    pair of distinct bins present in both, once).'
+  truth: nucdyn_cell1
+  grade:
+    numbers_min:
+    - rho
+  method_ref: NucDynamics (Stevens et al. 2017; github.com/tjs23/nuc_dynamics @ 00eaf0b)
+  check: floor
+  revised: v2 M3, the bin rule and the pair set stated
+  family: schic
+- id: R2
+  category: schic
+  split: v3
+  kind: method
+  data: stevens_cell2
+  prompt: 'These are the single-cell Hi-C contacts of one haploid mouse ES cell and the authors'' published genome
+    structure of the same cell (Stevens et al. 2017, Nature 544:59; Cell 2, GEO GSM2219498; PDB, 100-kb particles,
+    ten models). Reconstruct the cell''s genome structure from the contacts yourself, with the NucDynamics protocol
+    of Stevens et al. (hierarchical simulated annealing ending at 1-Mb particles, e.g. particle sizes 8, 4, 2 and
+    1 Mb; the length of the annealing schedule is up to you) or an equivalent restraint-based method. Then compare
+    it with the published structure on chromosome 1: average the published first model''s particles into the same
+    1-Mb bins (bin k holds the particles whose sequence position, the last column of the PDB, is in [k Mb, (k+1)
+    Mb)), and report the Spearman correlation between the pairwise distances of your structure and of the published
+    one over chr1''s bin pairs (each unordered pair of distinct bins present in both, once).'
+  truth: nucdyn_cell2
+  grade:
+    numbers_min:
+    - rho
+  method_ref: NucDynamics (Stevens et al. 2017; github.com/tjs23/nuc_dynamics @ 00eaf0b)
+  check: floor
+  family: schic
+- id: R3
+  category: schic
+  split: v3
+  kind: method
+  data: schicar
+  prompt: 'Impute the chromosome 1 contact maps of two scHiCAR mouse cortex cells, GTGAAATCTACGAGATAC and TAGACCGGTATGTACCCG
+    (their 1-Mb maps in contacts_cells_1Mb.scool, cell name = cell id), with the convolution and random walk with
+    restart of scHiCluster (Zhou et al. 2019, PNAS 116:14011) exactly as the authors'' code does it (function impute_cpu
+    in schicluster/schicluster.py of the PyPI package schicluster 1.3.2, pad 1, restart probability 0.5): with U
+    the cell''s stored chr1 pixels as an upper-triangular 196 x 196 count matrix (bins of 1 Mb, diagonal included),
+    A = log2(U + U^T + 1); smooth A with a 3 x 3 mean filter (zeros outside the matrix, divided by 9); set the diagonal
+    to 0, then put 1 on the diagonal of every bin whose column sums to 0; divide every column by its sum (P); iterate
+    Q <- 0.5 I + 0.5 Q P from Q = I until the Frobenius norm of the change is below 1e-6 (at most 30 iterations);
+    symmetrise the result, (Q + Q^T) / 2. Report the Pearson correlation between the two cells'' imputed maps over
+    the pixels (i, j) with i < j.'
+  truth: rwr_pair_corr
+  grade:
+    numbers:
+    - r
+    tol: 0.005
+  method_ref: random walk with restart imputation of scHiCluster (Zhou et al. 2019, PNAS); schicluster 1.3.2 (PyPI),
+    impute_cpu
+  check: parity
+  note: 'cells: the median-chr1-contact Oligo and L6CT cells (truth/schic_explore.py)'
+  family: schic
+- id: R4
+  category: schic
+  split: v3
+  kind: method
+  data: schicar+schicar_types
+  prompt: 'Embed all 5,313 scHiCAR mouse cortex cells with scHiCluster (Zhou et al. 2019, PNAS 116:14011) from their
+    1-Mb single-cell maps (contacts_cells_1Mb.scool, cell name = cell id; cell types in schicar_cell_types.tsv),
+    using the autosomes chr1-chr19: impute every cell''s intra-chromosomal map with scHiCluster''s convolution (pad
+    1, a 3 x 3 mean filter) and random walk with restart (restart probability 0.5); binarise each cell''s imputed
+    chromosome map, keeping its values above the cell''s own 80th percentile (the top 20 %) as 1 and the rest as
+    0; reduce the binary vectors of all cells to 20 principal components per chromosome, concatenate the 19 chromosomes''
+    components (380 per cell), and reduce them to 20 principal components with a second PCA. Report the k-nearest-neighbour
+    purity of the cell types in these 20 components: for every cell, the fraction of its 30 nearest other cells
+    (Euclidean distance) that carry the same label in the column cell_type of schicar_cell_types.tsv (22 labels,
+    used as given), averaged over all cells.'
+  truth: schicluster_knn
+  grade:
+    numbers_min:
+    - purity
+  method_ref: scHiCluster embedding (Zhou et al. 2019, PNAS); schicluster 1.3.2 (PyPI), impute_cpu + hicluster_cpu
+    with 20 PCs per chromosome
+  check: floor
+  note: 'k = 30, not 10: at 10 the no-imputation baseline sits within the spread of correct variants (reports/schic.md)'
+  family: schic
+- id: R5
+  category: schic
+  split: v3
+  kind: method
+  data: schicar+mm10_cpg_1mb
+  prompt: 'Compute the single-cell compartment score of scHiCluster (Zhou et al. 2019, PNAS 116:14011; "hicluster
+    compartment", function single_chrom_compartment of the GitHub release v1.3.4 of zhoujt1994/scHiCluster, adopted
+    from the scA/B value of Tan et al. 2018) for all 5,313 scHiCAR mouse cortex cells on the 1-Mb bins of chr1-chr19:
+    for each cell and chromosome, take the cell''s raw intra-chromosomal map from contacts_cells_1Mb.scool (symmetric,
+    each contact once), set its diagonal to 0, put 1 on the diagonal of every bin without any contact, divide every
+    row by its sum, and multiply by the CpG ratio of the bins (mm10_cpg_1Mb.tsv, column cpg_ratio: CG dinucleotides
+    per non-N base); each bin''s score is thus the contact-weighted mean CpG ratio of its partners (its own CpG
+    ratio when it has no contact). Average the scores of each bin over all cells. Then compute the compartment eigenvector
+    E1 of the pseudo-bulk of all cells at 1 Mb (contacts_all.mcool::/resolutions/1000000, its stored balancing weights)
+    per chromosome as cooltools'' eigs_cis does (main diagonal and first off-diagonal ignored, observed over expected,
+    clipped at the 99.9th percentile, leading eigenvector), each chromosome''s E1 oriented to correlate positively
+    (Pearson) with the CpG ratio. The score is built from the CpG ratio, so report how much it tells about E1 beyond
+    the CpG ratio itself: the partial correlation of the mean score and E1 given the CpG ratio, i.e. the Pearson
+    correlation between the residuals of the mean score and of E1 after each is fitted by least squares (with an
+    intercept) as a linear function of the CpG ratio, over the bins of chr1-chr19 that have a CpG ratio above 0
+    and a defined E1.'
+  truth: scab_vs_e1
+  grade:
+    numbers:
+    - r_partial_cpg
+    tol: 0.05
+  method_ref: scHiCluster compartment score (Zhou et al. 2019; GitHub v1.3.4 single_chrom_compartment) + cooltools
+    eigs_cis
+  check: parity
+  note: graded on the partial correlation given CpG, not the plain r (the CpG ratio alone gives 0.704 vs 0.714)
+  family: schic
+- id: R6
+  category: schic
+  split: v3
+  kind: method
+  data: nagano_hap_2i
+  prompt: 'Nagano et al. 2017 (Nature 547:61) placed single haploid mouse ES cells in the cell cycle by the genomic
+    distances of their contacts. For the 395 cells given (cells.tsv; adj/<cell>.adj: the authors'' fend-pair tables
+    fend1, fend2, count; GATC.fends: fend, chromosome, coordinate on mm9), count every fend pair once (ignore the
+    count column; (a, b) and (b, a) are the same pair), keep the pairs whose two fends lie on the same chromosome
+    among chr1-chr19 and chrX (1-19 and X in GATC.fends), with distance d = |coordinate 1 - coordinate 2| (bp) greater
+    than 2^14.5, and compute for each cell the fraction of these contacts in the "near" band (2^14.5 < d <= 2^21)
+    and in the "mitotic" band (2^21 < d <= 2^23.5). Assign each cell a phase with the paper''s gates (schic2 code,
+    "newer" criteria): post-M if mitotic >= 0.3 and near <= 0.42; otherwise pre-M if near > 0.42 and 1.8 x mitotic
+    + near > 1; otherwise G1 if near <= 0.611, early-S if 0.611 < near <= 0.77, and mid-S/G2 if near > 0.77. Report
+    the median near fraction, the median mitotic fraction over the 395 cells, and the number of cells in each of
+    the five phases.'
+  truth: nagano_cellcycle
+  grade:
+    numbers:
+    - median_f_near
+    - median_f_mitotic
+    - n_post-M
+    - n_G1
+    - n_early-S
+    - n_mid-S/G2
+    - n_pre-M
+    tol: 0.02
+  method_ref: Nagano et al. 2017 cell-cycle phasing by contact distances (github.com/tanaylab/schic2, ordering.r)
+  check: parity
+  note: the definitions reproduce the published per-cell f_near_band / f_mitotic_band of all 395 cells (5e-10)
+  family: schic
+- id: BH1
+  category: bulk
+  split: v3
+  kind: method
+  data: rao_chr21_10kb
+  prompt: 'This is the in situ Hi-C map of IMR90 cells of Rao et al. 2014 (Cell 159:1665), chromosome 21 at 10-kb
+    resolution (hg19), as a .cool file with ICE balancing weights in the bin column "weight" (IMR90_chr21_10kb_hg19.cool).
+    Call loops on chr21 with Mustache (Roayaei Ardakany et al. 2020, Genome Biology 21:256) on the balanced map
+    with these parameters: sigma0 = 1.6, 2 octaves, 10 scales (iterations) per octave, q-value (FDR) threshold 0.1
+    (option -pt), sparsity threshold 0.88 (option -st), largest distance between the two anchors of a loop 2 Mb
+    (option -d). Count every loop of chr21 once (one row per loop). How many loops are there?'
+  truth: mustache_loops_chr21
+  grade:
+    numbers:
+    - n_loops
+    tol: 0.04
+  reference: midpoint 161 of U-Chrom 157 and mustache-hic 1.3.3 165; band 154.6-167.4 (reports/bulk.md)
+  method_ref: Mustache (Roayaei Ardakany et al. 2020); mustache-hic 1.3.3 (PyPI; needs numpy < 2, scipy < 1.15)
+  check: parity
+  family: bulk
+  id_in_family: H1
+- id: BH2
+  category: bulk
+  split: v3
+  kind: method
+  data: rao_chr21_10kb
+  prompt: 'This is the in situ Hi-C map of IMR90 cells of Rao et al. 2014 (Cell 159:1665), chromosome 21 at 10-kb
+    resolution (hg19; a .cool file with ICE balancing weights in the bin column "weight"), and the authors'' published
+    HiCCUPS loop list of IMR90 (GSE63525_IMR90_HiCCUPS_looplist.txt.gz; chr21 = the 92 rows whose chr1 is 21, anchors
+    x1-x2 and y1-y2, hg19). Call loops on chr21 of this 10-kb map yourself with HiCCUPS (Rao et al. 2014): expected
+    = the mean balanced contact of each diagonal of chr21 (the first two diagonals ignored); donut, lower-left,
+    vertical and horizontal kernels with peak half-width p = 2 and window half-width w = 5 bins; locally adjusted
+    expecteds converted to raw counts; Poisson tests with lambda-chunks and a Benjamini-Hochberg FDR of 0.1 within
+    each chunk, for every kernel; a pixel is enriched when it passes all four kernels; pixels up to 10 Mb from the
+    diagonal; enriched pixels clustered with a 20-kb radius, the brightest pixel of a cluster being the loop; then
+    the HiCCUPS filter of Rao et al. 2014 (observed above 1.5 x the vertical and the horizontal expecteds, above
+    1.75 x the donut and the lower-left expecteds and above 2 x one of these two; a single-pixel cluster also needs
+    the sum of its four q-values to be at most 0.02). A published loop is recovered when one of your loops has both
+    anchor midpoints within 25 kb of the published anchors'' midpoints (the larger of the two offsets at most 25
+    kb). Report the number of loops you call, the recall (recovered published loops / 92) and the precision (the
+    share of your loops that lie, by the same rule, within 25 kb of a published loop).'
+  truth: hiccups_vs_published_chr21
+  grade:
+    numbers_min:
+    - recall
+    - precision
+  method_ref: HiCCUPS (Rao et al. 2014); cooltools 0.7.1 dots (Open2C 2024; needs pandas < 3)
+  check: floor
+  family: bulk
+  id_in_family: H2
+- id: BH3
+  category: bulk
+  split: v3
+  kind: method
+  data: rao_chr21_10kb
+  prompt: 'This is the in situ Hi-C map of IMR90 cells of Rao et al. 2014 (Cell 159:1665), chromosome 21 at 10-kb
+    resolution (hg19; a .cool file with ICE balancing weights in the bin column "weight"), and the authors'' HiCCUPS
+    loops of IMR90 (GSE63525_IMR90_HiCCUPS_looplist.txt.gz; chr21 = the rows whose chr1 is 21). Compute an aggregate
+    peak analysis (APA; Rao et al. 2014) of the published chr21 loops on the balanced map: place each loop at the
+    pixel (i, j), i = the 10-kb bin containing the midpoint of its first anchor (x1-x2), j = the bin containing
+    the midpoint of its second anchor (y1-y2); keep the loops with j - i >= 22 bins. For each kept loop take the
+    21 x 21 window of pixels (i - 10 ... i + 10) x (j - 10 ... j + 10) of the balanced matrix divided pixel by pixel
+    by the expected of the pixel''s diagonal (expected = the mean balanced value over all pixels of that diagonal
+    of chr21 whose two bins both have a balancing weight, pixels without contacts counting as 0; pixels of a bin
+    without a weight are missing and left out). Average the windows pixel by pixel over the loops (ignoring missing
+    values). The APA score is the centre pixel of the averaged window divided by the mean of its lower-left 6 x
+    6 corner (rows i + 5 ... i + 10, columns j - 10 ... j - 5: the corner towards the diagonal). Report the number
+    of loops piled up and the APA score.'
+  truth: apa_published_chr21
+  grade:
+    numbers:
+    - n_loops
+    - apa
+    tol: 0.02
+  method_ref: APA (Rao et al. 2014; Juicer, Durand et al. 2016); cooltools 0.7.1 pileup (Open2C 2024)
+  check: parity
+  family: bulk
+  id_in_family: H3
+- id: BH4
+  category: crossmodal
+  split: v3
+  kind: method
+  data: su2020_tsv
+  prompt: 'Su et al. 2020 (Cell 182:1641) traced chromosome 21 in IMR90 cells (chromosome21.tsv: for every imaged
+    chromosome copy the Z, X, Y positions in nm of 651 loci of 50 kb, hg38; undetected loci are empty) and provide
+    the Rao et al. 2014 Hi-C summed into the same loci (Hi-C_contacts_chromosome21.tsv: 651 x 651 read counts, rows
+    and columns in the same locus order). Reconstruct one 3-D structure of chr21 from the Hi-C alone by metric multidimensional
+    scaling, as miniMDS (Rieber & Mahony 2017, Bioinformatics 33:i261) does for one chromosome: (1) ignore the diagonal;
+    (2) fill the zero counts with a distance-decay prior: for every index separation k = |i - j| >= 1 (positions
+    in the file''s locus order) let E(k) be the mean of the non-zero counts at that separation, and use c''(i, j)
+    = 0.95 c(i, j) + 0.05 E(|i - j|) for every pair i != j (all are then positive); (3) target distances d(i, j)
+    = c''(i, j)^(-1/4) (alpha = 4); (4) find 3-D coordinates of the 651 loci minimising the raw stress, the sum
+    over pairs of (|x_i - x_j| - d(i, j))^2, with SMACOF (or any metric MDS solver) run to convergence. Then take,
+    for every locus pair, the median over chromosome copies of the 3-D distance between the two loci (copies where
+    both are detected). Report the Spearman correlation between your structure''s pairwise distances and these imaging
+    median distances over all 211,575 pairs i < j.'
+  truth: mds_vs_imaging_chr21
+  grade:
+    numbers_min:
+    - rho
+  method_ref: metric MDS / SMACOF of Hi-C distances (miniMDS, Rieber & Mahony 2017); scikit-learn MDS
+  check: floor
+  family: bulk
+  id_in_family: H4
+- id: XM1
+  category: crossmodal
+  split: v3
+  kind: method
+  data: su2020_tsv
+  prompt: 'Su et al. 2020 (Cell 182:1641) traced chromosome 21 in IMR90 cells (chromosome21.tsv: for every imaged
+    chromosome copy the Z, X, Y positions in nm of 651 loci of 50 kb, hg38; undetected loci are empty) and provide
+    the Rao et al. 2014 Hi-C summed into the same loci (Hi-C_contacts_chromosome21.tsv: 651 x 651 read counts, same
+    locus order). For every pair of distinct loci (i < j; 211,575 pairs) compute the imaging contact frequency:
+    the fraction of chromosome copies, among the copies in which both loci were detected, where the two loci are
+    less than 500 nm apart. Report the Spearman correlation between this contact frequency and the Hi-C read count
+    of the pair over all pairs, and the same correlation over the pairs whose locus midpoints are at most 2 Mb apart.'
+  truth: imaging_frequency_vs_hic_chr21
+  grade:
+    numbers:
+    - rho_all
+    - rho_le_2mb
+    tol: 0.02
+  method_ref: contact frequency at a distance threshold vs Hi-C (Su et al. 2020, Fig. 1; Bintu et al. 2018); numpy
+  check: parity
+  family: bulk
+- id: P1
+  category: spatial
+  split: v3
+  kind: method
+  data: melanoma+melanoma_r1
+  prompt: 'This is spatial Hi-C-RNA of a human melanoma (Guo et al. 2026); each spot has its own 1-Mb contact map.
+    The data are given as a ChromData store of both sections and, for section human_melanoma_r1, in community formats:
+    a .scool file (one cooler per spot, contacts within and between chromosomes) and a table of the spots (cell_id
+    = the spot''s cooler name, array_row, array_col). Use the spots of section human_melanoma_r1. For each spot
+    compute (a) y = log2((cis contacts between adjacent 1-Mb bins, bin offset j - i = 1, + 0.5) / (cis contacts
+    between bins with offset j - i from 19 to 53, + 0.5)), autosomes only (separation = bin offset x 1 Mb, also
+    at the shorter last bin of a chromosome); (b) a copy-number profile from the contacts: for every chromosome
+    except chrY, its share of the spot''s contact legs (a cis contact gives its chromosome two legs, a trans contact
+    one leg to each of its two chromosomes), and log2 of that share over the chromosome''s median share across the
+    section''s spots. Z-score each chromosome''s profile across the spots (sample standard deviation) and take the
+    first five principal components (spot scores of the singular value decomposition of the z-scored spot x chromosome
+    matrix). The observed statistic is the R^2 of the least-squares fit of y on an intercept and the five components.
+    Test it against Moran spectral randomisation (Wagner & Dray 2015, Methods Ecol. Evol. 6:1169) of the five components:
+    spots i != j are neighbours (weight 1, else 0) when their array_row and their array_col each differ by at most
+    1; take the eigenvectors of the doubly centred weight matrix (I - 11''/n) W (I - 11''/n) that are orthogonal
+    to the constant vector (n - 1 of them), sorted by eigenvalue in increasing order and cut into consecutive bands
+    of 20 (the last band shorter); for each component (centred), replace its coefficients on the eigenvectors of
+    every band by a random standard-normal vector rescaled to the same length, independently per band and per component,
+    and rebuild the component from the eigenvectors. Draw 1,000 randomised sets of the five components and refit
+    y on each set in the same way. Report the observed R^2, the median and the 95th percentile of the 1,000 randomised
+    R^2, and the P value (1 + the number of randomised R^2 at least as large as the observed) / 1,001.'
+  truth: msr_copy_number_share
+  grade:
+    numbers:
+    - r2_observed
+    - null_median
+    - null_q95
+    - p
+    tol: 0.1
+    tol_by_number:
+      r2_observed: 0.02
+      null_median: 0.1
+      null_q95: 0.08
+      p: 0.1
+  reference: 'null_median / null_q95 / p: mean of 20 runs of 1,000 draws (two implementations, 10 seeds each); tol
+    covers the measured Monte Carlo spread (reports/bulk.md)'
+  method_ref: Moran spectral randomisation (Wagner & Dray 2015; adespatial msr); numpy
+  check: parity
+  family: bulk
+- id: P2
+  category: imaging
+  split: v3
+  kind: method
+  data: takei+takei_fofct+takei_rna
+  prompt: 'This is DNA seqFISH+ of the mouse cerebellum (Takei et al. 2025, field of view 0: 47 cells; each trace
+    is one chromosome copy of a cell, coordinates in micrometres), given in two formats holding the same spots and
+    cells (a ChromData store, and a 4DN FOF-CT core table with its cell table), and a table of the RNA seqFISH transcripts
+    of 60 genes counted in the same cells (takei2025_fov0_rna_counts.tsv: one row per cell_id, one column per gene).
+    Use the cell as the unit. For every trace with at least 50 spots compute its radius of gyration (the root mean
+    square 3-D distance of all its spots from their centroid); a cell''s value is the median over its traces with
+    at least 50 spots (all chromosomes). A cell''s RNA count is its total number of transcripts (the sum over all
+    genes of the table). Report the Spearman correlation between the total RNA count and the median trace radius
+    of gyration across the cells, and the partial Spearman correlation controlling for the annotated cell type (column
+    cell_type of the cells): rank each variable across the cells (average ranks for ties), subtract from every rank
+    the mean rank of the cell''s type (the residual of a least-squares fit on cell-type indicators), and correlate
+    the two residual vectors (Pearson).'
+  truth: partial_spearman_rna_rg
+  grade:
+    numbers:
+    - spearman
+    - partial_spearman
+    tol: 0.02
+  method_ref: partial rank correlation (residuals of ranks on group indicators); numpy
+  check: parity
+  family: bulk

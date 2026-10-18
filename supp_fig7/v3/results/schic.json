@@ -1,0 +1,420 @@
+{
+ "R1": {
+  "values": {
+   "rho": 0.9890183943707123,
+   "rho_uchrom_by_seed": [
+    0.9890836908841869,
+    0.9889530978572377
+   ],
+   "rho_published_model1_vs_model2": 0.9994317037371784,
+   "rho_floor": 0.939,
+   "n_bins_published": 193,
+   "n_pairs_compared": 18528
+  },
+  "verify": {
+   "nuc_dynamics": {
+    "rho": 0.9868163227019837,
+    "rho_by_seed": [
+     0.9867879995179217,
+     0.9868446458860457
+    ],
+    "seeds": [
+     0,
+     1
+    ],
+    "extra_args": "",
+    "commit": "00eaf0b57385365c645eee0fda9dd5a2055550a0",
+    "n_contacts": 111838
+   },
+   "nuc_dynamics_temps100": {
+    "rho": 0.9855436730099831,
+    "rho_by_seed": [
+     0.9855436730099831
+    ],
+    "seeds": [
+     0
+    ],
+    "extra_args": "-temps 100",
+    "commit": "00eaf0b57385365c645eee0fda9dd5a2055550a0",
+    "n_contacts": 111838
+   },
+   "nuc_dynamics_temps50_dyns50": {
+    "rho": 0.9858288383991421,
+    "rho_by_seed": [
+     0.9858288383991421
+    ],
+    "seeds": [
+     0
+    ],
+    "extra_args": "-temps 50 -dyns 50",
+    "commit": "00eaf0b57385365c645eee0fda9dd5a2055550a0",
+    "n_contacts": 111838
+   }
+  },
+  "truth": "nucdyn_cell1",
+  "runtime_s": {
+   "uchrom_per_run": [
+    165.22574890602846,
+    169.60808718507178
+   ],
+   "nuc_dynamics_per_run": [
+    1886.8775430510286,
+    1967.2578411099967
+   ],
+   "nuc_dynamics_temps100_per_run": [
+    387.1318789459765
+   ],
+   "nuc_dynamics_temps50_dyns50_per_run": [
+    133.62063943501562
+   ]
+  }
+ },
+ "R2": {
+  "values": {
+   "rho": 0.9656304287959266,
+   "rho_uchrom_by_seed": [
+    0.96535923111813,
+    0.9659016264737232
+   ],
+   "rho_published_model1_vs_model2": 0.9977617286642776,
+   "rho_floor": 0.915,
+   "n_bins_published": 193,
+   "n_pairs_compared": 18528
+  },
+  "verify": {
+   "nuc_dynamics": {
+    "rho": 0.9617006953544681,
+    "rho_by_seed": [
+     0.9617006953544681
+    ],
+    "seeds": [
+     0
+    ],
+    "extra_args": "",
+    "commit": "00eaf0b57385365c645eee0fda9dd5a2055550a0",
+    "n_contacts": 79569
+   },
+   "nuc_dynamics_temps100": {
+    "rho": 0.9633355228931925,
+    "rho_by_seed": [
+     0.9633355228931925
+    ],
+    "seeds": [
+     0
+    ],
+    "extra_args": "-temps 100",
+    "commit": "00eaf0b57385365c645eee0fda9dd5a2055550a0",
+    "n_contacts": 79569
+   },
+   "nuc_dynamics_temps50_dyns50": {
+    "rho": 0.9620047311520097,
+    "rho_by_seed": [
+     0.9620047311520097
+    ],
+    "seeds": [
+     0
+    ],
+    "extra_args": "-temps 50 -dyns 50",
+    "commit": "00eaf0b57385365c645eee0fda9dd5a2055550a0",
+    "n_contacts": 79569
+   }
+  },
+  "truth": "nucdyn_cell2",
+  "runtime_s": {
+   "uchrom_per_run": [
+    127.20675134798512,
+    123.87901583197527
+   ],
+   "nuc_dynamics_per_run": [
+    1496.4113826890243
+   ],
+   "nuc_dynamics_temps100_per_run": [
+    304.54853535897564
+   ],
+   "nuc_dynamics_temps50_dyns50_per_run": [
+    92.24678805295844
+   ]
+  }
+ },
+ "R3": {
+  "values": {
+   "r": 0.6946653842324683,
+   "cells": [
+    "GTGAAATCTACGAGATAC",
+    "TAGACCGGTATGTACCCG"
+   ],
+   "n_bins": 196,
+   "n_pixels": 19110,
+   "contacts_chr1": [
+    1013.0,
+    1234.0
+   ],
+   "variants": {
+    "uchrom_schicluster_impute_default_counts": 0.6702498576621025,
+    "uchrom_schicluster_impute_default_log2": 0.6815806116334713,
+    "with_diagonal": 0.994781134241422,
+    "spearman": 0.3487617962272193,
+    "raw_counts_pearson": 0.08605777251953098
+   }
+  },
+  "verify": {
+   "schicluster": {
+    "r": 0.6946659224847141,
+    "r_unsymmetrised_upper": 0.6702498576621023,
+    "asymmetry_max_abs": 0.07043134203832863,
+    "n_bins": 196,
+    "cells": [
+     "GTGAAATCTACGAGATAC",
+     "TAGACCGGTATGTACCCG"
+    ],
+    "schicluster": "1.3.2"
+   }
+  },
+  "truth": "rwr_pair_corr",
+  "runtime_s": {
+   "uchrom": 0.5319003540789708,
+   "schicluster": 0.038556767045520246
+  }
+ },
+ "R4": {
+  "values": {
+   "purity": 0.2401844532279315,
+   "k": 30,
+   "n_cells": 5313,
+   "n_types": 22,
+   "n_dims": 20,
+   "purity_k_variants": {
+    "5": 0.25330321852060983,
+    "10": 0.2506493506493506,
+    "15": 0.24720496894409938
+   },
+   "purity_L23IT_pooled": 0.2725641508250204,
+   "purity_floor": 0.23
+  },
+  "verify": {
+   "schicluster": {
+    "k": 30,
+    "n_cells": 5313,
+    "purity": 0.24019072714724887,
+    "purity_k5": 0.25330321852060983,
+    "purity_k10": 0.2506493506493506,
+    "purity_k15": 0.24720496894409938,
+    "purity_L23IT_pooled": 0.2725704247443378
+   },
+   "schicluster_variants": {
+    "no_log2": {
+     "k": 30,
+     "n_cells": 5313,
+     "runtime_s": 331.46789779199753,
+     "purity_k5": 0.2627140974967062,
+     "purity_k15": 0.2553610640567162,
+     "purity": 0.24680343810778593,
+     "purity_k10": 0.2593638245812159,
+     "purity_L23IT_pooled_k10": 0.29100319969885186
+    },
+    "upper_triangle": {
+     "k": 30,
+     "n_cells": 5313,
+     "runtime_s": 281.47002035495825,
+     "purity_k5": 0.25153397327310373,
+     "purity_k15": 0.24465775770123596,
+     "purity": 0.2362820754125102,
+     "purity_k10": 0.24673442499529455,
+     "purity_L23IT_pooled_k10": 0.2795219273480143
+    }
+   },
+   "baseline_no_imputation": {
+    "k": 30,
+    "n_cells": 5313,
+    "runtime_s": 270.91530145704746,
+    "purity_k5": 0.244042913608131,
+    "purity_k15": 0.22730409686931427,
+    "purity": 0.21336972206537425,
+    "purity_k10": 0.2347073216638434,
+    "purity_L23IT_pooled_k10": 0.26517974778844344
+   }
+  },
+  "truth": "schicluster_knn",
+  "runtime_s": {
+   "uchrom": 441.22017400397453,
+   "schicluster": 303.6065533939982
+  }
+ },
+ "R5": {
+  "values": {
+   "r_partial_cpg": 0.2695080781461014,
+   "r": 0.7143771270627425,
+   "r_score_cpg": 0.8921160392943915,
+   "r_cpg_e1": 0.7038050539672328,
+   "n_bins": 2362,
+   "n_cells": 5313,
+   "bins_without_contacts_filled": 1996765,
+   "diagnostics": {
+    "r_cpg_e1": 0.7038050539672328,
+    "r_mean_nan_skipped": 0.6799223673316777,
+    "r_partial_nan_skipped": 0.2391090535217042,
+    "r_partial_median": 0.31418373238048947,
+    "spearman": 0.7096697965499816,
+    "r_residual_given_cpg": 0.19145669608314286,
+    "r_partial_rank_normalised_cells": 0.2630065124642504,
+    "r_by_type_vs_all_cells_E1": {
+     "L5IT": {
+      "r": 0.7036315851272703,
+      "r_partial": 0.24977593754531105
+     },
+     "L6CT": {
+      "r": 0.7130850964442832,
+      "r_partial": 0.2773386687043317
+     },
+     "L23IT.1": {
+      "r": 0.7073152379004645,
+      "r_partial": 0.2636312923394197
+     },
+     "Astro": {
+      "r": 0.7292758215172891,
+      "r_partial": 0.3094093793761978
+     },
+     "L45IT": {
+      "r": 0.7110793797021887,
+      "r_partial": 0.26577055838532304
+     },
+     "L6IT": {
+      "r": 0.7056122192481559,
+      "r_partial": 0.2545588152949481
+     }
+    }
+   }
+  },
+  "verify": {
+   "schicluster+cooltools": {
+    "cooltools": "0.7.1",
+    "r_partial_cpg": 0.2695080780925922,
+    "r": 0.7143771270129625,
+    "n_bins": 2362,
+    "r_cpg_e1": 0.7038050539672328,
+    "r_score_cpg": 0.8921160391943018,
+    "r_e1_uchrom_vs_cooltools": 1.0,
+    "max_abs_e1_diff": 1.2878587085651816e-14,
+    "max_abs_mean_score_diff_uchrom_vs_schicluster": 6.748000075385008e-11
+   }
+  },
+  "truth": "scab_vs_e1",
+  "runtime_s": {
+   "uchrom_scab": 10.531786739011295,
+   "uchrom_e1": 0.877022841013968,
+   "cooltools_e1": 4.561218349030241,
+   "schicluster_scores": 71.15506800904404
+  }
+ },
+ "R6": {
+  "values": {
+   "median_f_mitotic": 0.0933920704845815,
+   "median_f_near": 0.7895555939823621,
+   "n_cells": 395,
+   "n_cells_f_mitotic_ge_0.3": 3,
+   "n_post-M": 1,
+   "n_G1": 38,
+   "n_early-S": 125,
+   "n_mid-S/G2": 214,
+   "n_pre-M": 17,
+   "columns": [
+    "frac_2.09715M_11.8633M",
+    "frac_23.1705k_2.09715M"
+   ],
+   "median_fend_pairs": 54916.0
+  },
+  "verify": {
+   "numpy": {
+    "n_cells": 395,
+    "contacts_at_exactly_2^21": 1,
+    "median_f_mitotic": 0.0933920704845815,
+    "median_f_near": 0.7895555939823621,
+    "n_cells_f_mitotic_ge_0.3": 3,
+    "n_post-M": 1,
+    "n_G1": 38,
+    "n_early-S": 125,
+    "n_mid-S/G2": 214,
+    "n_pre-M": 17,
+    "vs_uchrom": {
+     "max_abs_diff_near": 2.155311765850154e-05,
+     "max_abs_diff_mitotic": 2.155311765839052e-05,
+     "n_cells": 395
+    }
+   },
+   "published_values": {
+    "n_cells_matched": 395,
+    "max_abs_diff_near": 4.965067246232024e-10,
+    "median_abs_diff_near": 2.5187696373052404e-10,
+    "max_abs_diff_mitotic": 4.987822654900498e-10,
+    "median_abs_diff_mitotic": 2.709145130452839e-10,
+    "published_median_f_mitotic": 0.09339207,
+    "published_median_f_near": 0.789555594,
+    "published_n_cells_f_mitotic_ge_0.3": 3,
+    "published_n_post-M": 1,
+    "published_n_G1": 38,
+    "published_n_early-S": 125,
+    "published_n_mid-S/G2": 214,
+    "published_n_pre-M": 17,
+    "published_group_counts": {
+     "late-S/G2": 224,
+     "early-S": 121,
+     "G1": 38,
+     "pre-M": 11,
+     "post-M": 1
+    },
+    "gate_agreement_with_published_values": 1.0
+   }
+  },
+  "truth": "nagano_cellcycle",
+  "runtime_s": {
+   "uchrom": 38.981106898980215,
+   "numpy": 56.692342725000344
+  }
+ },
+ "R7": {
+  "values": {
+   "n_loops": 17,
+   "n_cells": 50,
+   "columns": [
+    "chrom1",
+    "start1",
+    "end1",
+    "chrom2",
+    "start2",
+    "end2",
+    "score",
+    "outlier_count",
+    "pvalue",
+    "tstat",
+    "fdr_dist",
+    "case_avg",
+    "control_avg",
+    "circle",
+    "donut",
+    "horizontal",
+    "vertical",
+    "lower_left",
+    "cluster_size",
+    "neg_log10_fdr"
+   ]
+  },
+  "verify": {
+   "snaphic": {
+    "commit": "782dc2bc7e5a9e3c376bac4a61666a1a02d061b8",
+    "exit": 1,
+    "cmd": "/opt/venv/bin/python /opt/venv/src/SnapHiC/snap.py -i /data_v3/nagano2017_dip_chr19/contacts -s contacts.txt -o /tmp/snaphic_out_112030 -c 2 4 -p 3 5 -l /opt/venv/src/SnapHiC/ext/mm10.chrom.sizes -g mm10 --chrom chr19 --filter-file /shared/snaphic/mm10_filter_regions.txt --threaded -n 8 --no-hic --no-cool --prefix ref"
+   },
+   "snaphic_newest_packages": {
+    "exit": 1,
+    "runtime_s_until_failure": 237.2174710270483,
+    "error": "^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/local/lib/python3.12/multiprocessing/pool.py\", line 774, in get\n    raise self._value\nTypeError: Invalid value '[  0   0   0 ... 556 556 557]' for dtype 'int32'"
+   }
+  },
+  "truth": "snaphic_chr19",
+  "runtime_s": {
+   "uchrom": 175.47915587900206,
+   "snaphic": 833.2319859069539
+  },
+  "status": "dropped: the authors' SnapHiC does not finish on Python 3.12 (reports/schic.md)"
+ }
+}

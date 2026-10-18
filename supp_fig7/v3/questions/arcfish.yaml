@@ -1,0 +1,94 @@
+# Version 3, Part B, tracing methods of ArcFISH (Yu et al. 2025): T1-T5.  References from benchmarks/arcfish_parity
+# of the U-Chrom repository (U-Chrom and the authors' package on the same inputs; v3/truth/arcfish.py extracts them).
+questions:
+- id: T1
+  category: imaging
+  split: v3
+  kind: method
+  data: takei+takei_fofct
+  prompt: 'This is DNA seqFISH+ chromatin tracing of a mouse cerebellum field of view (Takei et al. 2025), given in
+    two formats holding the same spots: a ChromData store, and a 4DN FOF-CT core table (coordinates in micrometres)
+    with its cell table. On chr15,
+    first average each trace''s spots into 1-Mb bins (a spot goes to the bin floor(((start + end) / 2) / 1,000,000);
+    the bin''s coordinates are the mean x, y, z of the trace''s spots in it; bin start = bin index x 1 Mb). Then call
+    domains with the arc p-value TAD caller of ArcFISH (Yu et al. 2025, bioRxiv 2025.11.26.690837; the
+    TADCaller(method="pval") of github.com/hyuyu104/ArcFISH) with a window of 4 Mb and every other setting at its
+    default (FDR cutoff 0.1, hierarchical domains, its own outlier filter and normalisation). How many domains does
+    the finest level have, and at which positions (bin starts, bp) are its boundaries?'
+  truth: arcfish_t1
+  grade:
+    numbers: [n_domains]
+    tol: 0
+    rubric: [boundaries_match]
+  method_ref: ArcFISH TADCaller(method="pval") (Yu et al. 2025), github.com/hyuyu104/ArcFISH a21d889
+  check: parity
+- id: T2
+  category: imaging
+  split: v3
+  kind: method
+  data: takei2021_fofct
+  prompt: 'These are the two replicates of the DNA seqFISH+ chromatin tracing of mouse ES cells by Takei et al. 2021
+    (1,200 loci at 25 kb in 20 regions; 4DN FOF-CT core tables, coordinates in micrometres). Read both replicates
+    together (traces of replicate 2 kept apart from those of replicate 1) and call domains on chr6 with the arc
+    p-value TAD caller of ArcFISH (Yu et al. 2025; TADCaller(method="pval") of github.com/hyuyu104/ArcFISH) at its
+    defaults (window 100 kb, FDR cutoff 0.1), after its own outlier filter and normalisation. How many boundaries
+    does it call on chr6 (the finest level), and at which loci (Chrom_Start, bp)?'
+  truth: arcfish_t2
+  grade:
+    numbers: [n_boundaries]
+    tol: 0
+    rubric: [boundaries_match]
+  method_ref: ArcFISH TADCaller(method="pval") (Yu et al. 2025), github.com/hyuyu104/ArcFISH a21d889
+  check: parity
+- id: T3
+  category: imaging
+  split: v3
+  kind: method
+  data: takei2021_fofct
+  prompt: 'These are the two replicates of the DNA seqFISH+ chromatin tracing of mouse ES cells by Takei et al. 2021
+    (1,200 loci at 25 kb in 20 regions; 4DN FOF-CT core tables, coordinates in micrometres). Read both replicates
+    together (traces of replicate 2 kept apart from those of replicate 1) and call chromatin loops on chr6 with the
+    loop caller of ArcFISH (Yu et al. 2025; LoopCaller with the axis-wise F test of github.com/hyuyu104/ArcFISH) at
+    its defaults (FDR cutoff 0.1, p-value cutoff 1e-5, loop sizes 100 kb to 1 Mb, gap 50 kb, background within
+    50 kb), after its own outlier filter and normalisation. How many loops does it call on chr6, and what are the two
+    anchors (Chrom_Start, bp) of the loop with the smallest p-value?'
+  truth: arcfish_t3
+  grade:
+    numbers: [n_loops, anchor1, anchor2]
+    tol: 0
+  method_ref: ArcFISH LoopCaller + AxisWiseF (Yu et al. 2025), github.com/hyuyu104/ArcFISH a21d889
+  check: parity
+- id: T4
+  category: imaging
+  split: v3
+  kind: method
+  data: su2020_chr2p
+  prompt: 'This is chromatin tracing of the chromosome 2 p-arm in IMR90 cells (Su et al. 2020), the first 100 traces
+    of the authors'' replicate table, as a FOF-CT core table (coordinates in nm). Call A/B compartments with the
+    compartment caller of ArcFISH (Yu et al. 2025; ABCaller with method "axes" of github.com/hyuyu104/ArcFISH, minimum
+    compartment size 0, no reference genome), after its own outlier filter and normalisation. The caller splits the
+    loci into two clusters: how many loci are in the smaller cluster, and into how many runs of consecutive loci
+    with the same cluster does the chromosome arm fall?'
+  truth: arcfish_t4
+  grade:
+    numbers: [n_smaller, n_runs]
+    tol: 0
+  method_ref: ArcFISH ABCaller(method="axes") (Yu et al. 2025), github.com/hyuyu104/ArcFISH a21d889
+  check: parity
+- id: T5
+  category: imaging
+  split: v3
+  kind: method
+  data: bintu2018
+  prompt: 'This is chromatin tracing of chr21:18.6-20.6 Mb in IMR90 cells at 30 kb (Bintu et al. 2018), as a FOF-CT
+    core table (coordinates in nm). Call domain boundaries with the normalised insulation score of Su et al. 2020
+    on the median pairwise distance map, as implemented by ArcFISH''s TADCaller(method="insulation")
+    (github.com/hyuyu104/ArcFISH): window 150 kb on each side of a locus, boundaries at the local maxima of the score
+    with a prominence of at least 0.01. How many boundaries are there, and at which loci (Chrom_Start, bp)?'
+  truth: arcfish_t5
+  grade:
+    numbers: [n_boundaries]
+    tol: 0
+    rubric: [boundaries_match]
+  method_ref: normalised insulation score (Su et al. 2020) as ArcFISH TADCaller(method="insulation"), a21d889
+  check: parity

@@ -1,0 +1,171 @@
+# Version 3, Part B, family bulk: published methods on bulk Hi-C, Hi-C against imaging, spatial and per-cell
+# statistics.  Reference values: results/bulk.json (truth/bulk.py, U-Chrom and an independent implementation);
+# decisions: reports/bulk.md; data keys: data/bulk.md.
+#
+# NOTE for the merge: the ids H1 / H2 of this family collide with Part A's H1 / H2 (HiRES atlas store); rename at
+# the merge (e.g. HB1-HB4).
+questions:
+- id: H1
+  category: bulk
+  split: v3
+  kind: method
+  data: rao_chr21_10kb
+  prompt: 'This is the in situ Hi-C map of IMR90 cells of Rao et al. 2014 (Cell 159:1665), chromosome 21 at 10-kb
+    resolution (hg19), as a .cool file with ICE balancing weights in the bin column "weight"
+    (IMR90_chr21_10kb_hg19.cool). Call loops on chr21 with Mustache (Roayaei Ardakany et al. 2020, Genome Biology
+    21:256) on the balanced map with these parameters: sigma0 = 1.6, 2 octaves, 10 scales (iterations) per octave,
+    q-value (FDR) threshold 0.1 (option -pt), sparsity threshold 0.88 (option -st), largest distance between the two
+    anchors of a loop 2 Mb (option -d). Count every loop of chr21 once (one row per loop). How many loops are there?'
+  truth: mustache_loops_chr21
+  grade:
+    numbers: [n_loops]
+    tol: 0.04
+  reference: 'midpoint 161 of U-Chrom 157 and mustache-hic 1.3.3 165; band 154.6-167.4 (reports/bulk.md)'
+  method_ref: Mustache (Roayaei Ardakany et al. 2020); mustache-hic 1.3.3 (PyPI; needs numpy < 2, scipy < 1.15)
+  check: parity
+- id: H2
+  category: bulk
+  split: v3
+  kind: method
+  data: rao_chr21_10kb
+  prompt: 'This is the in situ Hi-C map of IMR90 cells of Rao et al. 2014 (Cell 159:1665), chromosome 21 at 10-kb
+    resolution (hg19; a .cool file with ICE balancing weights in the bin column "weight"), and the authors'' published
+    HiCCUPS loop list of IMR90 (GSE63525_IMR90_HiCCUPS_looplist.txt.gz; chr21 = the 92 rows whose chr1 is 21, anchors
+    x1-x2 and y1-y2, hg19). Call loops on chr21 of this 10-kb map yourself with HiCCUPS (Rao et al. 2014): expected =
+    the mean balanced contact of each diagonal of chr21 (the first two diagonals ignored); donut, lower-left, vertical
+    and horizontal kernels with peak half-width p = 2 and window half-width w = 5 bins; locally adjusted expecteds
+    converted to raw counts; Poisson tests with lambda-chunks and a Benjamini-Hochberg FDR of 0.1 within each chunk,
+    for every kernel; a pixel is enriched when it passes all four kernels; pixels up to 10 Mb from the diagonal;
+    enriched pixels clustered with a 20-kb radius, the brightest pixel of a cluster being the loop; then the HiCCUPS
+    filter of Rao et al. 2014 (observed above 1.5 x the vertical and the horizontal expecteds, above 1.75 x the donut
+    and the lower-left expecteds and above 2 x one of these two; a single-pixel cluster also needs the sum of its four
+    q-values to be at most 0.02). A published loop is recovered when one of your loops has both anchor midpoints within
+    25 kb of the published anchors'' midpoints (the larger of the two offsets at most 25 kb). Report the number of
+    loops you call, the recall (recovered published loops / 92) and the precision (the share of your loops that lie,
+    by the same rule, within 25 kb of a published loop).'
+  truth: hiccups_vs_published_chr21
+  grade:
+    numbers_min: [recall, precision]
+  method_ref: HiCCUPS (Rao et al. 2014); cooltools 0.7.1 dots (Open2C 2024; needs pandas < 3)
+  check: floor
+- id: H3
+  category: bulk
+  split: v3
+  kind: method
+  data: rao_chr21_10kb
+  prompt: 'This is the in situ Hi-C map of IMR90 cells of Rao et al. 2014 (Cell 159:1665), chromosome 21 at 10-kb
+    resolution (hg19; a .cool file with ICE balancing weights in the bin column "weight"), and the authors'' HiCCUPS
+    loops of IMR90 (GSE63525_IMR90_HiCCUPS_looplist.txt.gz; chr21 = the rows whose chr1 is 21). Compute an aggregate
+    peak analysis (APA; Rao et al. 2014) of the published chr21 loops on the balanced map: place each loop at the pixel
+    (i, j), i = the 10-kb bin containing the midpoint of its first anchor (x1-x2), j = the bin containing the midpoint
+    of its second anchor (y1-y2); keep the loops with j - i >= 22 bins. For each kept loop take the 21 x 21 window of
+    pixels (i - 10 ... i + 10) x (j - 10 ... j + 10) of the balanced matrix divided pixel by pixel by the expected of the
+    pixel''s diagonal (expected = the mean balanced value over all pixels of that diagonal of chr21 whose two bins both
+    have a balancing weight, pixels without contacts counting as 0; pixels of a bin without a weight are missing and
+    left out). Average the windows pixel by pixel over the loops (ignoring missing values). The APA score is the centre
+    pixel of the averaged window divided by the mean of its lower-left 6 x 6 corner (rows i + 5 ... i + 10, columns
+    j - 10 ... j - 5: the corner towards the diagonal). Report the number of loops piled up and the APA score.'
+  truth: apa_published_chr21
+  grade:
+    numbers: [n_loops, apa]
+    tol: 0.02
+  method_ref: APA (Rao et al. 2014; Juicer, Durand et al. 2016); cooltools 0.7.1 pileup (Open2C 2024)
+  check: parity
+- id: H4
+  category: crossmodal
+  split: v3
+  kind: method
+  data: su2020_tsv
+  prompt: 'Su et al. 2020 (Cell 182:1641) traced chromosome 21 in IMR90 cells (chromosome21.tsv: for every imaged
+    chromosome copy the Z, X, Y positions in nm of 651 loci of 50 kb, hg38; undetected loci are empty) and provide the
+    Rao et al. 2014 Hi-C summed into the same loci (Hi-C_contacts_chromosome21.tsv: 651 x 651 read counts, rows and
+    columns in the same locus order). Reconstruct one 3-D structure of chr21 from the Hi-C alone by metric
+    multidimensional scaling, as miniMDS (Rieber & Mahony 2017, Bioinformatics 33:i261) does for one chromosome: (1)
+    ignore the diagonal; (2) fill the zero counts with a distance-decay prior: for every index separation k = |i - j| >=
+    1 (positions in the file''s locus order) let E(k) be the mean of the non-zero counts at that separation, and use
+    c''(i, j) = 0.95 c(i, j) + 0.05 E(|i - j|) for every pair i != j (all are then positive); (3) target distances d(i, j)
+    = c''(i, j)^(-1/4) (alpha = 4); (4) find 3-D coordinates of the 651 loci minimising the raw stress, the sum over
+    pairs of (|x_i - x_j| - d(i, j))^2, with SMACOF (or any metric MDS solver) run to convergence. Then take, for every
+    locus pair, the median over chromosome copies of the 3-D distance between the two loci (copies where both are
+    detected). Report the Spearman correlation between your structure''s pairwise distances and these imaging median
+    distances over all 211,575 pairs i < j.'
+  truth: mds_vs_imaging_chr21
+  grade:
+    numbers_min: [rho]
+  method_ref: metric MDS / SMACOF of Hi-C distances (miniMDS, Rieber & Mahony 2017); scikit-learn MDS
+  check: floor
+- id: XM1
+  category: crossmodal
+  split: v3
+  kind: method
+  data: su2020_tsv
+  prompt: 'Su et al. 2020 (Cell 182:1641) traced chromosome 21 in IMR90 cells (chromosome21.tsv: for every imaged
+    chromosome copy the Z, X, Y positions in nm of 651 loci of 50 kb, hg38; undetected loci are empty) and provide the
+    Rao et al. 2014 Hi-C summed into the same loci (Hi-C_contacts_chromosome21.tsv: 651 x 651 read counts, same locus
+    order). For every pair of distinct loci (i < j; 211,575 pairs) compute the imaging contact frequency: the fraction
+    of chromosome copies, among the copies in which both loci were detected, where the two loci are less than 500 nm
+    apart. Report the Spearman correlation between this contact frequency and the Hi-C read count of the pair over all
+    pairs, and the same correlation over the pairs whose locus midpoints are at most 2 Mb apart.'
+  truth: imaging_frequency_vs_hic_chr21
+  grade:
+    numbers: [rho_all, rho_le_2mb]
+    tol: 0.02
+  method_ref: contact frequency at a distance threshold vs Hi-C (Su et al. 2020, Fig. 1; Bintu et al. 2018); numpy
+  check: parity
+- id: P1
+  category: spatial
+  split: v3
+  kind: method
+  data: melanoma+melanoma_r1
+  prompt: 'This is spatial Hi-C-RNA of a human melanoma (Guo et al. 2026); each spot has its own 1-Mb contact map. The
+    data are given as a ChromData store of both sections and, for section human_melanoma_r1, in community formats: a
+    .scool file (one cooler per spot, contacts within and between chromosomes) and a table of the spots (cell_id = the
+    spot''s cooler name, array_row, array_col). Use the spots of section human_melanoma_r1. For each spot compute (a) y = log2((cis contacts between adjacent 1-Mb bins, bin
+    offset j - i = 1, + 0.5) / (cis contacts between bins with offset j - i from 19 to 53, + 0.5)), autosomes only
+    (separation = bin offset x 1 Mb, also at the shorter last bin of a chromosome); (b) a copy-number profile from the contacts: for every chromosome except chrY, its
+    share of the spot''s contact legs (a cis contact gives its chromosome two legs, a trans contact one leg to each of
+    its two chromosomes), and log2 of that share over the chromosome''s median share across the section''s spots.
+    Z-score each chromosome''s profile across the spots (sample standard deviation) and take the first five principal
+    components (spot scores of the singular value decomposition of the z-scored spot x chromosome matrix). The observed
+    statistic is the R^2 of the least-squares fit of y on an intercept and the five components. Test it against Moran
+    spectral randomisation (Wagner & Dray 2015, Methods Ecol. Evol. 6:1169) of the five components: spots i != j are
+    neighbours (weight 1, else 0) when their array_row and their array_col each differ by at most 1; take the
+    eigenvectors of the doubly centred weight matrix (I - 11''/n) W (I - 11''/n) that are orthogonal to the constant
+    vector (n - 1 of them), sorted by eigenvalue in increasing order and cut into consecutive bands of 20 (the last band
+    shorter); for each component (centred), replace its coefficients on the eigenvectors of every band by a random
+    standard-normal vector rescaled to the same length, independently per band and per component, and rebuild the
+    component from the eigenvectors. Draw 1,000 randomised sets of the five components and refit y on each set in the
+    same way. Report the observed R^2, the median and the 95th percentile of the 1,000 randomised R^2, and the P value
+    (1 + the number of randomised R^2 at least as large as the observed) / 1,001.'
+  truth: msr_copy_number_share
+  grade:
+    numbers: [r2_observed, null_median, null_q95, p]
+    tol: 0.1
+    tol_by_number: {r2_observed: 0.02, null_median: 0.1, null_q95: 0.08, p: 0.1}
+  reference: 'null_median / null_q95 / p: mean of 20 runs of 1,000 draws (two implementations, 10 seeds each); tol covers the measured Monte Carlo spread (reports/bulk.md)'
+  method_ref: Moran spectral randomisation (Wagner & Dray 2015; adespatial msr); numpy
+  check: parity
+- id: P2
+  category: imaging
+  split: v3
+  kind: method
+  data: takei+takei_fofct+takei_rna
+  prompt: 'This is DNA seqFISH+ of the mouse cerebellum (Takei et al. 2025, field of view 0: 47 cells; each trace is
+    one chromosome copy of a cell, coordinates in micrometres), given in two formats holding the same spots and cells
+    (a ChromData store, and a 4DN FOF-CT core table with its cell table), and a table of the RNA seqFISH
+    transcripts of 60 genes counted in the same cells (takei2025_fov0_rna_counts.tsv: one row per cell_id, one column
+    per gene).
+    Use the cell as the unit. For every trace with at least 50 spots compute its radius of gyration (the root mean
+    square 3-D distance of all its spots from their centroid); a cell''s value is the median over its traces with at
+    least 50 spots (all chromosomes). A cell''s RNA count is its total number of transcripts (the sum over all genes of
+    the table). Report the Spearman correlation between the total RNA count and the median trace radius of gyration
+    across the cells, and the partial Spearman correlation controlling for the annotated cell type (column cell_type
+    of the cells): rank each variable across the cells (average ranks for ties), subtract from every rank the mean rank of
+    the cell''s type (the residual of a least-squares fit on cell-type indicators), and correlate the two residual
+    vectors (Pearson).'
+  truth: partial_spearman_rna_rg
+  grade:
+    numbers: [spearman, partial_spearman]
+    tol: 0.02
+  method_ref: partial rank correlation (residuals of ranks on group indicators); numpy
+  check: parity

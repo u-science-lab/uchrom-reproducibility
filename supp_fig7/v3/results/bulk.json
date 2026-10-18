@@ -1,0 +1,431 @@
+{
+ "H1": {
+  "values": {
+   "n_loops": 161.0,
+   "n_loops_uchrom": 157,
+   "n_loops_mustache_hic": 165,
+   "band": [
+    154.56,
+    167.44
+   ]
+  },
+  "verify": {
+   "uchrom": {
+    "n_loops": 157,
+    "seconds": 3.162657337030396,
+    "recall_25kb": 0.717391304347826,
+    "precision_25kb": 0.42038216560509556,
+    "n_loops_fdr0.2": 264
+   },
+   "mustache-hic 1.3.3": {
+    "implementation": "mustache-hic 1.3.3 (command line)",
+    "n_loops": 165,
+    "n_rows_written": 165,
+    "seconds": 15.379328130977228,
+    "command": "-f IMR90_chr21_10kb_hg19.cool -r 10000 -ch chr21 -pt 0.1 -st 0.88 -sz 1.6 -oc 2 -i 10 -d 2000000 -p 8 -o /data_v3/bulk_work/H1_mustache_pt0.1.tsv",
+    "recall_25kb": 0.7282608695652174,
+    "precision_25kb": 0.4,
+    "ref_in_uchrom_exact": 0.8606060606060606,
+    "ref_in_uchrom_2bins": 0.9151515151515152,
+    "uchrom_in_ref_2bins": 0.9617834394904459,
+    "n_loops_fdr0.2": 268
+   }
+  },
+  "truth": "mustache_loops_chr21",
+  "runtime_s": {
+   "uchrom": 3.69,
+   "mustache-hic 1.3.3": 27.2
+  },
+  "grade": {
+   "numbers": [
+    "n_loops"
+   ],
+   "tol": 0.04
+  }
+ },
+ "H2": {
+  "values": {
+   "recall": 0.7608695652173914,
+   "precision": 0.7446808510638298,
+   "n_loops": 94,
+   "recall_floor": 0.7,
+   "precision_floor": 0.64
+  },
+  "verify": {
+   "uchrom": {
+    "n_loops": 94,
+    "recall": 0.7608695652173914,
+    "precision": 0.7446808510638298,
+    "n_published": 92,
+    "n_published_recovered": 70,
+    "seconds": 0.8091005110181868,
+    "n_loops_2mb": 92,
+    "recall_2mb": 0.75,
+    "precision_2mb": 0.75,
+    "n_published_2mb": 92,
+    "n_published_recovered_2mb": 69,
+    "seconds_2mb": 0.19886366301216185
+   },
+   "cooltools 0.7.1 dots": {
+    "implementation": "cooltools 0.7.1 dots",
+    "n_loops": 99,
+    "recall": 0.75,
+    "precision": 0.696969696969697,
+    "n_published": 92,
+    "n_published_recovered": 69,
+    "seconds": 6.201757831964642,
+    "n_loops_2mb": 96,
+    "recall_2mb": 0.7391304347826086,
+    "precision_2mb": 0.7083333333333334,
+    "n_published_2mb": 92,
+    "n_published_recovered_2mb": 68,
+    "seconds_2mb": 2.457948044058867
+   }
+  },
+  "truth": "hiccups_vs_published_chr21",
+  "runtime_s": {
+   "uchrom": 1.04,
+   "cooltools 0.7.1 dots": 18.96
+  }
+ },
+ "H3": {
+  "values": {
+   "n_loops": 52,
+   "apa": 4.563482789397527
+  },
+  "verify": {
+   "uchrom": {
+    "n_loops": 52,
+    "apa": 4.563482789397527,
+    "centre": 9.05543474009956,
+    "lower_left_mean": 1.9843253843617679,
+    "seconds": 0.13906295003835112,
+    "n_published": 92,
+    "n_loops_question_rule": 52,
+    "apa_pooled_sum_aggregate": 4.214905640692339
+   },
+   "cooltools 0.7.1 pileup": {
+    "implementation": "cooltools 0.7.1 pileup",
+    "n_loops": 52,
+    "apa": 4.563482789397528,
+    "centre": 9.05543474009956,
+    "lower_left_mean": 1.9843253843617674,
+    "window_shape": [
+     21,
+     21
+    ],
+    "seconds": 1.1703347080620006
+   }
+  },
+  "truth": "apa_published_chr21",
+  "runtime_s": {
+   "uchrom": 0.3,
+   "cooltools 0.7.1 pileup": 1.2
+  }
+ },
+ "H4": {
+  "values": {
+   "rho": 0.8740736566763095,
+   "rho_floor": 0.82
+  },
+  "verify": {
+   "uchrom": {
+    "rho": 0.8740736566763095,
+    "n_pairs": 211575,
+    "seconds": 18.482575812959112,
+    "rho_alpha3": 0.8961656083085084,
+    "n_pairs_alpha3": 211575,
+    "seconds_alpha3": 0.3657462620176375,
+    "rho_zeros_left_out": 0.5991262543117244,
+    "n_pairs_zeros_left_out": 211575,
+    "seconds_zeros_left_out": 0.37025113706476986,
+    "rho_ice_balanced": 0.8700406008064573,
+    "n_pairs_ice_balanced": 207046,
+    "seconds_ice_balanced": 1.0061035410035402,
+    "n_loci": 651
+   },
+   "scikit-learn 1.9.1 MDS": {
+    "implementation": "scikit-learn 1.9.1 MDS (metric SMACOF)",
+    "rho_seed0": 0.8731480325086446,
+    "seconds_seed0": 29.382408018922433,
+    "rho_seed1": 0.8731472956570799,
+    "seconds_seed1": 30.715036621899344,
+    "rho_seed2": 0.8734055052125762,
+    "seconds_seed2": 30.3399649199564,
+    "rho": 0.8732336111261002,
+    "seconds": 30.14580318692606,
+    "n_pairs": 211575,
+    "rho_target_distances_vs_imaging": 0.8621419653618888
+   }
+  },
+  "truth": "mds_vs_imaging_chr21",
+  "runtime_s": {
+   "uchrom": 195.89,
+   "scikit-learn 1.9.1 MDS": 225.35
+  }
+ },
+ "XM1": {
+  "values": {
+   "rho_all": 0.8571084566966221,
+   "rho_le_2mb": 0.9342860725083395
+  },
+  "verify": {
+   "uchrom": {
+    "rho_all": 0.8571084566966221,
+    "rho_le_2mb": 0.9342860725083395,
+    "n_pairs_all": 211575,
+    "n_pairs_le_2mb": 24815,
+    "n_copies": 7591,
+    "seconds": 109.56569286598824
+   },
+   "numpy": {
+    "implementation": "numpy",
+    "rho_all": 0.8571084310644554,
+    "rho_le_2mb": 0.934285988595345,
+    "n_pairs_all": 211575,
+    "n_pairs_le_2mb": 24815,
+    "n_copies": 7591,
+    "seconds": 133.10629058803897
+   }
+  },
+  "truth": "imaging_frequency_vs_hic_chr21",
+  "runtime_s": {
+   "uchrom": 109.6,
+   "numpy": 133.12
+  }
+ },
+ "P1": {
+  "values": {
+   "r2_observed": 0.34391713712832406,
+   "null_median": 0.03367845320650808,
+   "null_q95": 0.08569807262613453,
+   "p": 0.0009990009990009992,
+   "mc_relative_spread": {
+    "null_median": 0.06604782273891295,
+    "null_q95": 0.05070642491767616,
+    "p": 2.1705727493159794e-16
+   }
+  },
+  "verify": {
+   "uchrom": {
+    "r2_observed": 0.34391713712832406,
+    "null_median": 0.03338318139810709,
+    "null_q95": 0.08832184030962534,
+    "p": 0.000999000999000999,
+    "mc": [
+     {
+      "null_median": 0.03338318139810709,
+      "null_q95": 0.08832184030962534,
+      "p": 0.000999000999000999
+     },
+     {
+      "null_median": 0.03378096634143968,
+      "null_q95": 0.09004351551134118,
+      "p": 0.000999000999000999
+     },
+     {
+      "null_median": 0.03559882201971326,
+      "null_q95": 0.08910166271135089,
+      "p": 0.000999000999000999
+     },
+     {
+      "null_median": 0.03387385724230668,
+      "null_q95": 0.08669893859723508,
+      "p": 0.000999000999000999
+     },
+     {
+      "null_median": 0.03276229664654928,
+      "null_q95": 0.08434242620229798,
+      "p": 0.000999000999000999
+     },
+     {
+      "null_median": 0.03516608172109659,
+      "null_q95": 0.08363649292157924,
+      "p": 0.000999000999000999
+     },
+     {
+      "null_median": 0.03501492003042972,
+      "null_q95": 0.08240268889822042,
+      "p": 0.000999000999000999
+     },
+     {
+      "null_median": 0.035612169643945535,
+      "null_q95": 0.08393949735913099,
+      "p": 0.000999000999000999
+     },
+     {
+      "null_median": 0.034452527961830515,
+      "null_q95": 0.0869058240795559,
+      "p": 0.000999000999000999
+     },
+     {
+      "null_median": 0.03145406469900386,
+      "null_q95": 0.08426883288036942,
+      "p": 0.000999000999000999
+     }
+    ],
+    "n_spots": 6268,
+    "n_links": 48724,
+    "chroms": [
+     "chr1",
+     "chr10",
+     "chr11",
+     "chr12",
+     "chr13",
+     "chr14",
+     "chr15",
+     "chr16",
+     "chr17",
+     "chr18",
+     "chr19",
+     "chr2",
+     "chr20",
+     "chr21",
+     "chr22",
+     "chr3",
+     "chr4",
+     "chr5",
+     "chr6",
+     "chr7",
+     "chr8",
+     "chr9",
+     "chrX"
+    ],
+    "median_y": 0.22171083837462974,
+    "seconds_features": 757.530656783958,
+    "seconds_basis": 43.2500978729222,
+    "seconds_one_run_of_1000": 27.645873972808477,
+    "seconds": 1077.239494384965
+   },
+   "numpy": {
+    "implementation": "numpy",
+    "r2_observed": 0.34391713712832406,
+    "null_median": 0.0325544249703954,
+    "null_q95": 0.08547281274569794,
+    "p": 0.000999000999000999,
+    "mc": [
+     {
+      "null_median": 0.0325544249703954,
+      "null_q95": 0.08547281274569794,
+      "p": 0.000999000999000999
+     },
+     {
+      "null_median": 0.03343118979640597,
+      "null_q95": 0.08481657309654704,
+      "p": 0.000999000999000999
+     },
+     {
+      "null_median": 0.035803170586035715,
+      "null_q95": 0.08735813395416582,
+      "p": 0.000999000999000999
+     },
+     {
+      "null_median": 0.0340881709936528,
+      "null_q95": 0.08276667206987307,
+      "p": 0.000999000999000999
+     },
+     {
+      "null_median": 0.03194060372209728,
+      "null_q95": 0.08521760916886849,
+      "p": 0.000999000999000999
+     },
+     {
+      "null_median": 0.03242732099658391,
+      "null_q95": 0.08498928602374979,
+      "p": 0.000999000999000999
+     },
+     {
+      "null_median": 0.03311199997922665,
+      "null_q95": 0.08907032065656949,
+      "p": 0.000999000999000999
+     },
+     {
+      "null_median": 0.032850518966582976,
+      "null_q95": 0.08424662543377774,
+      "p": 0.000999000999000999
+     },
+     {
+      "null_median": 0.032733766172219736,
+      "null_q95": 0.08416413851809534,
+      "p": 0.000999000999000999
+     },
+     {
+      "null_median": 0.03352901024253907,
+      "null_q95": 0.08619756138463971,
+      "p": 0.000999000999000999
+     }
+    ],
+    "n_spots": 6268,
+    "n_links": 48724,
+    "chroms": [
+     "chr1",
+     "chr2",
+     "chr3",
+     "chr4",
+     "chr5",
+     "chr6",
+     "chr7",
+     "chrX",
+     "chr8",
+     "chr9",
+     "chr11",
+     "chr10",
+     "chr12",
+     "chr13",
+     "chr14",
+     "chr15",
+     "chr16",
+     "chr17",
+     "chr18",
+     "chr20",
+     "chr19",
+     "chr22",
+     "chr21"
+    ],
+    "median_y": 0.22171083837462974,
+    "seconds_features": 43.17902812198736,
+    "seconds_basis": 55.320390878943726,
+    "seconds_one_run_of_1000": 7.233148401009385,
+    "seconds": 170.83090301102493
+   }
+  },
+  "truth": "msr_copy_number_share",
+  "runtime_s": {
+   "uchrom": 1077.37,
+   "numpy": 171.08
+  }
+ },
+ "P2": {
+  "values": {
+   "partial_spearman": 0.6873373935217763,
+   "spearman": 0.8266450847461004
+  },
+  "verify": {
+   "uchrom": {
+    "partial_spearman": 0.6873373935217763,
+    "spearman": 0.8266450847461004,
+    "n_cells": 47,
+    "n_traces_used": 1393,
+    "n_types": 6,
+    "rna_table_equals_uchrom_reader": true,
+    "median_total_transcripts": 161.0,
+    "median_cell_rg_um": 1.354108585931705,
+    "seconds": 2.8586077640065923
+   },
+   "numpy / pandas": {
+    "implementation": "numpy / pandas",
+    "spearman": 0.8266450847461005,
+    "partial_spearman": 0.6873373935217765,
+    "n_cells": 47,
+    "n_types": 6,
+    "n_traces_used": 1393,
+    "seconds": 0.5200644349679351
+   }
+  },
+  "truth": "partial_spearman_rna_rg",
+  "runtime_s": {
+   "uchrom": 2.87,
+   "numpy / pandas": 0.53
+  }
+ }
+}

@@ -1,0 +1,150 @@
+# Version 3, family imgfmt: Part B T6 (imaging method; T7 dropped, see v3/truth/imgfmt.py), Part A F1-F4 (reading
+# the open store) and four anchors of version 2.  References: v3/truth/imgfmt.py (imgfmt_truth.sbatch).
+questions:
+# ------------------------------------------------------------------ anchors carried over from version 2 (unchanged)
+# Copied verbatim from questions.yaml (version 2); values in results/imgfmt.json are those of answers_v2.json.
+- id: A1
+  category: inspect
+  split: dev
+  kind: anchor
+  data: takei
+  prompt: How many cells, traces and spots does this dataset have?
+  truth: counts
+  grade:
+    numbers:
+    - n_cells
+    - n_traces
+    - n_spots
+    tol: 0
+- id: A6
+  category: inspect
+  split: test
+  kind: anchor
+  data: schicar
+  prompt: Which cell type has the most cells, and what is its median number of Hi-C contacts per cell?
+  truth: schicar_top_type
+  grade:
+    text: cell_type
+    numbers:
+    - median_contacts
+    tol: 0.01
+- id: H1
+  category: atlas
+  split: new
+  kind: anchor
+  data: atlas_hires
+  prompt: A ChromData store of single-cell 3D genome structures (HiRES, mouse brain) is served over HTTP at the address given
+    above; it is several GB, so read only what you need. How many cells and how many traces (chromosome copies) does it hold,
+    and what is the median number of spots per cell?
+  truth: atlas_hires_counts
+  grade:
+    numbers:
+    - n_cells
+    - n_traces
+    - median_spots_per_cell
+    tol: 0
+- id: S3
+  category: spatial
+  split: new
+  kind: anchor
+  data: melanoma
+  prompt: 'This is spatial Hi-C-RNA of a human melanoma; each spot has its own 1-Mb contact map. Read a copy-number profile
+    from the contacts: for each spot of section human_melanoma_r1 with at least 10,000 contacts, count each chromosome''s
+    contact legs (a cis contact gives its chromosome two legs, a trans contact one leg to each of its two chromosomes; chrY
+    excluded), divide by the spot''s total legs, and take log2 of each chromosome''s share over that chromosome''s median
+    share across these spots. Which chromosome varies most across spots (largest standard deviation of this value), and what
+    is that standard deviation?'
+  truth: melanoma_dosage
+  grade:
+    numbers:
+    - sd_top
+    text: top_chrom
+    tol: 0.05
+# ------------------------------------------------------------------ Part B: imaging method
+- id: T6
+  category: imaging
+  split: v3
+  kind: method
+  data: sox2_holdout
+  prompt: 'This folder holds chromatin tracing of the Sox2 locus in mouse ES cells (Huang et al. 2021, Nat. Genet.), the
+    129 allele only, as the example tables of SnapFISH-IMPUTE (github.com/hyuyu104/SnapFISH-IMPUTE, PyPI sfimpute 0.0.2):
+    sox2_coor.tsv (region, haploid, pos, x, y, z in nm; empty x, y, z = locus not detected), sox2_ann.tsv (region, pos,
+    start, end) and holdout.tsv (region, haploid, pos): 4,025 detected loci held out as a test. Hide the coordinates of
+    the held-out loci (treat them as not detected), impute every missing locus of every haploid with SnapFISH-IMPUTE at
+    its defaults (pairwise distances normalised per genomic separation by a Box-Cox transform, missing distances filled
+    iteratively from similar haploids, then the 3-D coordinates of each haploid recovered from its distances), and
+    compare the imputed coordinates of the held-out loci with their true coordinates. Report the median and the root
+    mean square of the 3-D Euclidean errors (nm) over the 4,025 held-out loci.'
+  truth: t6_snapfish_holdout
+  grade:
+    numbers: [median_error_nm, rmse_nm]
+    tol: 0.02
+  method_ref: SnapFISH-IMPUTE (github.com/hyuyu104/SnapFISH-IMPUTE @7f7f1a7 = PyPI sfimpute 0.0.2)
+  check: parity
+# ------------------------------------------------------------------ Part A: reading the open store
+- id: F1
+  category: format
+  split: v3
+  kind: format
+  data: atlas_gageseq
+  prompt: 'A ChromData store of GAGE-seq of the mouse cortex is served over HTTP at the address given above; it embeds a
+    single-cell contact map of every cell (the per-cell maps, key per_cell, 1-Mb bins). For the cell
+    mBC-0716-1_C10,E8, using its chr7 map (bins numbered from 0 at the start of chr7, each contact stored once in the
+    upper triangle, bin1 <= bin2): what is the total number of chr7 contacts, the count of the pixel (30, 31), and the
+    number of contacts with at least one end in bin 30 (a contact within bin 30 counted once)?'
+  truth: f1_embedded_contacts
+  grade:
+    numbers: [total_cis, pixel, row_sum]
+    tol: 0
+  check: parity
+- id: F2
+  category: format
+  split: v3
+  kind: format
+  data: takei_fov4
+  prompt: 'This ChromData store holds DNA seqFISH+ chromatin tracing of one field of view of mouse ES cells (Takei et al.
+    2021) together with the nuclear outline of each cell (cell shapes, key nucleus, from the authors'' DAPI
+    segmentation). How many cells have an outline, what is the area of the outline of cell 4_23 (the x-y polygon area,
+    holes subtracted, in square micrometres), and which cell has the largest outline, with what area?'
+  truth: f2_cell_outlines
+  grade:
+    numbers: [n_outlines, area, largest_area]
+    text: largest_cell
+    tol: 0.01
+  check: parity
+- id: F3
+  category: format
+  split: v3
+  kind: format
+  data: takei_fov4
+  prompt: 'This ChromData store holds DNA seqFISH+ chromatin tracing of one field of view of mouse ES cells (Takei et al.
+    2021) and stored analysis results with their provenance. The result separation is a per-cell table of 3-D distances
+    between loci at short and at long genomic separations. Which function made it, and with which short and long
+    separation windows (bp) and which statistic? What is its stored d_short of cell 4_23? Then recompute, with the same
+    windows and statistic, for cell 4_23 on chr7 only: take each trace (chromosome copy) of the cell on chr7, average
+    the spots of one trace at the same locus, keep loci with finite coordinates, and for every pair of loci of the same
+    trace whose midpoints ((start + end) / 2) are separated by at least the window''s lower bound and less than its
+    upper bound, the Euclidean distance of their coordinates (store units). Report, for the short and the long window,
+    the number of such pairs and the statistic of their distances.'
+  truth: f3_provenance
+  grade:
+    numbers: [stored_d_short, recomputed_n_pairs_short, recomputed_d_short, recomputed_n_pairs_long, recomputed_d_long]
+    text: function
+    tol: 0.01
+  check: parity
+- id: F4
+  category: format
+  split: v3
+  kind: format
+  data: atlas_hires_embryo
+  prompt: 'A ChromData store of HiRES single-cell 3D genome structures of mouse embryos is served over HTTP at the
+    address given above; it is several GB, so read only what you need. For chr19, compute the radius of gyration of every
+    trace (chromosome copy): the root-mean-square distance of its particles with finite coordinates from their
+    centroid, in the store''s coordinate units. How many chr19 traces are there, in how many cells, what is the median
+    radius of gyration over all of them, and what is the median over the traces of the cells of cell type early
+    neurons and of cell type blood (the cell_type column of the cells table)?'
+  truth: f4_large_store_http
+  grade:
+    numbers: [n_traces, median_rg_all, median_rg_early_neurons, median_rg_blood]   # n_cells (7,469) is in the docs
+    tol: 0.01
+  check: parity

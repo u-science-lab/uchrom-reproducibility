@@ -1,0 +1,159 @@
+{
+ "T1": {
+  "values": {
+   "n_domains": 8,
+   "n_boundaries": 7,
+   "boundaries": [
+    7000000,
+    11000000,
+    25000000,
+    43000000,
+    59000000,
+    66000000,
+    72000000
+   ]
+  },
+  "verify": {
+   "arcfish_a21d889": {
+    "n_domains": 8,
+    "n_boundaries": 7,
+    "boundaries": [
+     7000000,
+     11000000,
+     25000000,
+     43000000,
+     59000000,
+     66000000,
+     72000000
+    ]
+   }
+  },
+  "truth": "arcfish_t1",
+  "agree": true
+ },
+ "T2": {
+  "values": {
+   "n_domains": 7,
+   "n_boundaries": 6,
+   "boundaries": [
+    49500000,
+    49900000,
+    50075000,
+    50275000,
+    50625000,
+    50800000
+   ]
+  },
+  "verify": {
+   "arcfish_a21d889": {
+    "n_domains": 7,
+    "n_boundaries": 6,
+    "boundaries": [
+     49500000,
+     49900000,
+     50075000,
+     50275000,
+     50625000,
+     50800000
+    ]
+   }
+  },
+  "truth": "arcfish_t2",
+  "agree": true
+ },
+ "T3": {
+  "values": {
+   "n_loops": 2,
+   "anchor1": 50300000,
+   "anchor2": 50525000,
+   "loops": [
+    [
+     50300000,
+     50525000,
+     4.45498e-11
+    ],
+    [
+     50675000,
+     50800000,
+     1.82778e-07
+    ]
+   ]
+  },
+  "verify": {
+   "arcfish_a21d889": {
+    "n_loops": 2,
+    "anchor1": 50300000,
+    "anchor2": 50525000,
+    "loops": [
+     [
+      50300000,
+      50525000,
+      4.45498e-11
+     ],
+     [
+      50675000,
+      50800000,
+      1.82778e-07
+     ]
+    ]
+   }
+  },
+  "truth": "arcfish_t3",
+  "agree": true
+ },
+ "T4": {
+  "values": {
+   "n_smaller": 172,
+   "n_larger": 185,
+   "n_runs": 40,
+   "n_loci": 357
+  },
+  "verify": {
+   "arcfish_a21d889": {
+    "n_smaller": 172,
+    "n_larger": 185,
+    "n_runs": 40,
+    "n_loci": 357
+   }
+  },
+  "truth": "arcfish_t4",
+  "agree": true
+ },
+ "T5": {
+  "values": {
+   "n_domains": 8,
+   "n_boundaries": 7,
+   "boundaries": [
+    18777714,
+    18957714,
+    19227714,
+    19587714,
+    19947714,
+    20157714,
+    20337714
+   ],
+   "prominence": 0.01,
+   "window": 150000.0
+  },
+  "verify": {
+   "arcfish_a21d889": {
+    "n_domains": 8,
+    "n_boundaries": 7,
+    "boundaries": [
+     18777714,
+     18957714,
+     19227714,
+     19587714,
+     19947714,
+     20157714,
+     20337714
+    ],
+    "prominence": 0.01,
+    "window": 150000.0
+   }
+  },
+  "truth": "arcfish_t5",
+  "agree": true,
+  "note": "boundaries = find_peaks(insulation, prominence=0.01) on the per-locus insulation scores of both implementations (identical to 2e-15, parity run 47732259, window 150 kb); recompute with the final snapshot (inputs.py now sets prominence 0.01)"
+ }
+}
