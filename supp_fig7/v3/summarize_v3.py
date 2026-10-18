@@ -54,6 +54,47 @@ def compare(qm: dict, kind: dict) -> dict:
     return out
 
 
+def total_tokens(g: dict) -> float:
+    t = g.get("tokens")
+    return float(sum(v for v in t.values() if isinstance(v, (int, float))) if isinstance(t, dict) else (t or 0))
+
+
+METRICS = {"score": lambda g: g["score"], "elapsed_s": lambda g: g.get("elapsed_s") or 0.0, "tokens": total_tokens}
+
+
+def with_without(grades: list[dict], kind: dict, without: str = "none", with_: str = "skills") -> dict:
+    """Without U-Chrom (``none``) against U-Chrom with its documentation and skills (``skills``): checks passed,
+    wall time and tokens (input, cached input and output) per session, each question averaged over its runs within a
+    model and then over the models; s.e.m. over questions, Wilcoxon signed-rank over questions, per-model means."""
+    models = sorted({g["model_requested"] for g in grades})
+    out = {"without": without, "with": with_}
+    for name, f in METRICS.items():
+        cell = defaultdict(list)
+        for g in grades:
+            if g["condition"] in (without, with_):
+                cell[(g["id"], g["condition"], g["model_requested"])].append(f(g))
+        qm = defaultdict(dict)
+        pm = defaultdict(lambda: defaultdict(dict))
+        for q in kind:
+            for c in (without, with_):
+                per = [float(np.mean(cell[(q, c, m)])) for m in models]
+                qm[q][c] = float(np.mean(per))
+                for m, v in zip(models, per):
+                    pm[m][c][q] = v
+        res = {}
+        for part, kinds in PARTS.items():
+            qs = sorted(q for q in kind if kinds is None or kind[q] in kinds)
+            x = np.array([qm[q][without] for q in qs]); y = np.array([qm[q][with_] for q in qs])
+            res[part] = {"n_questions": len(qs),
+                         "mean": {without: float(x.mean()), with_: float(y.mean())},
+                         "sem": {without: float(x.std(ddof=1) / np.sqrt(len(x))), with_: float(y.std(ddof=1) / np.sqrt(len(y)))},
+                         "p_wilcoxon": float(wilcoxon(x, y).pvalue) if np.any(~np.isclose(x, y)) else 1.0,
+                         "per_model": {m: {c: float(np.mean([pm[m][c][q] for q in qs])) for c in (without, with_)}
+                                       for m in models}}
+        out[name] = res
+    return out
+
+
 def main() -> None:
     ap = argparse.ArgumentParser(description=__doc__.split("\n\n")[0])
     ap.add_argument("--grades", type=Path, default=HERE / "results" / "main_v3_grades.json")
@@ -97,7 +138,7 @@ def main() -> None:
         "models": models, "judge_models": sorted({g.get("judge_model", "") for g in grades}),
         "all_models": compare(question_means(grades, set(models)), kind),
         "complete_models": {"models": sorted(complete), **compare(question_means(grades, complete), kind)},
-        "per_model": per_model, "per_question": per_q, "usage": usage, "parts": {k: list(v) if v else None for k, v in PARTS.items()},
+        "per_model": per_model, "per_question": per_q, "usage": usage, "with_without": with_without(grades, kind), "parts": {k: list(v) if v else None for k, v in PARTS.items()},
     }
     save(a.out, res, script=__file__, params=vars(a) | {"grades": str(a.grades), "out": str(a.out)},
          datasets=["takei2025_fov0", "schicar_mop", "atlas stores and benchmark inputs of v3/data/*.md"])
