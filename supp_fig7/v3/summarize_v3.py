@@ -73,8 +73,16 @@ def main() -> None:
             if g["id"] == q:
                 cell[g["condition"]].append(g["score"])
         per_q[q] = {"kind": kind[q], **{c: float(np.mean(cell[c])) for c in CONDS}}
-    per_model = {m: {c: {"mean": float(np.mean([g["score"] for g in grades if g["model_requested"] == m and g["condition"] == c])),
-                         "n": n[(m, c)]} for c in CONDS} for m in models}
+    per_model = {}
+    for m in models:
+        qm = question_means(grades, {m})
+        per_model[m] = {c: {"mean": float(np.mean([g["score"] for g in grades if g["model_requested"] == m and g["condition"] == c])),
+                            "n": n[(m, c)],
+                            "n_skill_loaded": sum(bool(g.get("skills_used")) for g in grades
+                                                  if g["model_requested"] == m and g["condition"] == c),
+                            "by_part": {part: float(np.mean([qm[q][c] for q in qm if kinds is None or kind[q] in kinds]))
+                                        for part, kinds in PARTS.items()}}
+                        for c in CONDS}
     usage = {}
     for c in CONDS:
         gs = [g for g in grades if g["condition"] == c]
@@ -89,7 +97,7 @@ def main() -> None:
         "models": models, "judge_models": sorted({g.get("judge_model", "") for g in grades}),
         "all_models": compare(question_means(grades, set(models)), kind),
         "complete_models": {"models": sorted(complete), **compare(question_means(grades, complete), kind)},
-        "per_model": per_model, "per_question": per_q, "usage": usage,
+        "per_model": per_model, "per_question": per_q, "usage": usage, "parts": {k: list(v) if v else None for k, v in PARTS.items()},
     }
     save(a.out, res, script=__file__, params=vars(a) | {"grades": str(a.grades), "out": str(a.out)},
          datasets=["takei2025_fov0", "schicar_mop", "atlas stores and benchmark inputs of v3/data/*.md"])
