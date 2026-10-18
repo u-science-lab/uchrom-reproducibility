@@ -1,0 +1,488 @@
+{
+ "T6": {
+  "values": {
+   "rmse_nm": 383.15001491393514,
+   "median_error_nm": 301.3167262032767,
+   "mean_error_nm": 337.88096135080383,
+   "n_holdout": 4025,
+   "n_not_imputed": 0,
+   "linear_interpolation_rmse_nm": 363.11186844898793,
+   "linear_interpolation_median_error_nm": 206.62562234394483
+  },
+  "verify": {
+   "sfimpute_0.0.2_functions": {
+    "rmse_nm": 383.1493537205793,
+    "median_error_nm": 301.3173294542539,
+    "mean_error_nm": 337.88011338262487,
+    "n_holdout": 4025,
+    "n_not_imputed": 0,
+    "n_iterations": 2
+   },
+   "sfimpute_0.0.2_run_impute_mpi_resize": {
+    "rmse_nm": 378.8510652262237,
+    "median_error_nm": 302.9398612896856,
+    "mean_error_nm": 335.13387446339993,
+    "n_holdout": 4025,
+    "n_not_imputed": 0
+   }
+  },
+  "agreement_rel": {
+   "rmse_nm": {
+    "functions": 1.7256774894638268e-06,
+    "mpi_resize": 0.011220017017817696
+   },
+   "median_error_nm": {
+    "functions": 2.0020494210081714e-06,
+    "mpi_resize": 0.005386807121068712
+   }
+  },
+  "truth": "t6_snapfish_holdout",
+  "runtime_s": {
+   "uchrom": 184.89596056914888,
+   "sfimpute_functions": 306.57406220422126,
+   "sfimpute_mpi": 229.2487693768926,
+   "processes": 16
+  }
+ },
+ "F1": {
+  "values": {
+   "total_cis": 8463,
+   "pixel": 5,
+   "row_sum": 51,
+   "n_pixels": 880,
+   "diagonal": 5538,
+   "upper_triangle_ok": true,
+   "cell_index": 323,
+   "resolution": 1000000
+  },
+  "verify": {
+   "raw_raw": {
+    "total_cis": 8463,
+    "pixel": 5,
+    "row_sum": 51,
+    "n_pixels": 880,
+    "cell_index": 323
+   }
+  },
+  "agree": {
+   "total_cis": true,
+   "pixel": true,
+   "row_sum": true,
+   "n_pixels": true,
+   "cell_index": true
+  },
+  "truth": "f1_embedded_contacts",
+  "runtime_s": {
+   "chromdata": 2.952421457041055,
+   "raw": 2.052016386995092
+  },
+  "peak_rss_mb": {
+   "chromdata": 109.8203125,
+   "raw": 107.01953125
+  }
+ },
+ "F2": {
+  "values": {
+   "n_outlines": 31,
+   "area": 119.87109099980444,
+   "unit": "um",
+   "largest_cell": "4_4",
+   "largest_area": 302.84451400116086,
+   "median_area": 198.50499899988063,
+   "n_cells_in_store": 31
+  },
+  "verify": {
+   "raw_raw": {
+    "n_outlines": 31,
+    "area": 119.87109099980444,
+    "largest_cell": "4_4",
+    "largest_area": 302.84451400116086,
+    "unit": "um",
+    "n_cells_in_store": 31
+   }
+  },
+  "agree": {
+   "n_outlines": true,
+   "area": true,
+   "largest_cell": true,
+   "largest_area": true,
+   "unit": true,
+   "n_cells_in_store": true
+  },
+  "truth": "f2_cell_outlines",
+  "runtime_s": {
+   "chromdata": 0.9096948921214789,
+   "raw": 0.12902809283696115
+  },
+  "peak_rss_mb": {
+   "chromdata": 122.5625,
+   "raw": 98.4609375
+  }
+ },
+ "F3": {
+  "values": {
+   "function": "uchrom.fea.separation_profile",
+   "params": {
+    "short": [
+     50000.0,
+     150000.0
+    ],
+    "long": [
+     500000.0,
+     1000000.0
+    ],
+    "edges": null,
+    "chroms": null,
+    "exclude": [
+     "chrX",
+     "chrY",
+     "chrM"
+    ],
+    "stat": "median",
+    "threshold": null,
+    "pseudocount": 0.5,
+    "duplicates": "mean"
+   },
+   "uchrom_version": "0.3.0.dev0",
+   "stored_d_short": 0.24622347572884812,
+   "stored_d_long": 0.4768228148837082,
+   "stored_n_pairs_short": 2669,
+   "recomputed_d_short": 0.2406864486844615,
+   "recomputed_d_long": 0.7106646536869504,
+   "recomputed_n_pairs_short": 90,
+   "recomputed_n_pairs_long": 189
+  },
+  "verify": {
+   "raw_raw": {
+    "function": "uchrom.fea.separation_profile",
+    "stored_d_short": 0.24622347572884812,
+    "stored_n_pairs_short": 2669,
+    "recomputed_d_short": 0.2406864486844615,
+    "recomputed_n_pairs_short": 90,
+    "recomputed_d_long": 0.7106646536869504,
+    "recomputed_n_pairs_long": 189
+   }
+  },
+  "agree": {
+   "function": true,
+   "stored_d_short": true,
+   "stored_n_pairs_short": true,
+   "recomputed_d_short": true,
+   "recomputed_n_pairs_short": true,
+   "recomputed_d_long": true,
+   "recomputed_n_pairs_long": true
+  },
+  "truth": "f3_provenance",
+  "runtime_s": {
+   "uchrom": 1.2229878769721836,
+   "raw": 0.9028737649787217
+  },
+  "peak_rss_mb": {
+   "uchrom": 177.3203125,
+   "raw": 107.61328125
+  }
+ },
+ "F4": {
+  "values": {
+   "n_traces": 14935,
+   "n_cells": 7469,
+   "median_rg_all": 10.783556359075394,
+   "largest_median_type_100cells": "NMP",
+   "smallest_median_type_100cells": "mitosis",
+   "median_rg_early_neurons": 11.190642817169305,
+   "median_rg_blood": 9.510971750332917,
+   "by_type": {
+    "ExE ectoderm": {
+     "median_rg": 10.717346925723234,
+     "n_traces": 774,
+     "n_cells": 387
+    },
+    "ExE endoderm": {
+     "median_rg": 10.319224813486121,
+     "n_traces": 970,
+     "n_cells": 485
+    },
+    "ExE mesoderm": {
+     "median_rg": 11.153743142828331,
+     "n_traces": 608,
+     "n_cells": 304
+    },
+    "NMP": {
+     "median_rg": 12.062827488530727,
+     "n_traces": 256,
+     "n_cells": 128
+    },
+    "blood": {
+     "median_rg": 9.510971750332917,
+     "n_traces": 1400,
+     "n_cells": 701
+    },
+    "early mesenchyme": {
+     "median_rg": 11.43231974083545,
+     "n_traces": 894,
+     "n_cells": 447
+    },
+    "early mesoderm": {
+     "median_rg": 11.295719325735853,
+     "n_traces": 826,
+     "n_cells": 413
+    },
+    "early neurons": {
+     "median_rg": 11.190642817169305,
+     "n_traces": 952,
+     "n_cells": 476
+    },
+    "endoderm": {
+     "median_rg": 11.550920389530567,
+     "n_traces": 278,
+     "n_cells": 139
+    },
+    "epiblast and PS": {
+     "median_rg": 11.732783337079852,
+     "n_traces": 442,
+     "n_cells": 221
+    },
+    "epithelial cells": {
+     "median_rg": 11.65880913371836,
+     "n_traces": 608,
+     "n_cells": 304
+    },
+    "intermediate mesoderm": {
+     "median_rg": 11.566583725304756,
+     "n_traces": 680,
+     "n_cells": 340
+    },
+    "mitosis": {
+     "median_rg": 8.75525130325366,
+     "n_traces": 1125,
+     "n_cells": 563
+    },
+    "mix late mesenchyme": {
+     "median_rg": 11.365487995488856,
+     "n_traces": 1906,
+     "n_cells": 953
+    },
+    "myocytes": {
+     "median_rg": 10.816345590320582,
+     "n_traces": 134,
+     "n_cells": 67
+    },
+    "neural ectoderm": {
+     "median_rg": 11.678984524377082,
+     "n_traces": 908,
+     "n_cells": 454
+    },
+    "neural tube": {
+     "median_rg": 11.167242807667993,
+     "n_traces": 454,
+     "n_cells": 227
+    },
+    "notochord": {
+     "median_rg": 10.567476667314931,
+     "n_traces": 274,
+     "n_cells": 137
+    },
+    "oligodendrocytes and progenitors": {
+     "median_rg": 10.542149566488575,
+     "n_traces": 360,
+     "n_cells": 180
+    },
+    "radial glias": {
+     "median_rg": 10.356832321710566,
+     "n_traces": 946,
+     "n_cells": 473
+    },
+    "schwann cell precursors": {
+     "median_rg": 10.651503765602726,
+     "n_traces": 140,
+     "n_cells": 70
+    }
+   }
+  },
+  "verify": {
+   "raw_raw": {
+    "n_traces": 14935,
+    "n_cells": 7469,
+    "median_rg_all": 10.783556359075394,
+    "by_type": {
+     "ExE ectoderm": {
+      "median_rg": 10.717346925723234,
+      "n_traces": 774,
+      "n_cells": 387
+     },
+     "ExE endoderm": {
+      "median_rg": 10.319224813486121,
+      "n_traces": 970,
+      "n_cells": 485
+     },
+     "ExE mesoderm": {
+      "median_rg": 11.153743142828331,
+      "n_traces": 608,
+      "n_cells": 304
+     },
+     "NMP": {
+      "median_rg": 12.062827488530727,
+      "n_traces": 256,
+      "n_cells": 128
+     },
+     "blood": {
+      "median_rg": 9.510971750332917,
+      "n_traces": 1400,
+      "n_cells": 701
+     },
+     "early mesenchyme": {
+      "median_rg": 11.43231974083545,
+      "n_traces": 894,
+      "n_cells": 447
+     },
+     "early mesoderm": {
+      "median_rg": 11.295719325735853,
+      "n_traces": 826,
+      "n_cells": 413
+     },
+     "early neurons": {
+      "median_rg": 11.190642817169305,
+      "n_traces": 952,
+      "n_cells": 476
+     },
+     "endoderm": {
+      "median_rg": 11.550920389530567,
+      "n_traces": 278,
+      "n_cells": 139
+     },
+     "epiblast and PS": {
+      "median_rg": 11.732783337079852,
+      "n_traces": 442,
+      "n_cells": 221
+     },
+     "epithelial cells": {
+      "median_rg": 11.65880913371836,
+      "n_traces": 608,
+      "n_cells": 304
+     },
+     "intermediate mesoderm": {
+      "median_rg": 11.566583725304756,
+      "n_traces": 680,
+      "n_cells": 340
+     },
+     "mitosis": {
+      "median_rg": 8.75525130325366,
+      "n_traces": 1125,
+      "n_cells": 563
+     },
+     "mix late mesenchyme": {
+      "median_rg": 11.365487995488856,
+      "n_traces": 1906,
+      "n_cells": 953
+     },
+     "myocytes": {
+      "median_rg": 10.816345590320582,
+      "n_traces": 134,
+      "n_cells": 67
+     },
+     "neural ectoderm": {
+      "median_rg": 11.678984524377082,
+      "n_traces": 908,
+      "n_cells": 454
+     },
+     "neural tube": {
+      "median_rg": 11.167242807667993,
+      "n_traces": 454,
+      "n_cells": 227
+     },
+     "notochord": {
+      "median_rg": 10.567476667314931,
+      "n_traces": 274,
+      "n_cells": 137
+     },
+     "oligodendrocytes and progenitors": {
+      "median_rg": 10.542149566488575,
+      "n_traces": 360,
+      "n_cells": 180
+     },
+     "radial glias": {
+      "median_rg": 10.356832321710566,
+      "n_traces": 946,
+      "n_cells": 473
+     },
+     "schwann cell precursors": {
+      "median_rg": 10.651503765602726,
+      "n_traces": 140,
+      "n_cells": 70
+     }
+    },
+    "largest_median_type_100cells": "NMP",
+    "smallest_median_type_100cells": "mitosis",
+    "median_rg[early neurons]": 11.190642817169305,
+    "median_rg[blood]": 9.510971750332917,
+    "n_trace_categories": 290168
+   }
+  },
+  "agree": {
+   "n_traces": true,
+   "n_cells": true,
+   "median_rg_all": true,
+   "by_type": true,
+   "largest_median_type_100cells": true,
+   "smallest_median_type_100cells": true,
+   "median_rg[early neurons]": true,
+   "median_rg[blood]": true,
+   "xyz_unit": false
+  },
+  "truth": "f4_large_store_http",
+  "runtime_s": {
+   "chromdata": 8.794889685930684,
+   "raw": 5.953221086179838
+  },
+  "peak_rss_mb": {
+   "chromdata": 1820.98828125,
+   "raw": 891.16796875
+  }
+ },
+ "A1": {
+  "values": {
+   "n_cells": 47,
+   "n_traces": 1500,
+   "n_spots": 383674
+  },
+  "truth": "counts",
+  "anchor": "version 2 (answers_v2.json), unchanged"
+ },
+ "A6": {
+  "values": {
+   "cell_type": "L5IT",
+   "n": 642,
+   "median_contacts": 23157.0,
+   "median_scool_pixel_sum": 23157.0,
+   "note": "median_contacts = cells['n_contacts_hic'] (per-cell Hi-C contact count stored with the cell metadata); the per-cell .scool pixel sums (1 Mb, all chromosomes) are given for context and differ because the .scool keeps only binned cis+trans contacts on the 21 chromosomes."
+  },
+  "truth": "schicar_top_type",
+  "anchor": "version 2 (answers_v2.json), unchanged"
+ },
+ "H1": {
+  "values": {
+   "n_cells": 399,
+   "n_traces": 15779,
+   "median_spots_per_cell": 24899.0
+  },
+  "truth": "atlas_hires_counts",
+  "anchor": "version 2 (answers_v2.json), unchanged"
+ },
+ "S3": {
+  "values": {
+   "top_chrom": "chr22",
+   "sd_top": 0.18070139079184447,
+   "n_spots": 6268,
+   "sd_by_chrom": {
+    "chr22": 0.18070139079184447,
+    "chrX": 0.14892481832084012,
+    "chr9": 0.13661203355828327,
+    "chr15": 0.10271557346703027,
+    "chr17": 0.10246496694862699,
+    "chr11": 0.09607682549126856
+   }
+  },
+  "truth": "melanoma_dosage",
+  "anchor": "version 2 (answers_v2.json), unchanged"
+ }
+}

@@ -1,0 +1,557 @@
+{
+ "results": {
+  "sessions": 972,
+  "sessions_per_model_condition": {
+   "gpt-6-astra/none": 81,
+   "gpt-6-astra/bare": 81,
+   "gpt-6-astra/docs": 81,
+   "gpt-6-astra/skills": 81,
+   "gpt-6-luna/none": 81,
+   "gpt-6-luna/bare": 81,
+   "gpt-6-luna/docs": 81,
+   "gpt-6-luna/skills": 81,
+   "gpt-6-sol/none": 81,
+   "gpt-6-sol/bare": 81,
+   "gpt-6-sol/docs": 81,
+   "gpt-6-sol/skills": 81
+  },
+  "models": [
+   "gpt-6-astra",
+   "gpt-6-luna",
+   "gpt-6-sol"
+  ],
+  "judge_models": [
+   "claude-opus-5-5"
+  ],
+  "all_models": {
+   "all": {
+    "n_questions": 27,
+    "mean": {
+     "none": 0.8607681755829903,
+     "bare": 0.9026063100137175,
+     "docs": 0.958161865569273,
+     "skills": 0.9386145404663924
+    },
+    "tests": {
+     "none_vs_bare": {
+      "mean_diff": 0.04183813443072703,
+      "questions_differing": 13,
+      "p_wilcoxon": 0.08329000101541002
+     },
+     "none_vs_docs": {
+      "mean_diff": 0.0973936899862826,
+      "questions_differing": 14,
+      "p_wilcoxon": 0.0020609225808994156
+     },
+     "none_vs_skills": {
+      "mean_diff": 0.07784636488340192,
+      "questions_differing": 18,
+      "p_wilcoxon": 0.0054528743852803796
+     },
+     "bare_vs_docs": {
+      "mean_diff": 0.05555555555555555,
+      "questions_differing": 9,
+      "p_wilcoxon": 0.012693970055273047
+     },
+     "docs_vs_skills": {
+      "mean_diff": -0.019547325102880663,
+      "questions_differing": 10,
+      "p_wilcoxon": 0.3477548985675142
+     }
+    }
+   },
+   "A": {
+    "n_questions": 8,
+    "mean": {
+     "none": 0.9675925925925926,
+     "bare": 0.9699074074074074,
+     "docs": 0.9768518518518519,
+     "skills": 0.9907407407407407
+    },
+    "tests": {
+     "none_vs_bare": {
+      "mean_diff": 0.002314814814814825,
+      "questions_differing": 3,
+      "p_wilcoxon": 1.0
+     },
+     "none_vs_docs": {
+      "mean_diff": 0.009259259259259259,
+      "questions_differing": 2,
+      "p_wilcoxon": 0.5
+     },
+     "none_vs_skills": {
+      "mean_diff": 0.023148148148148154,
+      "questions_differing": 3,
+      "p_wilcoxon": 0.25
+     },
+     "bare_vs_docs": {
+      "mean_diff": 0.006944444444444434,
+      "questions_differing": 1,
+      "p_wilcoxon": 1.0
+     },
+     "docs_vs_skills": {
+      "mean_diff": 0.013888888888888895,
+      "questions_differing": 1,
+      "p_wilcoxon": 1.0
+     }
+    }
+   },
+   "B": {
+    "n_questions": 19,
+    "mean": {
+     "none": 0.8157894736842105,
+     "bare": 0.874269005847953,
+     "docs": 0.9502923976608186,
+     "skills": 0.9166666666666667
+    },
+    "tests": {
+     "none_vs_bare": {
+      "mean_diff": 0.058479532163742694,
+      "questions_differing": 10,
+      "p_wilcoxon": 0.06034053291564654
+     },
+     "none_vs_docs": {
+      "mean_diff": 0.1345029239766082,
+      "questions_differing": 12,
+      "p_wilcoxon": 0.00326637909664425
+     },
+     "none_vs_skills": {
+      "mean_diff": 0.10087719298245616,
+      "questions_differing": 15,
+      "p_wilcoxon": 0.0118061772308144
+     },
+     "bare_vs_docs": {
+      "mean_diff": 0.0760233918128655,
+      "questions_differing": 8,
+      "p_wilcoxon": 0.017153601700200603
+     },
+     "docs_vs_skills": {
+      "mean_diff": -0.03362573099415206,
+      "questions_differing": 9,
+      "p_wilcoxon": 0.20538864534637247
+     }
+    }
+   }
+  },
+  "complete_models": {
+   "models": [
+    "gpt-6-astra",
+    "gpt-6-luna",
+    "gpt-6-sol"
+   ],
+   "all": {
+    "n_questions": 27,
+    "mean": {
+     "none": 0.8607681755829903,
+     "bare": 0.9026063100137175,
+     "docs": 0.958161865569273,
+     "skills": 0.9386145404663924
+    },
+    "tests": {
+     "none_vs_bare": {
+      "mean_diff": 0.04183813443072703,
+      "questions_differing": 13,
+      "p_wilcoxon": 0.08329000101541002
+     },
+     "none_vs_docs": {
+      "mean_diff": 0.0973936899862826,
+      "questions_differing": 14,
+      "p_wilcoxon": 0.0020609225808994156
+     },
+     "none_vs_skills": {
+      "mean_diff": 0.07784636488340192,
+      "questions_differing": 18,
+      "p_wilcoxon": 0.0054528743852803796
+     },
+     "bare_vs_docs": {
+      "mean_diff": 0.05555555555555555,
+      "questions_differing": 9,
+      "p_wilcoxon": 0.012693970055273047
+     },
+     "docs_vs_skills": {
+      "mean_diff": -0.019547325102880663,
+      "questions_differing": 10,
+      "p_wilcoxon": 0.3477548985675142
+     }
+    }
+   },
+   "A": {
+    "n_questions": 8,
+    "mean": {
+     "none": 0.9675925925925926,
+     "bare": 0.9699074074074074,
+     "docs": 0.9768518518518519,
+     "skills": 0.9907407407407407
+    },
+    "tests": {
+     "none_vs_bare": {
+      "mean_diff": 0.002314814814814825,
+      "questions_differing": 3,
+      "p_wilcoxon": 1.0
+     },
+     "none_vs_docs": {
+      "mean_diff": 0.009259259259259259,
+      "questions_differing": 2,
+      "p_wilcoxon": 0.5
+     },
+     "none_vs_skills": {
+      "mean_diff": 0.023148148148148154,
+      "questions_differing": 3,
+      "p_wilcoxon": 0.25
+     },
+     "bare_vs_docs": {
+      "mean_diff": 0.006944444444444434,
+      "questions_differing": 1,
+      "p_wilcoxon": 1.0
+     },
+     "docs_vs_skills": {
+      "mean_diff": 0.013888888888888895,
+      "questions_differing": 1,
+      "p_wilcoxon": 1.0
+     }
+    }
+   },
+   "B": {
+    "n_questions": 19,
+    "mean": {
+     "none": 0.8157894736842105,
+     "bare": 0.874269005847953,
+     "docs": 0.9502923976608186,
+     "skills": 0.9166666666666667
+    },
+    "tests": {
+     "none_vs_bare": {
+      "mean_diff": 0.058479532163742694,
+      "questions_differing": 10,
+      "p_wilcoxon": 0.06034053291564654
+     },
+     "none_vs_docs": {
+      "mean_diff": 0.1345029239766082,
+      "questions_differing": 12,
+      "p_wilcoxon": 0.00326637909664425
+     },
+     "none_vs_skills": {
+      "mean_diff": 0.10087719298245616,
+      "questions_differing": 15,
+      "p_wilcoxon": 0.0118061772308144
+     },
+     "bare_vs_docs": {
+      "mean_diff": 0.0760233918128655,
+      "questions_differing": 8,
+      "p_wilcoxon": 0.017153601700200603
+     },
+     "docs_vs_skills": {
+      "mean_diff": -0.03362573099415206,
+      "questions_differing": 9,
+      "p_wilcoxon": 0.20538864534637247
+     }
+    }
+   }
+  },
+  "per_model": {
+   "gpt-6-astra": {
+    "none": {
+     "mean": 0.9382716049382716,
+     "n": 81
+    },
+    "bare": {
+     "mean": 0.9629629629629629,
+     "n": 81
+    },
+    "docs": {
+     "mean": 0.9876543209876543,
+     "n": 81
+    },
+    "skills": {
+     "mean": 0.9629629629629629,
+     "n": 81
+    }
+   },
+   "gpt-6-luna": {
+    "none": {
+     "mean": 0.7181069958847737,
+     "n": 81
+    },
+    "bare": {
+     "mean": 0.7880658436213991,
+     "n": 81
+    },
+    "docs": {
+     "mean": 0.9115226337448559,
+     "n": 81
+    },
+    "skills": {
+     "mean": 0.8775720164609054,
+     "n": 81
+    }
+   },
+   "gpt-6-sol": {
+    "none": {
+     "mean": 0.9259259259259259,
+     "n": 81
+    },
+    "bare": {
+     "mean": 0.9567901234567902,
+     "n": 81
+    },
+    "docs": {
+     "mean": 0.9753086419753086,
+     "n": 81
+    },
+    "skills": {
+     "mean": 0.9753086419753086,
+     "n": 81
+    }
+   }
+  },
+  "per_question": {
+   "A1": {
+    "kind": "anchor",
+    "none": 1.0,
+    "bare": 1.0,
+    "docs": 1.0,
+    "skills": 1.0
+   },
+   "A6": {
+    "kind": "anchor",
+    "none": 1.0,
+    "bare": 1.0,
+    "docs": 1.0,
+    "skills": 1.0
+   },
+   "BH1": {
+    "kind": "method",
+    "none": 0.7777777777777778,
+    "bare": 1.0,
+    "docs": 1.0,
+    "skills": 0.8888888888888888
+   },
+   "BH2": {
+    "kind": "method",
+    "none": 0.7777777777777778,
+    "bare": 0.7777777777777778,
+    "docs": 0.7777777777777778,
+    "skills": 0.8888888888888888
+   },
+   "BH3": {
+    "kind": "method",
+    "none": 1.0,
+    "bare": 1.0,
+    "docs": 0.9444444444444444,
+    "skills": 1.0
+   },
+   "BH4": {
+    "kind": "method",
+    "none": 1.0,
+    "bare": 1.0,
+    "docs": 1.0,
+    "skills": 0.8888888888888888
+   },
+   "F1": {
+    "kind": "format",
+    "none": 0.8888888888888888,
+    "bare": 0.9259259259259258,
+    "docs": 0.9259259259259258,
+    "skills": 0.9259259259259258
+   },
+   "F2": {
+    "kind": "format",
+    "none": 1.0,
+    "bare": 1.0,
+    "docs": 1.0,
+    "skills": 1.0
+   },
+   "F3": {
+    "kind": "format",
+    "none": 1.0,
+    "bare": 1.0,
+    "docs": 1.0,
+    "skills": 1.0
+   },
+   "F4": {
+    "kind": "format",
+    "none": 1.0,
+    "bare": 1.0,
+    "docs": 1.0,
+    "skills": 1.0
+   },
+   "H1": {
+    "kind": "anchor",
+    "none": 0.9629629629629629,
+    "bare": 1.0,
+    "docs": 1.0,
+    "skills": 1.0
+   },
+   "P1": {
+    "kind": "method",
+    "none": 1.0,
+    "bare": 1.0,
+    "docs": 1.0,
+    "skills": 0.9722222222222222
+   },
+   "P2": {
+    "kind": "method",
+    "none": 1.0,
+    "bare": 1.0,
+    "docs": 1.0,
+    "skills": 1.0
+   },
+   "R1": {
+    "kind": "method",
+    "none": 0.5555555555555556,
+    "bare": 0.7777777777777778,
+    "docs": 1.0,
+    "skills": 1.0
+   },
+   "R2": {
+    "kind": "method",
+    "none": 0.0,
+    "bare": 0.3333333333333333,
+    "docs": 0.5555555555555556,
+    "skills": 0.2222222222222222
+   },
+   "R3": {
+    "kind": "method",
+    "none": 0.6666666666666666,
+    "bare": 0.8888888888888888,
+    "docs": 0.8888888888888888,
+    "skills": 1.0
+   },
+   "R4": {
+    "kind": "method",
+    "none": 0.7777777777777778,
+    "bare": 1.0,
+    "docs": 1.0,
+    "skills": 1.0
+   },
+   "R5": {
+    "kind": "method",
+    "none": 0.6666666666666666,
+    "bare": 0.6666666666666666,
+    "docs": 1.0,
+    "skills": 0.7777777777777778
+   },
+   "R6": {
+    "kind": "method",
+    "none": 0.8888888888888888,
+    "bare": 1.0,
+    "docs": 1.0,
+    "skills": 1.0
+   },
+   "S3": {
+    "kind": "anchor",
+    "none": 0.8888888888888888,
+    "bare": 0.8333333333333334,
+    "docs": 0.8888888888888888,
+    "skills": 1.0
+   },
+   "T1": {
+    "kind": "method",
+    "none": 0.9444444444444444,
+    "bare": 0.8333333333333334,
+    "docs": 1.0,
+    "skills": 1.0
+   },
+   "T2": {
+    "kind": "method",
+    "none": 0.8888888888888888,
+    "bare": 0.7777777777777778,
+    "docs": 1.0,
+    "skills": 1.0
+   },
+   "T3": {
+    "kind": "method",
+    "none": 1.0,
+    "bare": 1.0,
+    "docs": 1.0,
+    "skills": 1.0
+   },
+   "T4": {
+    "kind": "method",
+    "none": 1.0,
+    "bare": 1.0,
+    "docs": 1.0,
+    "skills": 1.0
+   },
+   "T5": {
+    "kind": "method",
+    "none": 0.8888888888888888,
+    "bare": 1.0,
+    "docs": 1.0,
+    "skills": 1.0
+   },
+   "T6": {
+    "kind": "method",
+    "none": 0.6666666666666666,
+    "bare": 0.6666666666666666,
+    "docs": 0.8888888888888888,
+    "skills": 0.8888888888888888
+   },
+   "XM1": {
+    "kind": "method",
+    "none": 1.0,
+    "bare": 0.8888888888888888,
+    "docs": 1.0,
+    "skills": 0.8888888888888888
+   }
+  },
+  "usage": {
+   "none": {
+    "median_elapsed_s": 82.33149456977844,
+    "median_tokens": 436641.0,
+    "share_pip_install": 0.1934156378600823,
+    "share_skill_loaded": 0.0
+   },
+   "bare": {
+    "median_elapsed_s": 82.44427156448364,
+    "median_tokens": 464530.0,
+    "share_pip_install": 0.09465020576131687,
+    "share_skill_loaded": 0.0
+   },
+   "docs": {
+    "median_elapsed_s": 69.57312679290771,
+    "median_tokens": 439197.0,
+    "share_pip_install": 0.024691358024691357,
+    "share_skill_loaded": 0.0
+   },
+   "skills": {
+    "median_elapsed_s": 77.9229679107666,
+    "median_tokens": 480718.0,
+    "share_pip_install": 0.0411522633744856,
+    "share_skill_loaded": 0.9012345679012346
+   }
+  }
+ },
+ "provenance": {
+  "revision": "e7a8c0c65864",
+  "date": "2026-10-18T21:13:47+00:00",
+  "host": "Weizes-MacBook-Pro.local",
+  "cpu": "Apple M5 Pro",
+  "cpus": 18,
+  "slurm_job": null,
+  "load_avg_1min": 12.935546875,
+  "versions": {
+   "python": "3.12.13",
+   "numpy": "2.5.3",
+   "scipy": "1.18.1",
+   "pandas": "3.0.6",
+   "cooler": "0.10.4",
+   "zarr": "3.4.0",
+   "torch": "2.14.0",
+   "uchrom": "0.3.0.dev0",
+   "chromdata": "0.1.0",
+   "uchrom_maps": "0.1.0",
+   "uchrom_recon": "0.1.0"
+  },
+  "script": "supp_fig7/v3/summarize_v3.py",
+  "datasets": [
+   "takei2025_fov0",
+   "schicar_mop",
+   "atlas stores and benchmark inputs of v3/data/*.md"
+  ],
+  "params": {
+   "grades": "/Users/weizexu/orca/workspaces/U-Chrom/uchrom-reproducibility/supp_fig7/v3/results/main_v3_grades.json",
+   "out": "/Users/weizexu/orca/workspaces/U-Chrom/uchrom-reproducibility/supp_fig7/results/agent_bench_v3.json"
+  }
+ }
+}

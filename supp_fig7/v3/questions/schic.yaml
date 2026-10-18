@@ -1,0 +1,177 @@
+# Version 3, Part B, family schic: published single-cell Hi-C methods (v3/README.md for the rules).  The reference
+# answers are in results/schic.json (U-Chrom: truth/schic.py; independent implementations: truth/schic_ref_*.py);
+# the decisions per question are in reports/schic.md.
+#
+# Data keys (folders under the data roots; v3/data/schic.md):
+#   stevens  = stevens2017_cell1/        (v2: Stevens 2017 Cell 1 contacts + published PDB)
+#   stevens_cell2 = stevens2017_cell2/   (data_v3: Stevens 2017 Cell 2 contacts + published PDB)
+#   schicar  = schicar_mop/              (v2: scHiCAR store, contacts_cells_1Mb.scool, contacts_all.mcool)
+#   mm10_cpg_1mb = mm10_cpg/mm10_cpg_1Mb.tsv (data_v3: CpG ratio of the 1-Mb bins of the scHiCAR maps, scHiCluster's definition)
+#   schicar_types = schicar_cell_types/schicar_cell_types.tsv (data_v3: cell id, cell_type of the 5,313 scHiCAR cells)
+#   nagano_dip_chr19 = nagano2017_dip_chr19/ (data_v3: 50 Nagano 2017 diploid cells, chr19 10-kb pixels, SnapHiC's input format)
+#   nagano_hap_2i = nagano2017_hap_2i/   (data_v3: 395 Nagano 2017 haploid 2i cells: adj tables, GATC.fends, cells.tsv)
+questions:
+- id: R1
+  category: schic
+  split: v3
+  kind: method
+  data: stevens
+  prompt: 'These are the single-cell Hi-C contacts of one haploid mouse ES cell and the authors'' published genome structure
+    of the same cell (Stevens et al. 2017, Nature 544:59; PDB, 100-kb particles, ten models). Reconstruct the cell''s genome
+    structure from the contacts yourself, with the NucDynamics protocol of Stevens et al. (hierarchical simulated annealing
+    ending at 1-Mb particles, e.g. particle sizes 8, 4, 2 and 1 Mb; the length of the annealing schedule is up to you) or
+    an equivalent restraint-based method. Then compare it with the published structure on chromosome 1: average the published
+    first model''s particles into the same 1-Mb bins (bin k holds the particles whose sequence position, the last column
+    of the PDB, is in [k Mb, (k+1) Mb)), and report the Spearman correlation between the pairwise distances of your structure
+    and of the published one over chr1''s bin pairs (each unordered pair of distinct bins present in both, once).'
+  truth: nucdyn_cell1
+  grade:
+    numbers_min:
+    - rho
+  method_ref: NucDynamics (Stevens et al. 2017; github.com/tjs23/nuc_dynamics @ 00eaf0b)
+  check: floor
+  revised: v2 M3, the bin rule and the pair set stated
+- id: R2
+  category: schic
+  split: v3
+  kind: method
+  data: stevens_cell2
+  prompt: 'These are the single-cell Hi-C contacts of one haploid mouse ES cell and the authors'' published genome structure
+    of the same cell (Stevens et al. 2017, Nature 544:59; Cell 2, GEO GSM2219498; PDB, 100-kb particles, ten models). Reconstruct
+    the cell''s genome structure from the contacts yourself, with the NucDynamics protocol of Stevens et al. (hierarchical
+    simulated annealing ending at 1-Mb particles, e.g. particle sizes 8, 4, 2 and 1 Mb; the length of the annealing schedule
+    is up to you) or an equivalent restraint-based method. Then compare it with the published structure on chromosome 1:
+    average the published first model''s particles into the same 1-Mb bins (bin k holds the particles whose sequence position,
+    the last column of the PDB, is in [k Mb, (k+1) Mb)), and report the Spearman correlation between the pairwise distances
+    of your structure and of the published one over chr1''s bin pairs (each unordered pair of distinct bins present in both,
+    once).'
+  truth: nucdyn_cell2
+  grade:
+    numbers_min:
+    - rho
+  method_ref: NucDynamics (Stevens et al. 2017; github.com/tjs23/nuc_dynamics @ 00eaf0b)
+  check: floor
+- id: R3
+  category: schic
+  split: v3
+  kind: method
+  data: schicar
+  prompt: 'Impute the chromosome 1 contact maps of two scHiCAR mouse cortex cells, GTGAAATCTACGAGATAC and TAGACCGGTATGTACCCG
+    (their 1-Mb maps in contacts_cells_1Mb.scool, cell name = cell id), with the convolution and random walk with restart
+    of scHiCluster (Zhou et al. 2019, PNAS 116:14011) exactly as the authors'' code does it (function impute_cpu in schicluster/schicluster.py
+    of the PyPI package schicluster 1.3.2, pad 1, restart probability 0.5): with U the cell''s stored chr1 pixels as an
+    upper-triangular 196 x 196 count matrix (bins of 1 Mb, diagonal included), A = log2(U + U^T + 1); smooth A with a 3
+    x 3 mean filter (zeros outside the matrix, divided by 9); set the diagonal to 0, then put 1 on the diagonal of every
+    bin whose column sums to 0; divide every column by its sum (P); iterate Q <- 0.5 I + 0.5 Q P from Q = I until the Frobenius
+    norm of the change is below 1e-6 (at most 30 iterations); symmetrise the result, (Q + Q^T) / 2. Report the Pearson correlation
+    between the two cells'' imputed maps over the pixels (i, j) with i < j.'
+  truth: rwr_pair_corr
+  grade:
+    numbers:
+    - r
+    tol: 0.005
+  method_ref: random walk with restart imputation of scHiCluster (Zhou et al. 2019, PNAS); schicluster 1.3.2 (PyPI), impute_cpu
+  check: parity
+  note: 'cells: the median-chr1-contact Oligo and L6CT cells (truth/schic_explore.py)'
+- id: R4
+  category: schic
+  split: v3
+  kind: method
+  data: schicar+schicar_types
+  prompt: 'Embed all 5,313 scHiCAR mouse cortex cells with scHiCluster (Zhou et al. 2019, PNAS 116:14011) from their 1-Mb
+    single-cell maps (contacts_cells_1Mb.scool, cell name = cell id; cell types in schicar_cell_types.tsv), using the autosomes
+    chr1-chr19: impute every cell''s intra-chromosomal map with scHiCluster''s convolution (pad 1, a 3 x 3 mean filter)
+    and random walk with restart (restart probability 0.5); binarise each cell''s imputed chromosome map, keeping its values
+    above the cell''s own 80th percentile (the top 20 %) as 1 and the rest as 0; reduce the binary vectors of all cells
+    to 20 principal components per chromosome, concatenate the 19 chromosomes'' components (380 per cell), and reduce them
+    to 20 principal components with a second PCA. Report the k-nearest-neighbour purity of the cell types in these 20 components:
+    for every cell, the fraction of its 30 nearest other cells (Euclidean distance) that carry the same label in the column
+    cell_type of schicar_cell_types.tsv (22 labels, used as given), averaged over all cells.'
+  truth: schicluster_knn
+  grade:
+    numbers_min:
+    - purity
+  method_ref: scHiCluster embedding (Zhou et al. 2019, PNAS); schicluster 1.3.2 (PyPI), impute_cpu + hicluster_cpu with
+    20 PCs per chromosome
+  check: floor
+  note: 'k = 30, not 10: at 10 the no-imputation baseline sits within the spread of correct variants (reports/schic.md)'
+- id: R5
+  category: schic
+  split: v3
+  kind: method
+  data: schicar+mm10_cpg_1mb
+  prompt: 'Compute the single-cell compartment score of scHiCluster (Zhou et al. 2019, PNAS 116:14011; "hicluster compartment",
+    function single_chrom_compartment of the GitHub release v1.3.4 of zhoujt1994/scHiCluster, adopted from the scA/B value
+    of Tan et al. 2018) for all 5,313 scHiCAR mouse cortex cells on the 1-Mb bins of chr1-chr19: for each cell and chromosome,
+    take the cell''s raw intra-chromosomal map from contacts_cells_1Mb.scool (symmetric, each contact once), set its diagonal
+    to 0, put 1 on the diagonal of every bin without any contact, divide every row by its sum, and multiply by the CpG ratio
+    of the bins (mm10_cpg_1Mb.tsv, column cpg_ratio: CG dinucleotides per non-N base); each bin''s score is thus the contact-weighted
+    mean CpG ratio of its partners (its own CpG ratio when it has no contact). Average the scores of each bin over all cells.
+    Then compute the compartment eigenvector E1 of the pseudo-bulk of all cells at 1 Mb (contacts_all.mcool::/resolutions/1000000,
+    its stored balancing weights) per chromosome as cooltools'' eigs_cis does (main diagonal and first off-diagonal ignored,
+    observed over expected, clipped at the 99.9th percentile, leading eigenvector), each chromosome''s E1 oriented to correlate
+    positively (Pearson) with the CpG ratio. The score is built from the CpG ratio, so report how much it tells about E1
+    beyond the CpG ratio itself: the partial correlation of the mean score and E1 given the CpG ratio, i.e. the Pearson
+    correlation between the residuals of the mean score and of E1 after each is fitted by least squares (with an intercept)
+    as a linear function of the CpG ratio, over the bins of chr1-chr19 that have a CpG ratio above 0 and a defined E1.'
+  truth: scab_vs_e1
+  grade:
+    numbers:
+    - r_partial_cpg
+    tol: 0.05
+  method_ref: scHiCluster compartment score (Zhou et al. 2019; GitHub v1.3.4 single_chrom_compartment) + cooltools eigs_cis
+  check: parity
+  note: graded on the partial correlation given CpG, not the plain r (the CpG ratio alone gives 0.704 vs 0.714)
+- id: R6
+  category: schic
+  split: v3
+  kind: method
+  data: nagano_hap_2i
+  prompt: 'Nagano et al. 2017 (Nature 547:61) placed single haploid mouse ES cells in the cell cycle by the genomic distances
+    of their contacts. For the 395 cells given (cells.tsv; adj/<cell>.adj: the authors'' fend-pair tables fend1, fend2,
+    count; GATC.fends: fend, chromosome, coordinate on mm9), count every fend pair once (ignore the count column; (a, b)
+    and (b, a) are the same pair), keep the pairs whose two fends lie on the same chromosome among chr1-chr19 and chrX (1-19
+    and X in GATC.fends), with distance d = |coordinate 1 - coordinate 2| (bp) greater than 2^14.5, and compute for each
+    cell the fraction of these contacts in the "near" band (2^14.5 < d <= 2^21) and in the "mitotic" band (2^21 < d <= 2^23.5).
+    Assign each cell a phase with the paper''s gates (schic2 code, "newer" criteria): post-M if mitotic >= 0.3 and near
+    <= 0.42; otherwise pre-M if near > 0.42 and 1.8 x mitotic + near > 1; otherwise G1 if near <= 0.611, early-S if 0.611
+    < near <= 0.77, and mid-S/G2 if near > 0.77. Report the median near fraction, the median mitotic fraction over the 395
+    cells, and the number of cells in each of the five phases.'
+  truth: nagano_cellcycle
+  grade:
+    numbers:
+    - median_f_near
+    - median_f_mitotic
+    - n_post-M
+    - n_G1
+    - n_early-S
+    - n_mid-S/G2
+    - n_pre-M
+    tol: 0.02
+  method_ref: Nagano et al. 2017 cell-cycle phasing by contact distances (github.com/tanaylab/schic2, ordering.r)
+  check: parity
+  note: the definitions reproduce the published per-cell f_near_band / f_mitotic_band of all 395 cells (5e-10)
+# R7 (conditional) was dropped: the authors' SnapHiC does not finish on Python 3.12 without patches and needs > 10 min
+# (reports/schic.md).  Kept here for the record, not to be merged.
+dropped:
+- id: R7
+  category: schic
+  split: v3
+  kind: method
+  data: nagano_dip_chr19
+  conditional: true
+  prompt: 'Call chromatin loops with SnapHiC (Yu et al. 2021, Nature Methods 18:1056; github.com/HuMingLab/SnapHiC) on chromosome
+    19 of these 50 single mouse ES cells (Nagano et al. 2017, diploid, serum; contacts/<cell>.contacts.txt: one line per
+    non-empty 10-kb bin pair of chr19, "cell chrom pos chrom pos", positions at the bin centres, mm10), with all of SnapHiC''s
+    default parameters (10-kb bins, random walk with restart probability 0.05 on the whole chromosome, the default "inverse"
+    method, 2-Mb band, candidate loops 100 kb - 2 Mb, FDR 0.1, its default thresholds and post-processing into loop summits)
+    and its mm10 filter regions (ext/mm10_filter_regions.txt of the repository). Report the number of loops (summits) on
+    chr19.'
+  truth: snaphic_chr19
+  grade:
+    numbers:
+    - n_loops
+    tol: 0
+  method_ref: SnapHiC (Yu et al. 2021); github.com/HuMingLab/SnapHiC @ 782dc2b, defaults
+  check: parity
+  note: 'dropped: the authors'' SnapHiC fails on Python 3.12 (pandas) and runs > 10 min (reports/schic.md)'
