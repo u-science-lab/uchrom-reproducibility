@@ -3,7 +3,7 @@
 Questions H1-H4, XM1, P1, P2 (`../questions/bulk.yaml`).  Three new folders under
 `$SCRATCH/uchrom-nd/agentbench/data_v3/`, built by `bulk_build.py` (this folder; cooler / pandas / pyarrow / numpy only,
 never imports `uchrom`; run in `venv-uchrom` for its pyarrow) in the job `../sherlock/bulk_setup.sbatch` (Sherlock jobs
-47731273 + 47734059, 2026-10-13) from registered sources; two version-2 stores reused.  A scratch folder
+47731273 + 47734059, 2026-10-13) from registered sources; two shared stores reused.  A scratch folder
 `data_v3/bulk_work/` (call tables of H1) and `data_v3/bulk_build_report.json` (counts, md5s, balancing) are written
 next to them; neither is given to the agents.
 
@@ -12,8 +12,8 @@ next to them; neither is given to the agents.
 | `rao_chr21_10kb` | `data_v3/rao2014_imr90_chr21_10kb/IMR90_chr21_10kb_hg19.cool` and `GSE63525_IMR90_HiCCUPS_looplist.txt.gz` | H1, H2, H3 | `rao2014_imr90_chr21` (the 5-kb chr21 slice of `GSE63525_IMR90_combined.hic`, Rao et al. 2014), `rao2014_annotations` |
 | `su2020_tsv` | `data_v3/su2020_chr21_tsv/chromosome21.tsv`, `Hi-C_contacts_chromosome21.tsv`, `README_August_2020.txt` | H4, XM1 | `su2020_chr21` (Zenodo 3928890, Su et al. 2020) |
 | `takei_rna` | `data_v3/takei2025_fov0_rna/takei2025_fov0_rna_counts.tsv` | P2 (with `takei`) | `takei2025_rna` (Zenodo 7693825 `transcriptomic-data.zip`, Takei et al. 2025) |
-| `takei` (version 2) | `data/takei2025_fov0/takei2025_fov0.chromdata.zarr` | P2 | `takei2025_fov0` |
-| `melanoma` (version 2) | `data/hicrna_human_melanoma/hicrna_human_melanoma.chromdata.zarr` | P1 | atlas store `hicrna_human_melanoma` (Guo et al. 2026, GEO GSE311199) |
+| `takei` (shared) | `data/takei2025_fov0/takei2025_fov0.chromdata.zarr` | P2 | `takei2025_fov0` |
+| `melanoma` (shared) | `data/hicrna_human_melanoma/hicrna_human_melanoma.chromdata.zarr` | P1 | atlas store `hicrna_human_melanoma` (Guo et al. 2026, GEO GSE311199) |
 
 ## `rao2014_imr90_chr21_10kb/`
 
@@ -54,5 +54,5 @@ inside the job into `$SCRATCH/uchrom-nd/agentbench/dl/takei2025_rna/` (not part 
 Nothing new: every input comes from a registered source (`rao2014_imr90_chr21`, `rao2014_annotations`,
 `su2020_chr21`, `takei2025_rna`, `takei2025_fov0`, the atlas store `hicrna_human_melanoma`).  For
 `apps/atlas/recipes/README.md`, add to the entries of these sources a line "users: agent benchmark v3 (family bulk:
-`benchmarks/fig6/agent_bench/v3/data/bulk_build.py`)"; `takei2025_rna` gains its first user outside
+`supp_fig7/v3/data/bulk_build.py`)"; `takei2025_rna` gains its first user outside
 `uchrom.io.load_takei2025_cerebellum`.

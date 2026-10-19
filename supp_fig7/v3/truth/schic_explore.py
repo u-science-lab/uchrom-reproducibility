@@ -8,7 +8,7 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 
-root = Path(sys.argv[1])          # v2 data root
+root = Path(sys.argv[1])          # the shared data root
 
 
 def main():

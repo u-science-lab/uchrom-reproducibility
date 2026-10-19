@@ -1,4 +1,4 @@
-"""The data of T1, P1 and P2 in community formats, next to the ChromData stores of version 2 (``v3/data/neutral.md``),
+"""The data of T1, P1 and P2 in community formats, next to the shared ChromData stores (``v3/data/neutral.md``),
 so that a condition without U-Chrom does not have to read a ChromData store by hand.  Each export is checked against
 its store value by value: the references do not change.
 
@@ -6,7 +6,7 @@ its store value by value: the references do not change.
     python neutral_build.py melanoma --store MELANOMA_STORE --section human_melanoma_r1 --out DATA_V3/hicrna_melanoma_r1
     (U-Chrom's environment; --results results/bulk.json to compare with the references of P1 / P2)
 
-``takei``    Takei et al. 2025, field of view 0 (version 2's store ``takei2025_fov0``) -> a 4DN FOF-CT core table
+``takei``    Takei et al. 2025, field of view 0 (the shared store ``takei2025_fov0``) -> a 4DN FOF-CT core table
              (``chromdata.ChromData.to_fofct``: one row per spot, X / Y / Z in um, Trace_ID, Cell_ID, the locus;
              the store's spot tracks left out) and its FOF-CT cell table (every column of the store's ``cells``,
              ``cell_type`` among them).  Checked: the two tables read with pandas alone equal the store spot by spot

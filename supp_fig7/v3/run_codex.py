@@ -1,14 +1,14 @@
 """Version 3 of the agent benchmark: each question x condition x model x repeat is one `codex exec` session (Codex
 CLI, `module load codex`) in its own Apptainer container and its own Slurm job step, inside a Slurm allocation.
 
-Conditions (what the agent gets besides the data and a Python with the scientific stack), as in version 2:
+Conditions (what the agent gets besides the data and a Python with the scientific stack):
 
   none    no U-Chrom at all: numpy, pandas, scipy, zarr, pyarrow, anndata, cooler ... but not chromdata / uchrom
   bare    the `uchrom` package installed (site-packages), no documentation, no skills
   docs    + ./docs: the documentation of the commit (README, every published page, the tutorials as Markdown)
   skills  + ./docs + ./.agents/skills: the five U-Chrom skills (the agent-skills folder Codex reads)
 
-    python benchmarks/fig6/agent_bench/run_codex.py --snapshot SNAP --data-root DATA --data-root-v3 DATA3 \\
+    python supp_fig7/v3/run_codex.py --snapshot SNAP --data-root DATA --data-root-v3 DATA3 \\
         --image py312full.sif --venv-uchrom VENV_U --venv-plain VENV_P --codex-dir CODEX_VENDOR \\
         --questions questions_v3.yaml --ids T1,R3 --conditions none,bare,docs,skills \\
         --models gpt-6-luna --reps 1 --jobs 8 --run pilot_v3 --out OUT
@@ -51,18 +51,18 @@ import yaml
 HERE = Path(__file__).resolve().parent
 
 #: data key -> (root, folder under the root (bound read-only at /work/data/<folder>), file the prompt names: "" = the
-#: folder).  root "v2" = --data-root, "v3" = --data-root-v3
+#: folder).  root "base" = --data-root (the shared stores), "v3" = --data-root-v3 (v3/data/*.md)
 DATA = {
-    # version 2
-    "takei": ("v2", "takei2025_fov0", "takei2025_fov0.chromdata.zarr"),
-    "schicar": ("v2", "schicar_mop", "schicar_mop.chromdata.zarr"),
-    "sim": ("v2", "sim_cell1", "sim_cell1.cdz"),
-    "brain": ("v2", "hicrna_mouse_brain", "hicrna_mouse_brain.chromdata.zarr"),
-    "melanoma": ("v2", "hicrna_human_melanoma", "hicrna_human_melanoma.chromdata.zarr"),
-    "liu": ("v2", "liu2025_mop", "liu2025_mop.chromdata.zarr"),
-    "gc": ("v2", "mm10_gc", "mm10_gc_500kb.tsv"),
-    "stevens": ("v2", "stevens2017_cell1", ""),
-    # version 3 (v3/data/*.md)
+    # the shared stores
+    "takei": ("base", "takei2025_fov0", "takei2025_fov0.chromdata.zarr"),
+    "schicar": ("base", "schicar_mop", "schicar_mop.chromdata.zarr"),
+    "sim": ("base", "sim_cell1", "sim_cell1.cdz"),
+    "brain": ("base", "hicrna_mouse_brain", "hicrna_mouse_brain.chromdata.zarr"),
+    "melanoma": ("base", "hicrna_human_melanoma", "hicrna_human_melanoma.chromdata.zarr"),
+    "liu": ("base", "liu2025_mop", "liu2025_mop.chromdata.zarr"),
+    "gc": ("base", "mm10_gc", "mm10_gc_500kb.tsv"),
+    "stevens": ("base", "stevens2017_cell1", ""),
+    # built for these questions (v3/data/*.md)
     "takei2021_fofct": ("v3", "takei2021_fofct", ""),
     "su2020_chr2p": ("v3", "su2020_chr2p", "su2020_chr2p_first100.csv"),
     "bintu2018": ("v3", "bintu2018", "bintu2018_IMR90_chr21.csv"),
@@ -147,7 +147,7 @@ def data_paths(key: str, a):
             texts.append(f"{URLS[k]} (served over HTTP)")
             continue
         root, folder, name = DATA[k]
-        base = a.data_root if root == "v2" else a.data_root_v3
+        base = a.data_root if root == "base" else a.data_root_v3
         texts.append(f"./data/{folder}/{name}" if name else f"./data/{folder}/ (a folder)")
         binds.append((base / folder, f"/work/data/{folder}"))
     return "; ".join(texts), binds

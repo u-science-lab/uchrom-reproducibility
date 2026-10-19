@@ -9,7 +9,7 @@
 # (2) the data folders of the family under data_v3/ (v3/truth/schic_build_data.py, from registered sources);
 # (3) an inspection of the inputs (v3/truth/schic_explore.py).
 #
-#   sbatch benchmarks/fig6/agent_bench/v3/sherlock/schic_setup.sbatch      (after syncing v3/ to bench/v3/)
+#   sbatch supp_fig7/v3/sherlock/schic_setup.sbatch      (after syncing v3/ to bench/v3/)
 #SBATCH --job-name=ab3-schic-setup
 #SBATCH --partition=xiaojie,normal
 #SBATCH --time=02:00:00

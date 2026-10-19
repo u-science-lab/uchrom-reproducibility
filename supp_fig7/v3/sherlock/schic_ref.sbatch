@@ -4,7 +4,7 @@
 #   cooltools / numpy (venv-verify; v3/truth/schic_ref_numpy.py) for R5 (E1, correlation) and R6.
 # No U-Chrom in either environment.  Needs schic_cells.tsv from schic_truth.sbatch.
 #
-#   sbatch --export=ALL,CELLS=<cellA>:<cellB>[,ONLY_S=R3:R4:R5][,ONLY_N=R5:R6] benchmarks/fig6/agent_bench/v3/sherlock/schic_ref.sbatch
+#   sbatch --export=ALL,CELLS=<cellA>:<cellB>[,ONLY_S=R3:R4:R5][,ONLY_N=R5:R6] supp_fig7/v3/sherlock/schic_ref.sbatch
 # (lists separated by ":" -- sbatch --export splits on commas; ONLY_S=none / ONLY_N=none skip a part)
 #SBATCH --job-name=ab3-schic-ref
 #SBATCH --partition=xiaojie,normal

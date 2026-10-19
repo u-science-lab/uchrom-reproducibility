@@ -15,7 +15,7 @@ AB=$SCRATCH/uchrom-nd/agentbench
 OUT=$OAK/uchrom/results/agent_bench/2026-10-14_v3
 mkdir -p "$OUT"
 cd "$AB"
-tar -cf "$OUT/bench_v3.tar" bench/v3 bench/questions_v3.yaml bench/answers_v3.json bench/merge_v3.py bench/grade_v2.py bench/grade_v3.sbatch bench/judge_agreement.py bench/build_snapshot.py
+tar -cf "$OUT/bench_v3.tar" bench/v3 bench/questions_v3.yaml bench/answers_v3.json bench/merge_v3.py bench/grade_v3.sbatch bench/build_snapshot.py
 tar -cf "$OUT/runs_main_v3.tar" runs/main_v3
 tar -cf "$OUT/runs_pilots_v3.tar" runs/pilot_v3b_noclass runs/pilot_v3c runs/pilot_v3c_http_before_fix runs/pilot_v3d_neutral runs/pilot_v3_nopath
 tar -cf "$OUT/data_v3.tar" data_v3

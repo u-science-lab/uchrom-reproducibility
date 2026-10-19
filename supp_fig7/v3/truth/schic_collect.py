@@ -1,5 +1,5 @@
 """Merge the U-Chrom references and the independent implementations of the schic family into results/schic.json
-(the format of answers_v2.json: {id: {"values", "verify", "truth", "runtime_s"}}).
+(the format of answers_v3.json: {id: {"values", "verify", "truth", "runtime_s"}}).
 
     python schic_collect.py --work results/schic_work --out results/schic.json
 """

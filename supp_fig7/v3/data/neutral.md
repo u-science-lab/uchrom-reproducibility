@@ -1,6 +1,6 @@
 # Version 3: the stores of T1, P1 and P2 in community formats
 
-T1, P1 and P2 read data that version 2 gave only as ChromData stores (`takei`, `melanoma`).  An agent without U-Chrom
+T1, P1 and P2 read data that the shared data root holds only as ChromData stores (`takei`, `melanoma`).  An agent without U-Chrom
 then has to read the store's Zarr + Parquet layout by hand, an obstacle the questions do not test.  Version 3 gives
 the same data in community formats as well, in two folders under `$SCRATCH/uchrom-nd/agentbench/data_v3/`.  The
 prompts name both formats, and every condition gets both: the store and the export.  `neutral_build.py`
@@ -16,7 +16,7 @@ recomputes the question's statistic from the files.  The references do not chang
 
 ## `takei2025_fov0_fofct/`
 
-- `takei2025_fov0_fofct_core.csv`: `ChromData.to_fofct(spot_tracks=False)` of version 2's store `takei2025_fov0`
+- `takei2025_fov0_fofct_core.csv`: `ChromData.to_fofct(spot_tracks=False)` of the shared store `takei2025_fov0`
   (Takei et al. 2025, cerebellum, field of view 0).  FOF-CT header lines (`##`/`#`), then
   `##columns=(Spot_ID,Trace_ID,X,Y,Z,Chrom,Chrom_Start,Chrom_End,Cell_ID, ...)` and one row per spot; X/Y/Z in µm.
   The store's spot tracks are not in the table; no question uses them.
@@ -53,7 +53,7 @@ recomputes the question's statistic from the files.  The references do not chang
   `2227e756a12b3b784b5fcc615c6977e5`); 6,268 spots.  The export takes 328 s, and reading every cooler with cooler
   270 s (4 CPUs).
 
-Registration: no new source.  Both folders are derived from data of version 2 (`takei2025_fov0`, the atlas store
+Registration: no new source.  Both folders are derived from shared data (`takei2025_fov0`, the atlas store
 `hicrna_human_melanoma`), which are registered.
 
 ## Pilot

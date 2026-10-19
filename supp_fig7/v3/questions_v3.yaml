@@ -294,7 +294,7 @@ questions:
     - rho
   method_ref: NucDynamics (Stevens et al. 2017; github.com/tjs23/nuc_dynamics @ 00eaf0b)
   check: floor
-  revised: v2 M3, the bin rule and the pair set stated
+  revised: the bin rule and the pair set stated
   family: schic
 - id: R2
   category: schic

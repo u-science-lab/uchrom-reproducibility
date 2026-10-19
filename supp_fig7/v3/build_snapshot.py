@@ -1,7 +1,7 @@
 """What the agents of the benchmark get from U-Chrom, frozen at one commit: the documentation, the skills and the
-wheels (version 2 of the benchmark, run on Sherlock by ``run_apptainer.py``).
+wheels (``sherlock/setup_v3.sbatch`` builds the agents' environment from them).
 
-    python benchmarks/fig6/agent_bench/build_snapshot.py --commit fb43ac4 --out SNAPSHOT
+    python supp_fig7/v3/build_snapshot.py --commit b6d8873 --out SNAPSHOT
 
 Writes ``SNAPSHOT/{COMMIT, docs/, skills/, wheels/}``:
 

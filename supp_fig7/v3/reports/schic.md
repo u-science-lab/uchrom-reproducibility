@@ -29,20 +29,20 @@
     3.12) it builds in 48 s.  Its `open_file` opens plain text with mode `'rU'`, which Python 3.11+ rejects
     (`ValueError: invalid mode: 'rU'`): the NCC input has to be gzipped (gzip files are opened with `'rt'`).
     `truth/schic_ref_nucdyn.py`.
-  - `venv-verify` (cooltools 0.7.1, version 2): the E1 of R5 and the numpy implementation of R6
+  - `venv-verify` (cooltools 0.7.1): the E1 of R5 and the numpy implementation of R6
     (`truth/schic_ref_numpy.py`).
   - `venv-snaphic` (R7): `HuMingLab/SnapHiC` @ 782dc2b (its requirements.txt pins numpy 1.19 / pandas 0.24: no
     wheels for 3.12).  With the newest packages (pandas 3.0) it fails in the interaction step
     (`interaction_caller.py:253`, `TypeError: Invalid value ... for dtype 'int32'`) after 237 s; with `pandas<3`
     (2.3.3) in the post-processing (`'eta_cluster' is both an index level and a column label`) after 833 s.
-- `truth/schic_collect.py` merges everything into `results/schic.json` (format of `answers_v2.json`).
+- `truth/schic_collect.py` merges everything into `results/schic.json` (format of `answers_v3.json`).
 
 ## R1 / R2: NucDynamics reconstruction of Stevens et al. 2017 Cells 1 and 2 vs the published structures
 
-**Prompt.**  v2's M3 kept (R1); R2 the same on Cell 2 (GSM2219498, 79,569 contacts).  Stated more precisely than in v2:
+**Prompt.**  R1 on Cell 1; R2 the same on Cell 2 (GSM2219498, 79,569 contacts).  Stated precisely:
 particle sizes 8, 4, 2, 1 Mb as an example, the bin rule of the published particles ([k, k+1) Mb by the PDB's last
 column) and the pair set (each unordered pair of distinct chr1 bins present in both, once).  Spearman over the 18,528
-chr1 bin pairs (193 bins).  Floor (v2 rule): min(rho of U-Chrom's runs with seeds 0 and 1, rho of the published model 1
+chr1 bin pairs (193 bins).  Floor: min(rho of U-Chrom's runs with seeds 0 and 1, rho of the published model 1
 vs model 2) - 0.05.
 
 | | Cell 1 (R1) | Cell 2 (R2) |
@@ -129,7 +129,7 @@ correct implementations and the no-imputation baseline: at k = 30 the four corre
 baseline is 0.213, at k = 10 the gap (0.247 vs 0.235) was within the variants' spread — hence k = 30 (changed from the
 draft's 10; the gap keeps growing with k — U-Chrom / authors / baseline at k = 50: 0.236 / 0.232 / 0.199, at k = 100:
 0.222 / 0.221 / 0.175 — but 30 neighbours stay within the smaller types: CLA has 42 cells).  The margin 0.01 keeps
-every correct variant above the floor (lowest 0.2363) and the baseline 0.02 below it.  The 0.05 margin of v2's floor rule (R1) would have accepted no imputation at all.  With U-Chrom fixed (0.2402, the
+every correct variant above the floor (lowest 0.2363) and the baseline 0.02 below it.  The 0.05 margin of R1's floor rule would have accepted no imputation at all.  With U-Chrom fixed (0.2402, the
 authors' value; snapshot b6d8873, job 47799338) the same rule (U-Chrom's value minus 0.01, `schic_collect.py`) gives
 the floor **0.230**: every correct variant stays above it (lowest 0.2363), the no-imputation baseline below (0.2134).
 
@@ -140,7 +140,7 @@ the floor **0.230**: every correct variant stays above it (lowest 0.2363), the n
 (`ScABParams(contacts="cis", normalize="none")`).  Dip-C's code is Python 2.7 (`benchmarks/sc_structures` validated it
 with a Python 2.7 environment), which an agent cannot be expected to run on the benchmark's image; scHiCluster's is
 Python 3 (`single_chrom_compartment`, GitHub v1.3.4; PyPI's 1.3.2 still multiplies the unnormalised map, i.e. a
-contact-weighted sum).  The scHiCAR cells (5,313, 1 Mb, v2 data) need no new download; the CpG ratio of the bins is
+contact-weighted sum).  The scHiCAR cells (5,313, 1 Mb, shared data) need no new download; the CpG ratio of the bins is
 given (`data_v3/mm10_cpg`, scHiCluster's definition) so that no genome FASTA is needed in a session.
 
 **Why the partial correlation.**  The first version of the question asked for the Pearson r of the mean score with E1:
@@ -249,7 +249,7 @@ code in `benchmarks/sc_structures` in the authors' own Python 3.9 environment: i
 - R3: at fb43ac4, U-Chrom's `schicluster_impute` did not follow the authors' code (r 0.687 / 0.702 against 0.6947).
   Fixed in U-Chrom (PR #130, in the snapshot b6d8873): it returns the authors' `Q` (not symmetrised; r 0.6702 over i < j),
   and symmetrising it as the prompt says gives the reference 0.694665.
-- R4: the cell types are weakly separable by 1-Mb Hi-C (purity 0.24 at k = 30, chance 0.07; RNA gave 0.44 in v2), so
+- R4: the cell types are weakly separable by 1-Mb Hi-C (purity 0.24 at k = 30, chance 0.07), so
   the floor's window above the no-imputation baseline is narrow (0.230 vs 0.213).  U-Chrom's `embed_contacts` took ~14
   min at fb43ac4; with the fix 325-443 s on 16 threads (jobs 47754119, 47799338), the authors' code 289-304 s on 8.
 - R5: the question was reworded from the plan's plain correlation with E1 to the partial correlation given CpG (see

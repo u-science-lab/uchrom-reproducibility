@@ -1,5 +1,5 @@
 """Reference answers of family ``imgfmt`` (version 3): T6 (Part B, imaging methods; T7 dropped), F1-F4 (Part A, reading the
-open store) and the version-2 anchors A1, A6, H1, S3.
+open store) and the anchors A1, A6, H1, S3.
 
 The implementations run in different environments (``v3/sherlock/imgfmt_truth.sbatch``), each writing one JSON into
 a work directory:
@@ -11,9 +11,9 @@ a work directory:
   readers written from ``spec.md`` without chromdata (``venv-plain``, the agents' no-U-Chrom environment).
 
 One function per question (the ``truth:`` of ``questions/imgfmt.yaml``) turns those JSONs into the entry of
-``results/imgfmt.json`` (``{"values", "verify", "truth", "runtime_s"}``, as ``answers_v2.json``):
+``results/imgfmt.json`` (``{"values", "verify", "truth", "runtime_s"}``, as ``answers_v3.json``):
 
-    python imgfmt.py --work WORK --answers-v2 answers_v2.json --out results/imgfmt.json
+    python imgfmt.py --work WORK --anchors ../answers_anchors.json --out results/imgfmt.json
 """
 
 from __future__ import annotations
@@ -116,22 +116,22 @@ def f4_large_store_http(work: Path) -> dict:
 
 
 # ---------------------------------------------------------------------------------------------------- anchors
-def anchors(answers_v2: Path) -> dict:
-    a = json.loads(answers_v2.read_text())
-    return {k: {**a[k], "anchor": "version 2 (answers_v2.json), unchanged"} for k in ("A1", "A6", "H1", "S3")}
+def anchors(path: Path) -> dict:
+    a = json.loads(path.read_text())
+    return {k: {**a[k], "anchor": "answers_anchors.json, unchanged"} for k in ("A1", "A6", "H1", "S3")}
 
 
 def main(argv=None):
     ap = argparse.ArgumentParser()
     ap.add_argument("--work", type=Path, required=True)
-    ap.add_argument("--answers-v2", type=Path, required=True)
+    ap.add_argument("--anchors", type=Path, required=True, help="answers_anchors.json")
     ap.add_argument("--out", type=Path, required=True)
     a = ap.parse_args(argv)
     # T7 was dropped from version 3 (plain k-means separates the homologs better than the authors' jie: the question
     # would not need the method); t7_jie_assignment stays for the record of the exploration runs.
     res = {"T6": t6_snapfish_holdout(a.work), "F1": f1_embedded_contacts(a.work),
            "F2": f2_cell_outlines(a.work), "F3": f3_provenance(a.work), "F4": f4_large_store_http(a.work),
-           **anchors(a.answers_v2)}
+           **anchors(a.anchors)}
     a.out.parent.mkdir(parents=True, exist_ok=True)
     a.out.write_text(json.dumps(res, indent=1, default=str))
     print(json.dumps(res, indent=1, default=str)[:6000])

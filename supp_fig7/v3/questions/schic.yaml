@@ -3,9 +3,9 @@
 # the decisions per question are in reports/schic.md.
 #
 # Data keys (folders under the data roots; v3/data/schic.md):
-#   stevens  = stevens2017_cell1/        (v2: Stevens 2017 Cell 1 contacts + published PDB)
+#   stevens  = stevens2017_cell1/        (shared: Stevens 2017 Cell 1 contacts + published PDB)
 #   stevens_cell2 = stevens2017_cell2/   (data_v3: Stevens 2017 Cell 2 contacts + published PDB)
-#   schicar  = schicar_mop/              (v2: scHiCAR store, contacts_cells_1Mb.scool, contacts_all.mcool)
+#   schicar  = schicar_mop/              (shared: scHiCAR store, contacts_cells_1Mb.scool, contacts_all.mcool)
 #   mm10_cpg_1mb = mm10_cpg/mm10_cpg_1Mb.tsv (data_v3: CpG ratio of the 1-Mb bins of the scHiCAR maps, scHiCluster's definition)
 #   schicar_types = schicar_cell_types/schicar_cell_types.tsv (data_v3: cell id, cell_type of the 5,313 scHiCAR cells)
 #   nagano_dip_chr19 = nagano2017_dip_chr19/ (data_v3: 50 Nagano 2017 diploid cells, chr19 10-kb pixels, SnapHiC's input format)
@@ -30,7 +30,7 @@ questions:
     - rho
   method_ref: NucDynamics (Stevens et al. 2017; github.com/tjs23/nuc_dynamics @ 00eaf0b)
   check: floor
-  revised: v2 M3, the bin rule and the pair set stated
+  revised: the bin rule and the pair set stated
 - id: R2
   category: schic
   split: v3

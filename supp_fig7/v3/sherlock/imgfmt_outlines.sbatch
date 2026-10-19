@@ -4,7 +4,7 @@
 # requests far into it, so the whole file is downloaded (resumable, md5-checked by the build), then the outlines and
 # the store are built (v3/data/imgfmt_build.py outlines / store).  Needs the environments of imgfmt_setup.sbatch.
 #
-#   sbatch benchmarks/fig6/agent_bench/v3/sherlock/imgfmt_outlines.sbatch
+#   sbatch supp_fig7/v3/sherlock/imgfmt_outlines.sbatch
 #SBATCH --job-name=ab3-imgfmt-outlines
 #SBATCH --partition=xiaojie,normal
 #SBATCH --time=10:00:00

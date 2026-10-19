@@ -1,8 +1,8 @@
 # Version 3, family imgfmt: Part B T6 (imaging method; T7 dropped, see v3/truth/imgfmt.py), Part A F1-F4 (reading
-# the open store) and four anchors of version 2.  References: v3/truth/imgfmt.py (imgfmt_truth.sbatch).
+# the open store) and four anchors.  References: v3/truth/imgfmt.py (imgfmt_truth.sbatch).
 questions:
-# ------------------------------------------------------------------ anchors carried over from version 2 (unchanged)
-# Copied verbatim from questions.yaml (version 2); values in results/imgfmt.json are those of answers_v2.json.
+# ------------------------------------------------------------------ anchors (reading the data)
+# Reference values: answers_anchors.json (copied into results/imgfmt.json by truth/imgfmt.py).
 - id: A1
   category: inspect
   split: dev

@@ -3,12 +3,12 @@
     python schic_build_data.py --shared /shared --data /data --out /data_v3
 
 ``--shared`` is the shared data directory of Sherlock (``$SCRATCH/uchrom-nd/data``: the files of ``fetch``),
-``--data`` the data root of version 2 (``agentbench/data``).  Writes:
+``--data`` the shared data root (``agentbench/data``).  Writes:
 
 * ``stevens2017_cell2/``: the contact pairs and the published structure of Stevens et al. 2017 Cell 2 (fetch
   ``stevens2017``, GSM2219498), copied unchanged (question R2).
 * ``mm10_cpg/mm10_cpg_1Mb.tsv``: the CpG ratio of every 1-Mb bin of the scHiCAR per-cell maps
-  (``schicar_mop/contacts_cells_1Mb.scool``, version 2), as scHiCluster computes it (``bedtools nuc -pattern CG -C``:
+  (``schicar_mop/contacts_cells_1Mb.scool``, shared data root), as scHiCluster computes it (``bedtools nuc -pattern CG -C``:
   CG occurrences, any case, within the bin over the bin's length minus its N bases; 0 where the bin has no base),
   from the UCSC mm10 FASTA (fetch ``mm10_genome``) (question R5).
 * ``nagano2017_hap_2i/``: the 395 haploid mES cells of Nagano et al. 2017 grown in 2i (condition ``2i_all``) that
@@ -18,7 +18,7 @@
   the authors' cell-cycle features are left out (question R6).
 * ``schicar_cell_types/schicar_cell_types.tsv`` (``--only types``): the cell id (= the cell name in
   ``schicar_mop/contacts_cells_1Mb.scool``) and ``cell_type`` of the 5,313 scHiCAR cells, from the cell table of the
-  version-2 store (question R4; a plain table so that the question does not depend on reading the store).
+  shared store (question R4; a plain table so that the question does not depend on reading the store).
 * ``nagano2017_dip_chr19/`` (``--only snaphic``): 50 of the 742 diploid serum mES cells SnapHiC used (Nagano et al.
   2017; loader ``nagano2017_dip_serum``: the authors' fend pairs lifted to mm10 and binned at 10 kb), drawn with
   ``numpy.random.default_rng(0).permutation`` of the sorted ids of ``cells.snaphic_top742``: per cell

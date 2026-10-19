@@ -9,7 +9,7 @@
 # (2) the data folders of T6 and T7 under data_v3/ (v3/data/imgfmt_build.py, from registered sources); the store of
 # F2 / F3 is built by imgfmt_outlines.sbatch.
 #
-#   sbatch benchmarks/fig6/agent_bench/v3/sherlock/imgfmt_setup.sbatch      (after syncing v3/ to bench/v3/)
+#   sbatch supp_fig7/v3/sherlock/imgfmt_setup.sbatch      (after syncing v3/ to bench/v3/)
 #SBATCH --job-name=ab3-imgfmt-setup
 #SBATCH --partition=xiaojie,normal
 #SBATCH --time=03:00:00
