@@ -6,7 +6,7 @@
    "n_spots": 383674
   },
   "truth": "counts",
-  "anchor": "version 2 (answers_v2.json), unchanged",
+  "anchor": "answers_anchors.json, unchanged",
   "family": "imgfmt"
  },
  "A6": {
@@ -18,7 +18,7 @@
    "note": "median_contacts = cells['n_contacts_hic'] (per-cell Hi-C contact count stored with the cell metadata); the per-cell .scool pixel sums (1 Mb, all chromosomes) are given for context and differ because the .scool keeps only binned cis+trans contacts on the 21 chromosomes."
   },
   "truth": "schicar_top_type",
-  "anchor": "version 2 (answers_v2.json), unchanged",
+  "anchor": "answers_anchors.json, unchanged",
   "family": "imgfmt"
  },
  "H1": {
@@ -28,7 +28,7 @@
    "median_spots_per_cell": 24899.0
   },
   "truth": "atlas_hires_counts",
-  "anchor": "version 2 (answers_v2.json), unchanged",
+  "anchor": "answers_anchors.json, unchanged",
   "family": "imgfmt"
  },
  "S3": {
@@ -46,7 +46,7 @@
    }
   },
   "truth": "melanoma_dosage",
-  "anchor": "version 2 (answers_v2.json), unchanged",
+  "anchor": "answers_anchors.json, unchanged",
   "family": "imgfmt"
  },
  "T6": {

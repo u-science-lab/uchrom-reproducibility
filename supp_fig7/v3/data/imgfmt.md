@@ -2,7 +2,7 @@
 
 Built by `v3/data/imgfmt_build.py` inside `v3/sherlock/imgfmt_setup.sbatch` (2026-10-13), from registered sources only,
 into `$SCRATCH/uchrom-nd/agentbench/data_v3/<folder>/`.  F1 and F4 read public atlas stores over HTTP (no folder).
-The anchors use the version-2 data keys unchanged (`takei`, `schicar`, `atlas_hires`, `melanoma`).
+The anchors use the shared data keys (`takei`, `schicar`, `atlas_hires`, `melanoma`).
 
 ## Data keys (`run_codex.py` `DATA` / `URLS`)
 

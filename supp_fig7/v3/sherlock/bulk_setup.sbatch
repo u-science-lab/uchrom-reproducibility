@@ -4,7 +4,7 @@
 # (benchmarks/hic_structures/README.md), + scikit-learn for H4; (2) the data folders of the family under data_v3/
 # (v3/data/bulk_build.py, from registered sources, without U-Chrom's code).
 #
-#   sbatch benchmarks/fig6/agent_bench/v3/sherlock/bulk_setup.sbatch      (after syncing v3/ to bench/v3/)
+#   sbatch supp_fig7/v3/sherlock/bulk_setup.sbatch      (after syncing v3/ to bench/v3/)
 #SBATCH --job-name=ab3-bulk-setup
 #SBATCH --partition=xiaojie,normal
 #SBATCH --time=02:00:00

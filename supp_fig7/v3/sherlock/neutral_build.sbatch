@@ -1,9 +1,9 @@
 #!/bin/bash
-# Version 3: the data of T1, P1 and P2 in community formats next to the version-2 stores (v3/data/neutral_build.py,
+# Version 3: the data of T1, P1 and P2 in community formats next to the shared stores (v3/data/neutral_build.py,
 # v3/data/neutral.md): Takei 2025 field of view 0 as FOF-CT core + cell tables, the melanoma section r1 as a per-spot
 # .scool with trans contacts + a spot table; each checked against its store and against the references of P1 / P2.
 #
-#   [WHAT=takei|melanoma] sbatch --export=ALL benchmarks/fig6/agent_bench/v3/sherlock/neutral_build.sbatch
+#   [WHAT=takei|melanoma] sbatch --export=ALL supp_fig7/v3/sherlock/neutral_build.sbatch
 #   (after syncing v3/ to bench/v3/; both by default)
 #SBATCH --job-name=ab3-neutral
 #SBATCH --partition=xiaojie,normal

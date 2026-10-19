@@ -2,7 +2,7 @@
 # Version 3, family imgfmt: first runs of every implementation on the built data (design of T6 / T7, choice of the
 # cells of F1-F4).  Outputs to $SCRATCH/uchrom-nd/agentbench/imgfmt_work/explore/.
 #
-#   sbatch --dependency=afterok:<imgfmt_setup> benchmarks/fig6/agent_bench/v3/sherlock/imgfmt_explore.sbatch
+#   sbatch --dependency=afterok:<imgfmt_setup> supp_fig7/v3/sherlock/imgfmt_explore.sbatch
 #SBATCH --job-name=ab3-imgfmt-explore
 #SBATCH --partition=xiaojie,normal
 #SBATCH --time=06:00:00

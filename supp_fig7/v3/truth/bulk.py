@@ -17,7 +17,7 @@ Every question is computed twice:
     python bulk.py --impl finalize    --out results/bulk.json
 
 Results: ``{id: {"values": ..., "verify": {"uchrom": ..., "<independent>": ...}, "truth": fn, "runtime_s": ...}}``
-(the layout of ``answers_v2.json``).
+(the layout of ``answers_v3.json``).
 """
 
 from __future__ import annotations
@@ -36,13 +36,13 @@ import pandas as pd
 
 HERE = Path(__file__).resolve().parent
 
-#: data keys of the family -> (root, relative path); "v2" = the version-2 data root, "v3" = data_v3
+#: data keys of the family -> (root, relative path); "base" = the shared data root, "v3" = data_v3
 DATA = {
     "rao_chr21_10kb": ("v3", "rao2014_imr90_chr21_10kb"),
     "su2020_tsv": ("v3", "su2020_chr21_tsv"),
     "takei_rna": ("v3", "takei2025_fov0_rna/takei2025_fov0_rna_counts.tsv"),
-    "melanoma": ("v2", "hicrna_human_melanoma/hicrna_human_melanoma.chromdata.zarr"),
-    "takei": ("v2", "takei2025_fov0/takei2025_fov0.chromdata.zarr"),
+    "melanoma": ("base", "hicrna_human_melanoma/hicrna_human_melanoma.chromdata.zarr"),
+    "takei": ("base", "takei2025_fov0/takei2025_fov0.chromdata.zarr"),
 }
 COOL = "IMR90_chr21_10kb_hg19.cool"
 LOOPS = "GSE63525_IMR90_HiCCUPS_looplist.txt.gz"
@@ -66,7 +66,7 @@ class Roots:
 
     def __call__(self, key: str) -> Path:
         root, rel = DATA[key]
-        return (self.data if root == "v2" else self.v3) / rel
+        return (self.data if root == "base" else self.v3) / rel
 
 
 # ================================================================================================ shared helpers
@@ -610,8 +610,7 @@ def _cn_pcs(L: pd.DataFrame, k: int = 5) -> np.ndarray:
 
 
 def msr_copy_number_share(roots: Roots) -> dict:
-    """y = U-Chrom's separation_profile (log2 short / long); copy-number PCs from the contact legs (as version 2's
-    S3); spot graph = U-Chrom's spatial_neighbors (radius 1.5 on array_col / array_row = the 8 adjacent spots);
+    """y = U-Chrom's separation_profile (log2 short / long); copy-number PCs from the contact legs; spot graph = U-Chrom's spatial_neighbors (radius 1.5 on array_col / array_row = the 8 adjacent spots);
     the null = PR #127's MSR code (bands of 20), 1,000 draws x MC_SEEDS seeds."""
     from chromdata import ChromData
 

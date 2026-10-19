@@ -4,7 +4,7 @@
 # SnapHiC @ 782dc2b in an environment an agent would build on Python 3.12 (venv-snaphic: the newest numpy, scipy,
 # pandas, scikit-image, statsmodels, networkx, h5py, cooler; install time recorded), 8 processes, defaults.
 #
-#   sbatch benchmarks/fig6/agent_bench/v3/sherlock/schic_snaphic.sbatch
+#   sbatch supp_fig7/v3/sherlock/schic_snaphic.sbatch
 #SBATCH --job-name=ab3-schic-snaphic
 #SBATCH --partition=xiaojie,normal
 #SBATCH --time=02:00:00

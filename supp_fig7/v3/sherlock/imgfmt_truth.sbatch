@@ -6,7 +6,7 @@
 # returns a read-only array that boxcox_by1d writes into), so it runs in venv-sfimpute2023: the package with the
 # releases of its time (numpy 1.26, pandas 2.1, scipy 1.11, scikit-image 0.22, scikit-learn 1.3), built here once.
 #
-#   sbatch benchmarks/fig6/agent_bench/v3/sherlock/imgfmt_truth.sbatch            (after syncing v3/ to bench/v3/)
+#   sbatch supp_fig7/v3/sherlock/imgfmt_truth.sbatch            (after syncing v3/ to bench/v3/)
 #   CELL=<cell id of the F2/F3 store> sbatch --export=ALL ...
 #SBATCH --job-name=ab3-imgfmt-truth
 #SBATCH --partition=xiaojie,normal
@@ -17,7 +17,7 @@
 set -uo pipefail
 AB=$SCRATCH/uchrom-nd/agentbench
 GH=$GROUP_HOME/$USER/uchrom-nd/agentbench
-U=${VENV_U:-venv-uchrom-v3}      # the agents' U-Chrom environment (v3 snapshot; version 2's venv-uchrom = fb43ac4)
+U=${VENV_U:-venv-uchrom-v3}      # the agents' U-Chrom environment (v3 snapshot; the first references: venv-uchrom = fb43ac4)
 SIF=$GH/py312full.sif
 W=$AB/imgfmt_work/${TAG:-truth_v3}           # truth = the runs with venv-uchrom (fb43ac4), job 47751628
 mkdir -p "$W" "$L_SCRATCH/build_tmp"

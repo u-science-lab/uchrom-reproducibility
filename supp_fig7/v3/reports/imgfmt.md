@@ -1,7 +1,7 @@
 # Version 3, family `imgfmt`: report
 
-One Part B question (T6), four Part A questions on reading the open store (F1-F4) and four anchors of version 2 (A1,
-A6, H1, S3; references unchanged from `answers_v2.json`).  Questions in `../questions/imgfmt.yaml`, references in
+One Part B question (T6), four Part A questions on reading the open store (F1-F4) and four anchors (A1,
+A6, H1, S3; references in `../answers_anchors.json`).  Questions in `../questions/imgfmt.yaml`, references in
 `../results/imgfmt.json` (`truth/imgfmt.py` over the runs of `sherlock/imgfmt_truth.sbatch`, job 47751628, 16 CPUs;
 data in `../data/imgfmt.md`).
 
@@ -62,8 +62,7 @@ Times (seconds) and peak memory (MB), chromdata vs raw:
 
 A scan of the snapshot's docs and skills for every graded reference value (all number formats) found: A1's counts
 (383,674 spots, 1,500 traces) and H1's 399 cells in `reference/data_sources.md`, and F4's 7,469 cells in the same page
-and a tutorial.  A1 and H1 are version 2's anchors and stay unchanged for comparability (the none condition, without
-docs, reached 1.00 on them in version 2; Part A is reported apart from the method contrasts); F4 no longer grades its
+and a tutorial.  A1 and H1 are anchors and stay as they are (Part A is reported apart from the method contrasts); F4 no longer grades its
 cell count.  In other families: BH2's recall / precision and the Mustache numbers BH1's count follows from (a
 validation table of `bulk/structures.md`) and R4's purity (the release notes) — removed from the snapshot by
 `build_snapshot.py` (`REDACTIONS.json`).

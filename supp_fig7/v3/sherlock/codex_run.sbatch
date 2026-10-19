@@ -5,7 +5,7 @@
 # never by this script (Sherlock's rules on unattended agent sessions, /etc/agents/policy.md).
 #
 #   sbatch --export=ALL,RUN=pilot_v3,MODELS=gpt-6-luna,REPS=1,CONDITIONS=none:skills[,IDS=T1:R3,JOBS=8,THREADS=4,MEM_GB=24] \
-#       benchmarks/fig6/agent_bench/v3/sherlock/codex_run.sbatch
+#       supp_fig7/v3/sherlock/codex_run.sbatch
 # (lists separated by ":" -- sbatch --export splits on commas)
 #SBATCH --job-name=ab3-codex
 #SBATCH --partition=xiaojie

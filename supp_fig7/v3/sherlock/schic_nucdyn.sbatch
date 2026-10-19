@@ -3,7 +3,7 @@
 # on Stevens 2017 Cell 1 (R1) and Cell 2 (R2), 1-Mb final particles, seeds 0 and 1, on 8 CPUs (an agent's session);
 # runtimes recorded (v3/truth/schic_ref_nucdyn.py).
 #
-#   sbatch [--export=ALL,SEEDS=0:1,CELLSEL=R1:R2,EXTRA="-temps 100",TAG=_t100] benchmarks/fig6/agent_bench/v3/sherlock/schic_nucdyn.sbatch
+#   sbatch [--export=ALL,SEEDS=0:1,CELLSEL=R1:R2,EXTRA="-temps 100",TAG=_t100] supp_fig7/v3/sherlock/schic_nucdyn.sbatch
 #SBATCH --job-name=ab3-schic-nucdyn
 #SBATCH --partition=xiaojie,normal
 #SBATCH --time=06:00:00

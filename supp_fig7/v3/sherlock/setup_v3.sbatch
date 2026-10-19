@@ -1,13 +1,13 @@
 #!/bin/bash
-# Version 3, once: the U-Chrom environment of the agents at the snapshot's commit (venv-uchrom-v3; version 2's
-# venv-uchrom, fb43ac4, stays for the record).  The native engines uchrom-recon and uchrom-maps of the same commit are
+# Version 3, once: the U-Chrom environment of the agents at the snapshot's commit (venv-uchrom-v3; the earlier
+# venv-uchrom, fb43ac4, in which the first references were computed, stays for the record).  The native engines uchrom-recon and uchrom-maps of the same commit are
 # built here with Sherlock's Rust (abi3 wheels, glibc 2.17) and added to the snapshot's wheels, as `u-chrom[recon,maps]`
-# would install them; the rest as version 2 (torch CPU + the same libraries, then chromdata + u-chrom wheels).
+# would install them; then torch CPU, the scientific libraries, and the chromdata + u-chrom wheels.
 #
-#   (local) python benchmarks/fig6/agent_bench/build_snapshot.py --commit <sha> --out snapshot_v3
+#   (local) python supp_fig7/v3/build_snapshot.py --commit <sha> --out snapshot_v3
 #           git archive -o uchrom-native-<sha>.tar <sha> packages/uchrom-recon packages/uchrom-maps
 #           rsync both to sherlock-dtn: $AB/snapshot_v3/, $AB/src/
-#   sbatch benchmarks/fig6/agent_bench/v3/sherlock/setup_v3.sbatch
+#   sbatch supp_fig7/v3/sherlock/setup_v3.sbatch
 #SBATCH --job-name=ab3-setup
 #SBATCH --partition=xiaojie,normal
 #SBATCH --time=02:00:00

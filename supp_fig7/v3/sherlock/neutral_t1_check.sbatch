@@ -2,7 +2,7 @@
 # Version 3: T1 from the FOF-CT export (v3/data/neutral_t1_check.py): the input built from the core table with pandas,
 # then the authors' ArcFISH (venv-arcfish, a21d889) and U-Chrom (venv-uchrom-v3) on it, compared with the reference.
 #
-#   sbatch benchmarks/fig6/agent_bench/v3/sherlock/neutral_t1_check.sbatch      (after neutral_build.sbatch)
+#   sbatch supp_fig7/v3/sherlock/neutral_t1_check.sbatch      (after neutral_build.sbatch)
 #SBATCH --job-name=ab3-neutral-t1
 #SBATCH --partition=xiaojie,normal
 #SBATCH --time=01:00:00

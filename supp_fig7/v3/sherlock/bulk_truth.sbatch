@@ -3,7 +3,7 @@
 # then the independent implementations (venv-hicref: mustache-hic, cooltools, scikit-learn; P1 / P2 in venv-uchrom
 # with chromdata + numpy only, checked not to import uchrom), then the graded values -> bench/v3/results/bulk.json.
 #
-#   sbatch [--dependency=afterok:<bulk_setup job>] benchmarks/fig6/agent_bench/v3/sherlock/bulk_truth.sbatch [ONLY]
+#   sbatch [--dependency=afterok:<bulk_setup job>] supp_fig7/v3/sherlock/bulk_truth.sbatch [ONLY]
 #   (ONLY: comma-separated question ids, default all)
 #SBATCH --job-name=ab3-bulk-truth
 #SBATCH --partition=xiaojie,normal
@@ -14,7 +14,7 @@
 set -uo pipefail
 AB=$SCRATCH/uchrom-nd/agentbench
 GH=$GROUP_HOME/$USER/uchrom-nd/agentbench
-U=${VENV_U:-venv-uchrom-v3}      # the agents' U-Chrom environment (v3 snapshot; version 2's venv-uchrom = fb43ac4)
+U=${VENV_U:-venv-uchrom-v3}      # the agents' U-Chrom environment (v3 snapshot; the first references: venv-uchrom = fb43ac4)
 ONLY=${1:-H1,H2,H3,H4,XM1,P1,P2}
 echo "host=$(hostname) job=${SLURM_JOB_ID:-none} snapshot=$(cat "$AB/snapshot_v3/COMMIT") only=$ONLY start=$(date -Is)"
 mkdir -p "$AB/data_v3/bulk_work" "$AB/bench/v3/results"

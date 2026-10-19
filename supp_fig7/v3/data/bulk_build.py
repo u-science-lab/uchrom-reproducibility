@@ -160,7 +160,7 @@ def build_takei(data: Path, out: Path, dl: Path) -> dict:
 def main():
     ap = argparse.ArgumentParser(description=__doc__.split("\n\n")[0])
     ap.add_argument("--shared", type=Path, required=True, help="the shared data directory ($SCRATCH/uchrom-nd/data)")
-    ap.add_argument("--data", type=Path, required=True, help="the version-2 data root (Takei FOV-0 store)")
+    ap.add_argument("--data", type=Path, required=True, help="the shared data root (Takei FOV-0 store)")
     ap.add_argument("--out", type=Path, required=True, help="the version-3 data root (data_v3)")
     ap.add_argument("--dl", type=Path, required=True, help="download cache (the RNA zip)")
     ap.add_argument("--only", default="rao,su,takei")

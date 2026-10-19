@@ -5,7 +5,7 @@
 # the comparison (the parity file of benchmarks/arcfish_parity) and v3/truth/arcfish.py.
 #
 #   (local) git archive <sha> benchmarks/arcfish_parity benchmarks/_record.py -> $SCRATCH/uchrom-nd/repo-main/ (+ REVISION)
-#   sbatch [--dependency=afterok:<setup_v3>] benchmarks/fig6/agent_bench/v3/sherlock/arcfish_truth.sbatch
+#   sbatch [--dependency=afterok:<setup_v3>] supp_fig7/v3/sherlock/arcfish_truth.sbatch
 #SBATCH --job-name=ab3-arcfish-truth
 #SBATCH --partition=xiaojie,normal
 #SBATCH --time=03:00:00

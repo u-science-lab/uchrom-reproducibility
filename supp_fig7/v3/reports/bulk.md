@@ -133,8 +133,8 @@ over its median share; five PCs of the z-scored profiles; observed R² of y on t
 random Gaussian directions of the same length per band and component), 1,000 draws; report the observed R², the null
 median and 95th percentile, P.
 
-- U-Chrom path: y = `uchrom.fea.separation_profile` on the embedded per-spot map; legs from `chromdata.embedded.export_scool`
-  (as version 2's S3); spot graph `uchrom.spatial.spatial_neighbors(method="radius", radius=1.5)` on (array_col,
+- U-Chrom path: y = `uchrom.fea.separation_profile` on the embedded per-spot map; legs from `chromdata.embedded.export_scool`;
+  spot graph `uchrom.spatial.spatial_neighbors(method="radius", radius=1.5)` on (array_col,
   array_row) (48,724 links); the null with the benchmark's own MSR code (`_msr_basis`, `msr` of
   `benchmarks/spatial_variable/spatial_variable.py`, PR #127 / 52c3f77, copied into `truth/bulk.py` as
   `pr127_msr_basis` / `pr127_msr`; the basis by its shift of the constant).  **R² = 0.343917**; 10 runs of 1,000 draws
@@ -150,7 +150,7 @@ median and 95th percentile, P.
   per-number tolerances r2 0.02 / median 0.10 / q95 0.08 / P 0.10 in `tol_by_number` for a grader that takes them).
 - A definition fix during the build: the first run computed y in the independent path from bin midpoints (the shorter
   last bin of a chromosome moves a few pairs out of the ranges), U-Chrom from bin offsets x 1 Mb; R² 0.34355 vs
-  0.34392, median y 0.2158 vs 0.2217.  The prompt now states bin offsets (as version 2's S1 did), and both agree.
+  0.34392, median y 0.2158 vs 0.2217.  The prompt now states bin offsets, and both agree.
 - Finding: copy number explains 34 % of the spot-to-spot variance of the short / long ratio; random smooth covariates
   with the same spatial spectrum explain 3.4 % (95th percentile 8.6 %), P = 0.001 — the copy-number share is not a
   generic effect of spatial smoothness (no RNA or depth adjustment here, unlike stage cnv_null of PR #127).

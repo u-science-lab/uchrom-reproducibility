@@ -88,7 +88,7 @@ def _nucdyn_vs_published(folder: Path, seeds=(0, 1)):
 
 
 def nucdyn_cell1(a):
-    """R1 (= v2 M3): Stevens 2017 Cell 1."""
+    """R1: Stevens 2017 Cell 1."""
     return _nucdyn_vs_published(a.data / DATA["stevens"])
 
 

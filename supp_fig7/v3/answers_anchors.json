@@ -1,0 +1,44 @@
+{
+ "A1": {
+  "values": {
+   "n_cells": 47,
+   "n_traces": 1500,
+   "n_spots": 383674
+  },
+  "truth": "counts"
+ },
+ "A6": {
+  "values": {
+   "cell_type": "L5IT",
+   "n": 642,
+   "median_contacts": 23157.0,
+   "median_scool_pixel_sum": 23157.0,
+   "note": "median_contacts = cells['n_contacts_hic'] (per-cell Hi-C contact count stored with the cell metadata); the per-cell .scool pixel sums (1 Mb, all chromosomes) are given for context and differ because the .scool keeps only binned cis+trans contacts on the 21 chromosomes."
+  },
+  "truth": "schicar_top_type"
+ },
+ "H1": {
+  "values": {
+   "n_cells": 399,
+   "n_traces": 15779,
+   "median_spots_per_cell": 24899.0
+  },
+  "truth": "atlas_hires_counts"
+ },
+ "S3": {
+  "values": {
+   "top_chrom": "chr22",
+   "sd_top": 0.18070139079184447,
+   "n_spots": 6268,
+   "sd_by_chrom": {
+    "chr22": 0.18070139079184447,
+    "chrX": 0.14892481832084012,
+    "chr9": 0.13661203355828327,
+    "chr15": 0.10271557346703027,
+    "chr17": 0.10246496694862699,
+    "chr11": 0.09607682549126856
+   }
+  },
+  "truth": "melanoma_dosage"
+ }
+}

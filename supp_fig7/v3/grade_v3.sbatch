@@ -1,10 +1,10 @@
 #!/bin/bash
-# Grade one run of benchmark version 3 (grade_v2.py with answers_v3.json / questions_v3.yaml; the judge is a
+# Grade one run of benchmark version 3 (v3/grade.py with answers_v3.json / questions_v3.yaml; the judge is a
 # `claude -p` session without tools, memory, user settings or MCP servers; numbers tested in code), then print the
 # mean score per model x condition x kind and per question x condition.  Grades are written as they come, so a
 # preempted job loses nothing: the same command grades the rest.
 #
-#   sbatch --export=ALL,RUN=pilot_v3c[,JUDGE=claude-opus-5-5] benchmarks/fig6/agent_bench/v3/sherlock/grade_v3.sbatch
+#   sbatch --export=ALL,RUN=pilot_v3c[,JUDGE=claude-opus-5-5] supp_fig7/v3/sherlock/grade_v3.sbatch
 #SBATCH --job-name=ab3-grade
 #SBATCH --partition=xiaojie,normal,owners
 #SBATCH --time=04:00:00
@@ -17,7 +17,7 @@ ml python/3.12.1 claude-code
 PY=$GROUP_HOME/$USER/uchrom-nd/venv-consensus/bin/python
 echo "host=$(hostname) job=${SLURM_JOB_ID:-none} run=$RUN judge=${JUDGE:-claude-opus-5-5} claude=$(claude --version 2>/dev/null)"
 cd "$AB/bench"
-"$PY" -u grade_v2.py --runs "$AB/runs/$RUN" --answers answers_v3.json --questions questions_v3.yaml \
+"$PY" -u v3/grade.py --runs "$AB/runs/$RUN" --answers answers_v3.json --questions questions_v3.yaml \
   --judge-model "${JUDGE:-claude-opus-5-5}" --jobs "${JOBS:-8}"
 "$PY" - "$AB/runs/$RUN/grades.json" <<'PY'
 import json, sys, collections

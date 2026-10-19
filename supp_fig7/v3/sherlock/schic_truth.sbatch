@@ -3,7 +3,7 @@
 # commit fb43ac4) -> bench/v3/results/schic_work/schic_uchrom.json; also the scHiCAR cell table the independent scripts
 # read (schic_cells.tsv).
 #
-#   sbatch --export=ALL,ONLY=R1:R2:R3,CELLS=<cellA>:<cellB> benchmarks/fig6/agent_bench/v3/sherlock/schic_truth.sbatch
+#   sbatch --export=ALL,ONLY=R1:R2:R3,CELLS=<cellA>:<cellB> supp_fig7/v3/sherlock/schic_truth.sbatch
 # (lists separated by ":" -- sbatch --export splits on commas)
 #SBATCH --job-name=ab3-schic-truth
 #SBATCH --partition=xiaojie,normal
@@ -14,7 +14,7 @@
 set -euo pipefail
 AB=$SCRATCH/uchrom-nd/agentbench
 GH=$GROUP_HOME/$USER/uchrom-nd/agentbench
-U=${VENV_U:-venv-uchrom-v3}      # the agents' U-Chrom environment (v3 snapshot; version 2's venv-uchrom = fb43ac4)
+U=${VENV_U:-venv-uchrom-v3}      # the agents' U-Chrom environment (v3 snapshot; the first references: venv-uchrom = fb43ac4)
 SIF=$GH/py312full.sif
 ONLY=$(echo "${ONLY:-R1:R2:R3:R4:R5:R6}" | tr ":" ",")
 CELLS=$(echo "${CELLS:-}" | tr ":" ",")

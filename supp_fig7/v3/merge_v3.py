@@ -2,7 +2,7 @@
 answers_v3.json, renaming ids that collide (the bulk family's H1-H4 become BH1-BH4: H1 / H2 are Part A's HiRES
 questions).  Questions marked ``drop: true`` are left out.
 
-    python benchmarks/fig6/agent_bench/merge_v3.py
+    python supp_fig7/v3/merge_v3.py
 """
 
 from __future__ import annotations
