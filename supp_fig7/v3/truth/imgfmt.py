@@ -1,7 +1,7 @@
 """Reference answers of family ``imgfmt`` (version 3): T6 (Part B, imaging methods; T7 dropped), F1-F4 (Part A, reading the
 open store) and the anchors A1, A6, H1, S3.
 
-The implementations run in different environments (``v3/sherlock/imgfmt_truth.sbatch``), each writing one JSON into
+The implementations run in different environments (``v3/slurm/imgfmt_truth.sbatch``), each writing one JSON into
 a work directory:
 
 * U-Chrom (the agents' ``venv-uchrom``, commit fb43ac4): ``imgfmt_t6.py --impl uchrom``, ``imgfmt_t7.py --impl

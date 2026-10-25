@@ -6,8 +6,8 @@ of the 300 closest, the one with the most complete chromosome 2 copy (that copy 
 loci per copy), a diploid reconstruction draws copy 0.  Output ``--out``/cross_assay_ed_structures.parquet: source, cls, cell_id, trace_id,
 start, end, x, y, z.
 
-    python fig2/structures.py --liu STORE --recon-root $SCRATCH/uchrom-nd/runs/xassay \\
-        --scores $SCRATCH/uchrom-nd/runs/xassay/transfer --out DIR
+    python fig2/structures.py --liu STORE --recon-root $SCRATCH/uchrom/runs/xassay \\
+        --scores $SCRATCH/uchrom/runs/xassay/transfer --out DIR
 """
 
 from __future__ import annotations

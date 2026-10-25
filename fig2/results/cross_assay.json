@@ -230,14 +230,14 @@
    "tan": {
     "n_cells": 510,
     "cis_contacts_median": 304866.5,
-    "scool": "/scratch/users/wzxu/uchrom-nd/runs/xassay/full/work/tan2021_cortex_1mb.scool",
+    "scool": "$SCRATCH/uchrom/runs/xassay/full/work/tan2021_cortex_1mb.scool",
     "n_chroms": 21,
     "missing_pairs_files": 0,
     "wall_s": 134.2
    },
    "imaging": {
     "liu2025_mop": {
-     "store": "/scratch/users/wzxu/uchrom-nd/data/liu2025_mop/liu2025_mop.chromdata.zarr",
+     "store": "$SCRATCH/uchrom/data/liu2025_mop/liu2025_mop.chromdata.zarr",
      "n_spots": 9582069,
      "n_traces": 188891,
      "coordinate_unit": "micron",
@@ -284,7 +284,7 @@
      "long_pairs_median": 7523.0
     },
     "takei2021_brain_labels": {
-     "set": "/scratch/users/wzxu/uchrom-nd/runs/xassay/pilot/sets/takei2021_brain_labels.npz",
+     "set": "$SCRATCH/uchrom/runs/xassay/pilot/sets/takei2021_brain_labels.npz",
      "set_meta": {
       "dataset": "takei2021_brain_1mb",
       "unit": "nm",
@@ -304,7 +304,7 @@
      "long_pairs_median": 4478.0
     },
     "takei2021_brain_kmeans": {
-     "set": "/scratch/users/wzxu/uchrom-nd/runs/xassay/pilot/sets/takei2021_brain_kmeans.npz",
+     "set": "$SCRATCH/uchrom/runs/xassay/pilot/sets/takei2021_brain_kmeans.npz",
      "set_meta": {
       "dataset": "takei2021_brain_1mb",
       "unit": "nm",
@@ -326,7 +326,7 @@
      "long_pairs_median": 11713.0
     },
     "tan2021_dipc_rep1": {
-     "set": "/scratch/users/wzxu/uchrom-nd/runs/xassay/pilot/sets/tan2021_dipc_rep1.npz",
+     "set": "$SCRATCH/uchrom/runs/xassay/pilot/sets/tan2021_dipc_rep1.npz",
      "set_meta": {
       "dataset": "tan2021_cortex_dipc",
       "unit": "particle radius (dip-c)",
@@ -3378,7 +3378,7 @@
  "provenance": {
   "revision": "ad8aa0f+uncommitted:separation.py-9782acd1:cross_assay.py-10b25b4e:pilot.py-bd31a485",
   "date": "2026-10-11T19:01:40+00:00",
-  "host": "sh04-04n05.int",
+  "host": "cluster node",
   "cpu": "Intel(R) Xeon(R) Platinum 8462Y+",
   "cpus": 8,
   "slurm_job": "47403340",

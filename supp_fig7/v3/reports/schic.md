@@ -15,9 +15,9 @@
 ## How the references were computed
 
 - **U-Chrom** (`truth/schic.py`, the agents' environment `venv-uchrom`, commit fb43ac4, image py312full.sif,
-  `sherlock/schic_truth.sbatch`, 16 CPUs).
+  `slurm/schic_truth.sbatch`, 16 CPUs).
 - **Independent implementations**, each in its own environment without U-Chrom, built inside a job the way an agent
-  would build it on Python 3.12 / Debian bookworm (`sherlock/schic_setup.sbatch`), and run on 8 CPUs (an agent's
+  would build it on Python 3.12 / Debian bookworm (`slurm/schic_setup.sbatch`), and run on 8 CPUs (an agent's
   session):
   - `venv-schicluster`: `pip install schicluster==1.3.2` (PyPI's newest) **fails** (its dependency rpy2 needs R:
     "rpy2 in API mode cannot be built without R"); `pip install --no-deps schicluster==1.3.2` + numpy, scipy,
@@ -258,7 +258,7 @@ code in `benchmarks/sc_structures` in the authors' own Python 3.9 environment: i
 - `schicluster==1.3.2` cannot be pip-installed with its dependencies without R (rpy2); agents need `--no-deps` (or
   `RPY2_CFFI_MODE=ABI`, not tried).
 
-## Sherlock jobs (partition xiaojie,normal; logs in `$SCRATCH/uchrom-nd/agentbench/logs/`)
+## cluster job (logs in `$SCRATCH/uchrom/agentbench/logs/`)
 
 | Job | Script | What |
 |---|---|---|

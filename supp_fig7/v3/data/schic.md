@@ -1,11 +1,11 @@
 # Data of the schic family (version 3)
 
 All inputs are copies or derivations of registered sources; nothing new is downloaded.  New folders sit under
-`$SCRATCH/uchrom-nd/agentbench/data_v3/` and are built by `v3/truth/schic_build_data.py`
-(`v3/sherlock/schic_setup.sbatch` job 47730908: stevens2017_cell2, mm10_cpg, nagano2017_hap_2i;
+`$SCRATCH/uchrom/agentbench/data_v3/` and are built by `v3/truth/schic_build_data.py`
+(`v3/slurm/schic_setup.sbatch` job 47730908: stevens2017_cell2, mm10_cpg, nagano2017_hap_2i;
 `schic_snaphic.sbatch` job 47732313: nagano2017_dip_chr19; `schic_truth.sbatch` with `BUILD=types` job 47733961:
-schicar_cell_types) from the shared data directory (`$SCRATCH/uchrom-nd/data`, the files
-of `python -m uchrom.datasets fetch ...`) and the shared data root (`$SCRATCH/uchrom-nd/agentbench/data`).
+schicar_cell_types) from the shared data directory (`$SCRATCH/uchrom/data`, the files
+of `python -m uchrom.datasets fetch ...`) and the shared data root (`$SCRATCH/uchrom/agentbench/data`).
 
 | Data key | Folder (+ file the prompt names) | Content | From |
 |---|---|---|---|

@@ -1,5 +1,5 @@
 """What the agents of the benchmark get from U-Chrom, frozen at one commit: the documentation, the skills and the
-wheels (``sherlock/setup_v3.sbatch`` builds the agents' environment from them).
+wheels (``slurm/setup_v3.sbatch`` builds the agents' environment from them).
 
     python supp_fig7/v3/build_snapshot.py --commit b6d8873 --out SNAPSHOT
 

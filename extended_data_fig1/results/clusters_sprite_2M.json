@@ -125,7 +125,7 @@
  "provenance": {
   "revision": "e730e49bfaa7",
   "date": "2026-10-25T20:20:31+00:00",
-  "host": "sh04-01n16.int",
+  "host": "cluster node",
   "cpu": "Intel(R) Xeon(R) Platinum 8462Y+",
   "cpus": 8,
   "slurm_job": "49522138",
@@ -145,12 +145,12 @@
    "quinodoz2018_sprite"
   ],
   "params": {
-   "archive": "/scratch/users/wzxu/uchrom-nd/data/quinodoz2018_sprite/GSE114242_mouse_combined_clusters.tar.gz",
+   "archive": "$SCRATCH/uchrom/data/quinodoz2018_sprite/GSE114242_mouse_combined_clusters.tar.gz",
    "member": "mouse.mapq-ge10.clusters.gz",
    "limit": 2000000,
-   "work": "/lscratch/wzxu/clusters/limit",
+   "work": "$TMPDIR/clusters/limit",
    "n_windows": 50,
-   "out": "/scratch/users/wzxu/uchrom-nd/runs/clusters/49522138/clusters_sprite_2M.json"
+   "out": "$SCRATCH/uchrom/runs/clusters/49522138/clusters_sprite_2M.json"
   }
  }
 }

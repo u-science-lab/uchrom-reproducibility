@@ -127,7 +127,7 @@ SETS = {"takei2021_brain_labels": ("DNA seqFISH+ (Takei 2021), authors' DBSCAN h
 # ------------------------------------------------------------------------------------------------- sequencing
 
 def _pandas_compat() -> bool:
-    """The atlas stores record pandas >= 2.3 string dtypes (``na_value``); with an older pandas (the Sherlock env has
+    """The atlas stores record pandas >= 2.3 string dtypes (``na_value``); with an older pandas (the cluster env has
     2.2) read those columns as a plain ``StringDtype`` instead.  Only spot columns derived from keys are affected,
     and none is used here.  Returns whether the shim was applied."""
     try:

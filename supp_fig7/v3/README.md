@@ -8,7 +8,7 @@ into `questions_v3.yaml` / `answers_v3.json` at the end:
 ```
 v3/questions/<family>.yaml      the questions (schema below)
 v3/truth/<family>.py            reference answers with U-Chrom + the independent check (one function per question)
-v3/sherlock/<family>.sbatch     the job that runs it on Sherlock
+v3/slurm/<family>.sbatch     the job that runs it on a compute cluster
 v3/results/<family>.json        {id: {"values": ..., "verify": {<implementation>: ...}, "truth": fn}} as answers_v3.json
 v3/data/<family>.md             what each new data folder holds and how it is built (from registered sources)
 v3/reports/<family>.md          per question: reference, independent value, agreement, runtime, decision
@@ -59,15 +59,14 @@ v3/reports/<family>.md          per question: reference, independent value, agre
   check: parity              # parity | floor
 ```
 
-## Sherlock
+## The cluster
 
-Follow `/etc/agents/AGENTS.md` (read it first).  No pip / compile on login nodes (jobs only), `--time` on every job,
-polls of the queue at least 60 s apart, downloads inside jobs, transfers through `sherlock-dtn`.  Partition
-`xiaojie,normal`; logs to `$SCRATCH/uchrom-nd/agentbench/logs/`.  Image `$GROUP_HOME/$USER/uchrom-nd/agentbench/py312full.sif`
+Follow the cluster's rules for automated tools (read them first).  No pip / compile on login nodes (jobs only), `--time` on every job,
+polls of the queue at least 60 s apart, downloads inside jobs, transfers through the transfer node.  Logs to `$SCRATCH/uchrom/agentbench/logs/`.  Image `$HOME/uchrom/agentbench/py312full.sif`
 (python:3.12-bookworm); the agents' U-Chrom environment `.../agentbench/venv-uchrom-v3` (the snapshot's commit b6d8873,
-`sherlock/setup_v3.sbatch`; bind at `/opt/venv`; the first references were computed in `venv-uchrom`, fb43ac4); a cooltools environment `.../agentbench/venv-verify`; other existing envs in
-`$GROUP_HOME/$USER/uchrom-nd/` (e.g. `venv-snaphic-ref`: the authors' SnapHiC; `minimds`).  New environments for
-authors' code go to `$GROUP_HOME/$USER/uchrom-nd/agentbench/venv-<tool>` (built inside a job).  Data roots: the shared stores
-`$SCRATCH/uchrom-nd/agentbench/data/` and the folders built for these questions, `$SCRATCH/uchrom-nd/agentbench/data_v3/`.  Shared
-data on Sherlock: `$SCRATCH/uchrom-nd/data/` (read only).  Sync code with
-`rsync -a <files> sherlock-dtn:$SCRATCH/uchrom-nd/agentbench/bench/v3/...`.
+`slurm/setup_v3.sbatch`; bind at `/opt/venv`; the first references were computed in `venv-uchrom`, fb43ac4); a cooltools environment `.../agentbench/venv-verify`; other existing envs in
+`$HOME/uchrom/` (e.g. `venv-snaphic-ref`: the authors' SnapHiC; `minimds`).  New environments for
+authors' code go to `$HOME/uchrom/agentbench/venv-<tool>` (built inside a job).  Data roots: the shared stores
+`$SCRATCH/uchrom/agentbench/data/` and the folders built for these questions, `$SCRATCH/uchrom/agentbench/data_v3/`.  Shared
+data on a compute cluster: `$SCRATCH/uchrom/data/` (read only).  Sync code with
+`rsync -a <files> <cluster>:$SCRATCH/uchrom/agentbench/bench/v3/...`.

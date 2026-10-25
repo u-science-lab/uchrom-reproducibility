@@ -1,0 +1,13 @@
+#!/bin/bash
+# Nagano 2017 diploid serum mES cells (SnapHiC's data): download the fend-pair tables, build the 10 kb store
+# (loader nagano2017_dip_serum) into $UCHROM_DATA.
+#
+#   sbatch --export=ALL,REPO=$SCRATCH/uchrom/repo-sc-snaphic supp_table3/sc_structures/slurm/snaphic_data.sbatch
+#SBATCH --job-name=snaphic-data
+#SBATCH --time=03:00:00
+#SBATCH --cpus-per-task=4
+#SBATCH --mem=24G
+#SBATCH --output=%x-%j.out
+source "${REPRO:-$SCRATCH/uchrom/repro}/supp_table3/sc_structures/slurm/_env.sh"
+export OPENBLAS_NUM_THREADS=$SLURM_CPUS_PER_TASK OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK RAYON_NUM_THREADS=$SLURM_CPUS_PER_TASK
+"$PY" "$REPRO/supp_table3/sc_structures/snaphic_data.py" --out "$OUT/snaphic/data"

@@ -11,7 +11,7 @@ differences of imaging and of the reconstructions (``recon.py`` stage loci, ``re
   on both products;
 * per locus: the mean difference over its pairs (``biology.py``) against E1 (ExN, Oligo, ExN - Oligo).
 
-    python fig2/compartments.py --recon-root $SCRATCH/uchrom-nd/runs/xassay --panel liu2025_panel.parquet \\
+    python fig2/compartments.py --recon-root $SCRATCH/uchrom/runs/xassay --panel liu2025_panel.parquet \\
         --fasta $UCHROM_DATA/genomes/mm10/mm10.fa.gz --xa-work DIR --out DIR
 """
 

@@ -2,7 +2,7 @@
 
 One Part B question (T6), four Part A questions on reading the open store (F1-F4) and four anchors (A1,
 A6, H1, S3; references in `../answers_anchors.json`).  Questions in `../questions/imgfmt.yaml`, references in
-`../results/imgfmt.json` (`truth/imgfmt.py` over the runs of `sherlock/imgfmt_truth.sbatch`, job 47751628, 16 CPUs;
+`../results/imgfmt.json` (`truth/imgfmt.py` over the runs of `slurm/imgfmt_truth.sbatch`, job 47751628, 16 CPUs;
 data in `../data/imgfmt.md`).
 
 ## Summary
@@ -82,5 +82,5 @@ authors' homolog labels, chr3, chr7 and chr11 (201 cells; median ARI per cell an
 
 Plain clustering separates the two homologs of these 25-kb loci, so the question would not need the method.  The
 authors' jie assigns almost no spots on these data.  T7 was dropped.  The exploration runs stay in
-`imgfmt_work/explore/` on Sherlock.  U-Chrom's aligner also scores below plain clustering here; that is noted for the
+`imgfmt_work/explore/` on a compute cluster.  U-Chrom's aligner also scores below plain clustering here; that is noted for the
 library, not for the benchmark.

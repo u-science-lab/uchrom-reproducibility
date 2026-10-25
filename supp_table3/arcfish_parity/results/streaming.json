@@ -173,12 +173,12 @@
    "zarr": "3.4.1",
    "pyarrow": "26.0.0"
   },
-  "host": "sh04-05n13.int",
+  "host": "cluster node",
   "slurm_job_id": null,
   "cpus": null,
   "python": "3.12.15",
   "platform": "Linux-3.10.0-1160.156.1.el7.tuxcare.els4.x86_64-x86_64-with-glibc2.36",
-  "input": "/scratch/users/wzxu/uchrom-nd/data/4DNFIHF3JCBY.csv",
+  "input": "$SCRATCH/uchrom/data/4DNFIHF3JCBY.csv",
   "input_bytes": 21858579,
   "parameters": {
    "in_memory": {

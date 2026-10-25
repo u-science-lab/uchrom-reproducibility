@@ -1446,7 +1446,7 @@
    "47732259": {
     "revision": "ember-deep-frozen-208-gfb43ac463254+dirty",
     "date": "2026-10-14T05:27:49+00:00",
-    "host": "sh04-05n13.int",
+    "host": "cluster node",
     "cpu": "AMD EPYC 9754 128-Core Processor",
     "cpus": 256,
     "slurm_job": null,
@@ -1479,7 +1479,7 @@
    "47738660": {
     "revision": "ember-deep-frozen-208-gfb43ac463254+dirty",
     "date": "2026-10-14T05:52:16+00:00",
-    "host": "sh04-05n13.int",
+    "host": "cluster node",
     "cpu": "AMD EPYC 9754 128-Core Processor",
     "cpus": 256,
     "slurm_job": null,

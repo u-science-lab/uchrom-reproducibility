@@ -4,8 +4,8 @@ The numbers behind `../README.md` and the docs page *Calling structures from a m
 wrote them.  Collected after the fact (2026-10-08): they predate `shared/_record.py`, so they carry no
 `provenance` block — it is this table.  New runs write theirs with `_record.save` and are checked against these
 with `python shared/_record.py OLD NEW --rtol ...`.  The large outputs of the same runs (maps, call tables,
-thinned maps, reference-tool outputs) are archived on Sherlock's Oak:
-`$OAK/uchrom/results/hic_structures/2026-10-07_1ca8197/hic_structures_runs_2026-10-07.tar`.
+thinned maps, reference-tool outputs) are archived on the cluster's long-term storage:
+`$UCHROM_ARCHIVE/results/hic_structures/2026-10-07_1ca8197/hic_structures_runs_2026-10-07.tar`.
 
 | File | What | Script | Produced |
 | --- | --- | --- | --- |

@@ -4,7 +4,7 @@
 * ``results/cross_assay.json``, ``results/recon/recon_<dataset>.json``, ``results/recon/loci_<dataset>.json``,
   ``results/recon/loci_all_<dataset>.json``, ``results/recon_summary.json``, ``results/transfer.json``;
 * the per-locus and per-pair tables (``biology.py`` outputs: ``locus_effects.parquet``, ``cross_assay_loci_maps.parquet``)
-  and the per-cell scores of ``transfer.py`` (``scores_*.parquet``), copied from the Sherlock runs.
+  and the per-cell scores of ``transfer.py`` (``scores_*.parquet``), copied from the cluster runs.
 
 Writes ``fig2/results/cross_assay_ed_{classes.json,loci.json,cells.json,
 maps.parquet,tracks.parquet,scores.parquet}``.

@@ -18,8 +18,8 @@ and 2.  Each script writes `results/<name>.json` (with provenance); the paper's 
 | `f_crossmodal.py` | Supp. Fig. S2 (was f) | scHiCAR MOp `.chromdata.zarr` + linked 1 Mb `.scool` | Leiden clusters of the RNA PCA (`uchrom.emb.cluster_cells`), marker genes, the chosen clusters' pseudo-bulk maps via `Dataset.contacts(group=)`, P(s) and slopes |
 | `f_roundtrip.py` | Supp. Fig. S1e (was b) | Takei 2025 FOV0, sim_cell1, scHiCAR | field-by-field round trips (`.chromdata.zarr`, FOF-CT via `uchrom.io.write_fofct`, AnnData, .cool/.scool, PDB, .3dg) → preserved / partial / lost / NA matrix |
 | `allele_qc.py` | supplement | Takei 2025 raw spot CSVs | diagnostic of the published homolog calls (loci per trace, duplicate loci, genomic–spatial Spearman) |
-| `g_clusters_sprite.py` | not in the paper (format 2.4) | Quinodoz 2018 SPRITE clusters (GSE114242; fetch `quinodoz2018_sprite`, Sherlock: `sherlock/clusters.sbatch`) | multi-way contacts (`ChromData.clusters`): the clusters of the authors' file as a `ClusterTable`, written and read back (checksum over clusters), store size, region queries in memory / backed / over HTTP |
-| `g_clusters_layout.py` | not in the paper (format 2.4) | the same SPRITE clusters (Sherlock: `sherlock/clusters_layout.sbatch`) | the locus index's chunk size and codec: index size, window reads backed and over HTTP (requests, bytes, time) |
+| `g_clusters_sprite.py` | not in the paper (format 2.4) | Quinodoz 2018 SPRITE clusters (GSE114242; fetch `quinodoz2018_sprite`, the cluster: `slurm/clusters.sbatch`) | multi-way contacts (`ChromData.clusters`): the clusters of the authors' file as a `ClusterTable`, written and read back (checksum over clusters), store size, region queries in memory / backed / over HTTP |
+| `g_clusters_layout.py` | not in the paper (format 2.4) | the same SPRITE clusters (the cluster: `slurm/clusters_layout.sbatch`) | the locus index's chunk size and codec: index size, window reads backed and over HTTP (requests, bytes, time) |
 
 ## Setup
 
@@ -171,17 +171,17 @@ column is read), the subset, `.to_memory()` (the chunks holding the selected row
 obsm).  `anndata-lazy-h5ad` (the same on the `.h5ad`) fails with AnnData 0.12.11: the file's X (n_spots x 0) is an
 unchunked HDF5 dataset and dask rejects its empty chunk tuple.
 
-The laptop's work files are gone and benchmarks no longer run on it, so the lazy read was measured on Sherlock
-next to the backends it is compared with, on one node and node-local disk (`sherlock/access.sbatch`;
-`results/c_access_sherlock.json`, `results/MANIFEST.md`).  Different machine from the laptop series: compare
+The laptop's work files are gone and benchmarks no longer run on it, so the lazy read was measured on a compute cluster
+next to the backends it is compared with, on one node and node-local disk (`slurm/access.sbatch`;
+`results/c_access_cluster.json`, `results/MANIFEST.md`).  Different machine from the laptop series: compare
 within a run, not across.  Two fixes came with it: the chromdata.zarr backends now query only cells and traces
 with spots (they drew from the id categories, which hold every cell of the cell table: in the laptop series 1,633
 of the 1,799 queried cell ids had no spots at 1e6 and 143 at 1e7), and on Linux the peak RSS is the process's
 `VmHWM` (`ru_maxrss` survives `exec` and reported the staging parent's peak).
 
 ```bash
-sbatch extended_data_fig1/sherlock/setup.sbatch            # env (once), fig2 tests, smoke test of the lazy backends
-sbatch extended_data_fig1/sherlock/access.sbatch           # Takei 2025 fetched + built when missing; 1e6 / 1e7
+sbatch extended_data_fig1/slurm/setup.sbatch            # env (once), fig2 tests, smoke test of the lazy backends
+sbatch extended_data_fig1/slurm/access.sbatch           # Takei 2025 fetched + built when missing; 1e6 / 1e7
 ```
 
 At 1e7 spots (job 47636698, AMD EPYC 7502): one cell from a file not yet open (open + median query) takes 0.11 s

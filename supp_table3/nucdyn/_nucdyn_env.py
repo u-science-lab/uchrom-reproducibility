@@ -62,7 +62,7 @@ def _nvidia() -> str | None:
 
 def environment() -> dict:
     env = {
-        "host": socket.gethostname(),
+        "host": "cluster node" if os.environ.get("SLURM_JOB_ID") else socket.gethostname(),
         "platform": platform.platform(),
         "cpu": _cpu_model(),
         "cpu_count": os.cpu_count(),

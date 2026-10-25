@@ -9,4 +9,4 @@ Each row of the table (written in the manuscript) comes from one of these checks
 * `nucdyn/`: the NucDynamics engine against the original program.
 
 The spatial statistics row comes from `extended_data_fig2/results/validate_stats.json`.  Heavy runs: each check's
-`sherlock/`.
+`slurm/`.

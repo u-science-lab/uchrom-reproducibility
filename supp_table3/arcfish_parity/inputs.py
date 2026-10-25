@@ -1,8 +1,8 @@
 """Inputs of the ArcFISH parity check: FOF-CT core tables that both the authors' package and U-Chrom read, and a
 manifest of what each dataset runs.
 
-    python supp_table3/arcfish_parity/inputs.py --data $SCRATCH/uchrom-nd/data \
-        --takei2025 $SCRATCH/uchrom-nd/agentbench/data/takei2025_fov0/takei2025_fov0.chromdata.zarr --out OUT
+    python supp_table3/arcfish_parity/inputs.py --data $SCRATCH/uchrom/data \
+        --takei2025 $SCRATCH/uchrom/agentbench/data/takei2025_fov0/takei2025_fov0.chromdata.zarr --out OUT
 
 Datasets (all registered: ``apps/atlas/recipes/README.md``):
 

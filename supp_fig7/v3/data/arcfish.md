@@ -1,6 +1,6 @@
 # Version 3 data of T1-T5 (ArcFISH methods)
 
-Folders under `$SCRATCH/uchrom-nd/agentbench/data_v3/` (built by `v3/sherlock/arcfish_data.sbatch`) and the data key
+Folders under `$SCRATCH/uchrom/agentbench/data_v3/` (built by `v3/slurm/arcfish_data.sbatch`) and the data key
 of each question (the runner binds the folder read-only at `./data/<folder>`).
 
 | Key | Folder / file the prompt names | Content | From |

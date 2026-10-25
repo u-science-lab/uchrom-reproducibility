@@ -3,17 +3,17 @@
 Seven Part B questions (`../questions/bulk.yaml`), reference values in `../results/bulk.json` (`truth/bulk.py`; data
 in `../data/bulk.md`).  Every question was computed with U-Chrom (the agents' environment `venv-uchrom`, snapshot
 fb43ac4) and with an independent implementation that does not import `uchrom` (checked at the end of each run):
-the authors' / Open2C's code in `venv-hicref` (`$GROUP_HOME/$USER/uchrom-nd/agentbench/venv-hicref`, built inside
+the authors' / Open2C's code in `venv-hicref` (`$HOME/uchrom/agentbench/venv-hicref`, built inside
 job 47730778 in 281 s: mustache-hic 1.3.3, hic-straw 1.3.1, cooltools 0.7.1, cooler 0.10.4, scikit-learn 1.9.1,
 numpy 1.26.4, pandas 2.3.3, scipy 1.14.1 — freeze in `venv-hicref.freeze.txt`), or numpy written from the papers.
 
-Sherlock jobs (partition xiaojie, 16 CPUs; logs `$SCRATCH/uchrom-nd/agentbench/logs/`): `ab3-bulk-setup` 47730778
+cluster job (16 CPUs; logs `$SCRATCH/uchrom/agentbench/logs/`): `ab3-bulk-setup` 47730778
 (failed: a cooler balance statistic is an array; venv-hicref built), 47731273 (failed after the 462-MB Zenodo download:
 no pyarrow in `venv-verify`; Rao / Su folders built), 47734059 (the RNA table, in `venv-uchrom`, 23 s);
 `ab3-bulk-truth` 47734061 (all seven questions, both implementations, 39 min, 51 GB peak), 47740189 (P1 again after
 the definition fix below, 17 min; U-Chrom's P1 numbers reproduced to the last digit).
 
-Runtimes below are wall-clock seconds on one Sherlock node (16 cores, `OMP_NUM_THREADS=16`); "independent" is what
+Runtimes below are wall-clock seconds on one cluster node (16 cores, `OMP_NUM_THREADS=16`); "independent" is what
 an agent following the prompt with the named public code would spend computing (the environment build, ~5 min, comes
 on top for H1-H3).
 

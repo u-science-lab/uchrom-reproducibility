@@ -2,10 +2,10 @@
 
 T1, P1 and P2 read data that the shared data root holds only as ChromData stores (`takei`, `melanoma`).  An agent without U-Chrom
 then has to read the store's Zarr + Parquet layout by hand, an obstacle the questions do not test.  Version 3 gives
-the same data in community formats as well, in two folders under `$SCRATCH/uchrom-nd/agentbench/data_v3/`.  The
+the same data in community formats as well, in two folders under `$SCRATCH/uchrom/agentbench/data_v3/`.  The
 prompts name both formats, and every condition gets both: the store and the export.  `neutral_build.py`
-(this folder) writes the exports with chromdata's own exporters, in the job `../sherlock/neutral_build.sbatch`
-(Sherlock jobs 47856015 and, for the Takei folder with the exact-parse check, 47858981; 2026-10-14;
+(this folder) writes the exports with chromdata's own exporters, in the job `../slurm/neutral_build.sbatch`
+(cluster job 47856015 and, for the Takei folder with the exact-parse check, 47858981; 2026-10-14;
 `venv-uchrom-v3`, chromdata of b6d8873).  It checks every export against its store value by value, and
 recomputes the question's statistic from the files.  The references do not change.
 

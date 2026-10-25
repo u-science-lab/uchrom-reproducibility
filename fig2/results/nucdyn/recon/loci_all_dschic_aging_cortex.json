@@ -604,7 +604,7 @@
  "provenance": {
   "revision": "78e7994+nucdyn-contacts-uncommitted",
   "date": "2026-10-13T10:01:36+00:00",
-  "host": "sh04-05n13.int",
+  "host": "cluster node",
   "cpu": "AMD EPYC 9754 128-Core Processor",
   "cpus": 8,
   "slurm_job": "47634804",

@@ -12,8 +12,8 @@ cells), against the scalar of ``separation_profile`` (``log2_short_long``) as th
 Directions: imaging signature -> each reconstruction's cells; each reconstruction's signature (and their mean) ->
 imaging cells; within a dataset, 2-fold (signature from half of the cells, scored on the other half).
 
-    python fig2/transfer.py --liu STORE --recon-root $SCRATCH/uchrom-nd/runs/xassay \
-        --xa-work $SCRATCH/uchrom-nd/runs/xassay/full/work --out DIR
+    python fig2/transfer.py --liu STORE --recon-root $SCRATCH/uchrom/runs/xassay \
+        --xa-work $SCRATCH/uchrom/runs/xassay/full/work --out DIR
 """
 
 from __future__ import annotations

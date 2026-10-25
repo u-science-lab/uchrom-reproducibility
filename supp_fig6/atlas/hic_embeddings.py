@@ -10,7 +10,7 @@ are recomputed from the stores' current cellm (written 2026-10-05 or earlier wit
 
     python supp_fig6/atlas/hic_embeddings.py DATA_DIR OUT_JSON ID [ID ...]
 
-Run 2026-10-15 on tag-308 (CPU only, 24 cores; Sherlock did not schedule the setup job): results/hic_embeddings.json.
+Run 2026-10-15 on tag-308 (CPU only, 24 cores; the cluster did not schedule the setup job): results/hic_embeddings.json.
 """
 from __future__ import annotations
 

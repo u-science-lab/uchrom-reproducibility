@@ -3,7 +3,7 @@ are measured on: insulation boundaries (250-kb window) and HiCCUPS loops at 25 k
 100 kb; and the windows of those boundaries, of domain interiors (controls) and of the loops (``uchrom.io.boundary_windows`` / ``loop_windows``) that the
 second pass over the pairs counts per spot (``spatial_pairs_windows.py`` of the recipe).
 
-    python extended_data_fig2/bulk_calls.py --stats $OAK/uchrom/spatial_3dgenome --out $OUT/bulk_calls \
+    python extended_data_fig2/bulk_calls.py --stats $UCHROM_ARCHIVE/spatial_3dgenome --out $OUT/bulk_calls \
         --samples mouse_brain_r1 mouse_brain_r2 --name mouse_brain
 
 The pooled map is the sum of the samples' ``<sample>.bulk.mcool`` 25-kb levels (MAPQ >= 30, in-tissue spots; no

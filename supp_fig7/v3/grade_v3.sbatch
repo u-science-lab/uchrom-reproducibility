@@ -4,17 +4,16 @@
 # mean score per model x condition x kind and per question x condition.  Grades are written as they come, so a
 # preempted job loses nothing: the same command grades the rest.
 #
-#   sbatch --export=ALL,RUN=pilot_v3c[,JUDGE=claude-opus-5-5] supp_fig7/v3/sherlock/grade_v3.sbatch
+#   sbatch --export=ALL,RUN=pilot_v3c[,JUDGE=claude-opus-5-5] supp_fig7/v3/slurm/grade_v3.sbatch
 #SBATCH --job-name=ab3-grade
-#SBATCH --partition=xiaojie,normal,owners
 #SBATCH --time=04:00:00
 #SBATCH --cpus-per-task=4
 #SBATCH --mem=8G
-#SBATCH --output=/scratch/users/wzxu/uchrom-nd/agentbench/logs/%x-%j.out
+#SBATCH --output=$SCRATCH/uchrom/agentbench/logs/%x-%j.out
 set -uo pipefail
-AB=$SCRATCH/uchrom-nd/agentbench
+AB=$SCRATCH/uchrom/agentbench
 ml python/3.12.1 claude-code
-PY=$GROUP_HOME/$USER/uchrom-nd/venv-consensus/bin/python
+PY=$HOME/uchrom/venv-consensus/bin/python
 echo "host=$(hostname) job=${SLURM_JOB_ID:-none} run=$RUN judge=${JUDGE:-claude-opus-5-5} claude=$(claude --version 2>/dev/null)"
 cd "$AB/bench"
 "$PY" -u v3/grade.py --runs "$AB/runs/$RUN" --answers answers_v3.json --questions questions_v3.yaml \

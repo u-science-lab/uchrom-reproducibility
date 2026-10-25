@@ -2,7 +2,7 @@
 
 | File | What | Run |
 |---|---|---|
-| `parity.json` | U-Chrom's scHiCluster imputation (`uchrom.emb.hic.schicluster_impute`) against the authors' code (`impute_cpu` of `schicluster` 1.3.2 from PyPI, github.com/zhoujt1994/scHiCluster) on every cell of the scHiCAR mouse cortex `.scool` (5,313 cells, 1 Mb, chr1-19; `run.py`): per chromosome the share of identical entries of the binarised features (`hicluster_cpu`'s top 20 % per cell), the share of cells whose binarised features are identical, the largest difference of the imputed maps of three cells, the times of both. `{"results", "provenance"}` | 2026-10-14, Sherlock job 47753795 (node sh04-05n13, 8 CPUs) |
+| `parity.json` | U-Chrom's scHiCluster imputation (`uchrom.emb.hic.schicluster_impute`) against the authors' code (`impute_cpu` of `schicluster` 1.3.2 from PyPI, github.com/zhoujt1994/scHiCluster) on every cell of the scHiCAR mouse cortex `.scool` (5,313 cells, 1 Mb, chr1-19; `run.py`): per chromosome the share of identical entries of the binarised features (`hicluster_cpu`'s top 20 % per cell), the share of cells whose binarised features are identical, the largest difference of the imputed maps of three cells, the times of both. `{"results", "provenance"}` | 2026-10-14, cluster job 47753795 (cluster node, 8 CPUs) |
 
 ## Result
 

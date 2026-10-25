@@ -16,7 +16,7 @@ Measured:
   against the in-memory ones.
 
     python extended_data_fig1/g_clusters_sprite.py --archive $UCHROM_DATA/quinodoz2018_sprite/GSE114242_mouse_combined_clusters.tar.gz \\
-        --member mouse.mapq-ge10.clusters.gz --work $L_SCRATCH/clusters
+        --member mouse.mapq-ge10.clusters.gz --work ${TMPDIR:-/tmp}/clusters
 """
 
 from __future__ import annotations

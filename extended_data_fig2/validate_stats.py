@@ -7,7 +7,7 @@ brain section r1 (atlas ``hicrna_mouse_brain``) — the kind of data SPARK-X was
   8 adjacent spots (libpysal ``DistanceBand(threshold=1.5)``, row-standardised): statistics, expectations, variances
   under normality and randomisation, z-scores.
 
-    python extended_data_fig2/validate_stats.py --out $SCRATCH/uchrom-nd/runs/sv/validate
+    python extended_data_fig2/validate_stats.py --out $SCRATCH/uchrom/runs/sv/validate
 """
 
 from __future__ import annotations

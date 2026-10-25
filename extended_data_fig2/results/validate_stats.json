@@ -89,7 +89,7 @@
  "provenance": {
   "revision": "ember-deep-frozen-175-g958f9780a3b5",
   "date": "2026-10-09T03:53:10+00:00",
-  "host": "sh04-05n13.int",
+  "host": "cluster node",
   "cpu": "AMD EPYC 9754 128-Core Processor",
   "cpus": 8,
   "slurm_job": "47069625",

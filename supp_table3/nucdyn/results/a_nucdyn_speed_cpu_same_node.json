@@ -1,5 +1,5 @@
 {
- "node": "sh04-05n13 (AMD EPYC 9754), Sherlock partition xiaojie",
+ "node": "cluster node (AMD EPYC 9754), one shared partition",
  "input": "Stevens 2017 Cell 1, full schedule (8 Mb -> 100 kb, 500 x 100 steps per stage)",
  "orig_1model_1core": {
   "n_models": 1,
@@ -29,6 +29,6 @@
   "n_models": 10,
   "wall_seconds": 37.81849551200867,
   "peak_rss_mb": 230.016,
-  "node": "sh04-04n05 (NVIDIA H100 80GB, Vulkan)"
+  "node": "cluster node (NVIDIA H100 80GB, Vulkan)"
  }
 }

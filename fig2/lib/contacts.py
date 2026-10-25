@@ -1,6 +1,6 @@
 """Single-cell contact tables: read, write back in the same format, bin onto particles.
 
-Standalone (numpy only) so it runs in the Sherlock ``venv-main`` without U-Chrom.
+Standalone (numpy only) so it runs in the cluster ``venv-main`` without U-Chrom.
 
 Formats
 -------

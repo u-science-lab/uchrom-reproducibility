@@ -7,7 +7,7 @@ index's size, and 40 kb / 1 Mb windows (50 each) backed from local disk and over
 requests: requests and bytes per window), checked against the in-memory table, whose own query time is measured too.
 
     python extended_data_fig1/g_clusters_layout.py --archive $UCHROM_DATA/quinodoz2018_sprite/GSE114242_mouse_combined_clusters.tar.gz \\
-        --work $L_SCRATCH/layout
+        --work ${TMPDIR:-/tmp}/layout
 """
 
 from __future__ import annotations

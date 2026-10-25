@@ -6,7 +6,7 @@ uses half the cells, so the full maps' reliability is the Spearman-Brown value 2
 imaging over the square root of the two reliabilities (``disattenuated``) is the share of the reliable signal the
 reconstruction recovers (approximate for Spearman correlations).
 
-Inputs: ``<dir>/recon_<dataset>.json`` and ``<dir>/loci_<dataset>.json`` (the ``results`` folders of the Sherlock
+Inputs: ``<dir>/recon_<dataset>.json`` and ``<dir>/loci_<dataset>.json`` (the ``results`` folders of the cluster
 runs, copied through the DTN); output ``--out``/recon_summary.{json,md} (default ``results``; the NucDynamics
 run: ``results/nucdyn``).
 

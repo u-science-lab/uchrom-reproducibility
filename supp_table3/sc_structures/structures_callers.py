@@ -3,7 +3,7 @@
     .venv/bin/python supp_table3/sc_structures/structures_callers.py [--out DIR] [--sections ...] [--workers 6]
         [--fishnet-sweep default|reduced]
 
-A cluster job (FISHnet's published sweep takes ~1 h on 31 cores): ``sherlock/structures_gm.sbatch``.
+A cluster job (FISHnet's published sweep takes ~1 h on 31 cores): ``slurm/structures_gm.sbatch``.
 
 Data: ``ds.load("tan2018_gm12878")`` — 14 GM12878 cells, the authors' Dip-C structures (20 kb particles;
 each homolog a trace: 28 traces on chr21; replicate runs ``rep1`` / ``rep2`` as layers) and the per-cell

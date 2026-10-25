@@ -3,7 +3,7 @@ during development stay comparable and can be checked again.
 
 Every benchmark writes its numbers with :func:`save` (a JSON ``{"results": ..., "provenance": ...}``); the
 headline files are committed in the benchmark's ``results/`` (small: numbers, not data), the large outputs
-of a run (call tables, maps, models) are archived on Oak (``$OAK/uchrom/results/<name>/<date>_<revision>/``),
+of a run (call tables, maps, models) are archived (``$UCHROM_ARCHIVE/results/<name>/<date>_<revision>/``),
 and :func:`compare` tells how a new run differs from a committed one::
 
     from _record import save, compare
@@ -19,6 +19,7 @@ a cluster has no ``.git``, so the sync writes it into ``REVISION`` at the copy's
 from __future__ import annotations
 
 import datetime as _dt
+import getpass
 import json
 import math
 import os
@@ -76,6 +77,38 @@ def _versions() -> Dict[str, str]:
     return out
 
 
+def host() -> str:
+    """The machine, as results record it: the host name on a workstation, "cluster node" inside a Slurm job (the
+    site's node names stay out of the public results)."""
+    return "cluster node" if os.environ.get("SLURM_JOB_ID") else socket.gethostname()
+
+
+# folders whose absolute paths are recorded by their variable name (longest value first)
+_PATH_VARS = ("UCHROM_ARCHIVE", "UCHROM_DATA", "TMPDIR", "SCRATCH", "HOME")
+
+
+def neutral(x):
+    """Paths in a JSON-ready value written with variable names (``$UCHROM_DATA/...``, ``$SCRATCH/...``) and the
+    user name as ``$USER``, so a result names no site or account."""
+    if isinstance(x, dict):
+        return {k: neutral(v) for k, v in x.items()}
+    if isinstance(x, list):
+        return [neutral(v) for v in x]
+    if not isinstance(x, str):
+        return x
+    roots = sorted(((os.environ[v].rstrip("/"), v) for v in _PATH_VARS if len(os.environ.get(v, "").rstrip("/")) > 1),
+                   key=lambda t: -len(t[0]))
+    for root, var in roots:
+        x = x.replace(root + "/", f"${var}/") if x != root else f"${var}"
+    try:
+        user = getpass.getuser()
+    except Exception:  # noqa: BLE001 - no user database in some containers
+        user = ""
+    if user:
+        x = x.replace(f"/{user}/", "/$USER/")
+    return x
+
+
 def provenance(*, script: Optional[str] = None, datasets: Sequence[str] = (), params: Optional[dict] = None,
                **extra: Any) -> Dict[str, Any]:
     """Where and how a result was produced: revision, date, host, CPU, threads, Slurm job, load, versions,
@@ -87,7 +120,7 @@ def provenance(*, script: Optional[str] = None, datasets: Sequence[str] = (), pa
     return {
         "revision": revision(),
         "date": _dt.datetime.now(_dt.timezone.utc).isoformat(timespec="seconds"),
-        "host": socket.gethostname(),
+        "host": host(),
         "cpu": _cpu(),
         "cpus": int(os.environ.get("SLURM_CPUS_PER_TASK") or os.cpu_count() or 0),
         "slurm_job": os.environ.get("SLURM_JOB_ID"),
@@ -129,7 +162,7 @@ def save(path, results: Any, *, script: Optional[str] = None, datasets: Sequence
     path = Path(path)
     path.parent.mkdir(parents=True, exist_ok=True)
     doc = {"results": _plain(results),
-           "provenance": _plain(provenance(script=script, datasets=datasets, params=params, **extra))}
+           "provenance": neutral(_plain(provenance(script=script, datasets=datasets, params=params, **extra)))}
     path.write_text(json.dumps(doc, indent=1, sort_keys=False) + "\n")
     return path
 

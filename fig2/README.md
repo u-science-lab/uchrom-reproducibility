@@ -65,7 +65,7 @@ Labels not listed are left out: other regions (olfactory bulb, striatum, claustr
 
 ## The imaging structure sets
 
-Steps 1-2 read the pilot's imaging structure sets, built on Sherlock from the registered files with
+Steps 1-2 read the pilot's imaging structure sets, built on a compute cluster from the registered files with
 `lib/matched_data.py` (`takei-brain --split labels|kmeans --min-detect 0.2`; `dipc --rep 1`).  The pilot's own run
 (Step 0) is not part of this repository; `pilot.py` keeps the functions and constants the later steps import.
 
@@ -78,14 +78,14 @@ bin / locus midpoint to midpoint, chrX / chrY / chrM left out; the profile at 1-
 - sequencing: the per-cell maps linked to each atlas store (map offset 1 over offsets 19-53, as in the pilot);
 - Tan 2021: the contact pairs binned into a `.scool` at 1 Mb (`uchrom.io.pairs_to_scool`; pairs are 1-based, the
   pilot binned `pos // 1 Mb`, so a few contacts at bin edges move);
-- imaging: the Liu 2025 store (`liu2025_mop`, 11,045 traced cells; built on Sherlock by `sherlock/liu2025.sbatch`)
+- imaging: the Liu 2025 store (`liu2025_mop`, 11,045 traced cells; built on a compute cluster by `slurm/liu2025.sbatch`)
   and the pilot's structure sets as `ChromData` (one trace per cell, copy and chromosome); the median distance of
   pairs [19, 54) Mb over [1, 2) Mb apart.
 
 It adds Astro - Oligo per dataset (Takei 2021 put Oligo above Astro, the reverse of every sequencing dataset; Liu
-2025 separates Oligo from OPC).  On Sherlock: `sherlock/cross_assay.sbatch` (stages `seq tan imaging check
+2025 separates Oligo from OPC).  On the cluster: `slurm/cross_assay.sbatch` (stages `seq tan imaging check
 analyze`; the code from a repository copy synced through the DTN, the pilot's sets and tables as inputs), archived
-to `$OAK/uchrom/results/cross_assay/<date>_full_<job>/`; results `results/cross_assay.json` / `.md`.
+to `$UCHROM_ARCHIVE/results/cross_assay/<date>_full_<job>/`; results `results/cross_assay.json` / `.md`.
 
 ## Distance space: reconstructions (`recon.py`)
 

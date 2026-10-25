@@ -8,7 +8,7 @@ neurons.
 Outputs: ``--out``/locus_effects.parquet (locus x source: structural effects, expression differences), the figure
 inputs ``--figdata``/cross_assay_loci_{tracks,maps}.parquet, ``--results``/biology.json (Spearman correlations).
 
-    python fig2/biology.py --recon-root $SCRATCH/uchrom-nd/runs/xassay --liu STORE --out DIR \
+    python fig2/biology.py --recon-root $SCRATCH/uchrom/runs/xassay --liu STORE --out DIR \
         --figdata DIR    (or --panel liu2025_panel.parquet: the store's bins, to run where the store is not)
 """
 

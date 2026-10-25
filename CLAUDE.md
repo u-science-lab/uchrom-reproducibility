@@ -14,7 +14,7 @@
 * U-Chrom's validation discipline applies: real data, the original papers' datasets and metrics, disappointing
   numbers reported as they are; every dataset registered in U-Chrom (`uchrom.datasets`, recipes README).
 * Results record their provenance (revisions of U-Chrom and of this repository, host, versions, data, parameters);
-  committed results files are never edited by hand.  Heavy runs go to Sherlock (`*/sherlock/`, `REPO` = U-Chrom copy,
+  committed results files are never edited by hand.  Heavy runs go to the cluster (`*/slurm/`, `REPO` = U-Chrom copy,
   `REPRO` = copy of this repository); the laptop only for the timings the paper reports from it, when the user asks.
-  Large outputs are archived on Oak, never only on `$SCRATCH`.
+  Large outputs are archived in long-term storage, never only on `$SCRATCH`.
 * Talk to the user in Chinese; write code, commits and documents in English.

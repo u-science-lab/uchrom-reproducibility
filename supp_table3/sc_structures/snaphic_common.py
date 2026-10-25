@@ -63,7 +63,7 @@ def bonev_band(out: Path, *, chroms: Sequence[str] = MM10_AUTOSOMES, res: int = 
     if "://" in str(url):
         fh = fsspec.open(url, block_size=2 ** 22, cache_type="blockcache").open()
         g = h5py.File(fh, "r")[f"resolutions/{res}"]
-    else:                                                     # a local mcool (Sherlock: the whole file)
+    else:                                                     # a local mcool (the cluster: the whole file)
         g = h5py.File(str(url), "r")[f"resolutions/{res}"]
     names = [c.decode() if isinstance(c, bytes) else str(c) for c in g["chroms/name"][:]]
     lengths = g["chroms/length"][:]

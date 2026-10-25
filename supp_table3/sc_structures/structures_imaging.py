@@ -66,7 +66,7 @@ def traces_per_chrom(cd) -> float:
 # ------------------------------------------------------------------------------------------------ remote Hi-C
 
 def bonev_source() -> str:
-    """The Bonev 2017 mcool: the copy in the data directory (``bonev2017_mesc_4dn``, e.g. on Sherlock) when
+    """The Bonev 2017 mcool: the copy in the data directory (``bonev2017_mesc_4dn``, e.g. on a compute cluster) when
     there is one, else its 4DN URL (read over HTTP range requests)."""
     from uchrom.datasets import data_dir
 

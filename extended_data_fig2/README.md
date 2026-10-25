@@ -10,5 +10,5 @@ Supplementary Note 4.
 | `validate_stats.py` | SPARK-X and Moran's I / Geary's C against `SPARK::sparkx` and `esda` on real spot RNA counts | `results/validate_stats.json` |
 | `check_patch_composition.py` | whether the melanoma patch's higher short / long ratio is a matter of cell types | `results/spatial_variable_melanoma_patch_composition.json` |
 
-Heavy runs: `sherlock/` (`REPO` = a U-Chrom copy, `REPRO` = a copy of this repository).  `results/MANIFEST.md` lists
+Heavy runs: `slurm/` (`REPO` = a U-Chrom copy, `REPRO` = a copy of this repository).  `results/MANIFEST.md` lists
 the committed results.  Tests: `pytest extended_data_fig2/tests`.

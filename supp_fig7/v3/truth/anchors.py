@@ -1,5 +1,5 @@
 """Reference answers of the four anchors of Part A (A1, A6, H1, S3: reading the data), the functions that computed
-them, unchanged (run with the agents' first environment, U-Chrom fb43ac4, on Sherlock).
+them, unchanged (run with the agents' first environment, U-Chrom fb43ac4, on a compute cluster).
 
     python supp_fig7/v3/truth/anchors.py --data-root <agentbench/data> [--out supp_fig7/v3/answers_anchors.json]
 

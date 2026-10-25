@@ -32,8 +32,8 @@ schematic and browser views of the public atlas) need no code here.
 3. Run a benchmark from the repository root, e.g. `python extended_data_fig1/c_access.py`.  It writes
    `results/*.json` with the revisions of U-Chrom and of this repository, the host, the package versions, the data
    and the parameters (`shared/_record.py`; `python shared/_record.py OLD NEW --rtol x` compares two runs).  Heavy runs
-   have Sherlock job scripts (`*/sherlock/`: `REPO` is a copy of U-Chrom, `REPRO` a copy of this repository); large
-   outputs are archived on Oak (`$OAK/uchrom/results/<name>/`).
+   have cluster job scripts (`*/slurm/`: `REPO` is a copy of U-Chrom, `REPRO` a copy of this repository); large
+   outputs are archived in long-term storage (`$UCHROM_ARCHIVE/results/<name>/`).
 
 Tests of the helpers: run each folder on its own (`pytest shared/tests`, `pytest extended_data_fig1/tests`,
 `pytest extended_data_fig2/tests`; the folders share the package name `tests`).

@@ -17,7 +17,7 @@ Isolation: the container sees only its working directory (/work), the question's
 /work/data), the Python environment (/opt/venv, read-only), the Codex executable (/opt/codex, read-only), a fresh
 home (/home/agent) whose Codex folder holds a copy of the user's credentials (auth.json) and this benchmark's
 config.toml (no memories, no sub-agents, no web search, no apps / browser / computer use / plugins, no approvals:
-the container is the sandbox), and Sherlock's managed Codex settings and agent rules (/etc/codex, /etc/agents,
+the container is the sandbox), and the cluster's managed Codex settings and agent rules (/etc/codex, /etc/agents,
 read-only).  No checkout of U-Chrom, no questions, no answers.  Every session runs as `srun --exact` with its own
 CPUs and memory (``mem_gb`` of the question, default --mem-gb): a session cannot take another's memory.  Packages
 an agent installs with `pip install` go to its home and come after the environment's on the path (they never
@@ -96,11 +96,11 @@ PIP = (" You may install other public Python packages with `pip install` (they g
        "virtual environment.")
 INTRO = {k: v + PIP for k, v in INTRO.items()}
 #: every data set of the benchmark is published and public (GEO, Zenodo, 4DN, the public U-Chrom atlas): Low Risk
-#: under Stanford's data classification.  Said in the prompt because the agent reads Sherlock's rules (/etc/agents),
+#: under the site's data classification.  Said in the prompt because the agent reads the cluster's rules,
 #: which tell it to stop when the classification of (human) data is unclear.
 PROMPT = """{intro}
 
-Data: {data}  (published, public data: Low Risk under Stanford's data classification)
+Data: {data}  (published, public data: Low Risk under the site's data classification)
 
 Question: {question}
 
@@ -242,7 +242,7 @@ def run_one(q, condition, rep, model, a):
     # the container hides Slurm's limit (--cleanenv), so U-Chrom's streaming paths would size their batches from
     # the node's RAM: give them half the session's memory, as they would take under Slurm (no effect without uchrom)
     env["UCHROM_MEMORY_BUDGET"] = f"{max(1, mem // 2)}GB"
-    # --cleanenv hides the job: the agent reads Sherlock's rules (/etc/agents) and, without SLURM_JOB_ID, takes the
+    # --cleanenv hides the job: the agent reads the cluster's rules and, without SLURM_JOB_ID, takes the
     # node for a login node and refuses to compute.  The session is a job step with these resources: say so.
     if os.environ.get("SLURM_JOB_ID"):
         env.update({"SLURM_JOB_ID": os.environ["SLURM_JOB_ID"], "SLURM_CPUS_PER_TASK": str(a.threads),
@@ -259,7 +259,7 @@ def run_one(q, condition, rep, model, a):
     cmd += [str(a.image), "/opt/codex/bin/codex", "exec", "--json", "--skip-git-repo-check", "-C", "/work",
             "-m", model, prompt]
     t0 = time.time()
-    # its own process group: a time-out ends the whole group (Sherlock's Apptainer gives no PID namespace)
+    # its own process group: a time-out ends the whole group (the cluster's Apptainer gives no PID namespace)
     p = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, stdin=subprocess.DEVNULL,
                          start_new_session=True)
     lines: list = []
@@ -316,7 +316,7 @@ def main():
     ap.add_argument("--codex-dir", type=Path, required=True,
                     help="the codex module's vendor folder (bin/codex, a static binary), bound at /opt/codex")
     ap.add_argument("--out", type=Path, required=True)
-    ap.add_argument("--work-root", default=os.environ.get("L_SCRATCH") or tempfile.gettempdir())
+    ap.add_argument("--work-root", default=os.environ.get("TMPDIR") or tempfile.gettempdir())
     ap.add_argument("--questions", type=Path, default=HERE / "questions_v3.yaml")
     ap.add_argument("--ids", default="")
     ap.add_argument("--conditions", default="none,bare,docs,skills")

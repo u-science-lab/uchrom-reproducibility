@@ -1,6 +1,6 @@
 # sc_structures — structure calling from single cells
 
-Validation of the single-cell callers on real data, run on Sherlock (`sherlock/`; the laptop only edits and runs
+Validation of the single-cell callers on real data, run on a compute cluster (`slurm/`; the laptop only edits and runs
 the unit tests).  Three questions:
 
 | Part | Library | Scripts |
@@ -9,14 +9,14 @@ the unit tests).  Three questions:
 | compartment values of single cells (scA/B) | `uchrom.strc.comp.single_cell_compartments` (+ `fea.sequence` CpG frequency) | `scab_*.py` |
 | imputation (random walk with restart), loops across cells (SnapHiC), domain boundaries of single cells | `uchrom.fea.impute_rwr`, `uchrom.strc.loop.call_loops_snaphic`, `uchrom.strc.tad.single_cell_boundaries`; native kernels `packages/uchrom-maps/src/rwr.rs` | `snaphic_*.py`, `impute_*.py` |
 
-## Running on Sherlock
+## Running on a compute cluster
 
-`sherlock/_env.sh` sets the environment (`venv-sc` in `$GROUP_HOME`, a repo copy `$SCRATCH/uchrom-nd/repo-sc*`
-synced from the laptop with tracked files only, native packages `$SCRATCH/uchrom-nd/engine-sc/$ENGINE`,
-`UCHROM_DATA=$SCRATCH/uchrom-nd/data`, outputs `$SCRATCH/uchrom-nd/runs/sc/`); `sherlock/setup.sbatch` builds the
-env and the engines and runs the unit tests (compiled dependencies from binary wheels only: Sherlock's toolchain
+`slurm/_env.sh` sets the environment (`venv-sc`, a repo copy `$SCRATCH/uchrom/repo-sc*`
+synced from the laptop with tracked files only, native packages `$SCRATCH/uchrom/engine-sc/$ENGINE`,
+`UCHROM_DATA=$SCRATCH/uchrom/data`, outputs `$SCRATCH/uchrom/runs/sc/`); `slurm/setup.sbatch` builds the
+env and the engines and runs the unit tests (compiled dependencies from binary wheels only: the cluster's toolchain
 cannot build the newest numpy).  One sbatch script per analysis (`structures_*`, `scab_*`, `snaphic_*`,
-`impute_speed`); every job sets its time limit, follows `/etc/agents/AGENTS.md` and writes JSON next to its log.
+`impute_speed`); every job sets its time limit, follows the cluster's rules and writes JSON next to its log.
 Numbers below: shared AMD EPYC 9754 node, numpy 2.2.6 (x86-64).
 
 ## Datasets
@@ -87,7 +87,7 @@ cells 6 min.  Native vs numpy: bands within 9e-15, sums within 2e-15, identical 
 ## Where the numbers are kept
 
 The result files of the runs above are committed in `results/` (see `results/MANIFEST.md`: script, machine,
-code revision per file); their large outputs are archived on Sherlock's Oak, `$OAK/uchrom/results/sc_structures/2026-10-08_ad141a7/`.  New
+code revision per file); their large outputs are archived on the cluster's long-term storage, `$UCHROM_ARCHIVE/results/sc_structures/2026-10-08_ad141a7/`.  New
 runs write their numbers with `shared/_record.py` (`save`: results + provenance — revision, host, CPU,
 threads, versions, datasets, parameters) and are compared with the committed ones
 (`python shared/_record.py results/x.json new/x.json --rtol 0.02`; timings left out).

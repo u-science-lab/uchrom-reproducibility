@@ -2,7 +2,7 @@
 
     python schic_build_data.py --shared /shared --data /data --out /data_v3
 
-``--shared`` is the shared data directory of Sherlock (``$SCRATCH/uchrom-nd/data``: the files of ``fetch``),
+``--shared`` is the shared data directory of the cluster (``$SCRATCH/uchrom/data``: the files of ``fetch``),
 ``--data`` the shared data root (``agentbench/data``).  Writes:
 
 * ``stevens2017_cell2/``: the contact pairs and the published structure of Stevens et al. 2017 Cell 2 (fetch

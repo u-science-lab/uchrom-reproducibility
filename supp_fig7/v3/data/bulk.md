@@ -1,8 +1,8 @@
 # Version 3, family `bulk`: data
 
 Questions H1-H4, XM1, P1, P2 (`../questions/bulk.yaml`).  Three new folders under
-`$SCRATCH/uchrom-nd/agentbench/data_v3/`, built by `bulk_build.py` (this folder; cooler / pandas / pyarrow / numpy only,
-never imports `uchrom`; run in `venv-uchrom` for its pyarrow) in the job `../sherlock/bulk_setup.sbatch` (Sherlock jobs
+`$SCRATCH/uchrom/agentbench/data_v3/`, built by `bulk_build.py` (this folder; cooler / pandas / pyarrow / numpy only,
+never imports `uchrom`; run in `venv-uchrom` for its pyarrow) in the job `../slurm/bulk_setup.sbatch` (cluster job
 47731273 + 47734059, 2026-10-13) from registered sources; two shared stores reused.  A scratch folder
 `data_v3/bulk_work/` (call tables of H1) and `data_v3/bulk_build_report.json` (counts, md5s, balancing) are written
 next to them; neither is given to the agents.
@@ -17,7 +17,7 @@ next to them; neither is given to the agents.
 
 ## `rao2014_imr90_chr21_10kb/`
 
-- `IMR90_chr21_10kb_hg19.cool`: the registered 5-kb slice (`$SCRATCH/uchrom-nd/data/rao2014_imr90/IMR90_chr21_5kb_hg19.cool`,
+- `IMR90_chr21_10kb_hg19.cool`: the registered 5-kb slice (`$SCRATCH/uchrom/data/rao2014_imr90/IMR90_chr21_5kb_hg19.cool`,
   raw counts read from the GEO `.hic` over HTTP by `uchrom.datasets._builders.slice_hic`) summed into 10-kb bins with
   `cooler.coarsen_cooler(..., factor=2)` and ICE-balanced with `cooler.balance_cooler(clr, cis_only=True, store=True)`
   (= `cooler balance --cis-only`, its defaults: two diagonals ignored, MAD filter 5, at least 10 non-zero pixels per
@@ -30,7 +30,7 @@ next to them; neither is given to the agents.
 ## `su2020_chr21_tsv/`
 
 The three files of the registered source `su2020_chr21` as published (md5-checked copies of
-`$SCRATCH/uchrom-nd/data/su2020_imr90/`): `chromosome21.tsv` (Z, X, Y in nm of 651 loci of 50 kb for each of 7,591
+`$SCRATCH/uchrom/data/su2020_imr90/`): `chromosome21.tsv` (Z, X, Y in nm of 651 loci of 50 kb for each of 7,591
 imaged chromosome copies; undetected loci empty), `Hi-C_contacts_chromosome21.tsv` (651 x 651 Rao 2014 IMR90 read
 counts summed into the same loci, symmetric, hg38; 9.5 % of the off-diagonal pairs are 0, every index separation has
 a non-zero pair), `README_August_2020.txt`.  ~262 MB.  (Other families may use the `su2020_chr21` ChromData store;
@@ -45,7 +45,7 @@ cerebellum that is one table, `cerebellum-replicate1-mRNA-seqFISH-non-barcoded-c
 smFISH panel; the archive's other cerebellum table is intron seqFISH); a spot of fov `f` and `cellID` `c` belongs to
 cell `1_<f>_<c>`.  Every one of the 47 cells has transcripts (total per cell: median 161, range 42-4,649); md5 of the
 table `eda7365618087d0fce337a2a1ee95146`.  The zip (462 MB, md5 `c29594d9ed0f4dfea67c0140c56050a1`) is downloaded
-inside the job into `$SCRATCH/uchrom-nd/agentbench/dl/takei2025_rna/` (not part of the agents' data).
+inside the job into `$SCRATCH/uchrom/agentbench/dl/takei2025_rna/` (not part of the agents' data).
 `uchrom.io.read_seqfish_transcriptome(zip, dataset="cerebellum", assay="mrna", replicate=1)` gives the same totals
 (checked in `truth/bulk.py`, P2).
 

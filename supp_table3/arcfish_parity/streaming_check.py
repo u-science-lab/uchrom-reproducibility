@@ -3,7 +3,7 @@ origin/main (after the parity re-implementation, de8384e): loop F-test and TAD c
 4DNFIHF3JCBY), in memory (device="cpu") against streaming=True (memory_budget="256MB"), as the original did; the
 comparison also reports every float column's largest difference and exact equality of the whole tables.
 
-    python supp_table3/arcfish_parity/streaming_check.py CORE.csv OUT.json   (sherlock/streaming_check.sbatch)
+    python supp_table3/arcfish_parity/streaming_check.py CORE.csv OUT.json   (slurm/streaming_check.sbatch)
 """
 from __future__ import annotations
 
@@ -92,7 +92,7 @@ def main(core: str, out: str) -> None:
            "provenance": {"script": "arcfish_stream_check.py (copy of extended_data_fig1/cd21_streaming_validation.py "
                                     "child_callers, stricter comparison)",
                           "uchrom_revision": os.environ.get("UCHROM_REVISION"), "versions": versions(),
-                          "host": socket.gethostname(), "slurm_job_id": os.environ.get("SLURM_JOB_ID"),
+                          "host": "cluster node" if os.environ.get("SLURM_JOB_ID") else socket.gethostname(), "slurm_job_id": os.environ.get("SLURM_JOB_ID"),
                           "cpus": os.environ.get("SLURM_CPUS_PER_TASK"), "python": platform.python_version(),
                           "platform": platform.platform(), "input": core,
                           "input_bytes": os.path.getsize(core),

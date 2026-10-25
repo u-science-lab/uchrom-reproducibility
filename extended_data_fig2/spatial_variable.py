@@ -4,16 +4,16 @@ spots' transcriptomes explain (the analysis behind Extended Data Figs 2 and 3).
 Global level (this script, stages ``features`` … ``summary``): per spot, the short / long-range contact ratio
 (Guo et al. 2026's definition), distance bands, P(s) slopes, cis fraction and the trans share of each
 chromosome, from per-spot contact-distance histograms (``uchrom.io.ContactStats``, one pass over each sample's
-.pairs on Sherlock: ``apps/atlas/recipes/spatial_hicrna/sherlock/contact_stats.sbatch``).  Each feature is
+.pairs on a compute cluster: ``apps/atlas/recipes/spatial_hicrna/slurm/contact_stats.sbatch``).  Each feature is
 tested per section with Moran's I (8 adjacent spots) and SPARK-X, raw and adjusted for depth and for the spot's
 RNA (principal components), and its region means are compared with the paper's statement (cortex, CA and DG
 above white matter and choroid plexus).
 
-    python extended_data_fig2/spatial_variable.py --stats $OAK/uchrom/spatial_3dgenome --stages all
+    python extended_data_fig2/spatial_variable.py --stats $UCHROM_ARCHIVE/spatial_3dgenome --stages all
 
 Nulls: stage ``patch_null`` (the copy-number patch against random patches of its size and compactness) and stage
 ``cnv_null`` (the share of what the RNA leaves that copy number explains against random covariates with the same
-spatial autocorrelation, Moran spectral randomisation; ``sherlock/nulls.sbatch``).
+spatial autocorrelation, Moran spectral randomisation; ``slurm/nulls.sbatch``).
 
 Local level (stage ``local``): every spot's insulation of the boundaries and strength of the loops called on its
 tissue's pooled map (``bulk_calls.py``), from the contacts the second pass counts in their windows

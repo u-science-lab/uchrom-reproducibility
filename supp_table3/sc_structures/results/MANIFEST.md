@@ -1,13 +1,13 @@
 # sc_structures — committed results
 
 The numbers behind `../README.md` and the docs page *Calling structures from single cells*, as the benchmark
-scripts wrote them on Sherlock (node sh04-05n13, 2 × AMD EPYC 9754, 256 CPUs, shared, load 50-130; numpy 2.2.6).
+scripts wrote them on a compute cluster (cluster node, 2 × AMD EPYC 9754, 256 CPUs, shared, load 50-130; numpy 2.2.6).
 Collected after the fact (2026-10-08), before `shared/_record.py`: no `provenance` block, this table is it.
 The large outputs of the same runs (call tables, imputed maps, models, logs; SnapHiC's own run without its
-per-cell files) are archived on Oak: `$OAK/uchrom/results/sc_structures/2026-10-08_ad141a7/{scab,snaphic,structures,logs}.tar`
+per-cell files) are archived in long-term storage: `$UCHROM_ARCHIVE/results/sc_structures/2026-10-08_ad141a7/{scab,snaphic,structures,logs}.tar`
 (see its `MANIFEST.txt`).
 
-| Files | What | Script | Sherlock jobs |
+| Files | What | Script | cluster job |
 | --- | --- | --- | --- |
 | `snaphic/snaphic_mesc_summary.json` | SnapHiC vs the paper (precision / recall / APA) by N, whole chromosomes and windows, pooled HiCCUPS | `snaphic_mesc.py` | 46956631 |
 | `snaphic/snaphic_N*_r*[_whole].json`, `pseudobulk_N*_r*.json` | each run of that summary (cells N, replicate r) | `snaphic_mesc.py` | 46951979, 46955046, 46956471, 46956505, 46956512 |
