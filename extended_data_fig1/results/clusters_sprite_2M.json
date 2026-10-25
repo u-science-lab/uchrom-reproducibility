@@ -2,7 +2,7 @@
  "results": {
   "dataset": "quinodoz2018_sprite",
   "member": "mouse.mapq-ge10.clusters.gz",
-  "parse_s": 11.394635559991002,
+  "parse_s": 9.183259086683393,
   "file": {
    "clusters": 2000000,
    "lines_without_reads": 0,
@@ -29,19 +29,19 @@
     "0.999": 125.0
    }
   },
-  "from_frame_s": 6.539198086829856,
-  "peak_rss_gb_after_build": 1.2976913452148438,
-  "write_s": 4.154320901958272,
+  "from_frame_s": 5.288344061002135,
+  "peak_rss_gb_after_build": 1.2967147827148438,
+  "write_s": 4.096858297940344,
   "store_bytes": {
-   "total": 120316941,
-   "zarr.json": 4571,
+   "total": 120317003,
+   "zarr.json": 4599,
    "members": 38109753,
    "member_offsets": 2064191,
    "by_locus": 80005817
   },
   "archive_member_bytes": 3844784762,
-  "bytes_per_read": 23.803270817164194,
-  "open_backed_s": 0.04502722900360823,
+  "bytes_per_read": 23.803283083124235,
+  "open_backed_s": 0.04308335203677416,
   "round_trip": {
    "checksum_store": [
     9894131572318935267,
@@ -55,19 +55,19 @@
   "region": {
    "40000": {
     "in_memory": {
-     "median_ms": 0.2866731956601143,
-     "p90_ms": 41.877205530181534,
+     "median_ms": 0.11070468463003635,
+     "p90_ms": 54.733180394396186,
      "mean_fragments": 76.96
     },
     "backed_local": {
-     "median_ms": 3.0168209923431277,
-     "p90_ms": 3.6173648899421096,
+     "median_ms": 2.1541626192629337,
+     "p90_ms": 2.7619413565844297,
      "mean_fragments": 76.96
     },
     "backed_equals_memory": true,
     "backed_http_local_server": {
-     "median_ms": 6.5267079044133425,
-     "p90_ms": 8.533082064241173,
+     "median_ms": 7.32013862580061,
+     "p90_ms": 8.180127572268248,
      "mean_fragments": 77.57142857142857,
      "requests_per_window": 2.3877551020408165,
      "kb_per_window": 244.87537866709184,
@@ -77,19 +77,19 @@
    },
    "1000000": {
     "in_memory": {
-     "median_ms": 0.356783508323133,
-     "p90_ms": 0.5955010186880828,
+     "median_ms": 0.18639047630131245,
+     "p90_ms": 0.3114682622253895,
      "mean_fragments": 2038.76
     },
     "backed_local": {
-     "median_ms": 2.634072443470359,
-     "p90_ms": 3.6120770731940866,
+     "median_ms": 2.1331626921892166,
+     "p90_ms": 2.910399530082941,
      "mean_fragments": 2038.76
     },
     "backed_equals_memory": true,
     "backed_http_local_server": {
-     "median_ms": 6.141843972727656,
-     "p90_ms": 9.104132372885944,
+     "median_ms": 6.350141949951649,
+     "p90_ms": 7.591816876083613,
      "mean_fragments": 1872.857142857143,
      "requests_per_window": 2.0408163265306123,
      "kb_per_window": 266.3870974170918,
@@ -99,19 +99,19 @@
    },
    "10000000": {
     "in_memory": {
-     "median_ms": 1.056730980053544,
-     "p90_ms": 1.2695582350715995,
+     "median_ms": 1.0556564666330814,
+     "p90_ms": 1.387219037860632,
      "mean_fragments": 20724.14
     },
     "backed_local": {
-     "median_ms": 4.334529978223145,
-     "p90_ms": 4.777567205019296,
+     "median_ms": 3.471093950793147,
+     "p90_ms": 4.3048507533967495,
      "mean_fragments": 20724.14
     },
     "backed_equals_memory": true,
     "backed_http_local_server": {
-     "median_ms": 10.53424901328981,
-     "p90_ms": 13.746067183092237,
+     "median_ms": 10.642532724887133,
+     "p90_ms": 14.319625124335289,
      "mean_fragments": 20064.530612244896,
      "requests_per_window": 3.2244897959183674,
      "kb_per_window": 563.1149952168367,
@@ -120,16 +120,16 @@
     }
    }
   },
-  "peak_rss_gb": 1.2976913452148438
+  "peak_rss_gb": 1.2967147827148438
  },
  "provenance": {
-  "revision": "df21e7440ab5",
-  "date": "2026-10-25T05:47:59+00:00",
-  "host": "sh04-05n13.int",
-  "cpu": "AMD EPYC 9754 128-Core Processor",
-  "cpus": 26,
-  "slurm_job": "49446392",
-  "load_avg_1min": 155.96,
+  "revision": "e730e49bfaa7",
+  "date": "2026-10-25T20:20:31+00:00",
+  "host": "sh04-01n16.int",
+  "cpu": "Intel(R) Xeon(R) Platinum 8462Y+",
+  "cpus": 8,
+  "slurm_job": "49522138",
+  "load_avg_1min": 56.54,
   "versions": {
    "python": "3.12.1",
    "numpy": "2.2.6",
@@ -150,7 +150,7 @@
    "limit": 2000000,
    "work": "/lscratch/wzxu/clusters/limit",
    "n_windows": 50,
-   "out": "/scratch/users/wzxu/uchrom-nd/runs/clusters/49446392/clusters_sprite_2M.json"
+   "out": "/scratch/users/wzxu/uchrom-nd/runs/clusters/49522138/clusters_sprite_2M.json"
   }
  }
 }
