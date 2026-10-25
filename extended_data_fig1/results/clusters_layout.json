@@ -1,0 +1,305 @@
+{
+ "results": {
+  "dataset": "quinodoz2018_sprite",
+  "member": "mouse.mapq-ge10.clusters.gz",
+  "clusters": 188740906,
+  "reads": 406281627,
+  "windows": {
+   "40000": {
+    "in_memory": {
+     "median_ms": 0.5542455182876438,
+     "p90_ms": 0.6667693902272731,
+     "mean_fragments": 6571.08
+    }
+   },
+   "1000000": {
+    "in_memory": {
+     "median_ms": 10.670086980098858,
+     "p90_ms": 12.328288971912116,
+     "mean_fragments": 166364.22
+    }
+   }
+  },
+  "variants": {
+   "zstd9_16k": {
+    "locus_chunk": 16384,
+    "codec": "ZstdCodec",
+    "write_s": 189.5098598090117,
+    "locus_bytes": 5231529977,
+    "members_bytes": 2787345354,
+    "windows": {
+     "40000": {
+      "backed_local": {
+       "median_ms": 3.0745370022486895,
+       "p90_ms": 3.758136893156916,
+       "mean_fragments": 6571.08
+      },
+      "backed_equals_memory": true,
+      "backed_http_local_server": {
+       "median_ms": 44.19376497389749,
+       "p90_ms": 65.13150111422874,
+       "mean_fragments": 6571.08,
+       "requests_per_window": 2.44,
+       "kb_per_window": 304.11224609375,
+       "equals_memory": true
+      }
+     },
+     "1000000": {
+      "backed_local": {
+       "median_ms": 17.677451513009146,
+       "p90_ms": 20.116344036068767,
+       "mean_fragments": 166364.22
+      },
+      "backed_equals_memory": true,
+      "backed_http_local_server": {
+       "median_ms": 271.63177548209205,
+       "p90_ms": 316.9188300380483,
+       "mean_fragments": 166364.22,
+       "requests_per_window": 12.26,
+       "kb_per_window": 2336.14009765625,
+       "equals_memory": true
+      }
+     }
+    }
+   },
+   "zstd9_8k": {
+    "locus_chunk": 8192,
+    "codec": "ZstdCodec",
+    "write_s": 197.10197129205335,
+    "locus_bytes": 5375993346,
+    "members_bytes": 2787345354,
+    "windows": {
+     "40000": {
+      "backed_local": {
+       "median_ms": 2.689867018489167,
+       "p90_ms": 3.3510762557853013,
+       "mean_fragments": 6571.08
+      },
+      "backed_equals_memory": true,
+      "backed_http_local_server": {
+       "median_ms": 64.76432151976041,
+       "p90_ms": 67.69443448865786,
+       "mean_fragments": 6571.08,
+       "requests_per_window": 2.78,
+       "kb_per_window": 198.09265625,
+       "equals_memory": true
+      }
+     },
+     "1000000": {
+      "backed_local": {
+       "median_ms": 20.482260501012206,
+       "p90_ms": 23.85674524703063,
+       "mean_fragments": 166364.22
+      },
+      "backed_equals_memory": true,
+      "backed_http_local_server": {
+       "median_ms": 500.2393419854343,
+       "p90_ms": 593.8743167382199,
+       "mean_fragments": 166364.22,
+       "requests_per_window": 22.46,
+       "kb_per_window": 2294.15794921875,
+       "equals_memory": true
+      }
+     }
+    }
+   },
+   "zstd9_4k": {
+    "locus_chunk": 4096,
+    "codec": "ZstdCodec",
+    "write_s": 209.50729960401077,
+    "locus_bytes": 5489312182,
+    "members_bytes": 2787345354,
+    "windows": {
+     "40000": {
+      "backed_local": {
+       "median_ms": 2.873187477234751,
+       "p90_ms": 3.5987004288472235,
+       "mean_fragments": 6571.08
+      },
+      "backed_equals_memory": true,
+      "backed_http_local_server": {
+       "median_ms": 115.98803350352682,
+       "p90_ms": 134.80886609177105,
+       "mean_fragments": 6571.08,
+       "requests_per_window": 3.56,
+       "kb_per_window": 155.2662890625,
+       "equals_memory": true
+      }
+     },
+     "1000000": {
+      "backed_local": {
+       "median_ms": 27.431824477389455,
+       "p90_ms": 31.777158600743856,
+       "mean_fragments": 166364.22
+      },
+      "backed_equals_memory": true,
+      "backed_http_local_server": {
+       "median_ms": 1273.9605414681137,
+       "p90_ms": 1563.1834586092737,
+       "mean_fragments": 166364.22,
+       "requests_per_window": 42.82,
+       "kb_per_window": 2291.87671875,
+       "equals_memory": true
+      }
+     }
+    }
+   },
+   "bitshuffle_16k": {
+    "locus_chunk": 16384,
+    "codec": "BloscCodec",
+    "write_s": 174.18266571097774,
+    "locus_bytes": 5196118848,
+    "members_bytes": 2787345354,
+    "windows": {
+     "40000": {
+      "backed_local": {
+       "median_ms": 2.99034352065064,
+       "p90_ms": 3.7598573020659387,
+       "mean_fragments": 6571.08
+      },
+      "backed_equals_memory": true,
+      "backed_http_local_server": {
+       "median_ms": 46.318554028403014,
+       "p90_ms": 68.26024840702303,
+       "mean_fragments": 6571.08,
+       "requests_per_window": 2.44,
+       "kb_per_window": 301.1415625,
+       "equals_memory": true
+      }
+     },
+     "1000000": {
+      "backed_local": {
+       "median_ms": 17.60987497982569,
+       "p90_ms": 20.194572414038703,
+       "mean_fragments": 166364.22
+      },
+      "backed_equals_memory": true,
+      "backed_http_local_server": {
+       "median_ms": 280.26404450065456,
+       "p90_ms": 326.9087325781584,
+       "mean_fragments": 166364.22,
+       "requests_per_window": 12.26,
+       "kb_per_window": 2318.46552734375,
+       "equals_memory": true
+      }
+     }
+    }
+   },
+   "bitshuffle_8k": {
+    "locus_chunk": 8192,
+    "codec": "BloscCodec",
+    "write_s": 182.87116244103527,
+    "locus_bytes": 5212390502,
+    "members_bytes": 2787345354,
+    "windows": {
+     "40000": {
+      "backed_local": {
+       "median_ms": 2.6315370050724596,
+       "p90_ms": 3.364048502407968,
+       "mean_fragments": 6571.08
+      },
+      "backed_equals_memory": true,
+      "backed_http_local_server": {
+       "median_ms": 65.85672701476142,
+       "p90_ms": 68.49183099693619,
+       "mean_fragments": 6571.08,
+       "requests_per_window": 2.78,
+       "kb_per_window": 191.92806640625,
+       "equals_memory": true
+      }
+     },
+     "1000000": {
+      "backed_local": {
+       "median_ms": 20.083391515072435,
+       "p90_ms": 23.92903917352669,
+       "mean_fragments": 166364.22
+      },
+      "backed_equals_memory": true,
+      "backed_http_local_server": {
+       "median_ms": 490.7085990125779,
+       "p90_ms": 601.7781640926842,
+       "mean_fragments": 166364.22,
+       "requests_per_window": 22.46,
+       "kb_per_window": 2222.2218359375,
+       "equals_memory": true
+      }
+     }
+    }
+   },
+   "bitshuffle_4k": {
+    "locus_chunk": 4096,
+    "codec": "BloscCodec",
+    "write_s": 195.2437186629977,
+    "locus_bytes": 5250487980,
+    "members_bytes": 2787345354,
+    "windows": {
+     "40000": {
+      "backed_local": {
+       "median_ms": 2.8547279944177717,
+       "p90_ms": 3.6424339283257723,
+       "mean_fragments": 6571.08
+      },
+      "backed_equals_memory": true,
+      "backed_http_local_server": {
+       "median_ms": 85.94769300543703,
+       "p90_ms": 90.58005289989524,
+       "mean_fragments": 6571.08,
+       "requests_per_window": 3.56,
+       "kb_per_window": 148.98462890625,
+       "equals_memory": true
+      }
+     },
+     "1000000": {
+      "backed_local": {
+       "median_ms": 26.84230700833723,
+       "p90_ms": 31.78870900301263,
+       "mean_fragments": 166364.22
+      },
+      "backed_equals_memory": true,
+      "backed_http_local_server": {
+       "median_ms": 933.9102865196764,
+       "p90_ms": 1144.5425021054689,
+       "mean_fragments": 166364.22,
+       "requests_per_window": 42.82,
+       "kb_per_window": 2189.3711328125,
+       "equals_memory": true
+      }
+     }
+    }
+   }
+  },
+  "peak_rss_gb": 97.60698318481445
+ },
+ "provenance": {
+  "revision": "e730e49bfaa7",
+  "date": "2026-10-25T18:10:13+00:00",
+  "host": "sh03-13n23.int",
+  "cpu": "AMD EPYC 7742 64-Core Processor",
+  "cpus": 8,
+  "slurm_job": "49508917",
+  "load_avg_1min": 17.76,
+  "versions": {
+   "python": "3.12.1",
+   "numpy": "2.2.6",
+   "scipy": "1.16.3",
+   "pandas": "2.3.2",
+   "cooler": "0.10.4",
+   "zarr": "3.1.6",
+   "uchrom": "0.3.0.dev0",
+   "chromdata": "0.1.0"
+  },
+  "script": "extended_data_fig1/g_clusters_layout.py",
+  "datasets": [
+   "quinodoz2018_sprite"
+  ],
+  "params": {
+   "archive": "/scratch/users/wzxu/uchrom-nd/data/quinodoz2018_sprite/GSE114242_mouse_combined_clusters.tar.gz",
+   "member": "mouse.mapq-ge10.clusters.gz",
+   "limit": null,
+   "work": "/lscratch/wzxu/layout",
+   "n_windows": 50,
+   "only": null,
+   "out": "/scratch/users/wzxu/uchrom-nd/runs/clusters/49508917/clusters_layout.json"
+  }
+ }
+}

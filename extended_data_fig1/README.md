@@ -19,6 +19,7 @@ and 2.  Each script writes `results/<name>.json` (with provenance); the paper's 
 | `f_roundtrip.py` | Supp. Fig. S1e (was b) | Takei 2025 FOV0, sim_cell1, scHiCAR | field-by-field round trips (`.chromdata.zarr`, FOF-CT via `uchrom.io.write_fofct`, AnnData, .cool/.scool, PDB, .3dg) → preserved / partial / lost / NA matrix |
 | `allele_qc.py` | supplement | Takei 2025 raw spot CSVs | diagnostic of the published homolog calls (loci per trace, duplicate loci, genomic–spatial Spearman) |
 | `g_clusters_sprite.py` | not in the paper (format 2.4) | Quinodoz 2018 SPRITE clusters (GSE114242; fetch `quinodoz2018_sprite`, Sherlock: `sherlock/clusters.sbatch`) | multi-way contacts (`ChromData.clusters`): the clusters of the authors' file as a `ClusterTable`, written and read back (checksum over clusters), store size, region queries in memory / backed / over HTTP |
+| `g_clusters_layout.py` | not in the paper (format 2.4) | the same SPRITE clusters (Sherlock: `sherlock/clusters_layout.sbatch`) | the locus index's chunk size and codec: index size, window reads backed and over HTTP (requests, bytes, time) |
 
 ## Setup
 
