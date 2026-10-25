@@ -1,0 +1,157 @@
+{
+ "results": {
+  "dataset": "quinodoz2018_sprite",
+  "member": "mouse.mapq-ge10.clusters.gz",
+  "parse_s": 673.0300035239197,
+  "file": {
+   "clusters": 188740906,
+   "lines_without_reads": 0,
+   "reads": 406281627,
+   "chromosomes": 34,
+   "size_hist": {
+    "1": 136358544,
+    "2": 30745227,
+    "3": 9903032,
+    "4": 4144148,
+    "5": 2096695,
+    "10": 295214,
+    "100": 2079,
+    "1000": 9,
+    "1001": 11330
+   },
+   "checksum": [
+    14443570027705063324,
+    3856766632428007302
+   ],
+   "size_quantiles": {
+    "0.5": 1.0,
+    "0.9": 3.0,
+    "0.99": 12.0,
+    "0.999": 91.0
+   }
+  },
+  "from_frame_s": 643.6442503822036,
+  "peak_rss_gb_after_build": 100.63956451416016,
+  "write_s": 225.54672822915018,
+  "store_bytes": {
+   "total": 8213226338,
+   "zarr.json": 5211,
+   "members": 2787345354,
+   "member_offsets": 194201208,
+   "by_locus": 5231529977
+  },
+  "archive_member_bytes": 3844784762,
+  "bytes_per_read": 20.21559871817684,
+  "open_backed_s": 0.021009991876780987,
+  "round_trip": {
+   "checksum_store": [
+    14443570027705063324,
+    3856766632428007302
+   ],
+   "equal": true,
+   "clusters_equal": true,
+   "reads_equal": true,
+   "one_bp_fragments": true
+  },
+  "region": {
+   "40000": {
+    "in_memory": {
+     "median_ms": 0.49506803043186665,
+     "p90_ms": 8390.29133184813,
+     "mean_fragments": 6144.66
+    },
+    "backed_local": {
+     "median_ms": 2.7365502901375294,
+     "p90_ms": 3.426188183948398,
+     "mean_fragments": 6144.66
+    },
+    "backed_equals_memory": true,
+    "backed_http_local_server": {
+     "median_ms": 79.04134877026081,
+     "p90_ms": 114.51341081410646,
+     "mean_fragments": 6643.918367346939,
+     "requests_per_window": 2.7551020408163267,
+     "kb_per_window": 296.35170200892856,
+     "only_locus_index": true,
+     "equals_memory": true
+    }
+   },
+   "1000000": {
+    "in_memory": {
+     "median_ms": 12.379497289657593,
+     "p90_ms": 19.322403334081176,
+     "mean_fragments": 162043.08
+    },
+    "backed_local": {
+     "median_ms": 21.48220525123179,
+     "p90_ms": 26.558909146115184,
+     "mean_fragments": 162043.08
+    },
+    "backed_equals_memory": true,
+    "backed_http_local_server": {
+     "median_ms": 398.97521724924445,
+     "p90_ms": 525.1294956542552,
+     "mean_fragments": 148296.75510204083,
+     "requests_per_window": 11.10204081632653,
+     "kb_per_window": 2096.2013911033164,
+     "only_locus_index": true,
+     "equals_memory": true
+    }
+   },
+   "10000000": {
+    "in_memory": {
+     "median_ms": 143.16116669215262,
+     "p90_ms": 167.85635454580188,
+     "mean_fragments": 1560839.88
+    },
+    "backed_local": {
+     "median_ms": 225.8775990922004,
+     "p90_ms": 276.8213904462755,
+     "mean_fragments": 1560839.88
+    },
+    "backed_equals_memory": true,
+    "backed_http_local_server": {
+     "median_ms": 3643.1375718675554,
+     "p90_ms": 4653.781551402062,
+     "mean_fragments": 1572409.0612244897,
+     "requests_per_window": 98.26530612244898,
+     "kb_per_window": 20050.31489158163,
+     "only_locus_index": true,
+     "equals_memory": true
+    }
+   }
+  },
+  "peak_rss_gb": 100.63956451416016
+ },
+ "provenance": {
+  "revision": "e730e49bfaa7",
+  "date": "2026-10-25T20:54:57+00:00",
+  "host": "sh04-01n16.int",
+  "cpu": "Intel(R) Xeon(R) Platinum 8462Y+",
+  "cpus": 8,
+  "slurm_job": "49522138",
+  "load_avg_1min": 56.57,
+  "versions": {
+   "python": "3.12.1",
+   "numpy": "2.2.6",
+   "scipy": "1.16.3",
+   "pandas": "2.3.2",
+   "cooler": "0.10.4",
+   "zarr": "3.1.6",
+   "uchrom": "0.3.0.dev0",
+   "chromdata": "0.1.0"
+  },
+  "script": "extended_data_fig1/g_clusters_sprite.py",
+  "datasets": [
+   "quinodoz2018_sprite"
+  ],
+  "params": {
+   "archive": "/scratch/users/wzxu/uchrom-nd/data/quinodoz2018_sprite/GSE114242_mouse_combined_clusters.tar.gz",
+   "member": "mouse.mapq-ge10.clusters.gz",
+   "limit": null,
+   "work": "/lscratch/wzxu/clusters/full",
+   "n_windows": 50,
+   "out": "/scratch/users/wzxu/uchrom-nd/runs/clusters/49522138/clusters_sprite.json"
+  }
+ }
+}
