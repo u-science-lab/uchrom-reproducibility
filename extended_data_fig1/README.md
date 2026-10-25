@@ -18,6 +18,7 @@ and 2.  Each script writes `results/<name>.json` (with provenance); the paper's 
 | `f_crossmodal.py` | Supp. Fig. S2 (was f) | scHiCAR MOp `.chromdata.zarr` + linked 1 Mb `.scool` | Leiden clusters of the RNA PCA (`uchrom.emb.cluster_cells`), marker genes, the chosen clusters' pseudo-bulk maps via `Dataset.contacts(group=)`, P(s) and slopes |
 | `f_roundtrip.py` | Supp. Fig. S1e (was b) | Takei 2025 FOV0, sim_cell1, scHiCAR | field-by-field round trips (`.chromdata.zarr`, FOF-CT via `uchrom.io.write_fofct`, AnnData, .cool/.scool, PDB, .3dg) → preserved / partial / lost / NA matrix |
 | `allele_qc.py` | supplement | Takei 2025 raw spot CSVs | diagnostic of the published homolog calls (loci per trace, duplicate loci, genomic–spatial Spearman) |
+| `g_clusters_sprite.py` | not in the paper (format 2.4) | Quinodoz 2018 SPRITE clusters (GSE114242; fetch `quinodoz2018_sprite`, Sherlock: `sherlock/clusters.sbatch`) | multi-way contacts (`ChromData.clusters`): the clusters of the authors' file as a `ClusterTable`, written and read back (checksum over clusters), store size, region queries in memory / backed / over HTTP |
 
 ## Setup
 

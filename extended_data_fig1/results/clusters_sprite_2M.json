@@ -1,0 +1,156 @@
+{
+ "results": {
+  "dataset": "quinodoz2018_sprite",
+  "member": "mouse.mapq-ge10.clusters.gz",
+  "parse_s": 11.394635559991002,
+  "file": {
+   "clusters": 2000000,
+   "lines_without_reads": 0,
+   "reads": 5054639,
+   "chromosomes": 30,
+   "size_hist": {
+    "1": 1340782,
+    "2": 370169,
+    "3": 133590,
+    "4": 57652,
+    "5": 28634,
+    "10": 3598,
+    "100": 31,
+    "1001": 175
+   },
+   "checksum": [
+    9894131572318935267,
+    8802610644698366287
+   ],
+   "size_quantiles": {
+    "0.5": 1.0,
+    "0.9": 3.0,
+    "0.99": 14.0,
+    "0.999": 125.0
+   }
+  },
+  "from_frame_s": 6.539198086829856,
+  "peak_rss_gb_after_build": 1.2976913452148438,
+  "write_s": 4.154320901958272,
+  "store_bytes": {
+   "total": 120316941,
+   "zarr.json": 4571,
+   "members": 38109753,
+   "member_offsets": 2064191,
+   "by_locus": 80005817
+  },
+  "archive_member_bytes": 3844784762,
+  "bytes_per_read": 23.803270817164194,
+  "open_backed_s": 0.04502722900360823,
+  "round_trip": {
+   "checksum_store": [
+    9894131572318935267,
+    8802610644698366287
+   ],
+   "equal": true,
+   "clusters_equal": true,
+   "reads_equal": true,
+   "one_bp_fragments": true
+  },
+  "region": {
+   "40000": {
+    "in_memory": {
+     "median_ms": 0.2866731956601143,
+     "p90_ms": 41.877205530181534,
+     "mean_fragments": 76.96
+    },
+    "backed_local": {
+     "median_ms": 3.0168209923431277,
+     "p90_ms": 3.6173648899421096,
+     "mean_fragments": 76.96
+    },
+    "backed_equals_memory": true,
+    "backed_http_local_server": {
+     "median_ms": 6.5267079044133425,
+     "p90_ms": 8.533082064241173,
+     "mean_fragments": 77.57142857142857,
+     "requests_per_window": 2.3877551020408165,
+     "kb_per_window": 244.87537866709184,
+     "only_locus_index": true,
+     "equals_memory": true
+    }
+   },
+   "1000000": {
+    "in_memory": {
+     "median_ms": 0.356783508323133,
+     "p90_ms": 0.5955010186880828,
+     "mean_fragments": 2038.76
+    },
+    "backed_local": {
+     "median_ms": 2.634072443470359,
+     "p90_ms": 3.6120770731940866,
+     "mean_fragments": 2038.76
+    },
+    "backed_equals_memory": true,
+    "backed_http_local_server": {
+     "median_ms": 6.141843972727656,
+     "p90_ms": 9.104132372885944,
+     "mean_fragments": 1872.857142857143,
+     "requests_per_window": 2.0408163265306123,
+     "kb_per_window": 266.3870974170918,
+     "only_locus_index": true,
+     "equals_memory": true
+    }
+   },
+   "10000000": {
+    "in_memory": {
+     "median_ms": 1.056730980053544,
+     "p90_ms": 1.2695582350715995,
+     "mean_fragments": 20724.14
+    },
+    "backed_local": {
+     "median_ms": 4.334529978223145,
+     "p90_ms": 4.777567205019296,
+     "mean_fragments": 20724.14
+    },
+    "backed_equals_memory": true,
+    "backed_http_local_server": {
+     "median_ms": 10.53424901328981,
+     "p90_ms": 13.746067183092237,
+     "mean_fragments": 20064.530612244896,
+     "requests_per_window": 3.2244897959183674,
+     "kb_per_window": 563.1149952168367,
+     "only_locus_index": true,
+     "equals_memory": true
+    }
+   }
+  },
+  "peak_rss_gb": 1.2976913452148438
+ },
+ "provenance": {
+  "revision": "df21e7440ab5",
+  "date": "2026-10-25T05:47:59+00:00",
+  "host": "sh04-05n13.int",
+  "cpu": "AMD EPYC 9754 128-Core Processor",
+  "cpus": 26,
+  "slurm_job": "49446392",
+  "load_avg_1min": 155.96,
+  "versions": {
+   "python": "3.12.1",
+   "numpy": "2.2.6",
+   "scipy": "1.16.3",
+   "pandas": "2.3.2",
+   "cooler": "0.10.4",
+   "zarr": "3.1.6",
+   "uchrom": "0.3.0.dev0",
+   "chromdata": "0.1.0"
+  },
+  "script": "extended_data_fig1/g_clusters_sprite.py",
+  "datasets": [
+   "quinodoz2018_sprite"
+  ],
+  "params": {
+   "archive": "/scratch/users/wzxu/uchrom-nd/data/quinodoz2018_sprite/GSE114242_mouse_combined_clusters.tar.gz",
+   "member": "mouse.mapq-ge10.clusters.gz",
+   "limit": 2000000,
+   "work": "/lscratch/wzxu/clusters/limit",
+   "n_windows": 50,
+   "out": "/scratch/users/wzxu/uchrom-nd/runs/clusters/49446392/clusters_sprite_2M.json"
+  }
+ }
+}
