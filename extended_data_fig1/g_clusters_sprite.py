@@ -2,7 +2,7 @@
 
 Quinodoz et al. 2018 (Cell 174:744), GEO GSE114242: the mouse ES cell clusters of the authors' pipeline, one
 cluster per line (``barcode<TAB>chrom:pos<TAB>chrom:pos ...``, one token per read).  A read position ``pos``
-(1-based, as written) becomes the fragment ``[pos - 1, pos)``.
+(0-based: the pipeline writes pysam's ``reference_start``; positions 0 occur) becomes the fragment ``[pos, pos + 1)``.
 
 Measured:
 
@@ -173,11 +173,11 @@ def main():
     t0 = time.perf_counter()
     df = pd.DataFrame({"cluster": np.repeat(np.arange(len(sizes), dtype=np.int64), sizes),
                        "chrom": pd.Categorical.from_codes(codes, categories=chroms),
-                       "start": pos - 1, "end": pos})
+                       "start": pos, "end": pos + 1})
     del codes
     t = ClusterTable.from_frame(df, keep_names=False, attrs={
         "assay": "SPRITE", "source": "GEO GSE114242 " + args.member,
-        "fragments": "read positions as written (1-based) -> [pos - 1, pos)"})
+        "fragments": "read positions as written (0-based read starts) -> [pos, pos + 1)"})
     del df
     res["from_frame_s"] = time.perf_counter() - t0
     res["peak_rss_gb_after_build"] = rss_gb()
@@ -210,11 +210,11 @@ def main():
     off = b.member_offsets
     mem = b.members_array.astype(np.int64)
     code_map = np.array([ids[c] for c in b.chroms], dtype=np.uint64)
-    back_sum = cluster_checksum(code_map[mem[0]], mem[2], np.diff(off))     # end == pos
+    back_sum = cluster_checksum(code_map[mem[0]], mem[1], np.diff(off))     # start == pos
     res["round_trip"] = {"checksum_store": list(back_sum), "equal": bool(back_sum == src_sum),
                          "clusters_equal": int(b.n_clusters) == res["file"]["clusters"],
                          "reads_equal": int(b.n_members) == res["file"]["reads"],
-                         "starts_are_pos_minus_1": bool((mem[2] - mem[1] == 1).all())}
+                         "one_bp_fragments": bool((mem[2] - mem[1] == 1).all())}
     del mem
     print(res["round_trip"], flush=True)
 
